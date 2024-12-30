@@ -19,7 +19,15 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@maverick/cf": ["./src/libs/cf/index.ts"],
+      "@maverick/contentful": ["./src/libs/clients/contentful/index.ts"],
+      "@maverick/features": ["./src/libs/features/index.ts"],
+      "@maverick/hooks": ["./src/libs/hooks/index.ts"],
+      "@maverick/i18n": ["./src/libs/i18n/index.ts"],
+      "@maverick/theme": ["./src/libs/theme/index.ts"],
+      "@maverick/types": ["./src/libs/types/index.ts"],
+      "@maverick/ui": ["./src/libs/ui/index.ts"],
+      "@maverick/utils": ["./src/libs/utils/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
