@@ -3,8 +3,34 @@ import MuiList, { ListProps as MuiListProps } from "@mui/material/List";
 import MuiListItem, {
   ListItemProps as MuiListItemProps,
 } from "@mui/material/ListItem";
+import MuiListItemButton, {
+  ListItemButtonProps as MuiListItemButtonProps,
+} from "@mui/material/ListItemButton";
 
 import { CustomCssProps } from "@maverick/types";
+
+interface ListItemButtonProps
+  extends Pick<MuiListItemButtonProps, "alignItems" | "children"> {
+  style?: CustomCssProps;
+}
+
+export const ListItemButton = ({
+  alignItems = "flex-start",
+  children,
+  style,
+}: ListItemButtonProps) => {
+  return (
+    <MuiListItemButton
+      alignItems={alignItems}
+      sx={{
+        position: "relative",
+        ...style,
+      }}
+    >
+      {children}
+    </MuiListItemButton>
+  );
+};
 
 interface ListItemProps
   extends Pick<
