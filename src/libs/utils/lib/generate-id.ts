@@ -1,1 +1,0 @@
-export const generateId = (title: string) => title.replace(/\s+/g, "")

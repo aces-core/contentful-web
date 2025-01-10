@@ -67,21 +67,86 @@ export const Menu: React.FC<MenuProps> = ({
   );
 };
 
-export const DropDownMenu: React.FC<MenuProps> = ({
-  textAlign = "left",
+export const DropDownMenu: React.FC<MenuItemProps> = ({
+  style,
   children,
+  onMouseEnter,
+  onMouseLeave,
 }) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const hasNestedMenu = React.Children.toArray(children).some(
+    (child) => React.isValidElement(child) && child.type === SubMenu,
+  );
+
+  const fadeIn = keyframes`
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  `;
+
   return (
-    <nav>
-      <MenuList
-        sx={{
-          textAlign: textAlign,
-          marginX: 0,
-        }}
-      >
-        {children}
-      </MenuList>
-    </nav>
+    <MuiMenuItem
+      sx={{
+        position: "relative",
+        justifyContent: "flex-start",
+        paddingTop: "1.75rem",
+        paddingBottom: "1.75rem",
+        paddingLeft: { xs: 0, lg: ".75rem", xl: "1rem" },
+        paddingRight: { xs: 0, lg: ".75rem", xl: "1rem" },
+        minHeight: 0,
+        whiteSpace: "break-spaces",
+        animation: `${fadeIn} 100ms ease-in-out`,
+        "&:hover": {
+          textDecoration: "none",
+        },
+        ...style,
+      }}
+      onFocus={handleOpen}
+      onMouseEnter={onMouseEnter ? onMouseEnter : handleOpen}
+      onMouseLeave={onMouseLeave ? onMouseLeave : handleClose}
+    >
+      <Box style={{ alignItems: "center", display: "flex" }}>
+        <ListItemText
+          sx={{
+            textAlign: "left",
+            fontSize: "inherit",
+            fontWeight: 700,
+          }}
+        >
+          {React.Children.toArray(children).filter(
+            (child) => React.isValidElement(child) && child.type !== SubMenu,
+          )}
+        </ListItemText>
+        {hasNestedMenu && (
+          <Icon
+            icon={open ? "ArrowDropUp" : "ArrowDropDown"}
+            size={20}
+            color="text.primary"
+            marginLeft={1}
+          />
+        )}
+      </Box>
+      {hasNestedMenu &&
+        open &&
+        React.Children.map(children, (child) => {
+          if (React.isValidElement(child) && child.type === SubMenu) {
+            return <>{child}</>;
+          }
+          return null;
+        })}
+    </MuiMenuItem>
   );
 };
 
@@ -106,45 +171,19 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   resize,
   style,
   children,
-  onMouseEnter,
-  onMouseLeave,
 }) => {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const hasNestedMenu = React.Children.toArray(children).some(
-    (child) => React.isValidElement(child) && child.type === SubMenu
-  );
-
-  const fadeIn = keyframes`
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  `;
-
   return (
     <MuiMenuItem
       disableGutters={disableGutters}
       sx={{
         position: "relative",
         justifyContent: "flex-start",
-        paddingTop: noPadding ? 0 : nested ? "0.5rem" : ".75rem",
-        paddingBottom: noPadding ? 0 : nested ? "0.5rem" : ".75rem",
+        paddingTop: noPadding ? 0 : nested ? "0.5rem" : "1.75rem",
+        paddingBottom: noPadding ? 0 : nested ? "0.5rem" : "1.75rem",
         paddingLeft: disableGutters ? 0 : { xs: 0, lg: ".75rem", xl: "1rem" },
         paddingRight: disableGutters ? 0 : { xs: 0, lg: ".75rem", xl: "1rem" },
         minHeight: 0,
         whiteSpace: "break-spaces",
-        animation: `${fadeIn} 100ms ease-in-out`,
         "&:hover": {
           textDecoration: hoverUnderline ? "underline" : "none",
           ...(hoverUnderline && {
@@ -153,9 +192,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         },
         ...style,
       }}
-      onFocus={handleOpen}
-      onMouseEnter={onMouseEnter ? onMouseEnter : handleOpen}
-      onMouseLeave={onMouseLeave ? onMouseLeave : handleClose}
     >
       <Box style={{ alignItems: "center", display: "flex" }}>
         <ListItemText
@@ -165,32 +201,14 @@ export const MenuItem: React.FC<MenuItemProps> = ({
             fontWeight: 700,
             "& > span": resize
               ? {
-                  fontSize: { xs: "13px", xl: "body1.fontSize" },
+                  fontSize: { xs: "body2.fontSize", xl: "body1.fontSize" },
                 }
               : {},
           }}
         >
-          {React.Children.toArray(children).filter(
-            (child) => React.isValidElement(child) && child.type !== SubMenu
-          )}
+          {children}
         </ListItemText>
-        {hasNestedMenu && (
-          <Icon
-            icon={open ? "ChevronUp" : "ChevronDown"}
-            size={12}
-            color="primary.main"
-            marginLeft={2}
-          />
-        )}
       </Box>
-      {hasNestedMenu &&
-        open &&
-        React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === SubMenu) {
-            return <>{child}</>;
-          }
-          return null;
-        })}
     </MuiMenuItem>
   );
 };
@@ -217,12 +235,14 @@ export const MobileMenuItem: React.FC<MobileMenuItemProps> = ({ children }) => {
 interface SubMenuProps extends Pick<MuiMenuListProps, "children"> {
   boxShadow?: boolean;
   minWidth?: string;
+  position?: "left" | "right";
 }
 
 export const SubMenu: React.FC<SubMenuProps> = ({
   children,
   boxShadow = true,
   minWidth = "180px",
+  position = "right",
 }) => {
   return (
     <MenuList
@@ -231,12 +251,13 @@ export const SubMenu: React.FC<SubMenuProps> = ({
         paddingBottom: 4,
         position: "absolute",
         top: "100%",
-        left: 0,
+        left: position === "left" ? 0 : "auto",
+        right: position === "right" ? 0 : "auto",
         minWidth: minWidth,
         width: "100%",
         height: "auto",
-        backgroundColor: "grey.700",
-        color: "common.white",
+        backgroundColor: "common.white",
+        color: "text.primary",
         zIndex: 99,
         flexDirection: "column",
         boxShadow: boxShadow ? "0px 2px 6px rgba(0, 0, 0, 0.2)" : "none",

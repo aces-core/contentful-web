@@ -22,8 +22,8 @@ export const Container = ({
       disableGutters={disableGutters}
       sx={{
         ...(!noPadding && {
-          paddingLeft: { xs: "1rem", sm: "1.5rem" },
-          paddingRight: { xs: "1rem", sm: "1.5rem" },
+          paddingLeft: { xs: "1.5rem", sm: "2rem" },
+          paddingRight: { xs: "1.5rem", sm: "2rem" },
         }),
         ...style,
       }}

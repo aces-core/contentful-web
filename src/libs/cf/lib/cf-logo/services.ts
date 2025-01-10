@@ -1,8 +1,10 @@
 import { gql } from "@apollo/client";
 
-import { cfClient, cfPreviewClient } from "@maverick/contentful";
+import { cfClient, cfPreviewClient, ImageFragment } from "@maverick/contentful";
 
-export const headerQuery = gql`
+export const LogoQuery = gql`
+  ${ImageFragment}
+
   query ($id: String!, $preview: Boolean!, $lang: String!) {
     appsCollection(
       where: { appId: $id }
@@ -11,13 +13,18 @@ export const headerQuery = gql`
       locale: $lang
     ) {
       items {
-        appName
+        fullColorLogo {
+          ...Image
+        }
+        knockoutLogo {
+          ...Image
+        }
       }
     }
   }
 `;
 
-export const fetchHeaderData = async (
+export const fetchLogoData = async (
   id: string,
   preview: boolean,
   lang: string,
@@ -26,11 +33,14 @@ export const fetchHeaderData = async (
 
   try {
     const response = await client.query({
-      query: headerQuery,
+      query: LogoQuery,
       variables: { id, preview, lang },
     });
 
-    return response.data.appsCollection.items[0];
+    return {
+      fullColorLogo: response.data.appsCollection.items[0].fullColorLogo,
+      knockoutLogo: response.data.appsCollection.items[0].knockoutLogo,
+    };
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;

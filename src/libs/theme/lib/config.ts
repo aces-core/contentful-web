@@ -126,7 +126,7 @@ export const typography = {
   fontFamily: primaryFont.style.fontFamily,
   h1: {
     fontSize: defaultTheme.typography.pxToRem(60),
-    lineHeight: defaultTheme.typography.pxToRem(72),
+    lineHeight: defaultTheme.typography.pxToRem(65),
     fontWeight: 600,
     [`@media (max-width:${breakpoints.values.md}px)`]: {
       fontSize: defaultTheme.typography.pxToRem(46),
@@ -166,7 +166,6 @@ export const typography = {
     lineHeight: defaultTheme.typography.pxToRem(24),
     fontWeight: 600,
     letterSpacing: "0.02em",
-    textTransform: "uppercase" as const,
   },
   subtitle1: {
     fontSize: defaultTheme.typography.pxToRem(22),
@@ -302,7 +301,7 @@ export const palette = {
     primary: gradient.primary,
     dark: gradient.dark,
   },
-  divider: grey[200],
+  divider: grey[300],
   text: {
     primary: common.black,
     secondary: grey[600],

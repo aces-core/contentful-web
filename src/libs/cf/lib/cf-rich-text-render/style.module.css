@@ -1,0 +1,63 @@
+.richText p + ul,
+.richText p + ol {
+  margin-top: -0.75rem;
+}
+
+.richText ul,
+.richText ol {
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.richText ul li,
+.richText ol li {
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: left 8px;
+  font-weight: 400;
+  line-height: 26px;
+  font-size: 15px;
+  color: #454444;
+  list-style-type: none;
+  list-style-position: inside;
+  margin-bottom: 8px;
+  padding-left: 16px;
+  position: relative;
+  margin-left: 20px;
+}
+
+.richText ul li p,
+.richText ol li p {
+  padding-bottom: 0;
+}
+
+.richText ul li:before {
+  background-color: #c5d2d8;
+  border-radius: 50%;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: 0.7em;
+  transform: translateY(-50%);
+  width: 5px;
+}
+
+.richText blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 18px;
+  border-left: 5px solid #eee;
+}
+
+.richText blockquote ol:last-child,
+.richText blockquote p:last-child,
+.richText blockquote ul:last-child {
+  margin-bottom: 0;
+}
+
+.richText a {
+  color: #1f7ef6;
+  text-decoration: none;
+}

@@ -1,7 +1,9 @@
-import { defaultLocale, getLocale } from "@maverick/i18n";
+import { defaultLocale } from "@maverick/i18n";
 import { CfFetchById } from "@maverick/types";
 
-import { fetchHeaderData } from "./service";
+import { fetchNavigationsData } from "../navigations/services";
+
+import { fetchHeaderData } from "./services";
 import { Header } from "./render";
 import { HeaderSkeleton } from "./skeleton";
 
@@ -13,17 +15,33 @@ export const HeaderServer = async ({
   let data;
 
   try {
-    data = await fetchHeaderData(id, preview, lang);
+    const [headerData, navigationsData] = await Promise.all([
+      fetchHeaderData(id, preview, lang),
+      fetchNavigationsData(id, preview, lang),
+    ]);
+
+    data = {
+      logos: {
+        fullColorLogo: headerData.fullColorLogo,
+        knockoutLogo: headerData.knockoutLogo,
+      },
+      navigations: navigationsData,
+    };
   } catch (error) {
-    console.error("Failed to fetch example data:", error);
-    return <HeaderSkeleton />;
+    console.error("Failed to fetch combined header data:", error);
+    throw error;
   }
 
   if (!data) {
     return <HeaderSkeleton />;
   }
 
-  const translations = await getLocale(lang, "common");
-
-  return <Header translations={translations} />;
+  return (
+    <Header
+      logos={data.logos}
+      navigations={data.navigations}
+      preview={preview}
+      lang={lang}
+    />
+  );
 };

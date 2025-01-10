@@ -5,7 +5,8 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 
-import { theme } from "@maverick/theme";
+import { defaultLocale } from "@maverick/i18n";
+import { palette, theme } from "@maverick/theme";
 import { DraftModeBar, HeaderServer } from "@maverick/features";
 
 import "swiper/css";
@@ -19,7 +20,7 @@ import "./styles.css";
 
 export default async function RootLayout({
   children,
-  params: { lang = "en-US" },
+  params: { lang = defaultLocale },
 }: Readonly<{
   children: React.ReactNode;
   params: { lang?: string };
@@ -30,7 +31,7 @@ export default async function RootLayout({
   return (
     <html lang={lang}>
       <GoogleTagManager gtmId="GTM-###" />
-      <body>
+      <body style={{ backgroundColor: palette.background.default }}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <HeaderServer id={appId} preview={isEnabled} lang={lang} />

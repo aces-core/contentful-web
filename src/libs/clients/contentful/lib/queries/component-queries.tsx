@@ -1,19 +1,19 @@
 import { gql } from "@apollo/client";
 
-export const LandingPageLinkFragment = gql`
-  fragment LandingPageLink on LandingPage {
+export const PageLinkFragment = gql`
+  fragment PageLink on Page {
     slug
   }
 `;
 
 export const LinkFragment = gql`
-  ${LandingPageLinkFragment}
+  ${PageLinkFragment}
 
   fragment Link on Link {
-    internalName
+    internalTitle
     linkType
     pageLink {
-      ...LandingPageLink
+      ...PageLink
     }
     customLink
     target

@@ -27,6 +27,7 @@ export const Chip = ({
       shape={shape}
       sx={{
         textTransform: uppercase ? "uppercase" : "none",
+        letterSpacing: "0.05rem",
         ...style,
       }}
       {...props}

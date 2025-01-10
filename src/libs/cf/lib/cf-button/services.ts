@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+
 import {
   ButtonFragment,
   cfClient,
@@ -18,7 +19,7 @@ export const ButtonQuery = gql`
 export const fetchButton = async (
   id: string,
   preview = false,
-  locale: string = "en-US"
+  locale: string = "en-US",
 ) => {
   const client = preview ? cfPreviewClient : cfClient;
   try {

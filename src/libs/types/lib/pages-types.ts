@@ -1,8 +1,11 @@
+export interface CatchAllPageProps {
+  lang: string;
+  slug: string[];
+}
+
 export interface PageProps {
-  params: {
-    lang: string;
-    slug: string;
-  };
+  lang: string;
+  slug: string;
 }
 
 export enum SpecialtyPages {
