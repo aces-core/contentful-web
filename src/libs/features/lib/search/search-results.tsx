@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
 import { defaultLocale } from "@maverick/i18n";
-
 import { fetchSearchResults } from "./services";
 import { SearchResultsSkeleton } from "./skeleton";
 
@@ -18,7 +16,7 @@ export const SearchResults = ({
   preview = false,
   lang = defaultLocale,
 }: SearchResultsProps) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -29,7 +27,7 @@ export const SearchResults = ({
 
       try {
         const result = await fetchSearchResults(query, preview, lang);
-        setData(result);
+        setData(result); // No longer restricted to null
       } catch (err) {
         console.error("Failed to fetch data:", err);
         setError(err as Error);

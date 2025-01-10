@@ -8,24 +8,11 @@ import { fetchSpecialtyPageData } from "@maverick/contentful";
 import { DefaultPageBody } from "@maverick/features";
 import { CfGenerateSeo } from "@maverick/cf";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const { isEnabled } = await draftMode();
-  const pageData = await fetchSpecialtyPageData(
-    SpecialtyPages.Homepage,
-    isEnabled,
-  );
-  const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
-
-  if (!pageResponse) {
-    notFound();
-  }
-
-  const seoMetaData = await CfGenerateSeo(pageResponse.seo, pageResponse.title);
-
-  return seoMetaData;
-}
-
-export default async function Homepage({ params }: { params: PageProps }) {
+export default async function Homepage({
+  params,
+}: {
+  params: Promise<PageProps>;
+}) {
   const resolvedParams = await Promise.resolve(params);
 
   const { isEnabled } = await draftMode();

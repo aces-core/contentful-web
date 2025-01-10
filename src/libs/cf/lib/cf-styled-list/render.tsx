@@ -48,8 +48,6 @@ const ListRichTextRenderer = ({
   richTextDocument,
   alignment = "Left",
   bulletIcon,
-  lang,
-  preview,
   ...rest
 }: ListRichTextRendererProps) => {
   const CfText = ({ children }: { children: React.ReactNode }) => (
@@ -95,7 +93,10 @@ const ListRichTextRenderer = ({
             marginBottom={3}
           >
             <Icon icon={bulletIcon} size={20} style={{ flexShrink: 0 }} />
-            {child.props.children}
+            {
+              //@ts-expect-error: children is not a prop of ReactElement
+              child.props.children
+            }
           </FlexBox>
         );
       })}

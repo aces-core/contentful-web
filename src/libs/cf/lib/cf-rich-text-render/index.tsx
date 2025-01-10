@@ -63,9 +63,10 @@ export const CfRichTextRender = ({
         ));
       }
 
-      if (React.isValidElement(child) && child.props.children) {
+      if (React.isValidElement(child)) {
         return React.cloneElement(child as React.ReactElement<any>, {
-          children: processChildrenWithLineBreaks(child.props.children),
+          //@ts-expect-error: children is not a prop of ReactElement
+          children: processChildrenWithLineBreaks(child.props?.children),
         });
       }
 
@@ -124,10 +125,7 @@ export const CfRichTextRender = ({
           {children}
         </H6>
       ),
-      [BLOCKS.EMBEDDED_ENTRY]: async (
-        node: Node,
-        children: React.ReactNode,
-      ) => {
+      [BLOCKS.EMBEDDED_ENTRY]: async (node: Node) => {
         const id = node.data.target.sys.id;
 
         const entry = await fetchRichTextEmbedEntry(id);
@@ -155,10 +153,7 @@ export const CfRichTextRender = ({
             return null;
         }
       },
-      [INLINES.EMBEDDED_ENTRY]: async (
-        node: Node,
-        children: React.ReactNode,
-      ) => {
+      [INLINES.EMBEDDED_ENTRY]: async (node: Node) => {
         const id = node.data.target.sys.id;
 
         const entry = await fetchRichTextEmbedEntry(id);

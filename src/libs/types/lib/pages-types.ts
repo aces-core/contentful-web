@@ -1,10 +1,12 @@
+import { Locale } from "@maverick/i18n";
+
 export interface CatchAllPageProps {
-  lang: string;
+  lang: Locale;
   slug: string[];
 }
 
 export interface PageProps {
-  lang: string;
+  lang: Locale;
   slug: string;
 }
 

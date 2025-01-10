@@ -22,26 +22,11 @@ import { CfGenerateSeo, CfImageServer, CfRichTextRender } from "@maverick/cf";
 
 import { fetchArticlePageData } from "./services";
 
-export async function generateMetadata({
+export default async function ArticlePage({
   params,
 }: {
-  params: PageProps;
-}): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
-  const { isEnabled } = await draftMode();
-  const { slug } = resolvedParams;
-
-  const pageResponse = await fetchArticlePageData(slug, isEnabled);
-  if (!pageResponse) {
-    notFound();
-  }
-
-  const seoMetaData = await CfGenerateSeo(pageResponse.seo, pageResponse.title);
-
-  return seoMetaData;
-}
-
-export default async function ArticlePage({ params }: { params: PageProps }) {
+  params: Promise<PageProps>;
+}) {
   const resolvedParams = await Promise.resolve(params);
 
   const { isEnabled } = await draftMode();
@@ -49,7 +34,7 @@ export default async function ArticlePage({ params }: { params: PageProps }) {
 
   const t = await getLocale(lang, "common");
   const pageResponse = await fetchArticlePageData(slug, isEnabled, lang);
-
+  console.log(pageResponse);
   if (!pageResponse) {
     notFound();
   }

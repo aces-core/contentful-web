@@ -11,14 +11,7 @@ export interface CfLinkTextProps extends CfBaseComponent {
   title: string;
 }
 
-export const CfTextLink = ({
-  internalTitle,
-  link,
-  preview,
-  title,
-  id,
-  lang,
-}: CfLinkTextProps) => {
+export const CfTextLink = ({ link, title, id, lang }: CfLinkTextProps) => {
   return (
     <CfLink
       linkType={link.linkType}

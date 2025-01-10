@@ -42,6 +42,8 @@ const fetchEventsPageData = async (
 };
 
 export async function GET(request: Request) {
+  const draft = await draftMode();
+
   const { searchParams } = new URL(request.url);
   const secret = searchParams.get("secret");
   const slug = searchParams.get("slug");
@@ -61,11 +63,11 @@ export async function GET(request: Request) {
     return new Response("Invalid slug", { status: 401 });
   }
 
-  draftMode().enable();
+  draft.enable();
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const cookie = cookieStore.get("__prerender_bypass")!;
-  cookies().set({
+  cookieStore.set({
     name: "__prerender_bypass",
     value: cookie?.value,
     httpOnly: true,

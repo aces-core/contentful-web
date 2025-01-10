@@ -9,27 +9,11 @@ import { fetchPageData } from "@maverick/contentful";
 import { DefaultPageBody } from "@maverick/features";
 import { CfGenerateSeo } from "@maverick/cf";
 
-export async function generateMetadata({
+export default async function Page({
   params,
 }: {
-  params: CatchAllPageProps;
-}): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
-  const { isEnabled } = await draftMode();
-  const { slug } = resolvedParams;
-
-  const pageData = await fetchPageData(sliceSlug(slug), isEnabled);
-  const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
-  if (!pageResponse) {
-    notFound();
-  }
-
-  const seoMetaData = await CfGenerateSeo(pageResponse.seo, pageResponse.title);
-
-  return seoMetaData;
-}
-
-export default async function Page({ params }: { params: CatchAllPageProps }) {
+  params: Promise<CatchAllPageProps>;
+}) {
   const resolvedParams = await Promise.resolve(params);
 
   const { isEnabled } = await draftMode();

@@ -14,10 +14,6 @@ const createClient = (preview = false) => {
       "content-type": "application/json",
       authorization: `Bearer ${accessToken}`,
     },
-    fetch: (uri, options = {}) => {
-      options.cache = "no-store";
-      return fetch(uri, options);
-    },
   });
 
   return new ApolloClient({

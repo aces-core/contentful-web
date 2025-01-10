@@ -10,7 +10,9 @@ import { RouteDirectory } from "@maverick/types";
 
 interface HeaderProps {
   logos: LogosType;
-  navigations: any;
+  navigations: {
+    mainNavigations: [];
+  };
   preview: boolean;
   lang: string;
 }

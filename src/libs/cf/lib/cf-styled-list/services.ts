@@ -1,5 +1,3 @@
-import { ContentfulLivePreview } from "@contentful/live-preview";
-
 import { gql } from "@apollo/client";
 import { cfClient, cfPreviewClient } from "@maverick/contentful";
 
