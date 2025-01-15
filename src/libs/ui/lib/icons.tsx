@@ -27,6 +27,7 @@ import {
   PinDropOutlined as PinDropIcon,
   Remove as RemoveIcon,
   RemoveCircle as RemoveCircleIcon,
+  Search as SearchIcon,
   X as XIcon,
   YouTube as YouTubeIcon,
 } from "@mui/icons-material";
@@ -54,6 +55,7 @@ export enum IconEnum {
   Plus = "Plus",
   Minus = "Minus",
   Menu = "Menu",
+  Search = "Search",
   CheckCircle = "CheckCircle",
   CheckCircleOutline = "CheckCircleOutline",
   Close = "Close",
@@ -165,6 +167,10 @@ export const Icon = ({
       break;
     case IconEnum.Plus:
       IconComponent = AddIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
+    case IconEnum.Search:
+      IconComponent = SearchIcon;
       IconType = IconTypeEnum.Mui;
       break;
     case IconEnum.Minus:

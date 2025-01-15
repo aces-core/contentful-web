@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import { defaultLocale } from "@maverick/i18n";
+
 import { fetchSearchResults } from "./services";
 import { SearchResultsSkeleton } from "./skeleton";
 
@@ -27,7 +29,7 @@ export const SearchResults = ({
 
       try {
         const result = await fetchSearchResults(query, preview, lang);
-        setData(result); // No longer restricted to null
+        setData(result);
       } catch (err) {
         console.error("Failed to fetch data:", err);
         setError(err as Error);
@@ -50,6 +52,8 @@ export const SearchResults = ({
   if (!data) {
     return <SearchResultsSkeleton />;
   }
+
+  console.log(data);
 
   return (
     <div>

@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 
 import { defaultLocale, getLocale } from "@maverick/i18n";
 import { PageProps } from "@maverick/types";
-import { Container } from "@maverick/ui";
+import { Box, Container } from "@maverick/ui";
 import {
   buildMetadata,
   SearchParams,
@@ -40,10 +40,12 @@ export default async function SearchPage({
   const { lang = defaultLocale } = resolvedParams;
 
   return (
-    <Container>
-      <Suspense fallback={<SearchResultsSkeleton />}>
-        <SearchParams query="q" preview={isEnabled} lang={lang} />
-      </Suspense>
-    </Container>
+    <Box marginY={8}>
+      <Container>
+        <Suspense fallback={<SearchResultsSkeleton />}>
+          <SearchParams query="q" preview={isEnabled} lang={lang} />
+        </Suspense>
+      </Container>
+    </Box>
   );
 }

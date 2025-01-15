@@ -2,11 +2,12 @@
 
 import { Suspense, useEffect, useState } from "react";
 
-import { Box, Container, FlexBox, Link, Text } from "@maverick/ui";
+import { RouteDirectory } from "@maverick/types";
+import { Box, Col, Container, FlexBox, Link, Row } from "@maverick/ui";
 import { Logo, LogosType } from "@maverick/cf";
 
 import { MainNavigation } from "../navigations";
-import { RouteDirectory } from "@maverick/types";
+import { SearchBar } from "../search";
 
 interface HeaderProps {
   logos: LogosType;
@@ -59,19 +60,53 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
             paddingY: { xs: "0.75rem", md: 0 },
           }}
         >
-          <Link href={RouteDirectory.Homepage}>
-            <Logo
-              logos={logos}
-              variant="fullColorLogo"
-              width={{ xs: 120, md: 180 }}
-              preview={preview}
-              lang={lang}
-            />
-          </Link>
-          <Text>Search</Text>
-          <Suspense fallback={null}>
-            <MainNavigation data={navigations.mainNavigations} lang={lang} />
-          </Suspense>
+          <Row style={{ width: "100%" }}>
+            <Col
+              size={{ xs: 4 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-start",
+              }}
+            >
+              <Link href={RouteDirectory.Homepage}>
+                <Logo
+                  logos={logos}
+                  variant="fullColorLogo"
+                  width={{ xs: 120, md: 180 }}
+                  preview={preview}
+                  lang={lang}
+                />
+              </Link>
+            </Col>
+            <Col
+              size={{ xs: 4 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Suspense fallback={null}>
+                <SearchBar maxWidth="450px" query="q" lang={lang} />
+              </Suspense>
+            </Col>
+            <Col
+              size={{ xs: 4 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Suspense fallback={null}>
+                <MainNavigation
+                  data={navigations.mainNavigations}
+                  lang={lang}
+                />
+              </Suspense>
+            </Col>
+          </Row>
         </Container>
       </FlexBox>
     </>
