@@ -9,7 +9,11 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "export:content": "node models/scripts/export-content.js",
+    "export:models": "node models/scripts/export-models-only.js",
+    "import:content": "node models/scripts/import-content.js",
+    "import:models": "node models/scripts/import-models-only.js"
   },
   "engines": {
     "node": ">=20.5.1"
@@ -46,6 +50,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "contentful-cli": "^3.7.3",
+    "dotenv": "^16.4.7",
     "eslint": "^9.17.0",
     "eslint-config-next": "15.1.2",
     "eslint-plugin-import": "^2.31.0",
