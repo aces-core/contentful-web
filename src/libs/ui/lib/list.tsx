@@ -10,18 +10,20 @@ import MuiListItemButton, {
 import { CustomCssProps } from "@maverick/types";
 
 interface ListItemButtonProps
-  extends Pick<MuiListItemButtonProps, "alignItems" | "children"> {
+  extends Pick<MuiListItemButtonProps, "alignItems" | "children" | "onClick"> {
   style?: CustomCssProps;
 }
 
 export const ListItemButton = ({
   alignItems = "flex-start",
+  onClick,
   children,
   style,
 }: ListItemButtonProps) => {
   return (
     <MuiListItemButton
       alignItems={alignItems}
+      onClick={onClick}
       sx={{
         position: "relative",
         ...style,

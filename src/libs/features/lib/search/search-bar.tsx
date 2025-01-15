@@ -18,12 +18,14 @@ import { navigateToSearch } from "./services";
 interface SearchBarProps {
   maxWidth?: string;
   query: string;
+  onSearch?: () => void;
   lang: string;
 }
 
 export const SearchBar = ({
   maxWidth,
   query,
+  onSearch,
   lang = defaultLocale,
 }: SearchBarProps) => {
   const [searchValue, setSearchValue] = useState("");
@@ -58,6 +60,9 @@ export const SearchBar = ({
     }
 
     event.preventDefault();
+    if (onSearch) {
+      onSearch();
+    }
     navigateToSearch(searchValue, router.push);
   };
 
@@ -71,7 +76,7 @@ export const SearchBar = ({
   }, [lang]);
 
   return (
-    <FormControl style={{ width: "100%", maxWidth: maxWidth, minWidth: 200 }}>
+    <FormControl style={{ width: "100%", maxWidth: maxWidth }}>
       <InputLabel htmlFor="site-search" shrink={labelShrink}>
         {t?.search}
       </InputLabel>

@@ -21,11 +21,11 @@ export const CfDropdownMenu = ({
   if (!menu) return null;
 
   return (
-    <DropDownMenu>
-      <Text>{title}</Text>
+    <DropDownMenu resize>
+      <>{title}</>
       <SubMenu>
         {menu.map((menuItem) => (
-          <MenuItem key={menuItem.title} size={size} noPadding>
+          <MenuItem key={menuItem.title} size={size} resize noPadding>
             <CfLink
               linkType={menuItem.link.linkType}
               target={menuItem.link.target}

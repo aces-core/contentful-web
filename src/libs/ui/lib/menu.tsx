@@ -70,6 +70,7 @@ export const Menu: React.FC<MenuProps> = ({
 export const DropDownMenu: React.FC<MenuItemProps> = ({
   style,
   children,
+  resize,
   onMouseEnter,
   onMouseLeave,
 }) => {
@@ -123,6 +124,11 @@ export const DropDownMenu: React.FC<MenuItemProps> = ({
             textAlign: "left",
             fontSize: "inherit",
             fontWeight: 700,
+            "& > span": resize
+              ? {
+                  fontSize: { xs: "body2.fontSize", xl: "body1.fontSize" },
+                }
+              : {},
           }}
         >
           {React.Children.toArray(children).filter(

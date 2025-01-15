@@ -5,16 +5,13 @@ import {
 import { FlexBox, MenuItem } from "@maverick/ui";
 import { CfButton, CfDropdownMenu, CfLink } from "@maverick/cf";
 
-interface HeaderNavigationProps extends Pick<CfBaseComponent, "lang"> {
+interface MainNavigationProps extends Pick<CfBaseComponent, "lang"> {
   data: CfHeaderNavigationCollectionItem[];
 }
 
-export const MainNavigation = ({ data, lang }: HeaderNavigationProps) => {
+export const MainNavigation = ({ data, lang }: MainNavigationProps) => {
   return (
-    <FlexBox
-      alignItems="center"
-      style={{ display: { xs: "none", lg: "flex" }, zIndex: 1000 }}
-    >
+    <FlexBox alignItems="center">
       {data.map((item, index) => {
         const typename = item.__typename;
 

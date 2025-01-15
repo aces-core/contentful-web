@@ -10,7 +10,10 @@ import MuiZoom, { ZoomProps as MuiZoomProps } from "@mui/material/Zoom";
 import { CustomCssProps } from "@maverick/types";
 
 interface CollapseProps
-  extends Pick<MuiCollapseProps, "in" | "unmountOnExit" | "children"> {
+  extends Pick<
+    MuiCollapseProps,
+    "in" | "timeout" | "unmountOnExit" | "children"
+  > {
   style?: CustomCssProps;
   children?: React.ReactNode;
 }
@@ -18,6 +21,7 @@ interface CollapseProps
 export const Collapse = ({
   in: collapseIn,
   unmountOnExit,
+  timeout,
   style,
   children,
   ...rest
@@ -26,6 +30,7 @@ export const Collapse = ({
     <MuiCollapse
       in={collapseIn}
       unmountOnExit={unmountOnExit}
+      timeout={timeout}
       sx={style}
       {...rest}
     >

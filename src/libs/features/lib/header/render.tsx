@@ -3,10 +3,20 @@
 import { Suspense, useEffect, useState } from "react";
 
 import { RouteDirectory } from "@maverick/types";
-import { Box, Col, Container, FlexBox, Link, Row } from "@maverick/ui";
+import { useMediaQuery } from "@maverick/hooks";
+import {
+  Box,
+  Col,
+  Container,
+  FlexBox,
+  Icon,
+  IconButton,
+  Link,
+  Row,
+} from "@maverick/ui";
 import { Logo, LogosType } from "@maverick/cf";
 
-import { MainNavigation } from "../navigations";
+import { MainNavigation, MainNavigationMobile } from "../navigations";
 import { SearchBar } from "../search";
 
 interface HeaderProps {
@@ -20,6 +30,13 @@ interface HeaderProps {
 
 export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const { isSmallerThanMd } = useMediaQuery();
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,9 +77,12 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
             paddingY: { xs: "0.75rem", md: 0 },
           }}
         >
-          <Row style={{ width: "100%" }}>
+          <Row
+            style={{ width: "100%" }}
+            flexDirection={{ xs: "row", md: "row" }}
+          >
             <Col
-              size={{ xs: 4 }}
+              size={{ xs: 8, md: 4 }}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -79,36 +99,65 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
                 />
               </Link>
             </Col>
-            <Col
-              size={{ xs: 4 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Suspense fallback={null}>
-                <SearchBar maxWidth="450px" query="q" lang={lang} />
-              </Suspense>
-            </Col>
-            <Col
-              size={{ xs: 4 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-end",
-              }}
-            >
-              <Suspense fallback={null}>
-                <MainNavigation
-                  data={navigations.mainNavigations}
-                  lang={lang}
-                />
-              </Suspense>
-            </Col>
+            {isSmallerThanMd ? (
+              <Col
+                size={{ xs: 4 }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <IconButton
+                  color="primary"
+                  size="large"
+                  onClick={handleDrawerToggle}
+                >
+                  <Icon icon="Menu" />
+                </IconButton>
+              </Col>
+            ) : (
+              <>
+                <Col
+                  size={{ xs: 4 }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Suspense fallback={null}>
+                    <SearchBar maxWidth="450px" query="q" lang={lang} />
+                  </Suspense>
+                </Col>
+                <Col
+                  size={{ xs: 4 }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+                  }}
+                >
+                  <Suspense fallback={null}>
+                    <MainNavigation
+                      data={navigations.mainNavigations}
+                      lang={lang}
+                    />
+                  </Suspense>
+                </Col>
+              </>
+            )}
           </Row>
         </Container>
       </FlexBox>
+      {isSmallerThanMd && (
+        <MainNavigationMobile
+          open={drawerOpen}
+          onClose={handleDrawerToggle}
+          data={navigations.mainNavigations}
+          lang={lang}
+        />
+      )}
     </>
   );
 };
