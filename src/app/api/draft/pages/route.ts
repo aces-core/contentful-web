@@ -4,10 +4,11 @@ import { gql } from "@apollo/client";
 
 import { cfClient, cfPreviewClient } from "@maverick/contentful";
 import { defaultLocale } from "@maverick/i18n";
+import { specialtyPageRedirect } from "@maverick/utils";
 
-const eventsQuery = gql`
+const PageQuery = gql`
   query ($slug: String!, $preview: Boolean!, $locale: String!) {
-    eventsCollection(
+    pageCollection(
       where: { slug: $slug }
       limit: 1
       preview: $preview
@@ -17,12 +18,16 @@ const eventsQuery = gql`
         sys {
           id
         }
+        slug
+        parentPage {
+          slug
+        }
       }
     }
   }
 `;
 
-const fetchEventsPageData = async (
+const fetchPageData = async (
   slug: string,
   preview = false,
   locale: string = defaultLocale,
@@ -30,7 +35,7 @@ const fetchEventsPageData = async (
   const client = preview ? cfPreviewClient : cfClient;
   try {
     const pageResponse = await client.query({
-      query: eventsQuery,
+      query: PageQuery,
       variables: { slug, preview, locale },
     });
 
@@ -57,7 +62,7 @@ export async function GET(request: Request) {
     return new Response("Invalid locale", { status: 401 });
   }
 
-  const pageData = await fetchEventsPageData(slug, true, locale);
+  const pageData = await fetchPageData(slug, true, locale);
 
   if (!pageData[0]) {
     return new Response("Invalid slug", { status: 401 });
@@ -76,5 +81,16 @@ export async function GET(request: Request) {
     sameSite: "none",
   });
 
-  redirect(`/${locale}/events/${slug}`);
+  const parentPage =
+    pageData.pageResponse.data.pageCollection.items[0].parentPage;
+  const specialtyPage =
+    pageData.pageResponse.data.pageCollection.items[0].specialtyPage;
+
+  specialtyPageRedirect(specialtyPage);
+
+  if (parentPage) {
+    redirect(`/${parentPage.slug}/${slug}`);
+  }
+
+  redirect(`/${slug}`);
 }
