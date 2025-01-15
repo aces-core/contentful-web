@@ -57,13 +57,51 @@ export const Row = ({
 };
 
 interface ColProps
-  extends Pick<MuiGrid2Props, "size" | "offset" | "flexGrow" | "children"> {
+  extends Pick<
+    MuiGrid2Props,
+    | "size"
+    | "offset"
+    | "flexGrow"
+    | "children"
+    | "padding"
+    | "paddingTop"
+    | "paddingBottom"
+    | "paddingLeft"
+    | "paddingRight"
+    | "paddingX"
+    | "paddingY"
+  > {
   style?: CustomCssProps;
 }
 
-export const Col = ({ size, offset, flexGrow, style, children }: ColProps) => {
+export const Col = ({
+  size,
+  offset,
+  flexGrow,
+  style,
+  children,
+  padding,
+  paddingTop,
+  paddingBottom,
+  paddingLeft,
+  paddingRight,
+  paddingX,
+  paddingY,
+}: ColProps) => {
   return (
-    <MuiGrid2 size={size} offset={offset} flexGrow={flexGrow} sx={style}>
+    <MuiGrid2
+      size={size}
+      offset={offset}
+      flexGrow={flexGrow}
+      sx={style}
+      padding={padding}
+      paddingTop={paddingTop}
+      paddingBottom={paddingBottom}
+      paddingLeft={paddingLeft}
+      paddingRight={paddingRight}
+      paddingX={paddingX}
+      paddingY={paddingY}
+    >
       {children}
     </MuiGrid2>
   );

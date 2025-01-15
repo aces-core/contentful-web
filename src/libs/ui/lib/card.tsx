@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 import { CustomCssProps, ImageSize, Spacing } from "@maverick/types";
 import MuiCard from "@mui/material/Card";
@@ -9,21 +9,31 @@ import MuiCardMedia from "@mui/material/CardMedia";
 import MuiCardActions, {
   CardActionsProps as MuiCardActionsProps,
 } from "@mui/material/CardActions";
+import MuiCardActionArea from "@mui/material/CardActionArea";
 
 interface CardProps {
   raised?: boolean;
+  borderRadius?: CSSProperties["borderRadius"];
   style?: CustomCssProps;
   children: React.ReactNode;
 }
 
 export const Card = ({
   raised = false,
+  borderRadius,
   style,
   children,
   ...props
 }: CardProps) => {
   return (
-    <MuiCard raised={raised} sx={style} {...props}>
+    <MuiCard
+      raised={raised}
+      sx={{
+        borderRadius: borderRadius,
+        ...style,
+      }}
+      {...props}
+    >
       {children}
     </MuiCard>
   );
@@ -120,3 +130,16 @@ const CardActions = ({
 };
 
 Card.Actions = CardActions;
+
+const CardActionArea = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <MuiCardActionArea
+      component="a"
+      sx={{ display: "flex", flexDirection: "column" }}
+    >
+      {children}
+    </MuiCardActionArea>
+  );
+};
+
+Card.ActionArea = CardActionArea;

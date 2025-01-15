@@ -1,0 +1,10 @@
+.videoEmbed {
+  width: 100%;
+  height: 100%;
+}
+
+.videoEmbed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 16 / 9;
+}

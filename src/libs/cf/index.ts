@@ -14,6 +14,9 @@ export * from "./lib/cf-link/render";
 export * from "./lib/cf-link-text";
 export * from "./lib/cf-link-text/render";
 
+export * from "./lib/cf-lockup";
+export * from "./lib/cf-lockup/render";
+
 export * from "./lib/cf-logo";
 export * from "./lib/cf-logo/render";
 
@@ -22,6 +25,7 @@ export * from "./lib/cf-rich-text-render";
 export * from "./lib/cf-rich-text-section";
 export * from "./lib/cf-rich-text-section/render";
 
-export * from "./lib/cf-seo";
-
 export * from "./lib/cf-styled-list";
+
+export * from "./lib/cf-video-embed";
+export * from "./lib/cf-video-embed/render";

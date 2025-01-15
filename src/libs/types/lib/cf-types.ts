@@ -40,6 +40,10 @@ export type CfBorderSelector = "None" | "Top" | "Bottom" | "Top & Bottom";
 
 export type CfAlignment = "Left" | "Center" | "Right";
 
+export type CfMediaAlignment = "Left" | "Right";
+
+export type CfMediaSize = "Default" | "Wide" | "Narrow";
+
 export type CfContainerWidth = "Default" | "Narrow";
 
 export type CfHeaderType = "H1" | "H2" | "H3" | "H4" | "H5" | "H6";

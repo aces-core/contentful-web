@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { defaultLocale, getLocale } from "@maverick/i18n";
 import { PageProps } from "@maverick/types";
-import { formatDate } from "@maverick/utils";
+import { flattenObjectArray, formatDate } from "@maverick/utils";
 import { palette } from "@maverick/theme";
 import {
   Avatar,
@@ -18,9 +18,28 @@ import {
   Paper,
   Text,
 } from "@maverick/ui";
-import { CfGenerateSeo, CfImageServer, CfRichTextRender } from "@maverick/cf";
+import { CfImageCoverServer, CfRichTextRender } from "@maverick/cf";
+import { buildMetadata, RelatedArticlesServer } from "@maverick/features";
 
 import { fetchArticlePageData } from "./services";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<PageProps>;
+}): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+  const { isEnabled } = await draftMode();
+  const { slug } = resolvedParams;
+
+  const pageResponse = await fetchArticlePageData(slug, isEnabled);
+
+  if (!pageResponse) {
+    notFound();
+  }
+
+  return await buildMetadata(pageResponse.seo, {});
+}
 
 export default async function ArticlePage({
   params,
@@ -34,7 +53,7 @@ export default async function ArticlePage({
 
   const t = await getLocale(lang, "common");
   const pageResponse = await fetchArticlePageData(slug, isEnabled, lang);
-  console.log(pageResponse);
+
   if (!pageResponse) {
     notFound();
   }
@@ -49,14 +68,17 @@ export default async function ArticlePage({
           </Text>
           <Text> ・ {formatDate(pageResponse.publishDate, lang)}</Text>
         </FlexBox>
-        <FlexBox>
+        <FlexBox flexWrap="wrap">
           {pageResponse.categoriesCollection.items.map(
             (category: { title: string; slug: string }) => (
               <Chip
                 key={category.slug}
                 label={category.title}
                 uppercase={false}
-                style={{ marginRight: "16px" }}
+                style={{
+                  marginRight: "16px",
+                  marginBottom: { xs: "16px", sm: 0 },
+                }}
               />
             ),
           )}
@@ -64,10 +86,12 @@ export default async function ArticlePage({
       </Box>
       <Box marginY={8}>
         <Paper elevation={1}>
-          <CfImageServer
+          <CfImageCoverServer
             id={pageResponse.featuredImage.sys.id}
             lang={lang}
             preview={isEnabled}
+            coverWidth="100%"
+            coverHeight={{ xs: "380px", md: "500px" }}
             nested={true}
           />
           <Box paddingY={{ xs: 6, md: 12 }} paddingX={{ xs: 6, md: 16 }}>
@@ -90,6 +114,19 @@ export default async function ArticlePage({
             </FlexBox>
           </Box>
         </Paper>
+      </Box>
+      <Box marginY={8}>
+        <RelatedArticlesServer
+          title={t.relatedArticles}
+          categories={flattenObjectArray(
+            pageResponse.categoriesCollection.items,
+            "slug",
+          )}
+          excludeSlug={[slug]}
+          limit={2}
+          preview={isEnabled}
+          lang={lang}
+        />
       </Box>
     </Container>
   );

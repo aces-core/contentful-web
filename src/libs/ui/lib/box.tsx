@@ -48,6 +48,7 @@ export interface BoxProps
     | "flexGrow"
     | "flexShrink"
     | "flexBasis"
+    | "flexWrap"
     | "justifyContent"
     | "alignItems"
     | "alignContent"
@@ -77,6 +78,7 @@ export const FlexBox = forwardRef<HTMLElement, BoxProps>(
       flexDirection,
       alignItems,
       justifyContent,
+      flexWrap,
       style,
       ...props
     },
@@ -90,6 +92,7 @@ export const FlexBox = forwardRef<HTMLElement, BoxProps>(
           alignItems: alignItems,
           flexDirection: flexDirection,
           justifyContent: justifyContent,
+          flexWrap: flexWrap,
           ...style,
         }}
         component={component}

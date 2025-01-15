@@ -5,6 +5,7 @@ import {
   cfClient,
   cfPreviewClient,
 } from "@maverick/contentful";
+import { defaultLocale } from "@maverick/i18n";
 
 export const ButtonQuery = gql`
   ${ButtonFragment}
@@ -19,7 +20,7 @@ export const ButtonQuery = gql`
 export const fetchButton = async (
   id: string,
   preview = false,
-  locale: string = "en-US",
+  locale: string = defaultLocale,
 ) => {
   const client = preview ? cfPreviewClient : cfClient;
   try {

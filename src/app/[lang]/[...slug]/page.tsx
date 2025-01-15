@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -7,7 +6,6 @@ import { CatchAllPageProps } from "@maverick/types";
 import { sliceSlug, specialtyPageRedirect } from "@maverick/utils";
 import { fetchPageData } from "@maverick/contentful";
 import { DefaultPageBody } from "@maverick/features";
-import { CfGenerateSeo } from "@maverick/cf";
 
 export default async function Page({
   params,
@@ -23,7 +21,6 @@ export default async function Page({
   const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
   const pageBodyResponse =
     pageData.pageBodyResponse.data.page.pageBodyCollection.items;
-  console.log(pageResponse);
 
   if (!pageResponse) {
     notFound();

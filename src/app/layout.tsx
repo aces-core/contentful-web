@@ -1,11 +1,12 @@
 import React from "react";
+import type { Metadata } from "next";
 import Script from "next/script";
 import { draftMode } from "next/headers";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 
-import { defaultLocale } from "@maverick/i18n";
+import { defaultLocale, getLocale } from "@maverick/i18n";
 import { palette, theme } from "@maverick/theme";
 import { DraftModeBar, HeaderServer } from "@maverick/features";
 
@@ -17,6 +18,23 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import "./styles.css";
+
+export async function generateMetadata({
+  params: { lang = defaultLocale },
+}: Readonly<{
+  children: React.ReactNode;
+  params: { lang?: string };
+}>): Promise<Metadata> {
+  const t = await getLocale(lang, "seo");
+
+  return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
+    title: {
+      template: `%s | ${t.siteTemplate}`,
+      default: t.defaultTitle,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,

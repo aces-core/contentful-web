@@ -1,13 +1,35 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 
-import { defaultLocale } from "@maverick/i18n";
+import { defaultLocale, getLocale } from "@maverick/i18n";
 import { PageProps } from "@maverick/types";
 import { Container } from "@maverick/ui";
-import { Suspense } from "react";
-import { SearchParams, SearchResultsSkeleton } from "@maverick/features";
+import {
+  buildMetadata,
+  SearchParams,
+  SearchResultsSkeleton,
+} from "@maverick/features";
 
-export default async function ArticlePage({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<PageProps>;
+}): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+  const { lang } = resolvedParams;
+
+  const t = await getLocale(lang, "seo");
+
+  const seoData = {
+    metaTitle: t.search.title,
+    metaDescription: t.search.description,
+  };
+
+  return await buildMetadata(seoData, {});
+}
+
+export default async function SearchPage({
   params,
 }: {
   params: Promise<PageProps>;

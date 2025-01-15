@@ -5,8 +5,22 @@ import { notFound } from "next/navigation";
 import { defaultLocale } from "@maverick/i18n";
 import { PageProps, SpecialtyPages } from "@maverick/types";
 import { fetchSpecialtyPageData } from "@maverick/contentful";
-import { DefaultPageBody } from "@maverick/features";
-import { CfGenerateSeo } from "@maverick/cf";
+import { DefaultPageBody, buildMetadata } from "@maverick/features";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { isEnabled } = await draftMode();
+  const pageData = await fetchSpecialtyPageData(
+    SpecialtyPages.Homepage,
+    isEnabled,
+  );
+  const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
+
+  if (!pageResponse) {
+    notFound();
+  }
+
+  return await buildMetadata(pageResponse.seo, {});
+}
 
 export default async function Homepage({
   params,

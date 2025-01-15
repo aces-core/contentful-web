@@ -4,6 +4,11 @@ import React from "react";
 import { IconProps as MuiIconProps } from "@mui/material/Icon";
 import {
   Add as AddIcon,
+  ArrowRight as ArrowRightIcon,
+  ArrowRightAlt as ArrowRightAltIcon,
+  ArrowLeft as ArrowLeftIcon,
+  ArrowDropDown as ArrowDropDownIcon,
+  ArrowDropUp as ArrowDropUpIcon,
   AddCircle as AddCircleIcon,
   Check as CheckIcon,
   CheckBoxOutlineBlank as CheckBoxOutlineBlankIcon,
@@ -30,7 +35,10 @@ import { CustomCssProps } from "@maverick/types";
 import { Image } from "@maverick/ui";
 
 export enum IconEnum {
-  Angled = "Angled",
+  Add = "Add",
+  ArrowRight = "ArrowRight",
+  ArrowRightAlt = "ArrowRightAlt",
+  ArrowLeft = "ArrowLeft",
   ArrowDropUp = "ArrowDropUp",
   ArrowDropDown = "ArrowDropDown",
   Bars = "Bars",
@@ -103,12 +111,28 @@ export const Icon = ({
   const iconSize = size || "24px";
 
   switch (icon) {
+    case IconEnum.Add:
+      IconComponent = AddIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
+    case IconEnum.ArrowRight:
+      IconComponent = ArrowRightIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
+    case IconEnum.ArrowRightAlt:
+      IconComponent = ArrowRightAltIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
+    case IconEnum.ArrowLeft:
+      IconComponent = ArrowLeftIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
     case IconEnum.ArrowDropUp:
-      IconComponent = MenuIcon;
+      IconComponent = ArrowDropUpIcon;
       IconType = IconTypeEnum.Mui;
       break;
     case IconEnum.ArrowDropDown:
-      IconComponent = MenuIcon;
+      IconComponent = ArrowDropDownIcon;
       IconType = IconTypeEnum.Mui;
       break;
     case IconEnum.Bars:

@@ -10,7 +10,17 @@ export const DefaultPageBodyQuery = gql`
               id
             }
           }
+          ... on Lockup {
+            sys {
+              id
+            }
+          }
           ... on RichTextSection {
+            sys {
+              id
+            }
+          }
+          ... on VideoEmbed {
             sys {
               id
             }

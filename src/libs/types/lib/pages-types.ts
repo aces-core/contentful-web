@@ -16,6 +16,7 @@ export enum SpecialtyPages {
 
 export enum RouteDirectory {
   Homepage = "/",
+  Articles = "/articles",
 }
 
 export interface PageLinkProps {

@@ -3,6 +3,7 @@ import NextImage from "next/image";
 
 import { spacing } from "@maverick/theme";
 import { Box } from "@maverick/ui";
+import { ResponsiveSpacing } from "@maverick/types";
 
 type ImageFormat = "jpg" | "png" | "webp" | "gif" | "avif";
 
@@ -140,28 +141,34 @@ export const ImageFill = ({
   );
 };
 
-export const ImageFillBg = ({
+interface ImageCoverProps extends BaseImageProps {
+  coverWidth: ResponsiveSpacing;
+  coverHeight: ResponsiveSpacing;
+}
+
+export const ImageCover = ({
   format,
   width,
   marginY,
   marginX,
+  coverWidth = "100%",
+  coverHeight = "380px",
   style,
   ...props
-}: BaseImageProps) => {
+}: ImageCoverProps) => {
   return (
     <Box
       style={{
-        position: "absolute",
+        position: "relative",
         top: 0,
         left: 0,
-        width: "100%",
-        height: "100%",
+        width: coverWidth,
+        height: coverHeight,
         overflow: "hidden",
         marginTop: marginY,
         marginBottom: marginY,
         marginRight: marginX,
         marginLeft: marginX,
-        zIndex: -1,
       }}
     >
       <BaseImage

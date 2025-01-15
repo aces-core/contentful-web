@@ -15,8 +15,10 @@ const generateTranslations = () => {
     translations[normalizedLocale] = {
       common: () =>
         import(`../locale/${trans}/common.json`).then(
-          (module) => module.default
+          (module) => module.default,
         ),
+      seo: () =>
+        import(`../locale/${trans}/seo.json`).then((module) => module.default),
     };
   });
 

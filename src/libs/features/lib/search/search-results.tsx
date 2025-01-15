@@ -51,7 +51,6 @@ export const SearchResults = ({
     return <SearchResultsSkeleton />;
   }
 
-  console.log(data);
   return (
     <div>
       <h2>Search Results for: {query}</h2>
