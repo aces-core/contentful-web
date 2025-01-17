@@ -8,14 +8,25 @@ import {
   TeamMemberFragment,
 } from "@maverick/contentful";
 
+import { OrderTypes, DefaultOrder } from "./config";
+
 const ArticlesQuery = gql`
   ${ImageFragment}
   ${TeamMemberFragment}
 
-  query ($limit: Int!, $offset: Int!, $preview: Boolean!, $locale: String!) {
+  query (
+    $categories: [String!]
+    $limit: Int!
+    $offset: Int!
+    $order: [ArticleOrder]!
+    $preview: Boolean!
+    $locale: String!
+  ) {
     articleCollection(
+      where: { categories: { slug_in: $categories } }
       limit: $limit
       skip: $offset
+      order: $order
       preview: $preview
       locale: $locale
     ) {
@@ -39,16 +50,27 @@ const ArticlesQuery = gql`
 `;
 
 export async function fetchArticles(
+  categories: string[] | null,
   limit: number,
   offset: number,
+  order: OrderTypes = DefaultOrder,
   preview = false,
   locale: Locale = defaultLocale,
 ) {
   const client = preview ? cfPreviewClient : cfClient;
+
+  if (Array.isArray(categories) && categories.length === 0) {
+    categories = null;
+  }
+
+  if (!Object.values(OrderTypes).includes(order)) {
+    order = DefaultOrder;
+  }
+
   try {
     const response = await client.query({
       query: ArticlesQuery,
-      variables: { limit, offset, preview, locale },
+      variables: { categories, limit, offset, order, preview, locale },
     });
 
     const { items, total } = response.data.articleCollection;

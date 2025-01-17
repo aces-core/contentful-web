@@ -3,9 +3,14 @@ import MuiInputAdornment from "@mui/material/InputAdornment";
 import MuiListItemText from "@mui/material/ListItemText";
 import MuiMenuItem from "@mui/material/MenuItem";
 import MuiSelect, { SelectProps as MuiSelectProps } from "@mui/material/Select";
+import { SelectChangeEvent as MuiSelectChangeEvent } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { CustomCssProps, SelectOption } from "@maverick/types";
 import { Checkbox, FormControl, InputLabel } from "@maverick/ui";
+
+export type SelectChangeEvent = MuiSelectChangeEvent;
 
 interface SelectProps
   extends Pick<
@@ -19,12 +24,14 @@ interface SelectProps
     | "variant"
     | "renderValue"
     | "onChange"
+    | "defaultValue"
   > {
   options: SelectOption[];
   itemsMaxHeight?: number | "auto";
   showCheckbox?: boolean;
   prependIcon?: React.ReactNode;
   style?: CustomCssProps;
+  onClear?: () => void; // Added onClear prop
 }
 
 export const Select: React.FC<SelectProps> = ({
@@ -42,6 +49,8 @@ export const Select: React.FC<SelectProps> = ({
   style,
   renderValue,
   onChange,
+  defaultValue,
+  onClear,
 }) => {
   const selectedValue = value as string | string[];
 
@@ -63,7 +72,10 @@ export const Select: React.FC<SelectProps> = ({
       variant={variant}
       size={size}
       fullWidth={fullWidth}
-      style={style}
+      style={{
+        minWidth: "200px",
+        ...style,
+      }}
     >
       {label && <InputLabel id={`${label}-select-label`}>{label}</InputLabel>}
       <MuiSelect
@@ -71,6 +83,7 @@ export const Select: React.FC<SelectProps> = ({
         labelId={`${label}-select-label`}
         label={label}
         value={selectedValue}
+        defaultValue={defaultValue}
         multiple={multiple}
         size={size}
         MenuProps={MenuProps}
@@ -81,8 +94,44 @@ export const Select: React.FC<SelectProps> = ({
             </MuiInputAdornment>
           )
         }
+        endAdornment={
+          onClear &&
+          selectedValue &&
+          selectedValue.length > 0 && (
+            <MuiInputAdornment position="end">
+              <IconButton
+                size="small"
+                aria-label="clear selection"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onClear();
+                }}
+                edge="end"
+              >
+                <CloseIcon />
+              </IconButton>
+            </MuiInputAdornment>
+          )
+        }
         renderValue={renderValue}
         onChange={onChange}
+        sx={{
+          minHeight: "65px",
+          ".MuiSelect-select": {
+            display: "flex",
+            alignItems: "center",
+            minHeight: "65px",
+            paddingTop: 0,
+            paddingBottom: 0,
+          },
+          ".MuiInputBase-root": {
+            minHeight: "65px",
+          },
+          paddingRight:
+            onClear && selectedValue && selectedValue.length > 0
+              ? "2.5rem"
+              : undefined,
+        }}
       >
         {options.map((option: SelectOption) => (
           <MuiMenuItem
@@ -99,14 +148,7 @@ export const Select: React.FC<SelectProps> = ({
                 size={size}
               />
             )}
-            <MuiListItemText
-              primary={option.label}
-              sx={{
-                "&& .MuiListItemText-primary": {
-                  fontSize: "body2.fontSize",
-                },
-              }}
-            />
+            <MuiListItemText primary={option.label} />
           </MuiMenuItem>
         ))}
       </MuiSelect>

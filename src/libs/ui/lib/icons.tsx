@@ -30,6 +30,8 @@ import {
   Search as SearchIcon,
   X as XIcon,
   YouTube as YouTubeIcon,
+  North as NorthIcon,
+  South as SouthIcon,
 } from "@mui/icons-material";
 
 import { CustomCssProps } from "@maverick/types";
@@ -75,6 +77,8 @@ export enum IconEnum {
   PinDrop = "PinDrop",
   CentricLogoWhite = "CentricLogoWhite",
   Quote = "Quote",
+  North = "North",
+  South = "South",
 }
 
 enum IconTypeEnum {
@@ -227,6 +231,14 @@ export const Icon = ({
       break;
     case IconEnum.PinDrop:
       IconComponent = PinDropIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
+    case IconEnum.North:
+      IconComponent = NorthIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
+    case IconEnum.South:
+      IconComponent = SouthIcon;
       IconType = IconTypeEnum.Mui;
       break;
     default:

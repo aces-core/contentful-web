@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 import {
   CfBaseComponent,
@@ -19,6 +19,7 @@ import {
   Collapse,
 } from "@maverick/ui";
 import { CfButton, CfLink } from "@maverick/cf";
+
 import { SearchBar } from "../../search";
 
 interface MainNavigationMobileProps extends Pick<CfBaseComponent, "lang"> {
@@ -93,7 +94,7 @@ export const MainNavigationMobile = ({
                 );
               case "DropdownMenu":
                 return (
-                  <>
+                  <Fragment key={index}>
                     <ListItem disablePadding>
                       <ListItemButton
                         onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -136,7 +137,7 @@ export const MainNavigationMobile = ({
                         )}
                       </List>
                     </Collapse>
-                  </>
+                  </Fragment>
                 );
               case "Button":
                 return (

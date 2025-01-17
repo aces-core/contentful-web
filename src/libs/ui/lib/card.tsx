@@ -1,6 +1,11 @@
 import React, { CSSProperties } from "react";
 
-import { CustomCssProps, ImageSize, Spacing } from "@maverick/types";
+import {
+  CustomCssProps,
+  ImageSize,
+  ResponsiveSpacing,
+  Spacing,
+} from "@maverick/types";
 import MuiCard from "@mui/material/Card";
 import MuiCardContent, {
   CardContentProps as MuiCardContentProps,
@@ -40,10 +45,11 @@ export const Card = ({
 };
 
 interface CardMediaProps {
+  component?: React.ElementType;
   alt?: string;
   image: string;
   imageSize?: ImageSize;
-  height?: number;
+  height?: ResponsiveSpacing;
   style?: CustomCssProps;
 }
 
@@ -65,7 +71,7 @@ const CardMedia = ({
           ? { width: "auto", objectFit: "none", ...style }
           : { ...style }
       }
-      height={imageSize !== "native" ? height : "auto"}
+      height={imageSize !== "native" ? (height ?? "auto") : "auto"}
       {...props}
     />
   );

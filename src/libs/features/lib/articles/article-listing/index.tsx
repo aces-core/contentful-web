@@ -1,12 +1,16 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { defaultLocale } from "@maverick/i18n";
-import { Box, Col, Row } from "@maverick/ui";
+import { useGetLocale } from "@maverick/hooks";
+import { toSingleValueArray } from "@maverick/utils";
+import { Col, FlexBox, Row } from "@maverick/ui";
 
-import { ArticlesLimit } from "./config";
+import { ArticlesLimit, OrderTypes, DefaultOrder, Query } from "./config";
 import { fetchArticles } from "./services";
+import { ArticleListingFilters } from "./filters";
 import { ArticleListingSkeleton } from "./skeleton";
 
 import { ArticleCard, ArticleCardProps } from "../article-card";
@@ -14,22 +18,65 @@ import { ArticleCard, ArticleCardProps } from "../article-card";
 export interface ArticleListingProps {
   initialArticles: any[];
   initialTotal: number;
+  categoriesCollection: any[];
   preview?: boolean;
-  locale?: string;
+  lang?: string;
 }
 
 export const ArticleListing = ({
   initialArticles,
   initialTotal,
+  categoriesCollection,
   preview = false,
-  locale = defaultLocale,
+  lang = defaultLocale,
 }: ArticleListingProps) => {
+  const { t, loading } = useGetLocale(lang, "common");
+
   const [articles, setArticles] = useState(initialArticles);
   const [total, setTotal] = useState(initialTotal);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
+  const searchParams = useSearchParams();
+
   const loadingRef = useRef(false);
+
+  const fetchUpdatedArticles = async () => {
+    const categoriesParam = searchParams.get(Query.categories)
+      ? searchParams.get(Query.categories)
+      : null;
+    const orderParam = searchParams.get(Query.order)
+      ? searchParams.get(Query.order)
+      : DefaultOrder;
+
+    const categories = toSingleValueArray(categoriesParam);
+    const order = orderParam as OrderTypes;
+
+    setIsLoading(true);
+
+    try {
+      const { items: newArticles, total: updatedTotal } = await fetchArticles(
+        categories,
+        ArticlesLimit,
+        0,
+        order,
+        preview,
+        lang,
+      );
+
+      setArticles(newArticles);
+      setTotal(updatedTotal);
+      setHasMore(newArticles.length > 0);
+    } catch (error) {
+      console.error("Error fetching updated articles:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUpdatedArticles();
+  }, [searchParams]);
 
   const loadMoreArticles = async () => {
     if (loadingRef.current || articles.length >= total || !hasMore) return;
@@ -39,11 +86,23 @@ export const ArticleListing = ({
 
     try {
       const offset = articles.length;
+      const categoriesParam = searchParams.get(Query.categories)
+        ? searchParams.get(Query.categories)
+        : null;
+      const orderParam = searchParams.get(Query.order)
+        ? searchParams.get(Query.order)
+        : DefaultOrder;
+
+      const categories = toSingleValueArray(categoriesParam);
+      const order = orderParam as OrderTypes;
+
       const { items: newArticles, total: updatedTotal } = await fetchArticles(
+        categories,
         ArticlesLimit,
         offset,
+        order,
         preview,
-        locale,
+        lang,
       );
 
       setArticles((prev) => [...prev, ...newArticles]);
@@ -52,7 +111,7 @@ export const ArticleListing = ({
     } catch (error) {
       console.error("Error fetching articles:", error);
     } finally {
-      loadingRef.current = false; // Reset loading flag
+      loadingRef.current = false;
       setIsLoading(false);
     }
   };
@@ -69,10 +128,19 @@ export const ArticleListing = ({
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [articles, total, hasMore]);
+  }, [articles, total, hasMore, searchParams]);
 
   return (
     <>
+      <FlexBox alignItems="center" justifyContent="flex-end" marginBottom={12}>
+        <ArticleListingFilters
+          categoriesCollection={categoriesCollection}
+          categories={toSingleValueArray(searchParams.get(Query.categories))}
+          setCategories={() => {}}
+          setOrder={() => {}}
+          lang={lang}
+        />
+      </FlexBox>
       <Row columnSpacing={8} rowSpacing={8}>
         {articles.map((item: ArticleCardProps) => (
           <Col key={item.slug} size={{ xs: 12, md: 6 }}>
@@ -82,7 +150,7 @@ export const ArticleListing = ({
               author={item.author}
               publishDate={item.publishDate}
               slug={item.slug}
-              lang={locale}
+              lang={lang}
             />
           </Col>
         ))}

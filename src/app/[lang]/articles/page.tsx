@@ -2,15 +2,19 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 
+import { fetchAllCategories } from "@maverick/contentful";
 import { defaultLocale, getLocale } from "@maverick/i18n";
 import { PageProps } from "@maverick/types";
+import { toSingleValueArray } from "@maverick/utils";
 import { Box, Container } from "@maverick/ui";
 import {
   ArticleListing,
   ArticleListingSkeleton,
   ArticlesLimit,
   buildMetadata,
+  DefaultOrder,
   fetchArticles,
+  OrderTypes,
 } from "@maverick/features";
 
 export async function generateMetadata({
@@ -33,30 +37,43 @@ export async function generateMetadata({
 
 export default async function ArticlesPage({
   params,
+  searchParams,
 }: {
   params: Promise<PageProps>;
+  searchParams: Promise<{ categories?: string[]; order?: OrderTypes }>;
 }) {
   const resolvedParams = await Promise.resolve(params);
+  const resolvedSearchParams = await Promise.resolve(searchParams);
+
+  const categories = resolvedSearchParams?.categories
+    ? toSingleValueArray(resolvedSearchParams?.categories)
+    : null;
+  const order = resolvedSearchParams?.order || DefaultOrder;
 
   const { isEnabled } = await draftMode();
   const { lang = defaultLocale } = resolvedParams;
 
   const initialArticles = await fetchArticles(
+    categories,
     ArticlesLimit,
     0,
+    order,
     isEnabled,
     lang,
   );
 
+  const categoriesCollection = await fetchAllCategories(isEnabled, lang);
+
   return (
-    <Box marginY={12}>
+    <Box marginY={8}>
       <Container>
         <Suspense fallback={<ArticleListingSkeleton limit={ArticlesLimit} />}>
           <ArticleListing
             initialArticles={initialArticles.items}
             initialTotal={initialArticles.total}
+            categoriesCollection={categoriesCollection.items}
             preview={isEnabled}
-            locale={lang}
+            lang={lang}
           />
         </Suspense>
       </Container>

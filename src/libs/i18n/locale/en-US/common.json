@@ -1,7 +1,15 @@
 {
   "by": "By",
-  "relatedArticles": "Related Articles",
   "search": "Search",
+  "postType": {
+    "relatedArticles": "Related Articles",
+    "order": {
+      "category": "Category",
+      "date": "Date",
+      "order": "Order",
+      "title": "Title"
+    }
+  },
 
   "logo": "Logo",
   "contact": "Contact",

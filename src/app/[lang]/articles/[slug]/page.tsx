@@ -117,7 +117,7 @@ export default async function ArticlePage({
       </Box>
       <Box marginY={8}>
         <RelatedArticlesServer
-          title={t.relatedArticles}
+          title={t.postType.relatedArticles}
           categories={flattenObjectArray(
             pageResponse.categoriesCollection.items,
             "slug",

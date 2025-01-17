@@ -1,14 +1,17 @@
 import { locales } from "./locales";
 
 type Locale = string;
-type Section = string;
+export type TranslationSection = string;
 
 const normalizeLocale = (locale: string): string => {
   return locale.replace("-", "");
 };
 
 const generateTranslations = () => {
-  const translations: Record<Locale, Record<Section, () => Promise<any>>> = {};
+  const translations: Record<
+    Locale,
+    Record<TranslationSection, () => Promise<any>>
+  > = {};
 
   locales.forEach(({ locale, trans }) => {
     const normalizedLocale = normalizeLocale(locale);
@@ -27,7 +30,10 @@ const generateTranslations = () => {
 
 const translations = generateTranslations();
 
-export const getLocale = async (locale: Locale, section: Section) => {
+export const getLocale = async (
+  locale: Locale,
+  section: TranslationSection,
+) => {
   const normalizedLocale = normalizeLocale(locale);
   return translations[normalizedLocale][section]();
 };

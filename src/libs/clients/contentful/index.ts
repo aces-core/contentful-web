@@ -6,3 +6,4 @@ export * from "./lib/queries/page-queries";
 export * from "./lib/queries/tags-queries";
 
 export * from "./lib/services/page-services";
+export * from "./lib/services/tags-services";

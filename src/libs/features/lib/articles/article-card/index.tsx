@@ -33,14 +33,18 @@ export const ArticleCard = ({
             imageSize="fill"
             alt={featuredImage.altText}
             image={featuredImage.image.url}
-            height={mediaHeight}
+            height={{ xs: 200, sm: mediaHeight }}
           />
-          <Card.Content marginX={4} marginY={4}>
-            <H4 component="p" marginBottom={12}>
+          <Card.Content marginX={{ xs: 2, md: 4 }} marginY={{ xs: 2, md: 4 }}>
+            <H4 component="p" marginBottom={10}>
               {title}
             </H4>
-            <FlexBox alignItems="center" justifyContent="space-between">
-              <FlexBox alignItems="center">
+            <FlexBox
+              flexDirection={{ xs: "column", md: "row" }}
+              alignItems={{ xs: "flex-start", md: "center" }}
+              justifyContent="space-between"
+            >
+              <FlexBox alignItems="center" marginBottom={{ xs: 4, md: 0 }}>
                 <Avatar
                   image={author.profileImage.image.url}
                   size={48}

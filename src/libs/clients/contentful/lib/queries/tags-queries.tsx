@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+
 import { ImageFragment } from "./component-queries";
 
 export const TeamMemberFragment = gql`
@@ -18,5 +19,17 @@ export const CategoriesFragment = gql`
   fragment Categories on Categories {
     title
     slug
+  }
+`;
+
+export const AllCategoriesQuery = gql`
+  ${CategoriesFragment}
+
+  query ($preview: Boolean!, $locale: String!) {
+    categoriesCollection(preview: $preview, locale: $locale) {
+      items {
+        ...Categories
+      }
+    }
   }
 `;
