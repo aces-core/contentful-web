@@ -66,12 +66,11 @@ const CardMedia = ({
       component="img"
       alt={alt}
       image={image}
-      sx={
-        imageSize === "native"
-          ? { width: "auto", objectFit: "none", ...style }
-          : { ...style }
-      }
-      height={imageSize !== "native" ? (height ?? "auto") : "auto"}
+      sx={{
+        ...style,
+        ...(imageSize === "native" ? { width: "auto", objectFit: "none" } : {}),
+        height: imageSize !== "native" ? height : "auto",
+      }}
       {...props}
     />
   );

@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { defaultLocale } from "@maverick/i18n";
-import { useGetLocale } from "@maverick/hooks";
 import { toSingleValueArray } from "@maverick/utils";
 import { Col, FlexBox, Row } from "@maverick/ui";
 
@@ -30,8 +29,6 @@ export const ArticleListing = ({
   preview = false,
   lang = defaultLocale,
 }: ArticleListingProps) => {
-  const { t, loading } = useGetLocale(lang, "common");
-
   const [articles, setArticles] = useState(initialArticles);
   const [total, setTotal] = useState(initialTotal);
   const [isLoading, setIsLoading] = useState(false);
@@ -143,7 +140,11 @@ export const ArticleListing = ({
       </FlexBox>
       <Row columnSpacing={8} rowSpacing={8}>
         {articles.map((item: ArticleCardProps) => (
-          <Col key={item.slug} size={{ xs: 12, md: 6 }}>
+          <Col
+            key={item.slug}
+            size={{ xs: 12, md: 6 }}
+            style={{ display: "flex" }}
+          >
             <ArticleCard
               featuredImage={item.featuredImage}
               title={item.title}

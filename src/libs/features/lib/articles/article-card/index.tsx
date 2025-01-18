@@ -1,5 +1,5 @@
 import { Locale } from "@maverick/i18n";
-import { CfImage, RouteDirectory } from "@maverick/types";
+import { CfImage, ResponsiveSpacing, RouteDirectory } from "@maverick/types";
 import { formatDate } from "@maverick/utils";
 import { Avatar, Card, FlexBox, H4, LinkWrapper, Text } from "@maverick/ui";
 
@@ -11,7 +11,7 @@ export interface ArticleCardProps {
     profileImage: CfImage;
   };
   publishDate: string;
-  mediaHeight?: number;
+  mediaHeight?: ResponsiveSpacing;
   slug: string;
   lang: Locale;
 }
@@ -21,7 +21,7 @@ export const ArticleCard = ({
   title,
   author,
   publishDate,
-  mediaHeight = 400,
+  mediaHeight = { xs: 200, md: 380 },
   slug,
   lang,
 }: ArticleCardProps) => {
@@ -33,7 +33,7 @@ export const ArticleCard = ({
             imageSize="fill"
             alt={featuredImage.altText}
             image={featuredImage.image.url}
-            height={{ xs: 200, sm: mediaHeight }}
+            height={mediaHeight}
           />
           <Card.Content marginX={{ xs: 2, md: 4 }} marginY={{ xs: 2, md: 4 }}>
             <H4 component="p" marginBottom={10}>

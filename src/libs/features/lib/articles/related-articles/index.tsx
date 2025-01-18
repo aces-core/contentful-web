@@ -51,7 +51,11 @@ export const RelatedArticlesServer = async ({
       ) : null}
       <Row columnSpacing={12} rowSpacing={8}>
         {data.map((item: ArticleCardProps) => (
-          <Col key={item.slug} size={{ xs: 12, md: 6 }}>
+          <Col
+            key={item.slug}
+            size={{ xs: 12, md: 6 }}
+            style={{ display: "flex" }}
+          >
             <ArticleCard
               featuredImage={item.featuredImage}
               title={item.title}
