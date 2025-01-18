@@ -19,6 +19,7 @@ import MuiCardActionArea from "@mui/material/CardActionArea";
 interface CardProps {
   raised?: boolean;
   borderRadius?: CSSProperties["borderRadius"];
+  fullWidth?: boolean;
   style?: CustomCssProps;
   children: React.ReactNode;
 }
@@ -26,6 +27,7 @@ interface CardProps {
 export const Card = ({
   raised = false,
   borderRadius,
+  fullWidth = true,
   style,
   children,
   ...props
@@ -35,6 +37,8 @@ export const Card = ({
       raised={raised}
       sx={{
         borderRadius: borderRadius,
+        display: "flex",
+        width: fullWidth ? "100%" : "auto",
         ...style,
       }}
       {...props}
@@ -79,21 +83,28 @@ const CardMedia = ({
 Card.Media = CardMedia;
 
 interface CardContentProps extends Pick<MuiCardContentProps, "children"> {
-  marginX?: Spacing;
-  marginY?: Spacing;
+  paddingX?: Spacing;
+  paddingY?: Spacing;
   style?: CustomCssProps;
 }
 
 const CardContent = ({
   style,
-  marginX,
-  marginY,
+  paddingX,
+  paddingY,
   children,
   ...props
 }: CardContentProps) => {
   return (
     <MuiCardContent
-      sx={{ marginX: marginX, marginY: marginY, ...style }}
+      sx={{
+        marginX: 0,
+        marginY: 0,
+        paddingX: paddingX,
+        paddingY: paddingY,
+        width: "100%",
+        ...style,
+      }}
       {...props}
     >
       {children}
@@ -140,7 +151,7 @@ const CardActionArea = ({ children }: { children: React.ReactNode }) => {
   return (
     <MuiCardActionArea
       component="a"
-      sx={{ display: "flex", flexDirection: "column" }}
+      sx={{ display: "block", flexDirection: "column" }}
     >
       {children}
     </MuiCardActionArea>

@@ -35,7 +35,7 @@ export const ArticleCard = ({
             image={featuredImage.image.url}
             height={mediaHeight}
           />
-          <Card.Content marginX={{ xs: 2, md: 4 }} marginY={{ xs: 2, md: 4 }}>
+          <Card.Content paddingX={{ xs: 4, md: 8 }} paddingY={{ xs: 4, md: 8 }}>
             <H4 component="p" marginBottom={10}>
               {title}
             </H4>
