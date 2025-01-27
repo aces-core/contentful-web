@@ -17,3 +17,7 @@ export const toSingleValueArray = (
   }
   return [value];
 };
+
+export const slugToString = (slug: string) => {
+  return slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char);
+};

@@ -18,13 +18,11 @@
   font-weight: 400;
   line-height: 26px;
   font-size: 15px;
-  color: #454444;
   list-style-type: none;
   list-style-position: inside;
   margin-bottom: 8px;
   padding-left: 16px;
   position: relative;
-  margin-left: 20px;
 }
 
 .richText ul li p,
@@ -33,7 +31,7 @@
 }
 
 .richText ul li:before {
-  background-color: #c5d2d8;
+  background-color: #a3a3a3;
   border-radius: 50%;
   content: "";
   height: 5px;

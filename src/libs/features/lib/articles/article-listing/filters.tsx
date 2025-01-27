@@ -10,6 +10,7 @@ import {
   IconButton,
   Select,
   SelectChangeEvent,
+  Skeleton,
 } from "@maverick/ui";
 
 import {
@@ -18,7 +19,7 @@ import {
   OrderSelectValueTypes,
   OrderTypes,
   Query,
-} from "./config";
+} from "../config";
 
 interface ArticleListingFiltersProps {
   categories: string[] | null;
@@ -109,7 +110,13 @@ export const ArticleListingFilters = ({
       <Box marginLeft={{ xs: 0, sm: 6 }} marginBottom={{ xs: 6, sm: 0 }}>
         <Select
           options={categoryOptions}
-          label={!loading ? t.postType.order.category : ""}
+          label={
+            !loading ? (
+              t.postType.order.category
+            ) : (
+              <Skeleton variant="text" width="80px" />
+            )
+          }
           value={categories}
           onChange={handleCategoriesChange}
           onClear={handleClearCategory}
@@ -124,7 +131,13 @@ export const ArticleListingFilters = ({
             { value: "date", label: !loading ? t.postType.order.date : "" },
             { value: "title", label: !loading ? t.postType.order.title : "" },
           ]}
-          label={!loading ? t.postType.order.order : ""}
+          label={
+            !loading ? (
+              t.postType.order.order
+            ) : (
+              <Skeleton variant="text" width="80px" />
+            )
+          }
           value={orderSelectValue}
           onChange={handleOrderChange}
         />

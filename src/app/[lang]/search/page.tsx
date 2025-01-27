@@ -8,7 +8,9 @@ import { Box, Container } from "@maverick/ui";
 import {
   buildMetadata,
   SearchParams,
+  SearchResultsListing,
   SearchResultsSkeleton,
+  TopSearchResults,
 } from "@maverick/features";
 
 export async function generateMetadata({
@@ -42,9 +44,9 @@ export default async function SearchPage({
   return (
     <Box marginY={8}>
       <Container>
-        <Suspense fallback={<SearchResultsSkeleton />}>
-          <SearchParams query="q" preview={isEnabled} lang={lang} />
-        </Suspense>
+        <SearchParams queryParam="q">
+          <TopSearchResults preview={isEnabled} lang={lang} />
+        </SearchParams>
       </Container>
     </Box>
   );

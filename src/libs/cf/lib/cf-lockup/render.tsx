@@ -6,17 +6,19 @@ import {
   CfMediaSize,
   CfRichText,
   CfSystemId,
+  Nested,
+  WithMock,
 } from "@maverick/types";
 import { generateId } from "@maverick/utils";
+import { componentSpacing } from "@maverick/theme";
 import { Box, Col, Container, H2, Row } from "@maverick/ui";
 
 import { CfButton, CfButtonProps } from "../cf-button/render";
 import { CfImageServer } from "../cf-image";
 import { CfRichTextRender } from "../cf-rich-text-render";
 import { CfVideoEmbedServer } from "../cf-video-embed";
-import { componentSpacing } from "@maverick/theme";
 
-export interface CfLockupProps extends CfBaseComponent {
+export interface CfLockupProps extends CfBaseComponent, Nested, WithMock {
   headline?: string;
   bodyCopy?: CfRichText;
   buttonsCollection?: {
@@ -25,7 +27,6 @@ export interface CfLockupProps extends CfBaseComponent {
   media: CfSystemId & { __typename: string };
   mediaSize: CfMediaSize;
   mediaAlignment: CfMediaAlignment;
-  nested?: boolean;
 }
 
 export const CfLockup = ({
@@ -40,6 +41,8 @@ export const CfLockup = ({
   id,
   lang,
   preview,
+  mock,
+  mockData,
 }: CfLockupProps) => {
   const colSize = {
     content: mediaSize === "Wide" ? 4 : mediaSize === "Narrow" ? 8 : 6,
@@ -122,21 +125,27 @@ export const CfLockup = ({
             </Col>
           )}
           <Col size={{ xs: 12, md: colSize.media }}>
-            {media.__typename === "Image" && (
-              <CfImageServer
-                id={media.sys.id}
-                preview={preview}
-                lang={lang}
-                nested
-              />
-            )}
-            {media.__typename === "VideoEmbed" && (
-              <CfVideoEmbedServer
-                id={media.sys.id}
-                preview={preview}
-                lang={lang}
-                nested
-              />
+            {!mock ? (
+              <>
+                {media.__typename === "Image" && (
+                  <CfImageServer
+                    id={media.sys.id}
+                    preview={preview}
+                    lang={lang}
+                    nested
+                  />
+                )}
+                {media.__typename === "VideoEmbed" && (
+                  <CfVideoEmbedServer
+                    id={media.sys.id}
+                    preview={preview}
+                    lang={lang}
+                    nested
+                  />
+                )}
+              </>
+            ) : (
+              <>{mockData}</>
             )}
           </Col>
         </Row>

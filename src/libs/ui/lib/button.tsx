@@ -29,7 +29,7 @@ export const Button = ({
   variant,
   color,
   size = "medium",
-  shape = "circular",
+  shape = "rounded",
   startIcon,
   endIcon,
   fullWidth,

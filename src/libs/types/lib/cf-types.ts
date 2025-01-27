@@ -32,6 +32,15 @@ export interface CfBaseComponent extends CfTypeName {
   };
 }
 
+export interface WithMock {
+  mock?: boolean;
+  mockData?: React.ReactElement;
+}
+
+export interface Nested {
+  nested?: boolean;
+}
+
 export interface CfBaseComponentNested extends CfBaseComponent {
   nested?: boolean;
 }
@@ -166,8 +175,8 @@ export interface CfBrand extends CfBrandImage {
   youtube: string;
 }
 
-export type CfSpeaker = {
-  image: CfImage;
+export type CfColorPicker = {
+  id: string;
   name: string;
-  role: string;
+  value: string;
 };

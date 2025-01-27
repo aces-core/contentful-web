@@ -1,13 +1,13 @@
 {
-  "defaultTitle": "ACES Maverick",
-  "defaultDescription": "Bringing you up to MACH speed with our Enterprise CMS Accelerator",
-  "siteTemplate": "ACES Maverick",
   "articles": {
-    "title": "Articles",
-    "description": ""
+    "description": "",
+    "title": "Articles"
   },
+  "defaultDescription": "Bringing you up to MACH speed with our Enterprise CMS Accelerator",
+  "defaultTitle": "ACES Maverick",
   "search": {
-    "title": "Search",
-    "description": ""
-  }
+    "description": "",
+    "title": "Search"
+  },
+  "siteTemplate": "ACES Maverick"
 }

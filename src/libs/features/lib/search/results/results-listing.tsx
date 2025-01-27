@@ -3,21 +3,25 @@
 import { useState, useEffect } from "react";
 
 import { defaultLocale } from "@maverick/i18n";
+import { useGetLocale } from "@maverick/hooks";
+import { Box, H3, Text } from "@maverick/ui";
 
-import { fetchSearchResults } from "./services";
-import { SearchResultsSkeleton } from "./skeleton";
+import { fetchSearchResults } from "../services";
+import { SearchResultsSkeleton } from "../skeleton";
 
-export interface SearchResultsProps {
+export interface SearchResultsListingProps {
   query: string;
   preview?: boolean;
   lang?: string;
 }
 
-export const SearchResults = ({
+export const SearchResultsListing = ({
   query,
   preview = false,
   lang = defaultLocale,
-}: SearchResultsProps) => {
+}: SearchResultsListingProps) => {
+  const { t } = useGetLocale(lang, "common");
+
   const [data, setData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -41,24 +45,23 @@ export const SearchResults = ({
     fetchData();
   }, [query, preview, lang]);
 
+  console.log(data);
+
   if (loading) {
     return <SearchResultsSkeleton />;
   }
 
   if (error) {
-    return <div>Error loading search results: {error.message}</div>;
+    return <Text>{`${t ? t.search.searchError : ""}: ${query}`}</Text>;
   }
-
-  if (!data) {
-    return <SearchResultsSkeleton />;
-  }
-
-  console.log(data);
 
   return (
-    <div>
-      <h2>Search Results for: {query}</h2>
-      {/* Render your search results here */}
-    </div>
+    <Box>
+      <Box>
+        <H3>
+          {t ? t.search.resultsFor : ""} <b>{query}</b>
+        </H3>
+      </Box>
+    </Box>
   );
 };

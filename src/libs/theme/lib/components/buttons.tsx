@@ -14,7 +14,7 @@ const shapeStyles = [
       shape: "rounded",
     },
     style: {
-      borderRadius: "0.125rem",
+      borderRadius: "8px",
     },
   },
   {
@@ -87,11 +87,11 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "contained",
             },
             style: {
-              color: theme.palette.secondary.contrastText,
+              color: theme.palette.text.primary,
               backgroundColor: theme.palette.secondary.main,
               borderWidth: 1,
               borderStyle: "solid",
-              borderColor: theme.palette.secondary.dark,
+              borderColor: theme.palette.secondary.main,
               "&:hover": {
                 backgroundColor: theme.palette.secondary.dark,
                 borderColor: theme.palette.secondary.dark,

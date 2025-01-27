@@ -1,45 +1,22 @@
 {
   "by": "By",
-  "search": "Search",
+  "clear": "Clear",
+  "contact": "Contact",
+  "followUs": "Follow Us",
+  "learnMore": "Learn More",
   "postType": {
-    "relatedArticles": "Related Articles",
     "order": {
       "category": "Category",
       "date": "Date",
       "order": "Order",
       "title": "Title"
-    }
+    },
+    "relatedArticles": "Related Articles"
   },
-
-  "logo": "Logo",
-  "contact": "Contact",
-  "followUs": "Follow Us",
-  "language": "Language",
-  "resources": "Resources",
-  "backToTop": "Back to top",
-  "learnMore": "Learn more",
   "readMore": "Read More",
-  "clear": "Clear",
-  "selectLanguage": "Select Language",
-  "eventType": "Event Type",
-  "industry": "Industry",
-  "eventDate": "Event Date",
-  "upcomingEvents": "Upcoming Events",
-  "pastEvents": "Past Events",
-  "webinarReplays": "Webinar Replays",
-  "viewSuccessStory": "View Success Story",
-  "new": "New",
-  "quickLinks": "Quick Links",
-  "compliance": "Compliance",
-  "aboutUs": "About Us",
-  "learnMoreAboutCentricSoftware": "Learn more about Centric Software",
-  "getInTouch": "Get in touch",
-  "filters": "Filters",
-  "speakers": "Speakers",
-  "eventStartsIn": "Event starts in",
-  "eventStarted": "Event started",
-  "days": "days",
-  "hours": "hours",
-  "minutes": "minutes",
-  "seconds": "seconds"
+  "search": {
+    "search": "Search",
+    "searchError": "Error loading search results:",
+    "resultsFor": "Results for"
+  }
 }

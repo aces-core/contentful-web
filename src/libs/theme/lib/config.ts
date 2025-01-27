@@ -19,11 +19,12 @@ declare module "@mui/material/styles/createPalette" {
   }
 
   interface Palette {
-    blueGrey: ColorRange;
     gradient: {
       light: string;
       primary: string;
       dark: string;
+      secondary: string;
+      accent: string;
     };
     foreground: {
       default: string;
@@ -35,7 +36,6 @@ declare module "@mui/material/styles/createPalette" {
   }
 
   interface PaletteOptions {
-    blueGrey: ColorRange;
     gradient?: {
       light: string;
       primary: string;
@@ -125,73 +125,78 @@ export const componentSpacing = {
 export const typography = {
   fontFamily: primaryFont.style.fontFamily,
   h1: {
-    fontSize: defaultTheme.typography.pxToRem(60),
-    lineHeight: defaultTheme.typography.pxToRem(65),
-    fontWeight: 600,
-    [`@media (max-width:${breakpoints.values.md}px)`]: {
-      fontSize: defaultTheme.typography.pxToRem(46),
-      lineHeight: defaultTheme.typography.pxToRem(56),
-    },
-  },
-  h2: {
     fontSize: defaultTheme.typography.pxToRem(48),
     lineHeight: defaultTheme.typography.pxToRem(56),
     fontWeight: 600,
     [`@media (max-width:${breakpoints.values.md}px)`]: {
-      fontSize: defaultTheme.typography.pxToRem(32),
-      lineHeight: defaultTheme.typography.pxToRem(38),
+      fontSize: defaultTheme.typography.pxToRem(36),
+      lineHeight: defaultTheme.typography.pxToRem(44),
     },
   },
-  h3: {
-    fontSize: defaultTheme.typography.pxToRem(36),
+  h2: {
+    fontSize: defaultTheme.typography.pxToRem(40),
     lineHeight: defaultTheme.typography.pxToRem(48),
     fontWeight: 600,
     [`@media (max-width:${breakpoints.values.md}px)`]: {
-      fontSize: defaultTheme.typography.pxToRem(24),
-      lineHeight: defaultTheme.typography.pxToRem(32),
+      fontSize: defaultTheme.typography.pxToRem(32),
+      lineHeight: defaultTheme.typography.pxToRem(40),
+    },
+  },
+  h3: {
+    fontSize: defaultTheme.typography.pxToRem(32),
+    lineHeight: defaultTheme.typography.pxToRem(40),
+    fontWeight: 600,
+    [`@media (max-width:${breakpoints.values.md}px)`]: {
+      fontSize: defaultTheme.typography.pxToRem(28),
+      lineHeight: defaultTheme.typography.pxToRem(36),
     },
   },
   h4: {
-    fontSize: defaultTheme.typography.pxToRem(28),
-    lineHeight: defaultTheme.typography.pxToRem(36),
+    fontSize: defaultTheme.typography.pxToRem(24),
+    lineHeight: defaultTheme.typography.pxToRem(32),
     fontWeight: 600,
+    [`@media (max-width:${breakpoints.values.md}px)`]: {
+      fontSize: defaultTheme.typography.pxToRem(20),
+      lineHeight: defaultTheme.typography.pxToRem(28),
+    },
   },
   h5: {
     fontSize: defaultTheme.typography.pxToRem(20),
     lineHeight: defaultTheme.typography.pxToRem(28),
     fontWeight: 600,
+    [`@media (max-width:${breakpoints.values.md}px)`]: {
+      fontSize: defaultTheme.typography.pxToRem(18),
+      lineHeight: defaultTheme.typography.pxToRem(24),
+    },
   },
   h6: {
     fontSize: defaultTheme.typography.pxToRem(18),
     lineHeight: defaultTheme.typography.pxToRem(24),
     fontWeight: 600,
-    letterSpacing: "0.02em",
+    [`@media (max-width:${breakpoints.values.md}px)`]: {
+      fontSize: defaultTheme.typography.pxToRem(16),
+      lineHeight: defaultTheme.typography.pxToRem(20),
+    },
   },
   subtitle1: {
-    fontSize: defaultTheme.typography.pxToRem(22),
-    lineHeight: defaultTheme.typography.pxToRem(30),
+    fontSize: defaultTheme.typography.pxToRem(24),
+    lineHeight: defaultTheme.typography.pxToRem(32),
   },
   subtitle2: {
-    fontSize: defaultTheme.typography.pxToRem(16),
-    lineHeight: defaultTheme.typography.pxToRem(24),
-    fontWeight: 600,
-    letterSpacing: "0.02em",
-    textTransform: "uppercase" as const,
+    fontSize: defaultTheme.typography.pxToRem(20),
+    lineHeight: defaultTheme.typography.pxToRem(28),
   },
   body1: {
     fontSize: defaultTheme.typography.pxToRem(16),
     lineHeight: defaultTheme.typography.pxToRem(24),
-    letterSpacing: "0.02em",
   },
   body2: {
     fontSize: defaultTheme.typography.pxToRem(14),
     lineHeight: defaultTheme.typography.pxToRem(20),
-    letterSpacing: "0.02em",
   },
   caption: {
     fontSize: defaultTheme.typography.pxToRem(12),
     lineHeight: defaultTheme.typography.pxToRem(16),
-    letterSpacing: "0.02em",
   },
 };
 
@@ -203,15 +208,15 @@ export const common = {
 };
 
 export const primary = {
-  light: "#4896fa",
-  main: "#1f7ef6",
-  dark: "#096be1",
+  light: "#5AA9FF",
+  main: "#0066CC",
+  dark: "#003366",
 };
 
 export const secondary = {
-  light: "#224A7D",
-  main: "#092242",
-  dark: "#031A33",
+  light: "#F4D200",
+  main: "#FF9800",
+  dark: "#B47C00",
 };
 
 export const red = {
@@ -240,24 +245,12 @@ export const grey = {
   950: "#0a0a0a",
 };
 
-export const blueGrey = {
-  50: "#f8fbff",
-  100: "#f1f5f9",
-  200: "#e2e8f0",
-  300: "#cbd5e1",
-  400: "#8fa8c8",
-  500: "#627a99",
-  600: "#475569",
-  700: "#374151",
-  800: "#1f2937",
-  900: "#161c27",
-  950: "#0e131a",
-};
-
 export const gradient = {
-  light: `linear-gradient(32.57deg, ${common.white} -0.11%, #79aeef 100%)`,
-  primary: `linear-gradient(267.29deg, #0995e3 0%, ${primary.dark} 100%)`,
-  dark: `linear-gradient(267.29deg,#097FE2 0%,#085CDB 100%)`,
+  light: `linear-gradient(32.57deg, ${common.white} -0.11%, ${primary.light} 100%)`,
+  primary: `linear-gradient(267.29deg, ${primary.light} 0%, ${primary.dark} 100%)`,
+  dark: `linear-gradient(267.29deg, ${primary.main} 0%, ${primary.dark} 100%)`,
+  secondary: `linear-gradient(32.57deg, ${secondary.light} 0%, ${secondary.dark} 100%)`,
+  accent: `linear-gradient(45deg, ${primary.main} 0%, ${secondary.main} 100%)`,
 };
 
 export const palette = {
@@ -293,13 +286,12 @@ export const palette = {
   grey: {
     ...grey,
   },
-  blueGrey: {
-    ...blueGrey,
-  },
   gradient: {
     light: gradient.light,
     primary: gradient.primary,
     dark: gradient.dark,
+    secondary: gradient.secondary,
+    accent: gradient.accent,
   },
   divider: grey[300],
   text: {

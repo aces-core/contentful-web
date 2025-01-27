@@ -16,8 +16,8 @@ import {
 } from "@maverick/ui";
 import { Logo, LogosType } from "@maverick/cf";
 
-import { MainNavigation, MainNavigationMobile } from "../navigations";
-import { SearchBar } from "../search";
+import { MainNavigation, MainNavigationMobile } from "../../navigations";
+import { SearchBar } from "../../search";
 
 interface HeaderProps {
   logos: LogosType;

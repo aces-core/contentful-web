@@ -1,7 +1,7 @@
 export * from "./article-card";
 
 export * from "./article-listing";
-export * from "./article-listing/config";
+export * from "./config";
 export * from "./article-listing/services";
 export * from "./article-listing/skeleton";
 

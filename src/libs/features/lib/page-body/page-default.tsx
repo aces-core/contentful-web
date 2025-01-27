@@ -1,4 +1,7 @@
 import {
+  CfBannerServer,
+  CfCardSliderServer,
+  CfHeaderServer,
   CfImageServer,
   CfLockupServer,
   CfRichTextSectionServer,
@@ -22,6 +25,33 @@ export const DefaultPageBody = ({ items, preview, lang }: PageBodyProps) => {
         }
 
         switch (typename) {
+          case "Banner":
+            return (
+              <CfBannerServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
+          case "CardSlider":
+            return (
+              <CfCardSliderServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
+          case "Header":
+            return (
+              <CfHeaderServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
           case "Image":
             return (
               <CfImageServer

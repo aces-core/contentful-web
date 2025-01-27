@@ -48,7 +48,9 @@ export default async function RootLayout({
 
   return (
     <html lang={lang}>
-      <GoogleTagManager gtmId="GTM-###" />
+      {process.env.NEXT_PUBLIC_CF_GTM_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_CF_GTM_ID} />
+      )}
       <body style={{ backgroundColor: palette.background.default }}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>

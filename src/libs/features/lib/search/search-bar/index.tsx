@@ -11,9 +11,10 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
+  Skeleton,
 } from "@maverick/ui";
 
-import { navigateToSearch } from "./services";
+import { navigateToSearch } from "../services";
 
 interface SearchBarProps {
   maxWidth?: string;
@@ -78,11 +79,13 @@ export const SearchBar = ({
   return (
     <FormControl style={{ width: "100%", maxWidth: maxWidth }}>
       <InputLabel htmlFor="site-search" shrink={labelShrink}>
-        {t?.search}
+        {t ? `${t.search.search}` : <Skeleton variant="text" width={80} />}
       </InputLabel>
       <OutlinedInput
         id="site-search"
-        label="Search"
+        label={
+          t ? `${t.search.search}` : <Skeleton variant="text" width={80} />
+        }
         value={searchValue}
         fullWidth
         onChange={(e) => setSearchValue(e.target.value)}

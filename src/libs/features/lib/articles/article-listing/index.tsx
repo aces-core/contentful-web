@@ -7,7 +7,7 @@ import { defaultLocale } from "@maverick/i18n";
 import { toSingleValueArray } from "@maverick/utils";
 import { Col, FlexBox, Row } from "@maverick/ui";
 
-import { ArticlesLimit, OrderTypes, DefaultOrder, Query } from "./config";
+import { ArticlesLimit, OrderTypes, DefaultOrder, Query } from "../config";
 import { fetchArticles } from "./services";
 import { ArticleListingFilters } from "./filters";
 import { ArticleListingSkeleton } from "./skeleton";

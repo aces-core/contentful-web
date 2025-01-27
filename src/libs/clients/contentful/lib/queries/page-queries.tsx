@@ -5,6 +5,21 @@ export const DefaultPageBodyQuery = gql`
     page(id: $id, preview: $preview) {
       pageBodyCollection {
         items {
+          ... on Banner {
+            sys {
+              id
+            }
+          }
+          ... on CardSlider {
+            sys {
+              id
+            }
+          }
+          ... on Header {
+            sys {
+              id
+            }
+          }
           ... on Image {
             sys {
               id

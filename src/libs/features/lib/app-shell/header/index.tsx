@@ -1,7 +1,7 @@
 import { defaultLocale } from "@maverick/i18n";
 import { CfFetchById } from "@maverick/types";
 
-import { fetchNavigationsData } from "../navigations/services";
+import { fetchNavigationsData } from "../../navigations/services";
 
 import { fetchHeaderData } from "./services";
 import { Header } from "./render";

@@ -8,7 +8,7 @@ import {
   TeamMemberFragment,
 } from "@maverick/contentful";
 
-import { OrderTypes, DefaultOrder } from "./config";
+import { OrderTypes, DefaultOrder } from "../config";
 
 const ArticlesQuery = gql`
   ${ImageFragment}

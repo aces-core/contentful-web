@@ -1,21 +1,31 @@
 "use client";
 
+import React, { ReactElement } from "react";
 import { useSearchParams } from "next/navigation";
-import { SearchResults, SearchResultsProps } from "./search-results";
-import { defaultLocale } from "@maverick/i18n";
 
-export const SearchParams = ({
-  query,
-  preview = false,
-  lang = defaultLocale,
-}: SearchResultsProps) => {
+type ChildProps = {
+  query: string | null;
+};
+
+type SearchParamsProps = {
+  children:
+    | ReactElement<Partial<ChildProps>>
+    | ReactElement<Partial<ChildProps>>[];
+  queryParam: string;
+};
+
+export const SearchParams = ({ children, queryParam }: SearchParamsProps) => {
   const searchParams = useSearchParams();
+  const queryValue = searchParams.get(queryParam);
 
-  const queryValue = searchParams.get(query);
-
-  if (queryValue === null) {
-    return null;
-  }
-
-  return <SearchResults query={queryValue} preview={preview} lang={lang} />;
+  return (
+    <>
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child, { query: queryValue });
+        }
+        return child;
+      })}
+    </>
+  );
 };
