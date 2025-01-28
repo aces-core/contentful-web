@@ -2,6 +2,7 @@ import { Open_Sans } from "next/font/google";
 import { createTheme } from "@mui/material/styles";
 
 import { PaletteMode, Shape, Size } from "@maverick/types";
+import { link } from "fs";
 
 declare module "@mui/material/styles/createPalette" {
   interface ColorRange {
@@ -30,6 +31,7 @@ declare module "@mui/material/styles/createPalette" {
       default: string;
     };
     border: {
+      light: string;
       default: string;
       input: string;
     };
@@ -198,6 +200,13 @@ export const typography = {
     fontSize: defaultTheme.typography.pxToRem(12),
     lineHeight: defaultTheme.typography.pxToRem(16),
   },
+  link: {
+    color: "#1f7ef6",
+    textDecoration: "none",
+    "&:hover": {
+      color: "#5b9ff8",
+    },
+  },
 };
 
 export const spacing = 4;
@@ -234,7 +243,7 @@ export const green = {
 export const grey = {
   50: "#fafafa",
   100: "#f5f5f5",
-  200: "#e5e5e5",
+  200: "#f0f0f0",
   300: "#d4d4d4",
   400: "#a3a3a3",
   500: "#737373",
@@ -306,6 +315,7 @@ export const palette = {
     default: grey[200],
   },
   border: {
+    light: grey[200],
     default: grey[300],
     input: grey[400],
   },

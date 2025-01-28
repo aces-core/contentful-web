@@ -82,7 +82,7 @@ export const CfCardSlider = ({
             >
               <Slider
                 id={sliderId}
-                slidesPerView={{ xs: 1, md: 2, lg: 3 }}
+                slidesPerView={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
                 loop
                 offsetSlideBoxShadow
               >

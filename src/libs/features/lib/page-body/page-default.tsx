@@ -1,4 +1,5 @@
 import {
+  CfAccordionsServer,
   CfBannerServer,
   CfCardSliderServer,
   CfHeaderServer,
@@ -25,6 +26,15 @@ export const DefaultPageBody = ({ items, preview, lang }: PageBodyProps) => {
         }
 
         switch (typename) {
+          case "Accordions":
+            return (
+              <CfAccordionsServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
           case "Banner":
             return (
               <CfBannerServer

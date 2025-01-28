@@ -1,11 +1,13 @@
 "use client";
 
-import { Locale } from "@maverick/i18n";
-import { Box, LinkWrapper } from "@maverick/ui";
 import { useEffect, useState } from "react";
+
+import { Locale } from "@maverick/i18n";
+import { RouteDirectory } from "@maverick/types";
+import { Box, LinkWrapper } from "@maverick/ui";
+
 import { fetchTopSearchResults } from "./services";
 import { ResultsCard } from "./results-card";
-import { RouteDirectory } from "@maverick/types";
 
 interface ArticleResultCardProps {
   title: string;

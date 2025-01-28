@@ -30,11 +30,13 @@ export const IconButton = React.forwardRef(
       style,
       onClick,
       children,
+      id,
     }: IconButtonProps,
     ref: React.ForwardedRef<HTMLButtonElement>,
   ) => {
     return (
       <MuiIconButton
+        id={id}
         ref={ref}
         color={color}
         size={size}

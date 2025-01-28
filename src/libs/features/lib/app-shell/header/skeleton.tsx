@@ -1,4 +1,5 @@
 import { Box, Container, FlexBox, Skeleton } from "@maverick/ui";
+
 import { MainNavigationSkeleton } from "../../navigations";
 
 export const HeaderSkeleton = () => {

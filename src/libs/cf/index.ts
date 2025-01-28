@@ -1,3 +1,6 @@
+export * from "./lib/cf-accordions";
+export * from "./lib/cf-accordions/render";
+
 export * from "./lib/cf-button";
 export * from "./lib/cf-button/render";
 

@@ -26,6 +26,7 @@ export interface ButtonProps
 }
 
 export const Button = ({
+  id,
   variant,
   color,
   size = "medium",
@@ -42,6 +43,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <MuiButton
+      id={id}
       color={color}
       variant={variant}
       size={size}

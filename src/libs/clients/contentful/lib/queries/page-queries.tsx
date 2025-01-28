@@ -5,6 +5,11 @@ export const DefaultPageBodyQuery = gql`
     page(id: $id, preview: $preview) {
       pageBodyCollection {
         items {
+          ... on Accordions {
+            sys {
+              id
+            }
+          }
           ... on Banner {
             sys {
               id

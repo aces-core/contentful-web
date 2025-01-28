@@ -2,6 +2,7 @@ import React from "react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import { CfBaseComponent, CfLinkProps } from "@maverick/types";
+import { typography } from "@maverick/theme";
 import { InlineBox } from "@maverick/ui";
 
 import { CfLink } from "../cf-link/render";
@@ -22,6 +23,7 @@ export const CfTextLink = ({ link, title, id, lang }: CfLinkTextProps) => {
     >
       <InlineBox
         component="span"
+        style={typography.link}
         {...ContentfulLivePreview.getProps({
           entryId: id,
           fieldId: "title",
