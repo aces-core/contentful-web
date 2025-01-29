@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -5,7 +6,31 @@ import { defaultLocale } from "@maverick/i18n";
 import { CatchAllPageProps } from "@maverick/types";
 import { sliceSlug, specialtyPageRedirect } from "@maverick/utils";
 import { fetchPageData } from "@maverick/contentful";
-import { DefaultPageBody } from "@maverick/features";
+import {
+  buildMetadata,
+  DefaultPageBody,
+  DefaultPageHero,
+} from "@maverick/features";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<CatchAllPageProps>;
+}): Promise<Metadata> {
+  const resolvedParams = await Promise.resolve(params);
+
+  const { isEnabled } = await draftMode();
+  const { slug } = resolvedParams;
+
+  const pageData = await fetchPageData(sliceSlug(slug), isEnabled);
+  const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
+
+  if (!pageResponse) {
+    notFound();
+  }
+
+  return await buildMetadata(pageResponse.seo, {});
+}
 
 export default async function Page({
   params,
@@ -19,6 +44,7 @@ export default async function Page({
 
   const pageData = await fetchPageData(sliceSlug(slug), isEnabled);
   const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
+  const pageHeroResponse = pageData.pageHeroResponse.data.page.pageHero;
   const pageBodyResponse =
     pageData.pageBodyResponse.data.page.pageBodyCollection.items;
 
@@ -30,6 +56,11 @@ export default async function Page({
 
   return (
     <>
+      <DefaultPageHero
+        item={pageHeroResponse}
+        preview={isEnabled}
+        lang={lang}
+      />
       <DefaultPageBody
         items={pageBodyResponse}
         preview={isEnabled}

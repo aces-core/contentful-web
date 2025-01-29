@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const DefaultPageBodyQuery = gql`
-  query ($id: String!, $preview: Boolean!) {
-    page(id: $id, preview: $preview) {
+  query ($id: String!, $preview: Boolean!, $locale: String) {
+    page(id: $id, preview: $preview, locale: $locale) {
       pageBodyCollection {
         items {
           ... on Accordions {
@@ -52,9 +52,28 @@ export const DefaultPageBodyQuery = gql`
   }
 `;
 
+export const DefaultPageHeroQuery = gql`
+  query ($id: String!, $preview: Boolean!, $locale: String) {
+    page(id: $id, preview: $preview, locale: $locale) {
+      pageHero {
+        ... on ImageOverlayHero {
+          sys {
+            id
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const PageQuery = gql`
-  query ($slug: String!, $preview: Boolean!) {
-    pageCollection(where: { slug: $slug }, limit: 1, preview: $preview) {
+  query ($slug: String!, $preview: Boolean!, $locale: String) {
+    pageCollection(
+      where: { slug: $slug }
+      limit: 1
+      preview: $preview
+      locale: $locale
+    ) {
       items {
         title
         slug
@@ -69,22 +88,17 @@ export const PageQuery = gql`
 `;
 
 export const SpecialtyPageQuery = gql`
-  query ($specialtyPage: String!, $preview: Boolean!) {
+  query ($specialtyPage: String!, $preview: Boolean!, $locale: String) {
     pageCollection(
       where: { specialtyPage: $specialtyPage }
       limit: 1
       preview: $preview
+      locale: $locale
     ) {
       items {
         title
         slug
         seo
-        pageHero {
-          __typename
-          sys {
-            id
-          }
-        }
         sys {
           id
         }

@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 
+import { defaultLocale } from "@maverick/i18n";
 import { cfClient, cfPreviewClient, ImageFragment } from "@maverick/contentful";
 
 export const ImageQuery = gql`
@@ -15,7 +16,7 @@ export const ImageQuery = gql`
 export const fetchImageData = async (
   id: string,
   preview = false,
-  locale: string = "en-US",
+  locale: string = defaultLocale,
 ) => {
   const client = preview ? cfPreviewClient : cfClient;
   try {

@@ -10,10 +10,11 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "export:content": "node models/scripts/export-content.js",
-    "export:models": "node models/scripts/export-models-only.js",
-    "import:content": "node models/scripts/import-content.js",
-    "import:models": "node models/scripts/import-models-only.js"
+    "export-content": "tsx commands/export-content.ts",
+    "export-models": "tsx commands/export-models-only.ts",
+    "import-content": "tsx commands/import-content.ts",
+    "import-models": "tsx commands/import-models-only.ts",
+    "create-cf-component": "tsx commands/create-cf-component.ts"
   },
   "engines": {
     "node": ">=20.5.1"
@@ -60,6 +61,8 @@
     "prettier-plugin-organize-imports": "^4.1.0",
     "react-transition-group": "^4.4.5",
     "storybook": "^8.4.7",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5",
     "vite": "^6.0.6"
   },
@@ -67,5 +70,6 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
-  }
+  },
+  "type": "module"
 }

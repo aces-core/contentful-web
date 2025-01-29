@@ -2,7 +2,6 @@ import { Open_Sans } from "next/font/google";
 import { createTheme } from "@mui/material/styles";
 
 import { PaletteMode, Shape, Size } from "@maverick/types";
-import { link } from "fs";
 
 declare module "@mui/material/styles/createPalette" {
   interface ColorRange {

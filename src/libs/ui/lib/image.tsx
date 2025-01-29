@@ -109,7 +109,7 @@ export const ImageFill = ({
   return (
     <Box
       style={{
-        position: "relative",
+        position: "absolute",
         width: "100%",
         height: containerHeight || "100%",
         minHeight: containerMinHeight && containerMinHeight,

@@ -1,1 +1,1 @@
-export * from "./page-default";
+export * from "./page-body-default";

@@ -21,6 +21,9 @@ export * from "./lib/cf-header/render";
 export * from "./lib/cf-image";
 export * from "./lib/cf-image/render";
 
+export * from "./lib/cf-image-overlay-hero";
+export * from "./lib/cf-image-overlay-hero/render";
+
 export * from "./lib/cf-link";
 export * from "./lib/cf-link/render";
 
