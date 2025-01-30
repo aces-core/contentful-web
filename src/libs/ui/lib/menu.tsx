@@ -253,8 +253,8 @@ export const SubMenu: React.FC<SubMenuProps> = ({
   return (
     <MenuList
       sx={{
-        paddingTop: 4,
-        paddingBottom: 4,
+        paddingTop: 0,
+        paddingBottom: 0,
         position: "absolute",
         top: "100%",
         left: position === "left" ? 0 : "auto",
@@ -266,7 +266,7 @@ export const SubMenu: React.FC<SubMenuProps> = ({
         color: "text.primary",
         zIndex: 99,
         flexDirection: "column",
-        boxShadow: boxShadow ? "0px 2px 6px rgba(0, 0, 0, 0.2)" : "none",
+        boxShadow: boxShadow ? "0px 6px 6px rgba(0, 0, 0, 0.2)" : "none",
       }}
     >
       {children}

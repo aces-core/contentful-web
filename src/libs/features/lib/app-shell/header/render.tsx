@@ -55,7 +55,7 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
 
   return (
     <>
-      <Box style={{ height: "80px" }} />
+      <Box style={{ height: { xs: "80px" } }} />
       <FlexBox
         component="header"
         style={{
@@ -74,7 +74,7 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
             alignItems: "center",
             justifyContent: "space-between",
             gap: "1rem",
-            paddingY: { xs: "0.75rem", md: 0 },
+            paddingY: { xs: "7px", md: 0 },
           }}
         >
           <Row
@@ -93,7 +93,7 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
                 <Logo
                   logos={logos}
                   variant="fullColorLogo"
-                  width={{ xs: 120, md: 180 }}
+                  width={{ xs: 100, md: 110 }}
                   preview={preview}
                   lang={lang}
                 />
