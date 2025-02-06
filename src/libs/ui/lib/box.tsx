@@ -61,6 +61,7 @@ export interface BoxProps
   > {
   component?: React.ElementType;
   style?: CustomCssProps;
+  src?: string;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(

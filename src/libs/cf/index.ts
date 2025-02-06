@@ -15,6 +15,9 @@ export * from "./lib/cf-card-slider/render";
 
 export * from "./lib/cf-dropdown-menu/render";
 
+export * from "./lib/cf-form";
+export * from "./lib/cf-form/render";
+
 export * from "./lib/cf-header";
 export * from "./lib/cf-header/render";
 

@@ -1,14 +1,18 @@
 import { Locale } from "@maverick/i18n";
-import { CfImage, ResponsiveSpacing, RouteDirectory } from "@maverick/types";
+import {
+  CfImageProps,
+  ResponsiveSpacing,
+  RouteDirectory,
+} from "@maverick/types";
 import { formatDate } from "@maverick/utils";
 import { Avatar, Card, FlexBox, H4, LinkWrapper, Text } from "@maverick/ui";
 
 export interface ArticleCardProps {
-  featuredImage: CfImage;
+  featuredImage: CfImageProps;
   title: string;
   author: {
     name: string;
-    profileImage: CfImage;
+    profileImage: CfImageProps;
   };
   publishDate: string;
   mediaHeight?: ResponsiveSpacing;

@@ -37,6 +37,25 @@ export const ButtonFragment = gql`
   }
 `;
 
+export const HubSpotFormFragment = gql`
+  fragment HubSpotForm on HubSpotForm {
+    hsPortalId
+    hsFormId
+    sys {
+      id
+    }
+  }
+`;
+
+export const PardotFormFragment = gql`
+  fragment PardotForm on PardotForm {
+    pardotFormUrl
+    sys {
+      id
+    }
+  }
+`;
+
 export const ImageFragment = gql`
   fragment Image on Image {
     internalTitle

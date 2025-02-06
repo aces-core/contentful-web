@@ -2,7 +2,7 @@ import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import {
   CfBaseComponent,
-  CfImage as CfImageType,
+  CfImageProps,
   CfRichText,
   ImageSize,
 } from "@maverick/types";
@@ -20,7 +20,7 @@ export interface CfCardProps extends CfBaseComponent {
   cardType: CardTypes;
   headline?: string;
   bodyCopy?: CfRichText;
-  image?: CfImageType;
+  image?: CfImageProps;
   imageSize: ImageSize;
   preview: boolean;
 }

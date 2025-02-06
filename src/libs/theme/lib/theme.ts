@@ -1,6 +1,6 @@
 "use client";
 
-import type { PaletteOptions } from "@mui/material/styles";
+import type { PaletteOptions, Theme as MuiTheme } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 
 import { buttonsCustomizations } from "./components/buttons";
@@ -25,3 +25,5 @@ export const theme = createTheme({
     ...surfacesCustomizations,
   },
 });
+
+export type ThemeType = MuiTheme;

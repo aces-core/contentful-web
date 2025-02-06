@@ -1,6 +1,6 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfImage as CfImageType, ResponsiveSpacing } from "@maverick/types";
+import { CfImageProps, ResponsiveSpacing } from "@maverick/types";
 import { generateId } from "@maverick/utils";
 import { componentSpacing } from "@maverick/theme";
 import { Box, Container, Image, ImageCover } from "@maverick/ui";
@@ -18,7 +18,7 @@ export const CfImage = ({
   __typename,
   id,
   lang,
-}: CfImageType) => {
+}: CfImageProps) => {
   return (
     <Box
       id={generateId(internalTitle)}
@@ -62,9 +62,9 @@ export const CfImage = ({
   );
 };
 
-interface CfImageCoverProps extends CfImageType {
-  coverWidth: ResponsiveSpacing;
-  coverHeight: ResponsiveSpacing;
+interface CfImageCoverProps extends CfImageProps {
+  coverWidth?: ResponsiveSpacing;
+  coverHeight?: ResponsiveSpacing;
 }
 
 export const CfImageCover = ({
@@ -86,11 +86,13 @@ export const CfImageCover = ({
         xs: !nested ? componentSpacing.xs : "",
         md: !nested ? componentSpacing.md : "",
       }}
+      style={{ height: coverHeight }}
     >
       <Container
         disableGutters={nested}
         noPadding={nested}
         maxWidth={nested ? false : "xl"}
+        style={{ height: coverHeight }}
       >
         {!image || !image.url ? (
           <ImageSkeleton

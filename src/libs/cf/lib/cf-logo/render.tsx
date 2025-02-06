@@ -1,5 +1,5 @@
 import { defaultLocale } from "@maverick/i18n";
-import { CfImage as CfImageType, ResponsiveSpacing } from "@maverick/types";
+import { CfImageProps, ResponsiveSpacing } from "@maverick/types";
 import { Box } from "@maverick/ui";
 
 import { CfImage } from "../cf-image/render";
@@ -7,8 +7,8 @@ import { CfImage } from "../cf-image/render";
 import { logoVariant } from ".";
 
 export type LogosType = {
-  knockoutLogo: CfImageType;
-  fullColorLogo: CfImageType;
+  knockoutLogo: CfImageProps;
+  fullColorLogo: CfImageProps;
 };
 
 interface LogoProps {

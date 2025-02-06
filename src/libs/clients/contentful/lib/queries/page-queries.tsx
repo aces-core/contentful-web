@@ -20,6 +20,11 @@ export const DefaultPageBodyQuery = gql`
               id
             }
           }
+          ... on Form {
+            sys {
+              id
+            }
+          }
           ... on Header {
             sys {
               id

@@ -113,7 +113,7 @@ export type CfCollectionItem = {
 export interface CfMenuItem extends CfBaseComponent {
   title?: string;
   link: CfLinkProps;
-  icon?: CfBaseComponent & CfImage;
+  icon?: CfBaseComponent & CfImageProps;
   excerpt?: string;
   subMenuItemsCollection?: CfBaseComponent & {
     items: {
@@ -146,7 +146,7 @@ export interface CfHeaderNavigationCollectionItem extends CfBaseComponent {
   buttonStyle: CfButtonProps["buttonStyle"];
 }
 
-export interface CfImage extends CfBaseComponent {
+export interface CfImageProps extends CfBaseComponent {
   image: {
     url: string;
     width: number;
@@ -160,10 +160,10 @@ export interface CfImage extends CfBaseComponent {
 }
 
 export type CfBrandImage = {
-  fullColorLogo: CfImage;
-  knockoutLogo: CfImage;
-  fullColorIcon: CfImage;
-  knockoutIcon: CfImage;
+  fullColorLogo: CfImageProps;
+  knockoutLogo: CfImageProps;
+  fullColorIcon: CfImageProps;
+  knockoutIcon: CfImageProps;
 };
 
 export interface CfBrand extends CfBrandImage {

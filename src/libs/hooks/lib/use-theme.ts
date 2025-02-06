@@ -1,11 +1,10 @@
 "use client";
 
-import {
-  useTheme as useMuiTheme,
-  Theme as MuiTheme,
-} from "@mui/material/styles";
+import { useTheme as useMuiTheme } from "@mui/material/styles";
 
-export const useTheme = <T extends MuiTheme>(): T => {
+import { ThemeType } from "@maverick/theme";
+
+export const useTheme = <T extends ThemeType>(): T => {
   const theme = useMuiTheme();
   return theme as T;
 };

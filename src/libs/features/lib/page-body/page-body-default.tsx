@@ -2,6 +2,7 @@ import {
   CfAccordionsServer,
   CfBannerServer,
   CfCardSliderServer,
+  CfFormServer,
   CfHeaderServer,
   CfImageServer,
   CfLockupServer,
@@ -47,6 +48,15 @@ export const DefaultPageBody = ({ items, preview, lang }: PageBodyProps) => {
           case "CardSlider":
             return (
               <CfCardSliderServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
+          case "Form":
+            return (
+              <CfFormServer
                 id={item?.sys?.id || ""}
                 preview={preview}
                 lang={lang}

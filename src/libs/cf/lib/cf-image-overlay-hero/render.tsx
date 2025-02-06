@@ -1,6 +1,6 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfImage as CfImageType } from "@maverick/types";
+import { CfBaseComponent, CfImageProps } from "@maverick/types";
 import { generateId } from "@maverick/utils";
 
 import { palette, typography } from "@maverick/theme";
@@ -14,7 +14,7 @@ export interface CfImageOverlayHeroProps extends CfBaseComponent {
   buttonsCollection?: {
     items: CfButtonProps[];
   };
-  image: CfImageType;
+  image: CfImageProps;
   fullOverlay: boolean;
   slim: boolean;
 }
