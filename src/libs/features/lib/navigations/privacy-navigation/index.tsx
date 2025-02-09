@@ -1,9 +1,9 @@
 import { CfBaseComponent } from "@maverick/types";
-import { FlexBox } from "@maverick/ui";
+import { typography } from "@maverick/theme";
+import { Box, FlexBox } from "@maverick/ui";
 import { CfLink } from "@maverick/cf";
 
 import { CfMenuItemType, isCfMenuItem } from "../menus";
-import { typography } from "@maverick/theme";
 
 interface PrivacyNavigationProps extends Pick<CfBaseComponent, "lang"> {
   data: CfMenuItemType[];
@@ -11,7 +11,10 @@ interface PrivacyNavigationProps extends Pick<CfBaseComponent, "lang"> {
 
 export const PrivacyNavigation = ({ data, lang }: PrivacyNavigationProps) => {
   return (
-    <FlexBox alignItems="center" justifyContent="flex-end">
+    <FlexBox
+      alignItems="center"
+      justifyContent={{ xs: "center", md: "flex-end" }}
+    >
       {data.map((item, index) => {
         const typename = item.__typename;
 
@@ -23,21 +26,26 @@ export const PrivacyNavigation = ({ data, lang }: PrivacyNavigationProps) => {
           case "MenuItem":
             if (isCfMenuItem(item)) {
               return (
-                <CfLink
+                <Box
                   key={index}
-                  linkType={item.link.linkType}
-                  target={item.link.target}
-                  pageLink={item.link.pageLink}
-                  customLink={item.link.customLink}
-                  lang={lang}
                   style={{
-                    display: "block",
-                    marginLeft: "32px",
-                    fontSize: typography.caption.fontSize,
+                    marginLeft: index !== 0 ? 8 : 0,
                   }}
                 >
-                  {item.title}
-                </CfLink>
+                  <CfLink
+                    key={index}
+                    linkType={item.link.linkType}
+                    target={item.link.target}
+                    pageLink={item.link.pageLink}
+                    customLink={item.link.customLink}
+                    lang={lang}
+                    style={{
+                      fontSize: typography.caption.fontSize,
+                    }}
+                  >
+                    {item.title}
+                  </CfLink>
+                </Box>
               );
             }
             break;

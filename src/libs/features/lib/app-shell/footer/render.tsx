@@ -35,7 +35,7 @@ export const Footer = ({
   return (
     <FlexBox
       component="footer"
-      paddingY={{ xs: 6, md: 10 }}
+      paddingY={{ xs: 8, md: 10 }}
       style={{
         backgroundColor: "common.white",
         width: "100%",
@@ -44,15 +44,20 @@ export const Footer = ({
       <Container>
         <Row alignItems="center">
           <Col size={{ xs: 12, md: 4 }}>
-            <Link href={RouteDirectory.Homepage}>
-              <Logo
-                logos={logos}
-                variant="fullColorLogo"
-                width={{ xs: 120, md: 140 }}
-                preview={preview}
-                lang={lang}
-              />
-            </Link>
+            <FlexBox
+              justifyContent={{ xs: "center", md: "flex-start" }}
+              marginBottom={{ xs: 4, md: 0 }}
+            >
+              <Link href={RouteDirectory.Homepage}>
+                <Logo
+                  logos={logos}
+                  variant="fullColorLogo"
+                  width={{ xs: 120, md: 140 }}
+                  preview={preview}
+                  lang={lang}
+                />
+              </Link>
+            </FlexBox>
           </Col>
           <Col size={{ xs: 12, md: 8 }}>
             <FooterNavigation data={navigations.footerNavigation} lang={lang} />
@@ -60,18 +65,28 @@ export const Footer = ({
         </Row>
         <Row>
           <Col size={12}>
-            <Socials
-              facebook={socials?.facebook}
-              xTwitter={socials?.xTwitter}
-              instagram={socials?.instagram}
-              linkedin={socials?.linkedin}
-              youtube={socials?.youtube}
-            />
+            <FlexBox
+              justifyContent={{ xs: "center", md: "flex-start" }}
+              marginTop={{ xs: 8, md: 0 }}
+            >
+              <Socials
+                facebook={socials?.facebook}
+                xTwitter={socials?.xTwitter}
+                instagram={socials?.instagram}
+                linkedin={socials?.linkedin}
+                youtube={socials?.youtube}
+              />
+            </FlexBox>
           </Col>
         </Row>
-        <Row marginTop={8}>
+        <Row marginTop={8} flexDirection={{ xs: "column-reverse", md: "row" }}>
           <Col size={{ xs: 12, md: 4 }}>
-            <Text.ExtraSmall>{`© ${currentYear()} ${copyright}`}</Text.ExtraSmall>
+            <Text.ExtraSmall
+              style={{
+                textAlign: { xs: "center", md: "left" },
+                marginTop: { xs: 4, md: 0 },
+              }}
+            >{`© ${currentYear()} ${copyright}`}</Text.ExtraSmall>
           </Col>
           <Col size={{ xs: 12, md: 8 }}>
             <PrivacyNavigation
