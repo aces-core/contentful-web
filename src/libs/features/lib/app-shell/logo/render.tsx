@@ -1,8 +1,7 @@
 import { defaultLocale } from "@maverick/i18n";
 import { CfImageProps, ResponsiveSpacing } from "@maverick/types";
 import { Box } from "@maverick/ui";
-
-import { CfImage } from "../cf-image/render";
+import { CfImage } from "@maverick/cf";
 
 import { logoVariant } from ".";
 

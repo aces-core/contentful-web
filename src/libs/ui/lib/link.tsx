@@ -6,7 +6,10 @@ import { CustomCssProps } from "@maverick/types";
 import { Box } from "@maverick/ui";
 
 export interface LinkProps
-  extends Pick<MuiLinkProps, "color" | "variant" | "underline"> {
+  extends Pick<
+    MuiLinkProps,
+    "color" | "variant" | "underline" | "aria-label" | "target"
+  > {
   href: string;
   passHref?: boolean;
   stretch?: boolean;

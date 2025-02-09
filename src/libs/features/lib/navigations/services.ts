@@ -34,7 +34,7 @@ export const DropdownMenuFragment = gql`
   }
 `;
 
-export const NavigationsQuery = gql`
+export const HeaderNavigationsQuery = gql`
   ${MenuItemFragment}
   ${DropdownMenuFragment}
 
@@ -57,7 +57,33 @@ export const NavigationsQuery = gql`
   }
 `;
 
-export const fetchNavigationsData = async (
+export const FooterNavigationsQuery = gql`
+  ${MenuItemFragment}
+
+  query ($id: String!, $preview: Boolean!, $lang: String!) {
+    appsCollection(
+      where: { appId: $id }
+      limit: 1
+      preview: $preview
+      locale: $lang
+    ) {
+      items {
+        footerNavigationCollection(limit: 10) {
+          items {
+            ...MenuItem
+          }
+        }
+        privacyNavigationCollection(limit: 10) {
+          items {
+            ...MenuItem
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const fetchHeaderNavigationsData = async (
   id: string,
   preview: boolean,
   lang: string,
@@ -66,13 +92,38 @@ export const fetchNavigationsData = async (
 
   try {
     const response = await client.query({
-      query: NavigationsQuery,
+      query: HeaderNavigationsQuery,
       variables: { id, preview, lang },
     });
 
     return {
-      mainNavigations:
+      mainNavigation:
         response.data.appsCollection.items[0].mainNavigationCollection.items,
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
+export const fetchFooterNavigationsData = async (
+  id: string,
+  preview: boolean,
+  lang: string,
+) => {
+  const client = preview ? cfPreviewClient : cfClient;
+
+  try {
+    const response = await client.query({
+      query: FooterNavigationsQuery,
+      variables: { id, preview, lang },
+    });
+
+    return {
+      footerNavigation:
+        response.data.appsCollection.items[0].footerNavigationCollection.items,
+      privacyNavigation:
+        response.data.appsCollection.items[0].privacyNavigationCollection.items,
     };
   } catch (error) {
     console.error("Error fetching data:", error);

@@ -1,12 +1,19 @@
 import { gql } from "@apollo/client";
 
+import { defaultLocale } from "@maverick/i18n";
 import { cfClient, cfPreviewClient } from "@maverick/contentful";
 
-import { LogoFragment } from "../logo/services";
+export const SocialsFragment = gql`
+  fragment Socials on Apps {
+    facebook
+    xTwitter
+    instagram
+    linkedin
+    youtube
+  }
+`;
 
-export const HeaderQuery = gql`
-  ${LogoFragment}
-
+export const SocialsQuery = gql`
   query ($id: String!, $preview: Boolean!, $lang: String!) {
     appsCollection(
       where: { appId: $id }
@@ -15,26 +22,25 @@ export const HeaderQuery = gql`
       locale: $lang
     ) {
       items {
-        ...Logo
+        ...Socials
       }
     }
   }
 `;
 
-export const fetchHeaderData = async (
+export const fetchSocialsData = async (
   id: string,
-  preview: boolean,
-  lang: string,
+  preview = false,
+  locale: string = defaultLocale,
 ) => {
   const client = preview ? cfPreviewClient : cfClient;
-
   try {
     const response = await client.query({
-      query: HeaderQuery,
-      variables: { id, preview, lang },
+      query: SocialsQuery,
+      variables: { id, preview, locale },
     });
 
-    return response.data.appsCollection.items[0];
+    return response.data.socials;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;

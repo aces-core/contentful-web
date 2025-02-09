@@ -8,7 +8,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import { defaultLocale, getLocale } from "@maverick/i18n";
 import { palette, theme } from "@maverick/theme";
-import { DraftModeBar, HeaderServer } from "@maverick/features";
+import { DraftModeBar, HeaderServer, FooterServer } from "@maverick/features";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -56,7 +56,7 @@ export default async function RootLayout({
           <ThemeProvider theme={theme}>
             <HeaderServer id={appId} preview={isEnabled} lang={lang} />
             <main>{children}</main>
-            {/* <FooterServer id={appId} preview={isEnabled} lang={lang} /> */}
+            <FooterServer id={appId} preview={isEnabled} lang={lang} />
             {isEnabled && <DraftModeBar />}
           </ThemeProvider>
         </AppRouterCacheProvider>

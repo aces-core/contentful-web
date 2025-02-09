@@ -48,6 +48,7 @@ export const Row = ({
       rowSpacing={rowSpacing}
       columnSpacing={columnSpacing}
       sx={{
+        width: "100%",
         ...style,
       }}
     >

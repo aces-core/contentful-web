@@ -13,8 +13,6 @@ export * from "./lib/cf-card/render";
 export * from "./lib/cf-card-slider";
 export * from "./lib/cf-card-slider/render";
 
-export * from "./lib/cf-dropdown-menu/render";
-
 export * from "./lib/cf-form";
 export * from "./lib/cf-form/render";
 
@@ -35,11 +33,6 @@ export * from "./lib/cf-link-text/render";
 
 export * from "./lib/cf-lockup";
 export * from "./lib/cf-lockup/render";
-
-export * from "./lib/cf-logo";
-export * from "./lib/cf-logo/render";
-
-export * from "./lib/cf-menu/render";
 
 export * from "./lib/cf-rich-text-render";
 

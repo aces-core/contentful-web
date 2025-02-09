@@ -2,8 +2,21 @@ import { gql } from "@apollo/client";
 
 import { cfClient, cfPreviewClient, ImageFragment } from "@maverick/contentful";
 
-export const LogoQuery = gql`
+export const LogoFragment = gql`
   ${ImageFragment}
+
+  fragment Logo on Apps {
+    fullColorLogo {
+      ...Image
+    }
+    knockoutLogo {
+      ...Image
+    }
+  }
+`;
+
+export const LogoQuery = gql`
+  ${LogoFragment}
 
   query ($id: String!, $preview: Boolean!, $lang: String!) {
     appsCollection(
@@ -13,12 +26,7 @@ export const LogoQuery = gql`
       locale: $lang
     ) {
       items {
-        fullColorLogo {
-          ...Image
-        }
-        knockoutLogo {
-          ...Image
-        }
+        ...Logo
       }
     }
   }

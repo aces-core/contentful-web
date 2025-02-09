@@ -2,10 +2,7 @@
 
 import { Fragment, useState } from "react";
 
-import {
-  CfBaseComponent,
-  CfHeaderNavigationCollectionItem,
-} from "@maverick/types";
+import { CfBaseComponent } from "@maverick/types";
 import {
   Drawer,
   Box,
@@ -18,14 +15,21 @@ import {
   FlexBox,
   Collapse,
 } from "@maverick/ui";
-import { CfButton, CfLink } from "@maverick/cf";
+import { CfButton, CfButtonProps, CfLink } from "@maverick/cf";
 
 import { SearchBar } from "../../search";
+import {
+  CfDropDownMenuType,
+  CfMenuItemType,
+  isCfButton,
+  isCfDropDownMenu,
+  isCfMenuItem,
+} from "../menus";
 
 interface MainNavigationMobileProps extends Pick<CfBaseComponent, "lang"> {
   open: boolean;
   onClose: () => void;
-  data: CfHeaderNavigationCollectionItem[];
+  data: (CfMenuItemType | CfDropDownMenuType | CfButtonProps)[];
 }
 
 export const MainNavigationMobile = ({
@@ -70,89 +74,100 @@ export const MainNavigationMobile = ({
 
             switch (typename) {
               case "MenuItem":
-                return (
-                  <CfLink
-                    key={index}
-                    linkType={item.link.linkType}
-                    target={item.link.target}
-                    pageLink={item.link.pageLink}
-                    customLink={item.link.customLink}
-                    lang={lang}
-                    style={{
-                      display: "block",
-                    }}
-                  >
-                    <ListItem disablePadding>
-                      <ListItemButton
-                        onClick={onClose}
-                        style={{ padding: paddingStyle }}
-                      >
-                        <Text>{item.title}</Text>
-                      </ListItemButton>
-                    </ListItem>
-                  </CfLink>
-                );
+                if (isCfMenuItem(item)) {
+                  return (
+                    <CfLink
+                      key={index}
+                      linkType={item.link.linkType}
+                      target={item.link.target}
+                      pageLink={item.link.pageLink}
+                      customLink={item.link.customLink}
+                      lang={lang}
+                      style={{
+                        display: "block",
+                      }}
+                    >
+                      <ListItem disablePadding>
+                        <ListItemButton
+                          onClick={onClose}
+                          style={{ padding: paddingStyle }}
+                        >
+                          <Text>{item.title}</Text>
+                        </ListItemButton>
+                      </ListItem>
+                    </CfLink>
+                  );
+                }
+                break;
               case "DropdownMenu":
-                return (
-                  <Fragment key={index}>
-                    <ListItem disablePadding>
-                      <ListItemButton
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          padding: paddingStyle,
-                        }}
-                      >
-                        <Text>{item.title}</Text>
-                        <Icon
-                          icon={dropdownOpen ? "ArrowDropUp" : "ArrowDropDown"}
-                        />
-                      </ListItemButton>
-                    </ListItem>
-                    <Collapse in={dropdownOpen} timeout="auto" unmountOnExit>
-                      <List>
-                        {item.menuItemsCollection.items.map(
-                          (menuItem, index) => (
-                            <CfLink
-                              key={index}
-                              linkType={menuItem.link.linkType}
-                              target={menuItem.link.target}
-                              pageLink={menuItem.link.pageLink}
-                              customLink={menuItem.link.customLink}
-                              lang={lang}
-                              style={{
-                                display: "block",
-                              }}
-                            >
-                              <ListItem disablePadding>
-                                <ListItemButton
-                                  style={{ padding: paddingStyle }}
-                                >
-                                  <Text>{menuItem.title}</Text>
-                                </ListItemButton>
-                              </ListItem>
-                            </CfLink>
-                          ),
-                        )}
-                      </List>
-                    </Collapse>
-                  </Fragment>
-                );
+                if (isCfDropDownMenu(item)) {
+                  return (
+                    <Fragment key={index}>
+                      <ListItem disablePadding>
+                        <ListItemButton
+                          onClick={() => setDropdownOpen(!dropdownOpen)}
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            padding: paddingStyle,
+                          }}
+                        >
+                          <Text>{item.title}</Text>
+                          <Icon
+                            icon={
+                              dropdownOpen ? "ArrowDropUp" : "ArrowDropDown"
+                            }
+                          />
+                        </ListItemButton>
+                      </ListItem>
+                      <Collapse in={dropdownOpen} timeout="auto" unmountOnExit>
+                        <List>
+                          {item.menuItemsCollection.items.map(
+                            (menuItem, index) => (
+                              <CfLink
+                                key={index}
+                                linkType={menuItem.link.linkType}
+                                target={menuItem.link.target}
+                                pageLink={menuItem.link.pageLink}
+                                customLink={menuItem.link.customLink}
+                                lang={lang}
+                                style={{
+                                  display: "block",
+                                }}
+                              >
+                                <ListItem disablePadding>
+                                  <ListItemButton
+                                    style={{ padding: paddingStyle }}
+                                  >
+                                    <Text>{menuItem.title}</Text>
+                                  </ListItemButton>
+                                </ListItem>
+                              </CfLink>
+                            ),
+                          )}
+                        </List>
+                      </Collapse>
+                    </Fragment>
+                  );
+                }
+                break;
               case "Button":
-                return (
-                  <CfButton
-                    key={index}
-                    internalTitle={item.internalTitle}
-                    buttonStyle={item.buttonStyle}
-                    title={item.title}
-                    link={item.link}
-                    __typename={item.__typename}
-                    id={item?.sys?.id || ""}
-                    preview={item.preview}
-                    lang={lang}
-                  />
-                );
+                if (isCfButton(item)) {
+                  return (
+                    <CfButton
+                      key={index}
+                      internalTitle={item.internalTitle}
+                      buttonStyle={item.buttonStyle}
+                      title={item.title}
+                      link={item.link}
+                      __typename={item.__typename}
+                      id={item?.sys?.id || ""}
+                      preview={item.preview}
+                      lang={lang}
+                    />
+                  );
+                }
+                break;
               default:
                 return null;
             }

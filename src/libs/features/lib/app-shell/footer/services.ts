@@ -3,8 +3,10 @@ import { gql } from "@apollo/client";
 import { cfClient, cfPreviewClient } from "@maverick/contentful";
 
 import { LogoFragment } from "../logo/services";
+import { SocialsFragment } from "../socials/services";
 
-export const HeaderQuery = gql`
+export const FooterQuery = gql`
+  ${SocialsFragment}
   ${LogoFragment}
 
   query ($id: String!, $preview: Boolean!, $lang: String!) {
@@ -16,12 +18,14 @@ export const HeaderQuery = gql`
     ) {
       items {
         ...Logo
+        copyrightText
+        ...Socials
       }
     }
   }
 `;
 
-export const fetchHeaderData = async (
+export const fetchFooterData = async (
   id: string,
   preview: boolean,
   lang: string,
@@ -30,7 +34,7 @@ export const fetchHeaderData = async (
 
   try {
     const response = await client.query({
-      query: HeaderQuery,
+      query: FooterQuery,
       variables: { id, preview, lang },
     });
 

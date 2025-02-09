@@ -1,7 +1,7 @@
 import { Document } from "@contentful/rich-text-types";
-import { CfButtonProps } from "@maverick/cf";
 import { PageLinkProps } from "./pages-types";
 
+// SYS && Base Component Types
 export interface CfSystemId {
   sys: {
     id: string;
@@ -16,10 +16,6 @@ export interface CfFetchById {
   id: string;
   preview: boolean;
   lang: string;
-}
-
-export interface CfFetchByIdNested extends CfFetchById {
-  nested?: boolean;
 }
 
 export interface CfBaseComponent extends CfTypeName {
@@ -41,11 +37,12 @@ export interface Nested {
   nested?: boolean;
 }
 
-export interface CfBaseComponentNested extends CfBaseComponent {
-  nested?: boolean;
-}
+export type CfLocale = {
+  locale: string;
+  label: string;
+};
 
-export type CfBorderSelector = "None" | "Top" | "Bottom" | "Top & Bottom";
+// Author Component Selection Types
 
 export type CfAlignment = "Left" | "Center" | "Right";
 
@@ -57,36 +54,28 @@ export type CfContainerWidth = "Default" | "Narrow";
 
 export type CfHeaderType = "H1" | "H2" | "H3" | "H4" | "H5" | "H6";
 
-export type CfColorScheme = "Dark" | "Light";
-
-export type CfFontWeight = "Bold" | "Regular";
-
 export type CfSpacing = "none" | "sm" | "md" | "lg";
 
-export type CfColorTheme = CfColorScheme;
+export type CfLinkTarget = "_self" | "_blank";
+
+export type CfBorderSelector = "None" | "Top" | "Bottom" | "Top & Bottom";
+
+export type CfColorPicker = {
+  id: string;
+  name: string;
+  value: string;
+};
+
+// Reusable CF Types
 
 export type CfRichText = {
   json: Document;
-};
-
-export type CfLink = {
-  linkType: CfLinkTypes;
-  target: CfLinkTarget;
-  pageLink?: PageLinkProps;
-  customLink?: string;
 };
 
 export enum CfLinkTypes {
   PageLink = "Page Link",
   CustomLink = "Custom Link",
 }
-
-export enum CfLinkTypeNames {
-  Events = "Events",
-  WebinarReplays = "WebinarReplays",
-}
-
-export type CfLinkTarget = "_self" | "_blank";
 
 export interface CfLinkProps extends CfBaseComponent {
   title: string;
@@ -96,11 +85,6 @@ export interface CfLinkProps extends CfBaseComponent {
   target: CfLinkTarget;
 }
 
-export type CfLocale = {
-  locale: string;
-  label: string;
-};
-
 export type CfCollectionItems = {
   items: CfCollectionItem[];
 };
@@ -109,42 +93,6 @@ export type CfCollectionItem = {
   title: string;
   slug: string;
 };
-
-export interface CfMenuItem extends CfBaseComponent {
-  title?: string;
-  link: CfLinkProps;
-  icon?: CfBaseComponent & CfImageProps;
-  excerpt?: string;
-  subMenuItemsCollection?: CfBaseComponent & {
-    items: {
-      title: string;
-      link: CfLinkProps;
-    }[];
-  };
-}
-
-export type CfMenuItems = CfMenuItem[];
-
-export type CfMenuItemsCollection = {
-  items: CfMenuItem[];
-};
-
-export interface CfHeaderNavigationCollectionItem extends CfBaseComponent {
-  menuTitle: string;
-  solutionsTitle: string;
-  solutionMenuItemsCollection: CfMenuItemsCollection;
-  secondaryMenuItemsCollection: CfMenuItemsCollection;
-  quickLinkItemsCollection: CfMenuItemsCollection;
-  menuBanner: CfMenuItem;
-  menuItemsCollection: CfMenuItemsCollection;
-  mainMenuItemsCollection: CfMenuItemsCollection;
-  learnMenuItemsCollection: CfMenuItemsCollection;
-  complianceMenuItemsCollection: CfMenuItemsCollection;
-  contractMenuItemsCollection: CfMenuItemsCollection;
-  title: string;
-  link: CfLinkProps;
-  buttonStyle: CfButtonProps["buttonStyle"];
-}
 
 export interface CfImageProps extends CfBaseComponent {
   image: {
@@ -158,25 +106,3 @@ export interface CfImageProps extends CfBaseComponent {
   nested?: boolean;
   responsive?: boolean;
 }
-
-export type CfBrandImage = {
-  fullColorLogo: CfImageProps;
-  knockoutLogo: CfImageProps;
-  fullColorIcon: CfImageProps;
-  knockoutIcon: CfImageProps;
-};
-
-export interface CfBrand extends CfBrandImage {
-  brandName: string;
-  facebook: string;
-  xTwitter: string;
-  instagram: string;
-  linkedin: string;
-  youtube: string;
-}
-
-export type CfColorPicker = {
-  id: string;
-  name: string;
-  value: string;
-};

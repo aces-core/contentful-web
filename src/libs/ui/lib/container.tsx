@@ -25,6 +25,7 @@ export const Container = ({
           paddingLeft: { xs: "1.5rem", sm: "2rem" },
           paddingRight: { xs: "1.5rem", sm: "2rem" },
         }),
+        flexDirection: "column",
         ...style,
       }}
       {...props}

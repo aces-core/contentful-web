@@ -1,7 +1,7 @@
 import { defaultLocale } from "@maverick/i18n";
 import { CfFetchById } from "@maverick/types";
 
-import { fetchNavigationsData } from "../../navigations/services";
+import { fetchHeaderNavigationsData } from "../../navigations/services";
 
 import { fetchHeaderData } from "./services";
 import { Header } from "./render";
@@ -17,7 +17,7 @@ export const HeaderServer = async ({
   try {
     const [headerData, navigationsData] = await Promise.all([
       fetchHeaderData(id, preview, lang),
-      fetchNavigationsData(id, preview, lang),
+      fetchHeaderNavigationsData(id, preview, lang),
     ]);
 
     data = {

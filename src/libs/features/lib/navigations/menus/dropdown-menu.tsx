@@ -1,23 +1,24 @@
 "use client";
 
 import { type Locale } from "@maverick/i18n";
-import { CfMenuItems, Size } from "@maverick/types";
-import { DropDownMenu, MenuItem, SubMenu, Text } from "@maverick/ui";
+import { Size } from "@maverick/types";
+import { DropDownMenu, MenuItem, SubMenu } from "@maverick/ui";
 import { CfLink } from "@maverick/cf";
+import { CfMenuItemType } from "./menu-types";
 
-interface CfDropdownMenuProps {
+interface DropdownMenuProps {
   title: string;
-  menu: CfMenuItems;
+  menu: CfMenuItemType[];
   size?: Size;
   lang?: Locale;
 }
 
-export const CfDropdownMenu = ({
+export const DropdownMenu = ({
   title,
   menu,
   size,
   lang,
-}: CfDropdownMenuProps) => {
+}: DropdownMenuProps) => {
   if (!menu) return null;
 
   return (

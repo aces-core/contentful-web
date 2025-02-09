@@ -14,15 +14,15 @@ import {
   Link,
   Row,
 } from "@maverick/ui";
-import { Logo, LogosType } from "@maverick/cf";
 
+import { Logo, LogosType } from "../logo/render";
 import { MainNavigation, MainNavigationMobile } from "../../navigations";
 import { SearchBar } from "../../search";
 
 interface HeaderProps {
   logos: LogosType;
   navigations: {
-    mainNavigations: [];
+    mainNavigation: [];
   };
   preview: boolean;
   lang: string;
@@ -58,6 +58,7 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
       <Box style={{ height: { xs: "80px" } }} />
       <FlexBox
         component="header"
+        paddingY={{ xs: "7px", md: 0 }}
         style={{
           backgroundColor: "common.white",
           boxShadow: isScrolled ? "0 4px 6px rgba(0, 0, 0, 0.08)" : "none",
@@ -68,15 +69,7 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
           zIndex: 1000,
         }}
       >
-        <Container
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "1rem",
-            paddingY: { xs: "7px", md: 0 },
-          }}
-        >
+        <Container>
           <Row
             style={{ width: "100%" }}
             flexDirection={{ xs: "row", md: "row" }}
@@ -140,7 +133,7 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
                 >
                   <Suspense fallback={null}>
                     <MainNavigation
-                      data={navigations.mainNavigations}
+                      data={navigations.mainNavigation}
                       lang={lang}
                     />
                   </Suspense>
@@ -154,7 +147,7 @@ export const Header = ({ logos, navigations, preview, lang }: HeaderProps) => {
         <MainNavigationMobile
           open={drawerOpen}
           onClose={handleDrawerToggle}
-          data={navigations.mainNavigations}
+          data={navigations.mainNavigation}
           lang={lang}
         />
       )}
