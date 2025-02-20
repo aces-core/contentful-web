@@ -11,9 +11,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "export-content": "tsx commands/export-content.ts",
-    "export-models": "tsx commands/export-models-only.ts",
+    "export-models-only": "tsx commands/export-models-only.ts",
     "import-content": "tsx commands/import-content.ts",
-    "import-models": "tsx commands/import-models-only.ts",
+    "import-models-only": "tsx commands/import-models-only.ts",
     "create-cf-component": "tsx commands/create-cf-component.ts"
   },
   "engines": {
