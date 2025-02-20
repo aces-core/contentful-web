@@ -1,17 +1,14 @@
 "use client";
 
-import { defaultLocale, Locale } from "@maverick/i18n";
 import { useUIState } from "@maverick/store";
 import { palette } from "@maverick/theme";
 import { Slide, Container, FlexBox } from "@maverick/ui";
 
-import { SearchBar } from "./search-bar";
-
-interface SearchOverlayProps {
-  lang: Locale;
+interface GlobalSearchDrawerProps {
+  children: React.ReactNode;
 }
 
-export const SearchOverlay = ({ lang = defaultLocale }: SearchOverlayProps) => {
+export const GlobalSearchDrawer = ({ children }: GlobalSearchDrawerProps) => {
   const { searchOpen } = useUIState();
 
   return (
@@ -25,9 +22,7 @@ export const SearchOverlay = ({ lang = defaultLocale }: SearchOverlayProps) => {
           width: "100%",
         }}
       >
-        <Container maxWidth="md">
-          <SearchBar lang={lang} />
-        </Container>
+        <Container maxWidth="md">{children}</Container>
       </FlexBox>
     </Slide>
   );

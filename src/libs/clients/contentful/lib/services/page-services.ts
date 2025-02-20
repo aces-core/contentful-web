@@ -1,4 +1,5 @@
 import { defaultLocale, Locale } from "@maverick/i18n";
+
 import { cfClient, cfPreviewClient } from "../client";
 import {
   DefaultPageBodyQuery,

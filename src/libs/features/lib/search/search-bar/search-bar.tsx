@@ -19,11 +19,13 @@ import { navigateToSearch } from "../services";
 
 interface SearchBarProps {
   maxWidth?: string;
+  shrink?: boolean;
   lang: string;
 }
 
 export const SearchBar = ({
   maxWidth,
+  shrink,
   lang = defaultLocale,
 }: SearchBarProps) => {
   const { mobileMenuOpen, setMobileMenuOpen, searchOpen, setSearchOpen } =
@@ -70,7 +72,7 @@ export const SearchBar = ({
 
   return (
     <FormControl style={{ width: "100%", maxWidth: maxWidth }}>
-      <InputLabel htmlFor="site-search">
+      <InputLabel htmlFor="site-search" shrink={shrink}>
         {t ? `${t.search.search}` : <Skeleton variant="text" width={80} />}
       </InputLabel>
       <OutlinedInput

@@ -3,7 +3,7 @@
 import { useUIState } from "@maverick/store";
 import { Icon, IconButton } from "@maverick/ui";
 
-export const SearchOverlayButton = () => {
+export const GlobalSearchButton = () => {
   const { searchOpen, setSearchOpen } = useUIState();
 
   const handleDrawerToggle = () => {

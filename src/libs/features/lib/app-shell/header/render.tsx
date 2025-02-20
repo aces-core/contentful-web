@@ -1,30 +1,26 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { RouteDirectory } from "@maverick/types";
 import { useUIState } from "@maverick/store";
 import { useMediaQuery } from "@maverick/hooks";
-import {
-  Box,
-  Col,
-  Container,
-  FlexBox,
-  Row,
-  Link,
-  ListItem,
-} from "@maverick/ui";
+import { Box, Col, Container, FlexBox, Row, Link } from "@maverick/ui";
 
-import { Logo, LogosType } from "../logo/render";
 import {
   MainNavigation,
   MainNavigationMobile,
-  MobileMenuButton,
   SecondaryNavigationMobile,
+  SecondaryNavigation,
 } from "../../navigations";
-import { SearchBar, SearchOverlay, SearchOverlayButton } from "../../search";
-import { SecondaryNavigation } from "../../navigations/secondary-navigation/secondary-navigation";
-import { MobileNavigationsDrawer } from "../drawers/mobile-navigations-drawer";
+import { SearchBar } from "../../search";
+import { Logo, LogosType } from "../logo/render";
+import {
+  GlobalSearchButton,
+  GlobalSearchDrawer,
+  MobileNavigationsButton,
+  MobileNavigationsDrawer,
+} from "../drawers";
 
 interface HeaderProps {
   logos: LogosType;
@@ -129,7 +125,10 @@ export const Header = ({
                     justifyContent: "flex-end",
                   }}
                 >
-                  <MobileMenuButton />
+                  <Box marginRight={1}>
+                    <GlobalSearchButton />
+                  </Box>
+                  <MobileNavigationsButton />
                 </Col>
               ) : (
                 <Col
@@ -140,28 +139,25 @@ export const Header = ({
                     justifyContent: "flex-end",
                   }}
                 >
-                  <Suspense fallback={null}>
-                    <MainNavigation
-                      data={navigations.mainNavigation}
-                      lang={lang}
-                    />
-                  </Suspense>
+                  <MainNavigation
+                    data={navigations.mainNavigation}
+                    lang={lang}
+                  />
                   <Box marginLeft={1}>
-                    <SearchOverlayButton />
+                    <GlobalSearchButton />
                   </Box>
                 </Col>
               )}
             </Row>
           </Container>
         </FlexBox>
-        <SearchOverlay lang={lang} />
+        <GlobalSearchDrawer>
+          <SearchBar shrink={true} lang={lang} />
+        </GlobalSearchDrawer>
       </Box>
       {isSmallerThanMd && (
         <MobileNavigationsDrawer>
           <MainNavigationMobile data={navigations.mainNavigation} lang={lang} />
-          <ListItem style={{ marginTop: 6, alignSelf: "flex-end" }}>
-            <SearchBar lang={lang} />
-          </ListItem>
           <SecondaryNavigationMobile
             data={navigations.secondaryNavigation}
             lang={lang}

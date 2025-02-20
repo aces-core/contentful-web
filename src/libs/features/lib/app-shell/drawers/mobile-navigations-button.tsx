@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useUIState } from "@maverick/store";
 import { Icon, IconButton } from "@maverick/ui";
 
-export const MobileMenuButton = () => {
+export const MobileNavigationsButton = () => {
   const { mobileMenuOpen, setMobileMenuOpen } = useUIState();
   const [delayedOpen, setDelayedOpen] = useState(mobileMenuOpen);
 

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { css, Global } from "@emotion/react";
 
 import { useTheme } from "@maverick/hooks";
-import { fontWeights, ThemeType } from "@maverick/theme";
+import { fontWeights, ThemeType, typography } from "@maverick/theme";
 import { Box } from "@maverick/ui";
 
 import { FormSkeleton } from "../skeleton";
@@ -85,6 +85,7 @@ const createStyle = ({ theme, id }: { theme: ThemeType; id: string }) => {
       margin-bottom: 0.25rem;
       display: inline-block;
       font-weight: 600;
+      font-family: ${typography.fontFamily};
     }
 
     ul {
@@ -150,7 +151,7 @@ const createStyle = ({ theme, id }: { theme: ThemeType; id: string }) => {
     }
 
     .hs-button {
-      font-family: inherit;
+      font-family: ${typography.fontFamily};
       border-radius: 10px;
       background-color: ${theme.palette.primary.main};
       width: 100% !important;

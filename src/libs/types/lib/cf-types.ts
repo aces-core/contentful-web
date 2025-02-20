@@ -1,4 +1,5 @@
 import { Document } from "@contentful/rich-text-types";
+
 import { PageLinkProps } from "./pages-types";
 
 // SYS && Base Component Types

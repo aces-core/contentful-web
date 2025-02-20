@@ -5,7 +5,7 @@ import React from "react";
 import { useUIState } from "@maverick/store";
 import { Drawer, Box, List, FlexBox } from "@maverick/ui";
 
-import { MobileMenuButton } from "../../navigations";
+import { MobileNavigationsButton } from "./mobile-navigations-button";
 
 interface MobileNavigationsDrawerProps {
   children: React.ReactNode;
@@ -30,7 +30,7 @@ export const MobileNavigationsDrawer = ({
       <Box role="presentation">
         <List>
           <FlexBox justifyContent="flex-end" paddingX={6} paddingY={1}>
-            <MobileMenuButton />
+            <MobileNavigationsButton />
           </FlexBox>
           {children}
         </List>
