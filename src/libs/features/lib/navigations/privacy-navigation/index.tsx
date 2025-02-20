@@ -1,9 +1,8 @@
 import { CfBaseComponent } from "@maverick/types";
 import { typography } from "@maverick/theme";
 import { Box, FlexBox } from "@maverick/ui";
-import { CfLink } from "@maverick/cf";
 
-import { CfMenuItemType, isCfMenuItem } from "../menus";
+import { CfMenuItemType, isCfMenuItem, MenuLink } from "../menus";
 
 interface PrivacyNavigationProps extends Pick<CfBaseComponent, "lang"> {
   data: CfMenuItemType[];
@@ -32,19 +31,13 @@ export const PrivacyNavigation = ({ data, lang }: PrivacyNavigationProps) => {
                     marginLeft: index !== 0 ? 8 : 0,
                   }}
                 >
-                  <CfLink
-                    key={index}
-                    linkType={item.link.linkType}
-                    target={item.link.target}
-                    pageLink={item.link.pageLink}
-                    customLink={item.link.customLink}
+                  <MenuLink
+                    link={item.link}
+                    title={item.title}
+                    externalLinkIcon={item.externalLinkIcon}
                     lang={lang}
-                    style={{
-                      fontSize: typography.caption.fontSize,
-                    }}
-                  >
-                    {item.title}
-                  </CfLink>
+                    fontSize={typography.caption.fontSize}
+                  />
                 </Box>
               );
             }

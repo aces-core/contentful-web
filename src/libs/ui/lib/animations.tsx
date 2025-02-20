@@ -43,11 +43,18 @@ export const Fade = ({
   in: fadeIn,
   unmountOnExit,
   children,
+  timeout = 250,
   style,
   ...rest
 }: MuiFadeProps) => {
   return (
-    <MuiFade in={fadeIn} unmountOnExit={unmountOnExit} style={style} {...rest}>
+    <MuiFade
+      in={fadeIn}
+      unmountOnExit={unmountOnExit}
+      style={style}
+      timeout={timeout}
+      {...rest}
+    >
       <div>{children}</div>
     </MuiFade>
   );
@@ -72,6 +79,7 @@ export const Slide = ({
   unmountOnExit,
   children,
   direction = "up",
+  timeout = 250,
   style,
   ...rest
 }: MuiSlideProps) => {
@@ -80,6 +88,7 @@ export const Slide = ({
       in={slideIn}
       unmountOnExit={unmountOnExit}
       direction={direction}
+      timeout={timeout}
       style={style}
       {...rest}
     >
@@ -92,11 +101,18 @@ export const Zoom = ({
   in: zoomIn,
   unmountOnExit,
   children,
+  timeout = 250,
   style,
   ...rest
 }: MuiZoomProps) => {
   return (
-    <MuiZoom in={zoomIn} unmountOnExit={unmountOnExit} style={style} {...rest}>
+    <MuiZoom
+      in={zoomIn}
+      unmountOnExit={unmountOnExit}
+      timeout={timeout}
+      style={style}
+      {...rest}
+    >
       <div>{children}</div>
     </MuiZoom>
   );

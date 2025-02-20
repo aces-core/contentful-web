@@ -2,6 +2,8 @@ import { gql } from "@apollo/client";
 
 import { defaultLocale } from "@maverick/i18n";
 import { cfClient, cfPreviewClient } from "@maverick/contentful";
+import { globalSearchQuery } from "./config";
+import { RouteDirectory } from "@maverick/types";
 
 export const SiteSearchQuery = gql`
   query ($query: String!, $preview: Boolean!, $locale: String) {
@@ -59,6 +61,8 @@ export const navigateToSearch = (
   navigate: (url: string) => void,
 ) => {
   if (query.trim()) {
-    navigate(`/search?q=${encodeURIComponent(query)}`);
+    navigate(
+      `${RouteDirectory.Search}?${globalSearchQuery}=${encodeURIComponent(query)}`,
+    );
   }
 };

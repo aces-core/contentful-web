@@ -1,0 +1,69 @@
+"use client";
+
+import { CfBaseComponent } from "@maverick/types";
+import { List } from "@maverick/ui";
+import { CfButton, CfButtonProps } from "@maverick/cf";
+
+import {
+  CfMenuItemType,
+  isCfButton,
+  isCfMenuItem,
+  MobileMenuItem,
+} from "../menus";
+
+interface SecondaryNavigationMobileProps extends Pick<CfBaseComponent, "lang"> {
+  data: (CfMenuItemType | CfButtonProps)[];
+}
+
+export const SecondaryNavigationMobile = ({
+  data,
+  lang,
+}: SecondaryNavigationMobileProps) => {
+  const paddingStyle = "1.6rem 1.6rem";
+
+  return (
+    <List>
+      {data.map((item, index) => {
+        const typename = item.__typename;
+
+        if (!typename) {
+          return null;
+        }
+
+        switch (typename) {
+          case "MenuItem":
+            if (isCfMenuItem(item)) {
+              return (
+                <MobileMenuItem
+                  key={index}
+                  item={item}
+                  lang={lang}
+                  paddingStyle={paddingStyle}
+                />
+              );
+            }
+            break;
+          case "Button":
+            if (isCfButton(item)) {
+              return (
+                <CfButton
+                  key={index}
+                  internalTitle={item.internalTitle}
+                  buttonStyle={item.buttonStyle}
+                  title={item.title}
+                  link={item.link}
+                  __typename={item.__typename}
+                  id={item?.sys?.id || ""}
+                  preview={item.preview}
+                  lang={lang}
+                />
+              );
+            }
+            break;
+          default:
+            return null;
+        }
+      })}
+    </List>
+  );
+};

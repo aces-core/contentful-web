@@ -7,11 +7,16 @@ import { fetchHeaderData } from "./services";
 import { Header } from "./render";
 import { HeaderSkeleton } from "./skeleton";
 
+export interface HeaderServerProps extends CfFetchById {
+  sticky?: boolean;
+}
+
 export const HeaderServer = async ({
   id,
   preview = false,
   lang = defaultLocale,
-}: CfFetchById) => {
+  sticky = true,
+}: HeaderServerProps) => {
   let data;
 
   try {
@@ -40,6 +45,7 @@ export const HeaderServer = async ({
     <Header
       logos={data.logos}
       navigations={data.navigations}
+      sticky={sticky}
       preview={preview}
       lang={lang}
     />

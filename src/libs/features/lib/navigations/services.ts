@@ -11,6 +11,7 @@ export const MenuItemFragment = gql`
     link {
       ...Link
     }
+    externalLinkIcon
     sys {
       id
     }
@@ -50,6 +51,11 @@ export const HeaderNavigationsQuery = gql`
           items {
             ...MenuItem
             ...DropdownMenu
+          }
+        }
+        secondaryNavigationCollection(limit: 6) {
+          items {
+            ...MenuItem
           }
         }
       }
@@ -99,6 +105,9 @@ export const fetchHeaderNavigationsData = async (
     return {
       mainNavigation:
         response.data.appsCollection.items[0].mainNavigationCollection.items,
+      secondaryNavigation:
+        response.data.appsCollection.items[0].secondaryNavigationCollection
+          .items,
     };
   } catch (error) {
     console.error("Error fetching data:", error);

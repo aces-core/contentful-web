@@ -8,6 +8,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import { defaultLocale, getLocale } from "@maverick/i18n";
 import { palette, theme } from "@maverick/theme";
+import { Box } from "@maverick/ui";
 import { DraftModeBar, HeaderServer, FooterServer } from "@maverick/features";
 
 import "swiper/css";
@@ -54,8 +55,13 @@ export default async function RootLayout({
       <body style={{ backgroundColor: palette.background.default }}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <HeaderServer id={appId} preview={isEnabled} lang={lang} />
-            <main>{children}</main>
+            <HeaderServer
+              id={appId}
+              sticky={true}
+              preview={isEnabled}
+              lang={lang}
+            />
+            <Box component="main">{children}</Box>
             <FooterServer id={appId} preview={isEnabled} lang={lang} />
             {isEnabled && <DraftModeBar />}
           </ThemeProvider>

@@ -1,6 +1,6 @@
 import { CfBaseComponent } from "@maverick/types";
 import { FlexBox, MenuItem } from "@maverick/ui";
-import { CfButton, CfButtonProps, CfLink } from "@maverick/cf";
+import { CfButton, CfButtonProps } from "@maverick/cf";
 
 import {
   CfDropDownMenuType,
@@ -9,6 +9,7 @@ import {
   isCfButton,
   isCfDropDownMenu,
   isCfMenuItem,
+  MenuLink,
 } from "../menus";
 
 interface MainNavigationProps extends Pick<CfBaseComponent, "lang"> {
@@ -26,19 +27,16 @@ export const MainNavigation = ({ data, lang }: MainNavigationProps) => {
             if (isCfMenuItem(item)) {
               return (
                 <MenuItem key={index} resize noPadding>
-                  <CfLink
-                    linkType={item.link.linkType}
-                    target={item.link.target}
-                    pageLink={item.link.pageLink}
-                    customLink={item.link.customLink}
+                  <MenuLink
+                    link={item.link}
+                    title={item.title}
+                    externalLinkIcon={item.externalLinkIcon}
                     lang={lang}
                     style={{
                       display: "block",
-                      padding: "1.75rem .75rem",
+                      padding: "1.5rem .75rem",
                     }}
-                  >
-                    {item.title}
-                  </CfLink>
+                  />
                 </MenuItem>
               );
             }

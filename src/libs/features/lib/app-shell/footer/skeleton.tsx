@@ -1,6 +1,6 @@
 import { Container, FlexBox, Skeleton } from "@maverick/ui";
 
-import { MainNavigationSkeleton } from "../../navigations";
+import { NavigationSkeleton } from "../../navigations";
 
 export const FooterSkeleton = () => {
   return (
@@ -20,7 +20,7 @@ export const FooterSkeleton = () => {
       <Container>
         <FlexBox alignItems="center" justifyContent="space-between">
           <Skeleton width={250} height={48} />
-          <MainNavigationSkeleton />
+          <NavigationSkeleton />
         </FlexBox>
       </Container>
     </FlexBox>

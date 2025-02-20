@@ -10,6 +10,7 @@ import MuiOutlinedInput, {
 } from "@mui/material/OutlinedInput";
 
 import { CustomCssProps } from "@maverick/types";
+import { palette } from "@maverick/theme";
 
 interface InputProps
   extends Pick<
@@ -34,6 +35,7 @@ interface InputProps
     | "type"
     | "value"
     | "onChange"
+    | "autoFocus"
   > {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   style?: CustomCssProps;
@@ -61,6 +63,7 @@ export const Input = ({
   value,
   onChange,
   onKeyDown,
+  autoFocus,
   style,
 }: InputProps) => {
   return (
@@ -86,7 +89,13 @@ export const Input = ({
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
-      sx={style}
+      autoFocus={autoFocus}
+      sx={{
+        ...style,
+        "&.MuiInputBase-root": {
+          backgroundColor: palette.common.white,
+        },
+      }}
     />
   );
 };
@@ -115,6 +124,7 @@ interface OutlinedInputProps
     | "type"
     | "value"
     | "onChange"
+    | "autoFocus"
   > {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   style?: CustomCssProps;
@@ -143,6 +153,7 @@ export const OutlinedInput = ({
   value,
   onChange,
   onKeyDown,
+  autoFocus,
   style,
 }: OutlinedInputProps) => {
   return (
@@ -169,10 +180,11 @@ export const OutlinedInput = ({
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
+      autoFocus={autoFocus}
       sx={{
         ...style,
-        "& .MuiInputBase-root": {
-          paddingRight: "0px",
+        "&.MuiInputBase-root": {
+          backgroundColor: palette.common.white,
         },
       }}
     />

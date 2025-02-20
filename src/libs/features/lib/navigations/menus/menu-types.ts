@@ -5,6 +5,7 @@ export type CfMenuItemType = {
   internalTitle: string;
   title: string;
   link: CfLinkProps;
+  externalLinkIcon?: boolean;
   __typename: string;
 };
 

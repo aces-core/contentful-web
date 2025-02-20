@@ -1,8 +1,7 @@
 import { CfBaseComponent } from "@maverick/types";
 import { Box, FlexBox } from "@maverick/ui";
-import { CfLink } from "@maverick/cf";
 
-import { CfMenuItemType, isCfMenuItem } from "../menus";
+import { CfMenuItemType, isCfMenuItem, MenuLink } from "../menus";
 
 interface FooterNavigationProps extends Pick<CfBaseComponent, "lang"> {
   data: CfMenuItemType[];
@@ -33,15 +32,12 @@ export const FooterNavigation = ({ data, lang }: FooterNavigationProps) => {
                     marginLeft: { xs: 0, md: index !== 0 ? 8 : 0 },
                   }}
                 >
-                  <CfLink
-                    linkType={item.link.linkType}
-                    target={item.link.target}
-                    pageLink={item.link.pageLink}
-                    customLink={item.link.customLink}
+                  <MenuLink
+                    link={item.link}
+                    title={item.title}
+                    externalLinkIcon={item.externalLinkIcon}
                     lang={lang}
-                  >
-                    {item.title}
-                  </CfLink>
+                  />
                 </Box>
               );
             }

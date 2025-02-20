@@ -102,8 +102,8 @@ export const DropDownMenu: React.FC<MenuItemProps> = ({
       sx={{
         position: "relative",
         justifyContent: "flex-start",
-        paddingTop: "1.75rem",
-        paddingBottom: "1.75rem",
+        paddingTop: "1.5rem",
+        paddingBottom: "1.5rem",
         paddingLeft: { xs: ".75rem", xl: "1rem" },
         paddingRight: { xs: ".75rem", xl: "1rem" },
         minHeight: 0,
@@ -186,8 +186,12 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         justifyContent: "flex-start",
         paddingTop: noPadding ? 0 : nested ? "0.5rem" : "1.75rem",
         paddingBottom: noPadding ? 0 : nested ? "0.5rem" : "1.75rem",
-        paddingLeft: disableGutters ? 0 : { xs: 0, lg: ".75rem", xl: "1rem" },
-        paddingRight: disableGutters ? 0 : { xs: 0, lg: ".75rem", xl: "1rem" },
+        paddingLeft: disableGutters
+          ? 0
+          : { xs: ".5rem", lg: ".75rem", xl: "1rem" },
+        paddingRight: disableGutters
+          ? 0
+          : { xs: ".5rem", lg: ".75rem", xl: "1rem" },
         minHeight: 0,
         whiteSpace: "break-spaces",
         "&:hover": {
@@ -215,25 +219,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
           {children}
         </ListItemText>
       </Box>
-    </MuiMenuItem>
-  );
-};
-
-interface MobileMenuItemProps extends Pick<MuiMenuItemProps, "children"> {}
-
-export const MobileMenuItem: React.FC<MobileMenuItemProps> = ({ children }) => {
-  return (
-    <MuiMenuItem
-      sx={{
-        width: "100%",
-        paddingY: "1rem",
-        paddingLeft: 0,
-        borderBottomWidth: 1,
-        borderBottomStyle: "solid",
-        borderBottomColor: "grey.100",
-      }}
-    >
-      <ListItemText sx={{ textAlign: "left" }}>{children}</ListItemText>
     </MuiMenuItem>
   );
 };

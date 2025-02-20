@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 
@@ -7,9 +6,8 @@ import { PageProps } from "@maverick/types";
 import { Box, Container } from "@maverick/ui";
 import {
   buildMetadata,
+  globalSearchQuery,
   SearchParams,
-  SearchResultsListing,
-  SearchResultsSkeleton,
   TopSearchResults,
 } from "@maverick/features";
 
@@ -44,7 +42,7 @@ export default async function SearchPage({
   return (
     <Box marginY={8}>
       <Container>
-        <SearchParams queryParam="q">
+        <SearchParams queryParam={globalSearchQuery}>
           <TopSearchResults preview={isEnabled} lang={lang} />
         </SearchParams>
       </Container>

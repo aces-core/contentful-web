@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { defaultLocale, getLocale } from "@maverick/i18n";
+import { useUIState } from "@maverick/store";
 import {
   FormControl,
   Icon,
@@ -18,35 +19,20 @@ import { navigateToSearch } from "../services";
 
 interface SearchBarProps {
   maxWidth?: string;
-  query: string;
-  onSearch?: () => void;
   lang: string;
 }
 
 export const SearchBar = ({
   maxWidth,
-  query,
-  onSearch,
   lang = defaultLocale,
 }: SearchBarProps) => {
+  const { mobileMenuOpen, setMobileMenuOpen, searchOpen, setSearchOpen } =
+    useUIState();
+
   const [searchValue, setSearchValue] = useState("");
-  const [labelShrink, setLabelShrink] = useState(true);
   const [t, setT] = useState<{ search: string }>();
 
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const checkQuery = searchParams.get(query);
-    if (!checkQuery) {
-      setSearchValue("");
-      setLabelShrink(false);
-    } else {
-      setSearchValue(checkQuery);
-      setLabelShrink(true);
-    }
-  }, [query, pathname, searchParams]);
 
   const handleSearch = (
     event:
@@ -61,9 +47,15 @@ export const SearchBar = ({
     }
 
     event.preventDefault();
-    if (onSearch) {
-      onSearch();
+
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
     }
+    if (searchOpen) {
+      setSearchOpen(false);
+    }
+
+    setSearchValue("");
     navigateToSearch(searchValue, router.push);
   };
 
@@ -78,7 +70,7 @@ export const SearchBar = ({
 
   return (
     <FormControl style={{ width: "100%", maxWidth: maxWidth }}>
-      <InputLabel htmlFor="site-search" shrink={labelShrink}>
+      <InputLabel htmlFor="site-search">
         {t ? `${t.search.search}` : <Skeleton variant="text" width={80} />}
       </InputLabel>
       <OutlinedInput
@@ -90,6 +82,7 @@ export const SearchBar = ({
         fullWidth
         onChange={(e) => setSearchValue(e.target.value)}
         onKeyDown={handleSearch}
+        autoFocus={searchOpen}
         endAdornment={
           <InputAdornment position="end">
             <IconButton aria-label="site search" onClick={handleSearch}>

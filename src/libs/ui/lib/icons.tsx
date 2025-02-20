@@ -32,10 +32,10 @@ import {
   YouTube as YouTubeIcon,
   North as NorthIcon,
   South as SouthIcon,
+  OpenInNew as OpenInNewIcon,
 } from "@mui/icons-material";
 
 import { CustomCssProps } from "@maverick/types";
-import { Image } from "@maverick/ui";
 
 export enum IconEnum {
   Add = "Add",
@@ -79,6 +79,7 @@ export enum IconEnum {
   Quote = "Quote",
   North = "North",
   South = "South",
+  OpenInNew = "OpenInNew",
 }
 
 enum IconTypeEnum {
@@ -239,6 +240,10 @@ export const Icon = ({
       break;
     case IconEnum.South:
       IconComponent = SouthIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
+    case IconEnum.OpenInNew:
+      IconComponent = OpenInNewIcon;
       IconType = IconTypeEnum.Mui;
       break;
     default:
