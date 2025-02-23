@@ -96,7 +96,7 @@ export type CfCollectionItem = {
   slug: string;
 };
 
-export interface CfImageProps extends CfBaseComponent {
+export interface CfImageProps extends CfBaseComponent, Nested {
   image: {
     url: string;
     width: number;
@@ -105,6 +105,5 @@ export interface CfImageProps extends CfBaseComponent {
   maxWidth?: number;
   maxHeight?: number;
   altText?: string;
-  nested?: boolean;
   responsive?: boolean;
 }

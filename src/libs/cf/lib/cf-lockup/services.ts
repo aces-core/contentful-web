@@ -4,42 +4,46 @@ import {
   ButtonFragment,
   cfClient,
   cfPreviewClient,
+  ImageFragment,
 } from "@maverick/contentful";
 import { defaultLocale } from "@maverick/i18n";
+import { VideoEmbedFragment } from "../cf-video-embed/services";
+
+export const LockupFragement = gql`
+  ${ButtonFragment}
+  ${ImageFragment}
+  ${VideoEmbedFragment}
+
+  fragment Lockup on Lockup {
+    internalTitle
+    headline
+    bodyCopy {
+      json
+    }
+    buttonsCollection(limit: 2) {
+      items {
+        ...Button
+      }
+    }
+    media {
+      __typename
+      ...Image
+      ...VideoEmbed
+    }
+    mediaSize
+    mediaAlignment
+    sys {
+      id
+    }
+  }
+`;
 
 export const LockupQuery = gql`
-  ${ButtonFragment}
+  ${LockupFragement}
 
   query ($id: String!, $preview: Boolean!, $locale: String) {
     lockup(id: $id, preview: $preview, locale: $locale) {
-      internalTitle
-      headline
-      bodyCopy {
-        json
-      }
-      buttonsCollection(limit: 2) {
-        items {
-          ...Button
-        }
-      }
-      media {
-        __typename
-        ... on Image {
-          sys {
-            id
-          }
-        }
-        ... on VideoEmbed {
-          sys {
-            id
-          }
-        }
-      }
-      mediaSize
-      mediaAlignment
-      sys {
-        id
-      }
+      ...Lockup
     }
   }
 `;

@@ -5,27 +5,25 @@ import { generateId } from "@maverick/utils";
 import { componentSpacing } from "@maverick/theme";
 import { Box, Container } from "@maverick/ui";
 
-import style from "./style.module.css";
-
-export interface CfVideoEmbedProps extends CfBaseComponent, Nested {
+export interface CfCodeEmbedProps extends CfBaseComponent, Nested {
   embedCode: string;
 }
 
-export const CfVideoEmbed = ({
+export const CfCodeEmbed = ({
   internalTitle,
   embedCode,
   nested,
   __typename,
   id,
   lang,
-}: CfVideoEmbedProps) => {
+}: CfCodeEmbedProps) => {
   return (
     <Box
       id={generateId(internalTitle)}
       data-component={__typename}
       marginY={{
-        xs: !nested ? componentSpacing.xs : 0,
-        md: !nested ? componentSpacing.md : 0,
+        xs: !nested ? componentSpacing.xs : "",
+        md: !nested ? componentSpacing.md : "",
       }}
     >
       <Container nested={nested}>
@@ -33,7 +31,6 @@ export const CfVideoEmbed = ({
           dangerouslySetInnerHTML={{
             __html: embedCode,
           }}
-          className={style.videoEmbed}
           {...ContentfulLivePreview.getProps({
             entryId: id,
             fieldId: "embed",

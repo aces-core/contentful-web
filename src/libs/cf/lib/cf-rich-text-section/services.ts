@@ -1,21 +1,30 @@
 import { gql } from "@apollo/client";
 
 import { cfClient, cfPreviewClient } from "@maverick/contentful";
+import { defaultLocale } from "@maverick/i18n";
+
+export const RichTextSectionFragment = gql`
+  fragment RichTextSection on RichTextSection {
+    internalTitle
+    alignment
+    containerWidth
+    grayBackground
+    bodyCopy {
+      json
+    }
+    border
+    sys {
+      id
+    }
+  }
+`;
 
 export const RichTextSectionQuery = gql`
+  ${RichTextSectionFragment}
+
   query ($id: String!, $preview: Boolean!, $locale: String) {
     richTextSection(id: $id, preview: $preview, locale: $locale) {
-      internalTitle
-      alignment
-      containerWidth
-      grayBackground
-      bodyCopy {
-        json
-      }
-      border
-      sys {
-        id
-      }
+      ...RichTextSection
     }
   }
 `;
@@ -23,7 +32,7 @@ export const RichTextSectionQuery = gql`
 export const fetchRichTextSectionData = async (
   id: string,
   preview = false,
-  locale: string = "en-US",
+  locale: string = defaultLocale,
 ) => {
   const client = preview ? cfPreviewClient : cfClient;
   try {

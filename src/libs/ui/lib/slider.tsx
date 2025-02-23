@@ -184,6 +184,7 @@ export const Slider = ({
           <SwiperSlide
             key={index}
             style={{
+              height: "auto",
               minHeight: slideHeight
                 ? `${slideHeight - slideHeightOffset - (pagination ? 64 : 8)}px`
                 : 0,

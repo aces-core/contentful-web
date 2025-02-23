@@ -1,16 +1,19 @@
-import type { CfFetchById, Nested } from "@maverick/types";
+import type { CfAlignment, CfFetchById, Nested } from "@maverick/types";
 
 import { CfHeader } from "./render";
 import { fetchHeaderData } from "./services";
 import { HeaderSkeleton } from "./skeleton";
 
-export interface CfHeaderServerProps extends CfFetchById, Nested {}
+export interface CfHeaderServerProps extends CfFetchById, Nested {
+  alignment?: CfAlignment;
+}
 
 export const CfHeaderServer = async ({
   id,
   preview,
   lang,
   nested,
+  alignment,
 }: CfHeaderServerProps) => {
   let data;
 
@@ -30,7 +33,7 @@ export const CfHeaderServer = async ({
       internalTitle={data.internalTitle}
       headline={data.headline}
       headerType={data.headerType}
-      alignment={data.alignment}
+      alignment={alignment ? alignment : data.alignment}
       containerWidth={data.containerWidth}
       nested={nested}
       __typename={data.__typename}

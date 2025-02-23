@@ -24,15 +24,11 @@ export const CfImage = ({
       id={generateId(internalTitle)}
       data-component={__typename}
       marginY={{
-        xs: !nested ? componentSpacing.xs : "",
-        md: !nested ? componentSpacing.md : "",
+        xs: !nested ? componentSpacing.xs : 0,
+        md: !nested ? componentSpacing.md : 0,
       }}
     >
-      <Container
-        disableGutters={nested}
-        noPadding={nested}
-        maxWidth={nested ? false : "xl"}
-      >
+      <Container nested={nested}>
         {!image || !image.url ? (
           <ImageSkeleton
             {...ContentfulLivePreview.getProps({
@@ -88,12 +84,7 @@ export const CfImageCover = ({
       }}
       style={{ height: coverHeight }}
     >
-      <Container
-        disableGutters={nested}
-        noPadding={nested}
-        maxWidth={nested ? false : "xl"}
-        style={{ height: coverHeight }}
-      >
+      <Container nested={nested} style={{ height: coverHeight }}>
         {!image || !image.url ? (
           <ImageSkeleton
             {...ContentfulLivePreview.getProps({

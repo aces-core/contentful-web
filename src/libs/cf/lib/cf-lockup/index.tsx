@@ -1,10 +1,17 @@
-import type { CfFetchById } from "@maverick/types";
+import type { CfFetchById, Nested } from "@maverick/types";
 
 import { CfLockup } from "./render";
 import { fetchLockup } from "./services";
 import { LockupSkeleton } from "./skeleton";
 
-export const CfLockupServer = async ({ id, preview, lang }: CfFetchById) => {
+export interface CfLockupServerProps extends CfFetchById, Nested {}
+
+export const CfLockupServer = async ({
+  id,
+  preview,
+  lang,
+  nested,
+}: CfLockupServerProps) => {
   let data;
 
   try {
@@ -27,8 +34,8 @@ export const CfLockupServer = async ({ id, preview, lang }: CfFetchById) => {
       media={data.media}
       mediaSize={data.mediaSize}
       mediaAlignment={data.mediaAlignment}
-      nested={data.nested}
       __typename={data.__typename}
+      nested={nested}
       id={id}
       lang={lang}
       preview={preview}

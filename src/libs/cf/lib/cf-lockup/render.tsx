@@ -2,10 +2,10 @@ import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import {
   CfBaseComponent,
+  CfImageProps,
   CfMediaAlignment,
   CfMediaSize,
   CfRichText,
-  CfSystemId,
   Nested,
   WithMock,
 } from "@maverick/types";
@@ -14,17 +14,24 @@ import { componentSpacing } from "@maverick/theme";
 import { Box, Col, Container, H2, Row } from "@maverick/ui";
 
 import { CfButton, CfButtonProps } from "../cf-button/render";
-import { CfImageServer } from "../cf-image";
+import { CfImage } from "../cf-image/render";
 import { CfRichTextRender } from "../cf-rich-text-render";
-import { CfVideoEmbedServer } from "../cf-video-embed";
+import { CfVideoEmbed, CfVideoEmbedProps } from "../cf-video-embed/render";
 
+const isCfImage = (media: any): media is CfImageProps => {
+  return "image" in media;
+};
+
+const isCfVideoEmbed = (media: any): media is CfVideoEmbedProps => {
+  return "embedCode" in media;
+};
 export interface CfLockupProps extends CfBaseComponent, Nested, WithMock {
   headline?: string;
   bodyCopy?: CfRichText;
   buttonsCollection?: {
     items: CfButtonProps[];
   };
-  media: CfSystemId & { __typename: string };
+  media: CfImageProps | CfVideoEmbedProps;
   mediaSize: CfMediaSize;
   mediaAlignment: CfMediaAlignment;
 }
@@ -41,6 +48,7 @@ export const CfLockup = ({
   id,
   lang,
   preview,
+  nested,
   mock,
   mockData,
 }: CfLockupProps) => {
@@ -55,7 +63,7 @@ export const CfLockup = ({
       data-component={__typename}
       marginY={{ xs: componentSpacing.md, md: componentSpacing.xl }}
     >
-      <Container>
+      <Container nested={nested}>
         <Row
           rowSpacing={4}
           columnSpacing={12}
@@ -127,20 +135,26 @@ export const CfLockup = ({
           <Col size={{ xs: 12, md: colSize.media }}>
             {!mock ? (
               <>
-                {media.__typename === "Image" && (
-                  <CfImageServer
-                    id={media.sys.id}
-                    preview={preview}
+                {media.__typename === "Image" && isCfImage(media) && (
+                  <CfImage
+                    internalTitle={media.internalTitle}
+                    image={media.image}
+                    __typename={media.__typename}
+                    nested={true}
+                    id={media?.sys?.id || ""}
                     lang={lang}
-                    nested
+                    preview={preview}
                   />
                 )}
-                {media.__typename === "VideoEmbed" && (
-                  <CfVideoEmbedServer
-                    id={media.sys.id}
-                    preview={preview}
+                {media.__typename === "VideoEmbed" && isCfVideoEmbed(media) && (
+                  <CfVideoEmbed
+                    internalTitle={media.internalTitle}
+                    embedCode={media.embedCode}
+                    nested={nested}
+                    __typename={media.__typename}
+                    id={media?.sys?.id || ""}
                     lang={lang}
-                    nested
+                    preview={preview}
                   />
                 )}
               </>

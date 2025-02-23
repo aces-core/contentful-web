@@ -1,14 +1,17 @@
-import type { CfFetchById } from "@maverick/types";
+import type { CfFetchById, Nested } from "@maverick/types";
 
 import { CfRichTextSection } from "./render";
 import { fetchRichTextSectionData } from "./services";
 import { RichTextSectionSkeleton } from "./skeleton";
 
+export interface CfRichTextSectionServerProps extends CfFetchById, Nested {}
+
 export const CfRichTextSectionServer = async ({
   id,
   preview,
   lang,
-}: CfFetchById) => {
+  nested,
+}: CfRichTextSectionServerProps) => {
   let data;
 
   try {
@@ -31,6 +34,7 @@ export const CfRichTextSectionServer = async ({
       bodyCopy={data.bodyCopy}
       border={data.border}
       __typename={data.__typename}
+      nested={nested}
       id={id}
       lang={lang}
       preview={preview}

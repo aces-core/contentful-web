@@ -6,9 +6,11 @@ import { CfAlignment, CfBaseComponent } from "@maverick/types";
 import { Box, H1, H2, H3, H4, H5, H6, Text } from "@maverick/ui";
 import {
   CfButtonServer,
+  CfCodeEmbedServer,
+  CfHeaderServer,
   CfImageServer,
   CfLinkTextServer,
-  CfStyledListServer,
+  CfVideoEmbedServer,
 } from "@maverick/cf";
 
 import { fetchRichTextEmbedEntry } from "./services";
@@ -132,21 +134,31 @@ export const CfRichTextRender = ({
         const typename = entry.__typename;
 
         switch (typename) {
-          case "Image":
+          case "CodeEmbed":
             return (
-              <CfImageServer
+              <CfCodeEmbedServer id={id} preview={preview} lang={lang} nested />
+            );
+          case "Header":
+            return (
+              <CfHeaderServer
                 id={id}
-                preview={preview as boolean}
+                preview={preview}
                 lang={lang}
                 nested
+                alignment={alignment}
               />
             );
-          case "StyledList":
+          case "Image":
             return (
-              <CfStyledListServer
+              <CfImageServer id={id} preview={preview} lang={lang} nested />
+            );
+          case "VideoEmbed":
+            return (
+              <CfVideoEmbedServer
                 id={id}
-                preview={preview as boolean}
+                preview={preview}
                 lang={lang}
+                nested
               />
             );
           default:
@@ -161,21 +173,9 @@ export const CfRichTextRender = ({
 
         switch (typename) {
           case "Button":
-            return (
-              <CfButtonServer
-                id={id}
-                preview={preview as boolean}
-                lang={lang}
-              />
-            );
+            return <CfButtonServer id={id} preview={preview} lang={lang} />;
           case "LinkText":
-            return (
-              <CfLinkTextServer
-                id={id}
-                preview={preview as boolean}
-                lang={lang}
-              />
-            );
+            return <CfLinkTextServer id={id} preview={preview} lang={lang} />;
           default:
             return null;
         }

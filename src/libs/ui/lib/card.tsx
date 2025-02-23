@@ -17,28 +17,35 @@ import MuiCardActions, {
 import MuiCardActionArea from "@mui/material/CardActionArea";
 
 interface CardProps {
+  id?: string;
   raised?: boolean;
   borderRadius?: CSSProperties["borderRadius"];
   fullWidth?: boolean;
+  fullHeight?: boolean;
   style?: CustomCssProps;
   children: React.ReactNode;
 }
 
 export const Card = ({
+  id,
   raised = false,
   borderRadius,
   fullWidth = true,
+  fullHeight = false,
   style,
   children,
   ...props
 }: CardProps) => {
   return (
     <MuiCard
+      id={id}
       raised={raised}
       sx={{
         borderRadius: borderRadius,
         display: "flex",
+        flexDirection: "column",
         width: fullWidth ? "100%" : "auto",
+        height: fullHeight ? "100%" : "auto",
         ...style,
       }}
       {...props}
@@ -61,7 +68,7 @@ const CardMedia = ({
   alt,
   image,
   imageSize = "fill",
-  height,
+  height = "260px",
   style,
   ...props
 }: CardMediaProps) => {
@@ -103,6 +110,7 @@ const CardContent = ({
         paddingX: paddingX,
         paddingY: paddingY,
         width: "100%",
+        flex: 1,
         ...style,
       }}
       {...props}

@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 
 import { cfClient, LinkFragment } from "@maverick/contentful";
+import { defaultLocale } from "@maverick/i18n";
 
 export const LinkQuery = gql`
   ${LinkFragment}
@@ -15,7 +16,7 @@ export const LinkQuery = gql`
 export const fetchLinkData = async (
   id: string,
   preview = false,
-  locale: string = "en-US"
+  locale: string = defaultLocale,
 ) => {
   try {
     const response = await cfClient.query({

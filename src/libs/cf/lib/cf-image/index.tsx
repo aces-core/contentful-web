@@ -1,11 +1,10 @@
-import type { CfFetchById, ResponsiveSpacing } from "@maverick/types";
+import type { CfFetchById, Nested, ResponsiveSpacing } from "@maverick/types";
 
 import { CfImage, CfImageCover } from "./render";
 import { fetchImageData } from "./services";
 import { ImageSkeleton } from "./skeleton";
 
-export interface CfImageServerProps extends CfFetchById {
-  nested?: boolean;
+export interface CfImageServerProps extends CfFetchById, Nested {
   responsive?: boolean;
 }
 
@@ -33,9 +32,9 @@ export const CfImageServer = async ({
     <CfImage
       internalTitle={data.internalTitle}
       image={data.image}
+      __typename={data.__typename}
       nested={nested}
       responsive={responsive}
-      __typename={data.__typename}
       id={id}
       lang={lang}
       preview={preview}
@@ -43,10 +42,9 @@ export const CfImageServer = async ({
   );
 };
 
-export interface CfImageCoverServerProps extends CfFetchById {
+export interface CfImageCoverServerProps extends CfFetchById, Nested {
   coverWidth: ResponsiveSpacing;
   coverHeight: ResponsiveSpacing;
-  nested?: boolean;
 }
 
 export const CfImageCoverServer = async ({

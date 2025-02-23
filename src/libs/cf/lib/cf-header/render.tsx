@@ -5,12 +5,13 @@ import {
   CfBaseComponent,
   CfContainerWidth,
   CfHeaderType,
+  Nested,
 } from "@maverick/types";
 import { generateId } from "@maverick/utils";
 import { componentSpacing } from "@maverick/theme";
 import { Box, Container, H1, H2, H3, H4, H5, H6 } from "@maverick/ui";
 
-export interface CfHeaderProps extends CfBaseComponent {
+export interface CfHeaderProps extends CfBaseComponent, Nested {
   headline: string;
   headerType?: CfHeaderType;
   alignment?: CfAlignment;
@@ -22,7 +23,6 @@ export interface CfHeaderProps extends CfBaseComponent {
     lg?: string | number;
     xl?: string | number;
   };
-  nested?: boolean;
 }
 
 export const CfHeader = ({

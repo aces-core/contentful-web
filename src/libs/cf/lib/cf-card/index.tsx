@@ -4,7 +4,16 @@ import { CfCard } from "./render";
 import { fetchCardData } from "./services";
 import { CardSkeleton } from "./skeleton";
 
-export const CfCardServer = async ({ id, preview, lang }: CfFetchById) => {
+interface CfCardServerProps extends CfFetchById {
+  fullHeight?: boolean;
+}
+
+export const CfCardServer = async ({
+  id,
+  preview,
+  lang,
+  fullHeight,
+}: CfCardServerProps) => {
   let data;
 
   try {
@@ -26,6 +35,7 @@ export const CfCardServer = async ({ id, preview, lang }: CfFetchById) => {
       bodyCopy={data.bodyCopy}
       image={data.image}
       imageSize={data.imageSize}
+      fullHeight={fullHeight}
       __typename={data.__typename}
       id={id}
       lang={lang}

@@ -20,6 +20,11 @@ export const DefaultPageBodyQuery = gql`
               id
             }
           }
+          ... on CodeEmbed {
+            sys {
+              id
+            }
+          }
           ... on Form {
             sys {
               id
@@ -35,12 +40,22 @@ export const DefaultPageBodyQuery = gql`
               id
             }
           }
+          ... on Listing {
+            sys {
+              id
+            }
+          }
           ... on Lockup {
             sys {
               id
             }
           }
           ... on RichTextSection {
+            sys {
+              id
+            }
+          }
+          ... on Slider {
             sys {
               id
             }

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ImageSize } from "@maverick/types";
+import { ImageSize, Spacing } from "@maverick/types";
 import { Button, Card as CardUI, H5, Text } from "@maverick/ui";
 
 import AssetsImage from "../assets/assets.png";
@@ -8,8 +8,8 @@ import AssetsImage from "../assets/assets.png";
 interface CardStoryProps {
   raised?: boolean;
   imageSize?: ImageSize;
-  marginX?: number;
-  marginY?: number;
+  paddingX?: Spacing;
+  paddingY?: Spacing;
 }
 
 const meta = {
@@ -41,10 +41,10 @@ export const Card: Story = {
   args: {
     raised: false,
     imageSize: "fill",
-    marginX: 2,
-    marginY: 2,
+    paddingX: 2,
+    paddingY: 2,
   },
-  render({ raised, imageSize, marginX, marginY }: CardStoryProps) {
+  render({ raised, imageSize, paddingX, paddingY }: CardStoryProps) {
     return (
       <CardUI raised={raised} style={{ width: 350 }}>
         <CardUI.Media
@@ -53,14 +53,14 @@ export const Card: Story = {
           image={AssetsImage.src}
           height={200}
         />
-        <CardUI.Content marginX={marginX} marginY={marginY}>
+        <CardUI.Content paddingX={paddingX} paddingY={paddingY}>
           <H5 marginBottom={2}>Card Title</H5>
           <Text>
             Sociis natoque penatibus et magnis dis parturient montes, nascetur
             ridiculus mus. Donec sed odio dui.
           </Text>
         </CardUI.Content>
-        <CardUI.Actions marginX={marginX} marginBottom={marginY}>
+        <CardUI.Actions marginX={paddingX} marginBottom={marginY}>
           <Button variant="contained" color="primary" size="small">
             Learn More
           </Button>

@@ -3,14 +3,22 @@ import { gql } from "@apollo/client";
 import { cfClient, cfPreviewClient } from "@maverick/contentful";
 import { defaultLocale } from "@maverick/i18n";
 
+export const VideoEmbedFragment = gql`
+  fragment VideoEmbed on VideoEmbed {
+    internalTitle
+    embedCode
+    sys {
+      id
+    }
+  }
+`;
+
 export const VideoEmbedQuery = gql`
+  ${VideoEmbedFragment}
+
   query ($id: String!, $preview: Boolean!) {
     videoEmbed(id: $id, preview: $preview) {
-      internalTitle
-      embedCode
-      sys {
-        id
-      }
+      ...VideoEmbed
     }
   }
 `;

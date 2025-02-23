@@ -4,8 +4,17 @@ import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import { CfBaseComponent, CfRichText } from "@maverick/types";
 import { generateId } from "@maverick/utils";
-import { breakpoints } from "@maverick/theme";
-import { Box, Col, Container, Row, Slider, SliderBtn, H2 } from "@maverick/ui";
+import { breakpoints, componentSpacing } from "@maverick/theme";
+import {
+  Box,
+  Col,
+  Container,
+  Row,
+  Slider,
+  SliderBtn,
+  H2,
+  FlexBox,
+} from "@maverick/ui";
 
 import { CfCard, CfCardProps } from "../cf-card/render";
 import { CfRichTextRender } from "../cf-rich-text-render";
@@ -30,10 +39,14 @@ export const CfCardSlider = ({
   const sliderId = `${generateId(internalTitle)}-cardSlider`;
 
   return (
-    <Box id={generateId(internalTitle)} data-component={__typename}>
+    <Box
+      id={generateId(internalTitle)}
+      data-component={__typename}
+      marginY={{ xs: componentSpacing.md, md: componentSpacing.xl }}
+    >
       <Container>
         <Row spacing={{ xs: "2.5rem", md: "3rem" }}>
-          <Col size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 3 }}>
+          <Col size={{ xs: 12, md: 4 }}>
             <Box>
               {headline && (
                 <H2
@@ -67,12 +80,12 @@ export const CfCardSlider = ({
                 </Box>
               )}
             </Box>
-            <Box style={{ display: "flex", gap: "0.75rem" }}>
+            <FlexBox gap={1}>
               <SliderBtn id={sliderId} direction="prev" />
               <SliderBtn id={sliderId} direction="next" />
-            </Box>
+            </FlexBox>
           </Col>
-          <Col size={{ xs: 12, sm: 6, md: 8, lg: 9 }}>
+          <Col size={{ xs: 12, md: 8 }}>
             <Box
               {...ContentfulLivePreview.getProps({
                 entryId: id,
@@ -82,7 +95,7 @@ export const CfCardSlider = ({
             >
               <Slider
                 id={sliderId}
-                slidesPerView={{ xs: 1, sm: 1, md: 1, lg: 1, xl: 1 }}
+                slidesPerView={{ xs: 1.2, sm: 1.5, md: 2, lg: 2, xl: 2 }}
                 loop
                 offsetSlideBoxShadow
               >
@@ -95,6 +108,7 @@ export const CfCardSlider = ({
                     bodyCopy={card.bodyCopy}
                     image={card.image}
                     imageSize={card.imageSize}
+                    fullHeight={true}
                     __typename={card.__typename}
                     id={id}
                     lang={lang}

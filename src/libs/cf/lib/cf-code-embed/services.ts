@@ -1,14 +1,13 @@
 import { gql } from "@apollo/client";
-import { cfClient, cfPreviewClient } from "@maverick/contentful";
 
-export const StyledListQuery = gql`
-  query ($id: String!, $preview: Boolean!, $locale: String) {
-    styledList(id: $id, preview: $preview, locale: $locale) {
+import { cfClient, cfPreviewClient } from "@maverick/contentful";
+import { defaultLocale } from "@maverick/i18n";
+
+export const CodeEmbedQuery = gql`
+  query ($id: String!, $preview: Boolean!) {
+    codeEmbed(id: $id, preview: $preview) {
       internalTitle
-      bulletIcon
-      list {
-        json
-      }
+      embedCode
       sys {
         id
       }
@@ -16,19 +15,19 @@ export const StyledListQuery = gql`
   }
 `;
 
-export const fetchStyledListData = async (
+export const fetchCodeEmbedData = async (
   id: string,
   preview = false,
-  locale: string = "en-US",
+  locale: string = defaultLocale,
 ) => {
   const client = preview ? cfPreviewClient : cfClient;
   try {
     const response = await client.query({
-      query: StyledListQuery,
+      query: CodeEmbedQuery,
       variables: { id, preview, locale },
     });
 
-    return response.data.styledList;
+    return response.data.codeEmbed;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;

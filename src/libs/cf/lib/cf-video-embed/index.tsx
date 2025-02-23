@@ -1,12 +1,10 @@
-import type { CfFetchById } from "@maverick/types";
+import type { CfFetchById, Nested } from "@maverick/types";
 
 import { CfVideoEmbed } from "./render";
 import { fetchVideoEmbedData } from "./services";
 import { VideoEmbedSkeleton } from "./skeleton";
 
-export interface CfVideoEmbedServerProps extends CfFetchById {
-  nested?: boolean;
-}
+export interface CfVideoEmbedServerProps extends CfFetchById, Nested {}
 
 export const CfVideoEmbedServer = async ({
   id,

@@ -5,13 +5,15 @@ import MuiContainer, {
 interface ContainerProps
   extends Pick<MuiContainerProps, "maxWidth" | "disableGutters" | "children"> {
   noPadding?: boolean;
+  nested?: boolean;
   style?: object;
 }
 
 export const Container = ({
-  noPadding,
-  maxWidth = "xl",
-  disableGutters,
+  nested = false,
+  disableGutters = nested,
+  noPadding = nested,
+  maxWidth = nested ? false : "xl",
   style,
   children,
   ...props
