@@ -62,6 +62,11 @@ export const CfLockup = ({
       id={generateId(internalTitle)}
       data-component={__typename}
       marginY={{ xs: componentSpacing.md, md: componentSpacing.xl }}
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: "internalTitle",
+        locale: lang,
+      })}
     >
       <Container nested={nested}>
         <Row

@@ -175,7 +175,7 @@ Object.entries(files).forEach(([fileName, content]) => {
 });
 
 // Update index.ts exports
-const exportLines = `\nexport * from "./lib/cf-${componentName}";\nexport * from "./lib/cf-${componentName}/render";\n`;
+const exportLines = `\nexport * from "./lib/cf-${componentName}";\nexport * from "./lib/cf-${componentName}/render";\nexport * from "./lib/cf-${componentName}/services";\nexport * from "./lib/cf-${componentName}/skeleton";\n`;
 
 // Ensure index.ts exists
 if (!existsSync(indexFilePath)) {

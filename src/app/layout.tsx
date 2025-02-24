@@ -56,13 +56,13 @@ export default async function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <HeaderServer
-              id={appId}
+              appId={appId}
               sticky={true}
               preview={isEnabled}
               lang={lang}
             />
             <Box component="main">{children}</Box>
-            <FooterServer id={appId} preview={isEnabled} lang={lang} />
+            <FooterServer appId={appId} preview={isEnabled} lang={lang} />
             {isEnabled && <DraftModeBar />}
           </ThemeProvider>
         </AppRouterCacheProvider>

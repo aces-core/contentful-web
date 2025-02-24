@@ -39,6 +39,7 @@ export default async function Homepage({
   const pageData = await fetchSpecialtyPageData(
     SpecialtyPages.Homepage,
     isEnabled,
+    lang,
   );
   const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
   const pageHeroResponse = pageData.pageHeroResponse.data.page.pageHero;

@@ -42,7 +42,7 @@ export default async function Page({
   const { isEnabled } = await draftMode();
   const { lang = defaultLocale, slug } = resolvedParams;
 
-  const pageData = await fetchPageData(sliceSlug(slug), isEnabled);
+  const pageData = await fetchPageData(sliceSlug(slug), isEnabled, lang);
   const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
   const pageHeroResponse = pageData.pageHeroResponse.data.page.pageHero;
   const pageBodyResponse =

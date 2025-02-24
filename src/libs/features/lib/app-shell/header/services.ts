@@ -7,22 +7,25 @@ import { LogoFragment } from "../logo/services";
 export const HeaderQuery = gql`
   ${LogoFragment}
 
-  query ($id: String!, $preview: Boolean!, $lang: String!) {
+  query ($appId: String!, $preview: Boolean!, $lang: String!) {
     appsCollection(
-      where: { appId: $id }
+      where: { appId: $appId }
       limit: 1
       preview: $preview
       locale: $lang
     ) {
       items {
         ...Logo
+        sys {
+          id
+        }
       }
     }
   }
 `;
 
 export const fetchHeaderData = async (
-  id: string,
+  appId: string,
   preview: boolean,
   lang: string,
 ) => {
@@ -31,7 +34,7 @@ export const fetchHeaderData = async (
   try {
     const response = await client.query({
       query: HeaderQuery,
-      variables: { id, preview, lang },
+      variables: { appId, preview, lang },
     });
 
     return response.data.appsCollection.items[0];

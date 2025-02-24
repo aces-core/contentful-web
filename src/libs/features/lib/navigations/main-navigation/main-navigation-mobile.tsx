@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useState } from "react";
+import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import { CfBaseComponent } from "@maverick/types";
 import {
@@ -10,6 +11,7 @@ import {
   ListItemButton,
   Icon,
   Collapse,
+  Box,
 } from "@maverick/ui";
 import { CfButton, CfButtonProps } from "@maverick/cf";
 
@@ -22,12 +24,14 @@ import {
   MobileMenuItem,
 } from "../menus";
 
-interface MainNavigationMobileProps extends Pick<CfBaseComponent, "lang"> {
+interface MainNavigationMobileProps
+  extends Pick<CfBaseComponent, "id" | "lang"> {
   data: (CfMenuItemType | CfDropDownMenuType | CfButtonProps)[];
 }
 
 export const MainNavigationMobile = ({
   data,
+  id,
   lang,
 }: MainNavigationMobileProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -35,7 +39,13 @@ export const MainNavigationMobile = ({
   const paddingStyle = "1.6rem 1.6rem";
 
   return (
-    <>
+    <Box
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: "mainNavigation",
+        locale: lang,
+      })}
+    >
       {data.map((item, index) => {
         const typename = item.__typename;
 
@@ -112,6 +122,6 @@ export const MainNavigationMobile = ({
             return null;
         }
       })}
-    </>
+    </Box>
   );
 };

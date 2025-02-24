@@ -68,6 +68,11 @@ export type CfColorPicker = {
   value: string;
 };
 
+export enum CfColorPickerPalette {
+  Primary = "Primary",
+  Secondary = "Secondary",
+}
+
 // Reusable CF Types
 
 export type CfRichText = {

@@ -77,9 +77,14 @@ interface ListProps extends Pick<MuiListProps, "component" | "children"> {
   style?: CustomCssProps;
 }
 
-export const List = ({ component = "ul", style, children }: ListProps) => {
+export const List = ({
+  component = "ul",
+  style,
+  children,
+  ...rest
+}: ListProps) => {
   return (
-    <MuiList component={component} sx={style}>
+    <MuiList component={component} sx={style} {...rest}>
       {children}
     </MuiList>
   );

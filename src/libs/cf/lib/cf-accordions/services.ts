@@ -18,6 +18,9 @@ export const AccordionsQuery = gql`
           bodyCopy {
             json
           }
+          sys {
+            id
+          }
         }
       }
       sys {

@@ -87,22 +87,25 @@ export const CfForm = ({
                   {subhead}
                 </Text>
               )}
-              {"hsPortalId" in form ? (
-                <HubSpotForm
-                  hsPortalId={form.hsPortalId}
-                  hsFormId={form.hsFormId}
-                  {...ContentfulLivePreview.getProps({
-                    entryId: id,
-                    fieldId: "form",
-                    locale: lang,
-                  })}
-                />
-              ) : "pardotFormUrl" in form ? (
-                <PardotForm
-                  pardotFormUrl={form.pardotFormUrl}
-                  height={{ xs: "1280px", md: "1600px" }}
-                />
-              ) : null}
+              <Box
+                {...ContentfulLivePreview.getProps({
+                  entryId: id,
+                  fieldId: "form",
+                  locale: lang,
+                })}
+              >
+                {"hsPortalId" in form ? (
+                  <HubSpotForm
+                    hsPortalId={form.hsPortalId}
+                    hsFormId={form.hsFormId}
+                  />
+                ) : "pardotFormUrl" in form ? (
+                  <PardotForm
+                    pardotFormUrl={form.pardotFormUrl}
+                    height={{ xs: "1280px", md: "1600px" }}
+                  />
+                ) : null}
+              </Box>
             </Box>
           </FlexBox>
         </Card>

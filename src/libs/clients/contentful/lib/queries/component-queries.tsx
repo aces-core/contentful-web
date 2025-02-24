@@ -1,5 +1,23 @@
 import { gql } from "@apollo/client";
 
+export const EntryQuery = gql`
+  query ($id: String!, $preview: Boolean!, $locale: String!) {
+    entryCollection(
+      where: { sys: { id: $id } }
+      limit: 1
+      preview: $preview
+      locale: $locale
+    ) {
+      items {
+        sys {
+          id
+        }
+        __typename
+      }
+    }
+  }
+`;
+
 export const PageLinkFragment = gql`
   fragment PageLink on Page {
     slug

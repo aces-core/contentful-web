@@ -4,11 +4,11 @@ import { gql } from "@apollo/client";
 
 import { cfClient, cfPreviewClient } from "@maverick/contentful";
 import { defaultLocale } from "@maverick/i18n";
-import { specialtyPageRedirect } from "@maverick/utils";
+import { RouteDirectory } from "@maverick/types";
 
-const PageQuery = gql`
+const ArticleQuery = gql`
   query ($slug: String!, $preview: Boolean!, $locale: String!) {
-    pageCollection(
+    articleCollection(
       where: { slug: $slug }
       limit: 1
       preview: $preview
@@ -16,10 +16,6 @@ const PageQuery = gql`
     ) {
       items {
         slug
-        specialtyPage
-        parentPage {
-          slug
-        }
         sys {
           id
         }
@@ -28,7 +24,7 @@ const PageQuery = gql`
   }
 `;
 
-const fetchPageData = async (
+const fetchArticleData = async (
   slug: string,
   preview = true,
   locale: string = defaultLocale,
@@ -36,11 +32,11 @@ const fetchPageData = async (
   const client = preview ? cfPreviewClient : cfClient;
   try {
     const pageResponse = await client.query({
-      query: PageQuery,
+      query: ArticleQuery,
       variables: { slug, preview, locale },
     });
 
-    return pageResponse.data.pageCollection.items;
+    return pageResponse.data.articleCollection.items;
   } catch (error) {
     console.error("Error fetching page data:", error);
     throw error;
@@ -63,7 +59,7 @@ export async function GET(request: Request) {
     return new Response("Invalid locale", { status: 401 });
   }
 
-  const pageData = await fetchPageData(slug, true, locale);
+  const pageData = await fetchArticleData(slug, true, locale);
 
   if (!pageData[0]) {
     return new Response("Invalid slug", { status: 401 });
@@ -82,14 +78,5 @@ export async function GET(request: Request) {
     sameSite: "none",
   });
 
-  const parentPage = pageData.parentPage;
-  const specialtyPage = pageData.specialtyPage;
-
-  specialtyPageRedirect(specialtyPage);
-
-  if (parentPage) {
-    redirect(`/${parentPage.slug}/${slug}`);
-  }
-
-  redirect(`/${slug}`);
+  redirect(`${RouteDirectory.Articles}/${slug}`);
 }

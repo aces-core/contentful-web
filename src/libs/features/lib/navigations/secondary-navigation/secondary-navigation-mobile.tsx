@@ -1,5 +1,7 @@
 "use client";
 
+import { ContentfulLivePreview } from "@contentful/live-preview";
+
 import { CfBaseComponent } from "@maverick/types";
 import { List } from "@maverick/ui";
 import { CfButton, CfButtonProps } from "@maverick/cf";
@@ -11,18 +13,26 @@ import {
   MobileMenuItem,
 } from "../menus";
 
-interface SecondaryNavigationMobileProps extends Pick<CfBaseComponent, "lang"> {
+interface SecondaryNavigationMobileProps
+  extends Pick<CfBaseComponent, "id" | "lang"> {
   data: (CfMenuItemType | CfButtonProps)[];
 }
 
 export const SecondaryNavigationMobile = ({
   data,
+  id,
   lang,
 }: SecondaryNavigationMobileProps) => {
   const paddingStyle = "1.6rem 1.6rem";
 
   return (
-    <List>
+    <List
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: "secondaryNavigation",
+        locale: lang,
+      })}
+    >
       {data.map((item, index) => {
         const typename = item.__typename;
 

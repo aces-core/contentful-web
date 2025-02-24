@@ -1,4 +1,6 @@
-import { RouteDirectory } from "@maverick/types";
+import { ContentfulLivePreview } from "@contentful/live-preview";
+
+import { CfBaseComponent, RouteDirectory } from "@maverick/types";
 import { currentYear } from "@maverick/utils";
 import { Col, Container, FlexBox, Link, Row, Text } from "@maverick/ui";
 
@@ -6,7 +8,8 @@ import { FooterNavigation, PrivacyNavigation } from "../../navigations";
 import { Logo, LogosType } from "../logo/render";
 import { Socials } from "../socials/render";
 
-interface FooterProps {
+interface FooterProps
+  extends Omit<CfBaseComponent, "internalTitle" | "__typename"> {
   logos: LogosType;
   navigations: {
     footerNavigation: [];
@@ -20,8 +23,6 @@ interface FooterProps {
     linkedin?: string;
     youtube?: string;
   };
-  preview: boolean;
-  lang: string;
 }
 
 export const Footer = ({
@@ -29,6 +30,7 @@ export const Footer = ({
   navigations,
   copyright,
   socials,
+  id,
   preview,
   lang,
 }: FooterProps) => {
@@ -60,7 +62,11 @@ export const Footer = ({
             </FlexBox>
           </Col>
           <Col size={{ xs: 12, md: 8 }}>
-            <FooterNavigation data={navigations.footerNavigation} lang={lang} />
+            <FooterNavigation
+              data={navigations.footerNavigation}
+              id={id}
+              lang={lang}
+            />
           </Col>
         </Row>
         <Row>
@@ -68,6 +74,11 @@ export const Footer = ({
             <FlexBox
               justifyContent={{ xs: "center", md: "flex-start" }}
               marginTop={{ xs: 8, md: 0 }}
+              {...ContentfulLivePreview.getProps({
+                entryId: id,
+                fieldId: "facebook",
+                locale: lang,
+              })}
             >
               <Socials
                 facebook={socials?.facebook}
@@ -86,11 +97,17 @@ export const Footer = ({
                 textAlign: { xs: "center", md: "left" },
                 marginTop: { xs: 4, md: 0 },
               }}
+              {...ContentfulLivePreview.getProps({
+                entryId: id,
+                fieldId: "copyrightText",
+                locale: lang,
+              })}
             >{`© ${currentYear()} ${copyright}`}</Text.ExtraSmall>
           </Col>
           <Col size={{ xs: 12, md: 8 }}>
             <PrivacyNavigation
               data={navigations.privacyNavigation}
+              id={id}
               lang={lang}
             />
           </Col>

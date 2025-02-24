@@ -41,6 +41,11 @@ export const CfListing = ({
       id={generateId(internalTitle)}
       data-component={__typename}
       marginY={{ xs: componentSpacing.xs, md: componentSpacing.md }}
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: "listItems",
+        locale: lang,
+      })}
     >
       <Container>
         <Row spacing={6}>

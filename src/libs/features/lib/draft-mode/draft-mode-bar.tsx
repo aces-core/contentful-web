@@ -1,5 +1,5 @@
 import { CfLinkTypes } from "@maverick/types";
-import { Box, Container, Menu, MenuItem, Text } from "@maverick/ui";
+import { Box, Button, Container, Text } from "@maverick/ui";
 import { CfLink } from "@maverick/cf";
 
 export const DraftModeBar = () => {
@@ -20,8 +20,8 @@ export const DraftModeBar = () => {
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.25)",
             borderRadius: "0.25rem",
             display: "flex",
-            paddingY: 1,
-            paddingX: 5,
+            paddingY: 3,
+            paddingLeft: 5,
           }}
         >
           <Text.Small
@@ -29,23 +29,20 @@ export const DraftModeBar = () => {
               borderRight: "1px solid",
               borderColor: "grey.400",
               paddingRight: 2,
-              marginRight: 2,
             }}
           >
             <strong>Draft Mode</strong>
           </Text.Small>
-          <Menu>
-            <MenuItem>
-              <CfLink
-                linkType={CfLinkTypes.CustomLink}
-                target="_self"
-                pageLink={undefined}
-                customLink="/api/disable-draft"
-              >
-                <Text.Small>Exit Draft Mode</Text.Small>
-              </CfLink>
-            </MenuItem>
-          </Menu>
+          <CfLink
+            linkType={CfLinkTypes.CustomLink}
+            target="_self"
+            pageLink={undefined}
+            customLink="/api/disable-draft"
+          >
+            <Button>
+              <Text.Small>Exit Draft Mode</Text.Small>
+            </Button>
+          </CfLink>
         </Box>
       </Container>
     </Box>

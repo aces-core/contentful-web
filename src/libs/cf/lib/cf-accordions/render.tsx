@@ -22,7 +22,8 @@ export interface CfAccordionsProps extends CfBaseComponent {
     items: {
       internalTitle: string;
       headline: string;
-      bodyCopy: any;
+      bodyCopy: CfRichText;
+      sys: { id: string };
     }[];
   };
 }
@@ -45,12 +46,28 @@ export const CfAccordions = ({
     >
       <Container>
         {headline && (
-          <H2 marginBottom={2} style={{ maxWidth: 1000 }}>
+          <H2
+            marginBottom={2}
+            style={{ maxWidth: 1000 }}
+            {...ContentfulLivePreview.getProps({
+              entryId: id,
+              fieldId: "headline",
+              locale: lang,
+            })}
+          >
             {headline}
           </H2>
         )}
         {bodyCopy && (
-          <Box marginBottom={2} style={{ maxWidth: 1000 }}>
+          <Box
+            marginBottom={2}
+            style={{ maxWidth: 1000 }}
+            {...ContentfulLivePreview.getProps({
+              entryId: id,
+              fieldId: "bodyCopy",
+              locale: lang,
+            })}
+          >
             <CfRichTextRender
               richTextDocument={bodyCopy.json}
               lang={lang}
@@ -58,9 +75,15 @@ export const CfAccordions = ({
             />
           </Box>
         )}
-        <Accordion>
-          {accordionsCollection.items.map((item, index) => (
-            <AccordionItem key={index}>
+        <Accordion
+          {...ContentfulLivePreview.getProps({
+            entryId: id,
+            fieldId: "accordions",
+            locale: lang,
+          })}
+        >
+          {accordionsCollection.items.map((item) => (
+            <AccordionItem key={generateId(item.internalTitle)}>
               <AccordionItemTrigger
                 expandIconPosition="end"
                 disableGutters={true}

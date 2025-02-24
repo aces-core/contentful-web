@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { RouteDirectory } from "@maverick/types";
+import { CfBaseComponent, RouteDirectory } from "@maverick/types";
 import { useUIState } from "@maverick/store";
 import { useMediaQuery } from "@maverick/hooks";
 import { Box, Col, Container, FlexBox, Row, Link } from "@maverick/ui";
@@ -22,21 +23,21 @@ import {
   MobileNavigationsDrawer,
 } from "../drawers";
 
-interface HeaderProps {
+interface HeaderProps
+  extends Omit<CfBaseComponent, "internalTitle" | "__typename"> {
   logos: LogosType;
   navigations: {
     mainNavigation: [];
     secondaryNavigation: [];
   };
   sticky?: boolean;
-  preview: boolean;
-  lang: string;
 }
 
 export const Header = ({
   logos,
   navigations,
   sticky = true,
+  id,
   preview,
   lang,
 }: HeaderProps) => {
@@ -66,6 +67,7 @@ export const Header = ({
       {isLargerThanMd && (
         <SecondaryNavigation
           data={navigations.secondaryNavigation}
+          id={id}
           lang={lang}
         />
       )}
@@ -141,6 +143,7 @@ export const Header = ({
                 >
                   <MainNavigation
                     data={navigations.mainNavigation}
+                    id={id}
                     lang={lang}
                   />
                   <Box marginLeft={1}>
@@ -157,9 +160,14 @@ export const Header = ({
       </Box>
       {isSmallerThanMd && (
         <MobileNavigationsDrawer>
-          <MainNavigationMobile data={navigations.mainNavigation} lang={lang} />
+          <MainNavigationMobile
+            data={navigations.mainNavigation}
+            id={id}
+            lang={lang}
+          />
           <SecondaryNavigationMobile
             data={navigations.secondaryNavigation}
+            id={id}
             lang={lang}
           />
         </MobileNavigationsDrawer>

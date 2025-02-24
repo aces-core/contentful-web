@@ -9,9 +9,9 @@ export const FooterQuery = gql`
   ${SocialsFragment}
   ${LogoFragment}
 
-  query ($id: String!, $preview: Boolean!, $lang: String!) {
+  query ($appId: String!, $preview: Boolean!, $lang: String!) {
     appsCollection(
-      where: { appId: $id }
+      where: { appId: $appId }
       limit: 1
       preview: $preview
       locale: $lang
@@ -20,13 +20,16 @@ export const FooterQuery = gql`
         ...Logo
         copyrightText
         ...Socials
+        sys {
+          id
+        }
       }
     }
   }
 `;
 
 export const fetchFooterData = async (
-  id: string,
+  appId: string,
   preview: boolean,
   lang: string,
 ) => {
@@ -35,7 +38,7 @@ export const fetchFooterData = async (
   try {
     const response = await client.query({
       query: FooterQuery,
-      variables: { id, preview, lang },
+      variables: { appId, preview, lang },
     });
 
     return response.data.appsCollection.items[0];

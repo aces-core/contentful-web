@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
+import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import { defaultLocale, getLocale } from "@maverick/i18n";
 import { PageProps } from "@maverick/types";
@@ -61,14 +62,45 @@ export default async function ArticlePage({
   return (
     <Container>
       <Box marginTop={20} maxWidth={1000}>
-        <H1 marginBottom={8}>{pageResponse.title}</H1>
+        <H1
+          marginBottom={8}
+          {...ContentfulLivePreview.getProps({
+            entryId: pageResponse.sys.id,
+            fieldId: "title",
+            locale: lang,
+          })}
+        >
+          {pageResponse.title}
+        </H1>
         <FlexBox marginBottom={5}>
-          <Text>
+          <Text
+            {...ContentfulLivePreview.getProps({
+              entryId: pageResponse.sys.id,
+              fieldId: "author",
+              locale: lang,
+            })}
+          >
             {`${t.by} `} <b>{pageResponse.author.name}</b>
           </Text>
-          <Text> ・ {formatDate(pageResponse.publishDate, lang)}</Text>
+          <Text
+            {...ContentfulLivePreview.getProps({
+              entryId: pageResponse.sys.id,
+              fieldId: "publishDate",
+              locale: lang,
+            })}
+          >
+            {" "}
+            ・ {formatDate(pageResponse.publishDate, lang)}
+          </Text>
         </FlexBox>
-        <FlexBox flexWrap="wrap">
+        <FlexBox
+          flexWrap="wrap"
+          {...ContentfulLivePreview.getProps({
+            entryId: pageResponse.sys.id,
+            fieldId: "categories",
+            locale: lang,
+          })}
+        >
           {pageResponse.categoriesCollection.items.map(
             (category: { title: string; slug: string }) => (
               <Chip
@@ -99,6 +131,11 @@ export default async function ArticlePage({
               richTextDocument={pageResponse.bodyCopy.json}
               preview={isEnabled}
               lang={lang}
+              {...ContentfulLivePreview.getProps({
+                entryId: pageResponse.sys.id,
+                fieldId: "bodyCopy",
+                locale: lang,
+              })}
             />
             <Divider marginY={16} marginX={{ xs: 2, md: 18 }} />
             <FlexBox flexDirection="column" alignItems="center">

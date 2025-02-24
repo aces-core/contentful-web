@@ -7,12 +7,13 @@ import { fetchHeaderData } from "./services";
 import { Header } from "./render";
 import { HeaderSkeleton } from "./skeleton";
 
-export interface HeaderServerProps extends CfFetchById {
+export interface HeaderServerProps extends Omit<CfFetchById, "id"> {
+  appId: string;
   sticky?: boolean;
 }
 
 export const HeaderServer = async ({
-  id,
+  appId,
   preview = false,
   lang = defaultLocale,
   sticky = true,
@@ -21,8 +22,8 @@ export const HeaderServer = async ({
 
   try {
     const [headerData, navigationsData] = await Promise.all([
-      fetchHeaderData(id, preview, lang),
-      fetchHeaderNavigationsData(id, preview, lang),
+      fetchHeaderData(appId, preview, lang),
+      fetchHeaderNavigationsData(appId, preview, lang),
     ]);
 
     data = {
@@ -31,6 +32,9 @@ export const HeaderServer = async ({
         knockoutLogo: headerData.knockoutLogo,
       },
       navigations: navigationsData,
+      sys: {
+        id: headerData.sys.id,
+      },
     };
   } catch (error) {
     console.error("Failed to fetch combined header data:", error);
@@ -46,6 +50,7 @@ export const HeaderServer = async ({
       logos={data.logos}
       navigations={data.navigations}
       sticky={sticky}
+      id={data.sys.id}
       preview={preview}
       lang={lang}
     />

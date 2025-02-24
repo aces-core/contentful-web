@@ -2,7 +2,7 @@ import type { CfFetchById } from "@maverick/types";
 
 import { CfTextLink } from "./render";
 import { fetchLinkTextData } from "./services";
-import { LinkSkeleton } from "./skeleton";
+import { LinkTextSkeleton } from "./skeleton";
 
 export const CfLinkTextServer = async ({ id, preview, lang }: CfFetchById) => {
   let data;
@@ -11,11 +11,11 @@ export const CfLinkTextServer = async ({ id, preview, lang }: CfFetchById) => {
     data = await fetchLinkTextData(id, preview, lang);
   } catch (error) {
     console.error("Failed to fetch data:", error);
-    return <LinkSkeleton />;
+    return <LinkTextSkeleton />;
   }
 
   if (!data) {
-    return <LinkSkeleton />;
+    return <LinkTextSkeleton />;
   }
 
   return (

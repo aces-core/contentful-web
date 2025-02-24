@@ -2,12 +2,11 @@
 
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfImageProps, CfRichText } from "@maverick/types";
+import { CfBaseComponent, CfImageProps } from "@maverick/types";
 import { generateId } from "@maverick/utils";
-import { breakpoints, componentSpacing } from "@maverick/theme";
-import { Box, Container, Slider, SliderBtn, H2, FlexBox } from "@maverick/ui";
+import { componentSpacing } from "@maverick/theme";
+import { Box, Container, Slider, SliderBtn, FlexBox } from "@maverick/ui";
 
-import { CfRichTextRender } from "../cf-rich-text-render";
 import { CfImage } from "../cf-image/render";
 import {
   CfRichTextSection,
@@ -38,6 +37,7 @@ export interface CfSliderProps extends CfBaseComponent {
 export const CfSlider = ({
   internalTitle,
   slides,
+  id,
   preview,
   lang,
   __typename,
@@ -49,6 +49,11 @@ export const CfSlider = ({
       id={generateId(internalTitle)}
       data-component={__typename}
       marginY={{ xs: componentSpacing.md, md: componentSpacing.xl }}
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: "slides",
+        locale: lang,
+      })}
     >
       <Container>
         <FlexBox justifyContent="flex-end" gap={1}>

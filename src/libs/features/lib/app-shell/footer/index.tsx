@@ -7,17 +7,21 @@ import { fetchFooterData } from "./services";
 import { Footer } from "./render";
 import { FooterSkeleton } from "./skeleton";
 
+export interface FooterServerProps extends Omit<CfFetchById, "id"> {
+  appId: string;
+}
+
 export const FooterServer = async ({
-  id,
+  appId,
   preview = false,
   lang = defaultLocale,
-}: CfFetchById) => {
+}: FooterServerProps) => {
   let data;
 
   try {
     const [footerData, navigationsData] = await Promise.all([
-      fetchFooterData(id, preview, lang),
-      fetchFooterNavigationsData(id, preview, lang),
+      fetchFooterData(appId, preview, lang),
+      fetchFooterNavigationsData(appId, preview, lang),
     ]);
 
     data = {
@@ -33,6 +37,9 @@ export const FooterServer = async ({
         instagram: footerData.instagram,
         linkedin: footerData.linkedin,
         youtube: footerData.youtube,
+      },
+      sys: {
+        id: footerData.sys.id,
       },
     };
   } catch (error) {
@@ -50,6 +57,7 @@ export const FooterServer = async ({
       navigations={data.navigations}
       copyright={data.copyright}
       socials={data.socials}
+      id={data.sys.id}
       preview={preview}
       lang={lang}
     />

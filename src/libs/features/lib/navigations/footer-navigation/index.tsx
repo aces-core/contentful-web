@@ -1,18 +1,25 @@
+import { ContentfulLivePreview } from "@contentful/live-preview";
+
 import { CfBaseComponent } from "@maverick/types";
 import { Box, FlexBox } from "@maverick/ui";
 
 import { CfMenuItemType, isCfMenuItem, MenuLink } from "../menus";
 
-interface FooterNavigationProps extends Pick<CfBaseComponent, "lang"> {
+interface FooterNavigationProps extends Pick<CfBaseComponent, "id" | "lang"> {
   data: CfMenuItemType[];
 }
 
-export const FooterNavigation = ({ data, lang }: FooterNavigationProps) => {
+export const FooterNavigation = ({ data, id, lang }: FooterNavigationProps) => {
   return (
     <FlexBox
       alignItems="center"
       justifyContent={{ xs: "center", md: "flex-end" }}
       flexDirection={{ xs: "column", md: "row" }}
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: "footerNavigation",
+        locale: lang,
+      })}
     >
       {data.map((item, index) => {
         const typename = item.__typename;

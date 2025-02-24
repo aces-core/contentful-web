@@ -1,3 +1,5 @@
+import { ContentfulLivePreview } from "@contentful/live-preview";
+
 import { CfBaseComponent } from "@maverick/types";
 import { Container, FlexBox, MenuItem } from "@maverick/ui";
 import { CfButton, CfButtonProps } from "@maverick/cf";
@@ -5,7 +7,8 @@ import { CfButton, CfButtonProps } from "@maverick/cf";
 import { CfMenuItemType, isCfButton, isCfMenuItem, MenuLink } from "../menus";
 import { palette, typography } from "@maverick/theme";
 
-interface SecondaryNavigationProps extends Pick<CfBaseComponent, "lang"> {
+interface SecondaryNavigationProps
+  extends Pick<CfBaseComponent, "id" | "lang"> {
   data: (CfMenuItemType | CfButtonProps)[];
   align?: "flex-start" | "center" | "flex-end";
 }
@@ -13,6 +16,7 @@ interface SecondaryNavigationProps extends Pick<CfBaseComponent, "lang"> {
 export const SecondaryNavigation = ({
   data,
   align = "flex-end",
+  id,
   lang,
 }: SecondaryNavigationProps) => {
   return (
@@ -25,7 +29,14 @@ export const SecondaryNavigation = ({
       }}
     >
       <Container>
-        <FlexBox justifyContent={align}>
+        <FlexBox
+          justifyContent={align}
+          {...ContentfulLivePreview.getProps({
+            entryId: id,
+            fieldId: "secondaryNavigation",
+            locale: lang,
+          })}
+        >
           {data.map((item, index) => {
             if (!item.__typename) return null;
 

@@ -1,3 +1,5 @@
+import { ContentfulLivePreview } from "@contentful/live-preview";
+
 import { CfBaseComponent } from "@maverick/types";
 import { FlexBox, MenuItem } from "@maverick/ui";
 import { CfButton, CfButtonProps } from "@maverick/cf";
@@ -12,13 +14,20 @@ import {
   MenuLink,
 } from "../menus";
 
-interface MainNavigationProps extends Pick<CfBaseComponent, "lang"> {
+interface MainNavigationProps extends Pick<CfBaseComponent, "id" | "lang"> {
   data: (CfMenuItemType | CfDropDownMenuType | CfButtonProps)[];
 }
 
-export const MainNavigation = ({ data, lang }: MainNavigationProps) => {
+export const MainNavigation = ({ data, id, lang }: MainNavigationProps) => {
   return (
-    <FlexBox alignItems="center">
+    <FlexBox
+      alignItems="center"
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: "mainNavigation",
+        locale: lang,
+      })}
+    >
       {data.map((item, index) => {
         if (!item.__typename) return null;
 

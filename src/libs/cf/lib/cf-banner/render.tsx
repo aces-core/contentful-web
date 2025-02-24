@@ -1,6 +1,10 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfColorPicker } from "@maverick/types";
+import {
+  CfBaseComponent,
+  CfColorPicker,
+  CfColorPickerPalette,
+} from "@maverick/types";
 import { isLight, generateId } from "@maverick/utils";
 import { componentSpacing, palette } from "@maverick/theme";
 import { Box, Container, H2, Text } from "@maverick/ui";
@@ -44,11 +48,16 @@ export const CfBanner = ({
             justifyContent: "space-between",
             gap: "1.5rem",
             background:
-              backgroundColor.name === "Orange"
+              backgroundColor.name === CfColorPickerPalette.Secondary
                 ? palette.gradient.secondary
                 : palette.gradient.primary,
             padding: { xs: "1.5rem", md: "3rem" },
           }}
+          {...ContentfulLivePreview.getProps({
+            entryId: id,
+            fieldId: "backgroundColor",
+            locale: lang,
+          })}
         >
           {(headline || subhead) && (
             <Box style={{ maxWidth: "524px" }}>
