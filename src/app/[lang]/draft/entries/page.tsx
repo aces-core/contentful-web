@@ -11,7 +11,7 @@ export default async function DraftEntries({
   searchParams,
 }: {
   params: Promise<CatchAllPageProps>;
-  searchParams: { id: string };
+  searchParams: Promise<{ id: string }>;
 }) {
   const resolvedParams = await Promise.resolve(params);
   const resolvedSearchParams = await Promise.resolve(searchParams);
