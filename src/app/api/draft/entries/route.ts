@@ -12,6 +12,10 @@ export async function GET(request: Request) {
   const locale = searchParams.get("locale");
 
   if (secret !== process.env.NEXT_PUBLIC_CF_PREVIEW_SECRET || !id) {
+    return new Response(
+      `${secret}, ${process.env.NEXT_PUBLIC_CF_PREVIEW_SECRET}, ${id}`,
+      { status: 401 },
+    );
     return new Response("Invalid token", { status: 401 });
   }
 
