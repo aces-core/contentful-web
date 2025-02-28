@@ -31,7 +31,6 @@ const isCfRichTextSection = (media: any): media is CfRichTextSectionProps => {
 
 export interface CfSliderProps extends CfBaseComponent {
   slides: (CfLockupProps | CfImageProps | CfRichTextSectionProps)[];
-  preview: boolean;
 }
 
 export const CfSlider = ({
