@@ -20,11 +20,6 @@ const createClient = (preview = false) => {
     link: httpLink,
     cache: new InMemoryCache(),
     uri: uri,
-    headers: {
-      "Cache-Control": "no-cache",
-      "content-type": "application/json",
-      authorization: `Bearer ${accessToken}`,
-    },
     defaultOptions: {
       watchQuery: {
         fetchPolicy: "no-cache",
