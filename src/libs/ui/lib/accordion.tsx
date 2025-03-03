@@ -61,7 +61,7 @@ export const AccordionItemTrigger: React.FC<AccordionItemTriggerProps> = ({
 }) => {
   return (
     <MuiAccordionSummary
-      expandIcon={<Icon icon="ChevronDown" color="inherit" />}
+      expandIcon={<Icon icon="ExpandMore" color="inherit" />}
       sx={{
         ...(disableGutters && {
           paddingLeft: 0,
