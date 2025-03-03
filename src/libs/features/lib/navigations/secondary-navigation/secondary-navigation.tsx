@@ -6,6 +6,7 @@ import { CfButton, CfButtonProps } from "@maverick/cf";
 
 import { CfMenuItemType, isCfButton, isCfMenuItem, MenuLink } from "../menus";
 import { palette, typography } from "@maverick/theme";
+import { Box } from "@mui/material";
 
 interface SecondaryNavigationProps
   extends Pick<CfBaseComponent, "id" | "lang"> {
@@ -64,17 +65,18 @@ export const SecondaryNavigation = ({
               case "Button":
                 if (isCfButton(item)) {
                   return (
-                    <CfButton
-                      key={index}
-                      internalTitle={item.internalTitle}
-                      buttonStyle={item.buttonStyle}
-                      title={item.title}
-                      link={item.link}
-                      __typename={item.__typename}
-                      id={item?.sys?.id || ""}
-                      preview={item.preview}
-                      lang={lang}
-                    />
+                    <Box key={index} marginY={2} paddingX={2}>
+                      <CfButton
+                        internalTitle={item.internalTitle}
+                        buttonStyle={item.buttonStyle}
+                        title={item.title}
+                        link={item.link}
+                        __typename={item.__typename}
+                        id={item?.sys?.id || ""}
+                        preview={item.preview}
+                        lang={lang}
+                      />
+                    </Box>
                   );
                 }
                 break;

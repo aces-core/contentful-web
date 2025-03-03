@@ -1,7 +1,7 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import { CfBaseComponent } from "@maverick/types";
-import { FlexBox, MenuItem } from "@maverick/ui";
+import { Box, FlexBox, MenuItem } from "@maverick/ui";
 import { CfButton, CfButtonProps } from "@maverick/cf";
 
 import {
@@ -65,17 +65,18 @@ export const MainNavigation = ({ data, id, lang }: MainNavigationProps) => {
           case "Button":
             if (isCfButton(item)) {
               return (
-                <CfButton
-                  key={index}
-                  internalTitle={item.internalTitle}
-                  buttonStyle={item.buttonStyle}
-                  title={item.title}
-                  link={item.link}
-                  __typename={item.__typename}
-                  id={item?.sys?.id || ""}
-                  preview={item.preview}
-                  lang={lang}
-                />
+                <Box key={index} marginY={2} paddingX={2}>
+                  <CfButton
+                    internalTitle={item.internalTitle}
+                    buttonStyle={item.buttonStyle}
+                    title={item.title}
+                    link={item.link}
+                    __typename={item.__typename}
+                    id={item?.sys?.id || ""}
+                    preview={item.preview}
+                    lang={lang}
+                  />
+                </Box>
               );
             }
             break;

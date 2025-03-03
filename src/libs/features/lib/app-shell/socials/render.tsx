@@ -1,8 +1,5 @@
-import { ContentfulLivePreview } from "@contentful/live-preview";
-
 import { generateId } from "@maverick/utils";
 import { Box, Icon, Link } from "@maverick/ui";
-
 export interface SocialsProps {
   facebook?: string;
   xTwitter?: string;
@@ -34,7 +31,7 @@ export const Socials = ({
       )}
       {xTwitter && (
         <Link href={xTwitter} aria-label=" Twitter" target="_blank">
-          <Icon icon="Twitter" size="1.3rem" />
+          <Icon icon="X" size="1.3rem" />
         </Link>
       )}
       {instagram && (
@@ -44,12 +41,12 @@ export const Socials = ({
       )}
       {linkedin && (
         <Link href={linkedin} aria-label="Linkedin" target="_blank">
-          <Icon icon="Linkedin" size="1.4rem" />
+          <Icon icon="LinkedIn" size="1.4rem" />
         </Link>
       )}
       {youtube && (
         <Link href={youtube} aria-label="Youtube" target="_blank">
-          <Icon icon="Youtube" size="1.6rem" />
+          <Icon icon="YouTube" size="1.6rem" />
         </Link>
       )}
     </Box>

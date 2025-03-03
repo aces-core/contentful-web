@@ -7,6 +7,9 @@ export const AppQuery = gql`
         appName
         appId
         copyrightText
+        sys {
+          id
+        }
       }
     }
   }

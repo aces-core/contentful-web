@@ -44,13 +44,14 @@ export default async function Page({
 
   const pageData = await fetchPageData(sliceSlug(slug), isEnabled, lang);
   const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
-  const pageHeroResponse = pageData.pageHeroResponse.data.page.pageHero;
-  const pageBodyResponse =
-    pageData.pageBodyResponse.data.page.pageBodyCollection.items;
 
   if (!pageResponse) {
     notFound();
   }
+
+  const pageHeroResponse = pageData.pageHeroResponse.data.page.pageHero;
+  const pageBodyResponse =
+    pageData.pageBodyResponse.data.page.pageBodyCollection.items;
 
   specialtyPageRedirect(pageResponse.specialtyPage);
 

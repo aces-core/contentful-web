@@ -23,7 +23,6 @@ export interface CfCardProps extends CfBaseComponent {
   image?: CfImageProps;
   imageSize: ImageSize;
   fullHeight?: boolean;
-  preview: boolean;
 }
 
 export const CfCard = ({

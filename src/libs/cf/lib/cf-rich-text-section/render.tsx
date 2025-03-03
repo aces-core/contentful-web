@@ -19,7 +19,6 @@ export interface CfRichTextSectionProps extends CfBaseComponent, Nested {
   grayBackground: boolean;
   bodyCopy: CfRichText;
   border: CfBorderSelector;
-  preview: boolean;
 }
 
 export const CfRichTextSection = ({

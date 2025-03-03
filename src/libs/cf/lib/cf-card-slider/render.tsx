@@ -23,7 +23,6 @@ export interface CfCardSliderProps extends CfBaseComponent {
   headline?: string;
   bodyCopy?: CfRichText;
   cards: CfCardProps[];
-  preview: boolean;
 }
 
 export const CfCardSlider = ({
