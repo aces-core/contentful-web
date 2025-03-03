@@ -42,13 +42,14 @@ export default async function Homepage({
     lang,
   );
   const pageResponse = pageData.pageResponse.data.pageCollection.items[0];
-  const pageHeroResponse = pageData.pageHeroResponse.data.page.pageHero;
-  const pageBodyResponse =
-    pageData.pageBodyResponse.data.page.pageBodyCollection.items;
 
   if (!pageResponse) {
     notFound();
   }
+
+  const pageHeroResponse = pageData.pageHeroResponse.data.page.pageHero;
+  const pageBodyResponse =
+    pageData.pageBodyResponse.data.page.pageBodyCollection.items;
 
   return (
     <>

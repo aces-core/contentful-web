@@ -2,7 +2,7 @@ import { Box, Skeleton } from "@maverick/ui";
 
 export const FormSkeleton = () => {
   return (
-    <Box marginTop={4}>
+    <Box marginTop={4} width={"100%"}>
       <Box marginBottom={2}>
         <Skeleton variant="text" width={100} />
         <Skeleton variant="text" width={"100%"} height={60} />

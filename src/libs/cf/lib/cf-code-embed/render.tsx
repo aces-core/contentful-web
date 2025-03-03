@@ -5,6 +5,8 @@ import { generateId } from "@maverick/utils";
 import { componentSpacing } from "@maverick/theme";
 import { Box, Container } from "@maverick/ui";
 
+import style from "./style.module.css";
+
 export interface CfCodeEmbedProps extends CfBaseComponent, Nested {
   embedCode: string;
 }
@@ -28,6 +30,7 @@ export const CfCodeEmbed = ({
     >
       <Container nested={nested}>
         <div
+          className={style.embed}
           dangerouslySetInnerHTML={{
             __html: embedCode,
           }}

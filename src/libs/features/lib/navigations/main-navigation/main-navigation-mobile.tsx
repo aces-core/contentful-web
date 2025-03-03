@@ -104,17 +104,19 @@ export const MainNavigationMobile = ({
           case "Button":
             if (isCfButton(item)) {
               return (
-                <CfButton
-                  key={index}
-                  internalTitle={item.internalTitle}
-                  buttonStyle={item.buttonStyle}
-                  title={item.title}
-                  link={item.link}
-                  __typename={item.__typename}
-                  id={item?.sys?.id || ""}
-                  preview={item.preview}
-                  lang={lang}
-                />
+                <Box key={index} marginY={2} paddingX={6}>
+                  <CfButton
+                    internalTitle={item.internalTitle}
+                    buttonStyle={item.buttonStyle}
+                    title={item.title}
+                    link={item.link}
+                    fullWidthMobile
+                    __typename={item.__typename}
+                    id={item?.sys?.id || ""}
+                    preview={item.preview}
+                    lang={lang}
+                  />
+                </Box>
               );
             }
             break;

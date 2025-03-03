@@ -2,7 +2,7 @@ import type { CfFetchById } from "@maverick/types";
 
 import { CfForm } from "./render";
 import { fetchFormData } from "./services";
-import { FormSkeleton } from "./skeleton";
+import { CfFormSkeleton } from "./skeleton";
 
 export interface CfFormServerProps extends CfFetchById {}
 
@@ -17,11 +17,11 @@ export const CfFormServer = async ({
     data = await fetchFormData(id, preview, lang);
   } catch (error) {
     console.error("Failed to fetch data:", error);
-    return <FormSkeleton />;
+    return <CfFormSkeleton />;
   }
 
   if (!data) {
-    return <FormSkeleton />;
+    return <CfFormSkeleton />;
   }
 
   return (

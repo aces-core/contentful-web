@@ -1,6 +1,11 @@
 import { gql } from "@apollo/client";
 
-import { cfClient, cfPreviewClient, LinkFragment } from "@maverick/contentful";
+import {
+  ButtonFragment,
+  cfClient,
+  cfPreviewClient,
+  LinkFragment,
+} from "@maverick/contentful";
 
 export const MenuItemFragment = gql`
   ${LinkFragment}
@@ -24,7 +29,7 @@ export const DropdownMenuFragment = gql`
   fragment DropdownMenu on DropdownMenu {
     internalTitle
     title
-    menuItemsCollection(limit: 8) {
+    menuItemsCollection(limit: 12) {
       items {
         ...MenuItem
       }
@@ -38,6 +43,7 @@ export const DropdownMenuFragment = gql`
 export const HeaderNavigationsQuery = gql`
   ${MenuItemFragment}
   ${DropdownMenuFragment}
+  ${ButtonFragment}
 
   query ($id: String!, $preview: Boolean!, $lang: String!) {
     appsCollection(
@@ -51,11 +57,13 @@ export const HeaderNavigationsQuery = gql`
           items {
             ...MenuItem
             ...DropdownMenu
+            ...Button
           }
         }
         secondaryNavigationCollection(limit: 6) {
           items {
             ...MenuItem
+            ...Button
           }
         }
       }
