@@ -7,10 +7,10 @@ export const inputsCustomizations: Components<Theme> = {
     defaultProps: {
       disableRipple: true,
       icon: (
-        <Icon icon="CheckboxOutlineBlank" style={{ color: "transparent" }} />
+        <Icon icon="CheckBoxOutlineBlank" style={{ color: "transparent" }} />
       ),
       checkedIcon: <Icon icon="Check" />,
-      indeterminateIcon: <Icon icon="Minus" />,
+      indeterminateIcon: <Icon icon="Remove" />,
     },
     styleOverrides: {
       root: ({ theme }) => ({

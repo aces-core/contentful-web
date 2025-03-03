@@ -81,6 +81,7 @@ import {
   Menu as MenuIcon,
   MoreHoriz as MoreHorizIcon,
   MoreVert as MoreVertIcon,
+  North as NorthIcon,
   Notifications as NotificationsIcon,
   NotificationsActive as NotificationsActiveIcon,
   NotificationsNone as NotificationsNoneIcon,
@@ -119,6 +120,7 @@ import {
   Share as ShareIcon,
   ShoppingCart as ShoppingCartIcon,
   ShoppingCartOutlined as ShoppingCartOutlinedIcon,
+  South as SouthIcon,
   Sort as SortIcon,
   SortByAlpha as SortByAlphaIcon,
   SortByAlphaOutlined as SortByAlphaOutlinedIcon,
@@ -230,6 +232,7 @@ export enum IconEnum {
   Menu = "Menu",
   MoreHoriz = "MoreHoriz",
   MoreVert = "MoreVert",
+  North = "North",
   Notifications = "Notifications",
   NotificationsActive = "NotificationsActive",
   NotificationsNone = "NotificationsNone",
@@ -268,6 +271,7 @@ export enum IconEnum {
   Share = "Share",
   ShoppingCart = "ShoppingCart",
   ShoppingCartOutlined = "ShoppingCartOutlined",
+  South = "South",
   Sort = "Sort",
   SortByAlpha = "SortByAlpha",
   SortByAlphaOutlined = "SortByAlphaOutlined",
@@ -645,6 +649,10 @@ export const Icon = ({
       IconComponent = MoreVertIcon;
       IconType = IconTypeEnum.Mui;
       break;
+    case IconEnum.North:
+      IconComponent = NorthIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
     case IconEnum.Notifications:
       IconComponent = NotificationsIcon;
       IconType = IconTypeEnum.Mui;
@@ -795,6 +803,10 @@ export const Icon = ({
       break;
     case IconEnum.ShoppingCartOutlined:
       IconComponent = ShoppingCartOutlinedIcon;
+      IconType = IconTypeEnum.Mui;
+      break;
+    case IconEnum.South:
+      IconComponent = SouthIcon;
       IconType = IconTypeEnum.Mui;
       break;
     case IconEnum.Sort:

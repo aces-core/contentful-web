@@ -2,7 +2,13 @@ import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import { CfBaseComponent, CfLinkProps } from "@maverick/types";
 import { generateId } from "@maverick/utils";
-import { Button, ButtonColor, ButtonVariant, Icon } from "@maverick/ui";
+import {
+  Button,
+  ButtonColor,
+  ButtonVariant,
+  Icon,
+  IconEnum,
+} from "@maverick/ui";
 import { CfLink } from "@maverick/cf";
 
 export enum ButtonStyleType {
@@ -72,7 +78,7 @@ export const CfButton = ({
         color={style.color}
         variant={style.variant}
         fullWidthMobile={fullWidthMobile}
-        endIcon={rightIcon && <Icon icon={rightIcon} />}
+        endIcon={rightIcon && <Icon icon={rightIcon as IconEnum} />}
         {...ContentfulLivePreview.getProps({
           entryId: id,
           fieldId: "title",
