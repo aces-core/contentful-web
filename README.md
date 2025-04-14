@@ -74,7 +74,7 @@ Go to Contentful and log into your account.
     NEXT_PUBLIC_CF_ACCESS_TOKEN=
     NEXT_PUBLIC_CF_PREVIEW_ACCESS_TOKEN=
     NEXT_CF_CMA_TOKEN=
-4. Create Your Contentful Site
+4. Create Your Contentful Site (coming soon)
     The following command will create your initial contentful site.
     The CMA Token is required for any contentful space management through the starter commands.
      ```bash
