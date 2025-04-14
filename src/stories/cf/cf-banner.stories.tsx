@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CfBanner, CfBannerProps } from "@maverick/cf";
+import { CfBanner, CfBannerProps } from "@aces/cf";
 
 const data = {
   sys: { id: "4Xge1jtY5RvamZgp85wMz", __typename: "Sys" },

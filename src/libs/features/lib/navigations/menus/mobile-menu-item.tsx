@@ -1,11 +1,11 @@
 "use client";
 
-import { useUIState } from "@maverick/store";
-import { Text, ListItem, ListItemButton, Icon, FlexBox } from "@maverick/ui";
-import { CfLink } from "@maverick/cf";
+import { useUIState } from "@aces/store";
+import { Text, ListItem, ListItemButton, Icon, FlexBox } from "@aces/ui";
+import { CfLink } from "@aces/cf";
 
 import { CfMenuItemType } from "../menus";
-import { defaultLocale, Locale } from "@maverick/i18n";
+import { defaultLocale, Locale } from "@aces/i18n";
 
 interface MobileMenuItemProps {
   item: CfMenuItemType;

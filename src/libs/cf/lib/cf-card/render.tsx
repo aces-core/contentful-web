@@ -5,9 +5,9 @@ import {
   CfImageProps,
   CfRichText,
   ImageSize,
-} from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { Card, H4 } from "@maverick/ui";
+} from "@aces/types";
+import { generateId } from "@aces/utils";
+import { Card, H4 } from "@aces/ui";
 
 import { CfRichTextRender } from "../cf-rich-text-render";
 

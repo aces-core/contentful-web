@@ -11,8 +11,8 @@ import MenuList, {
   MenuListProps as MuiMenuListProps,
 } from "@mui/material/MenuList";
 
-import { CustomCssProps, Size } from "@maverick/types";
-import { Box, Icon } from "@maverick/ui";
+import { CustomCssProps, Size } from "@aces/types";
+import { Box, Icon } from "@aces/ui";
 
 export interface MenuProps
   extends MuiMenuListProps,

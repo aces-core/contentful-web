@@ -1,4 +1,4 @@
-import { Container, Skeleton } from "@maverick/ui";
+import { Container, Skeleton } from "@aces/ui";
 
 export const CodeEmbedSkeleton = () => {
   return (

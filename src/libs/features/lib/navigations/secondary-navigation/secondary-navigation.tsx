@@ -1,11 +1,11 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent } from "@maverick/types";
-import { Container, FlexBox, MenuItem } from "@maverick/ui";
-import { CfButton, CfButtonProps } from "@maverick/cf";
+import { CfBaseComponent } from "@aces/types";
+import { Container, FlexBox, MenuItem } from "@aces/ui";
+import { CfButton, CfButtonProps } from "@aces/cf";
 
 import { CfMenuItemType, isCfButton, isCfMenuItem, MenuLink } from "../menus";
-import { palette, typography } from "@maverick/theme";
+import { palette, typography } from "@aces/theme";
 import { Box } from "@mui/material";
 
 interface SecondaryNavigationProps

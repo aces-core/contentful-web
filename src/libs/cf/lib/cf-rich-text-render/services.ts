@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-import { cfClient } from "@maverick/contentful";
-import { defaultLocale } from "@maverick/i18n";
+import { cfClient } from "@aces/contentful";
+import { defaultLocale } from "@aces/i18n";
 
 export const RichTextRenderQuery = gql`
   query ($id: String!, $preview: Boolean!, $locale: String!) {

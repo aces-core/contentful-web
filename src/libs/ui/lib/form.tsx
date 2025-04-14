@@ -11,7 +11,7 @@ import MuiFormLabel, {
   FormLabelProps as MuiFormLabelProps,
 } from "@mui/material/FormLabel";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface FormGroupProps extends Pick<MuiFormGroupProps, "children"> {
   style?: CustomCssProps;

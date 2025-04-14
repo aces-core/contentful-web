@@ -5,7 +5,7 @@ import {
   cfClient,
   cfPreviewClient,
   LinkFragment,
-} from "@maverick/contentful";
+} from "@aces/contentful";
 
 export const MenuItemFragment = gql`
   ${LinkFragment}

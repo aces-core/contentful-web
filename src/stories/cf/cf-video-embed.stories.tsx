@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CfVideoEmbed, CfVideoEmbedProps } from "@maverick/cf";
+import { CfVideoEmbed, CfVideoEmbedProps } from "@aces/cf";
 
 const data = {
   sys: { id: "6PI6ArmdlntKHSb40dRQF1", __typename: "Sys" },

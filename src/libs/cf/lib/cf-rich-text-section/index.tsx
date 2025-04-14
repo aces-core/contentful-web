@@ -1,4 +1,4 @@
-import type { CfFetchById, Nested } from "@maverick/types";
+import type { CfFetchById, Nested } from "@aces/types";
 
 import { CfRichTextSection } from "./render";
 import { fetchRichTextSectionData } from "./services";

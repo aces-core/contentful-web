@@ -1,4 +1,4 @@
-import type { CfFetchById, Nested, ResponsiveSpacing } from "@maverick/types";
+import type { CfFetchById, Nested, ResponsiveSpacing } from "@aces/types";
 
 import { CfImage, CfImageCover } from "./render";
 import { fetchImageData } from "./services";

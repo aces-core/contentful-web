@@ -1,7 +1,7 @@
 import React from "react";
 import MuiStack, { StackProps as MuiStackProps } from "@mui/material/Stack";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface StackProps
   extends Pick<

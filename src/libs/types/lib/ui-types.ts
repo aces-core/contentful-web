@@ -5,7 +5,7 @@ import {
 import { GridSpacing } from "@mui/material/Grid";
 import { ResponsiveStyleValue } from "@mui/system";
 
-import { theme } from "@maverick/theme";
+import { theme } from "@aces/theme";
 
 export type CustomCssProps = MuiSxProps<typeof theme>;
 

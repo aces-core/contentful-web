@@ -7,11 +7,11 @@ import { execSync } from "child_process";
 dotenv.config();
 
 const spaceId = process.env.NEXT_PUBLIC_CF_SPACE;
-const managementToken = process.env.NEXT_CF_MANAGEMENT_TOKEN;
+const managementToken = process.env.NEXT_CF_CMA_TOKEN=;
 
 if (!spaceId || !managementToken) {
   console.error(
-    "❌  Please set NEXT_PUBLIC_CF_SPACE and NEXT_CF_MANAGEMENT_TOKEN environment variables.",
+    "❌  Please set NEXT_PUBLIC_CF_SPACE and NEXT_CF_CMA_TOKEN= environment variables.",
   );
   process.exit(1);
 }

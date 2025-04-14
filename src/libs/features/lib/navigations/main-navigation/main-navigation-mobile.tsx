@@ -3,7 +3,7 @@
 import { Fragment, useState } from "react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent } from "@maverick/types";
+import { CfBaseComponent } from "@aces/types";
 import {
   Text,
   List,
@@ -12,8 +12,8 @@ import {
   Icon,
   Collapse,
   Box,
-} from "@maverick/ui";
-import { CfButton, CfButtonProps } from "@maverick/cf";
+} from "@aces/ui";
+import { CfButton, CfButtonProps } from "@aces/cf";
 
 import {
   CfDropDownMenuType,

@@ -1,15 +1,15 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfLinkProps } from "@maverick/types";
-import { generateId } from "@maverick/utils";
+import { CfBaseComponent, CfLinkProps } from "@aces/types";
+import { generateId } from "@aces/utils";
 import {
   Button,
   ButtonColor,
   ButtonVariant,
   Icon,
   IconEnum,
-} from "@maverick/ui";
-import { CfLink } from "@maverick/cf";
+} from "@aces/ui";
+import { CfLink } from "@aces/cf";
 
 export enum ButtonStyleType {
   Primary = "Primary",

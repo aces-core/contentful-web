@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 
-import { defaultLocale } from "@maverick/i18n";
-import { useGetLocale } from "@maverick/hooks";
-import { Box, H3, Text } from "@maverick/ui";
+import { defaultLocale } from "@aces/i18n";
+import { useGetLocale } from "@aces/hooks";
+import { Box, H3, Text } from "@aces/ui";
 
 import { fetchSearchResults } from "../services";
 import { SearchResultsSkeleton } from "../skeleton";

@@ -2,7 +2,7 @@ import MuiTypography, {
   TypographyProps as MuiTypographyProps,
 } from "@mui/material/Typography";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface TextBaseProps
   extends Pick<

@@ -1,4 +1,4 @@
-import type { CfFetchById, Nested } from "@maverick/types";
+import type { CfFetchById, Nested } from "@aces/types";
 
 import { CfVideoEmbed } from "./render";
 import { fetchVideoEmbedData } from "./services";

@@ -1,13 +1,13 @@
 import { gql } from "@apollo/client";
 
-import { defaultLocale } from "@maverick/i18n";
+import { defaultLocale } from "@aces/i18n";
 import {
   cfClient,
   cfPreviewClient,
   ImageFragment,
   HubSpotFormFragment,
   PardotFormFragment,
-} from "@maverick/contentful";
+} from "@aces/contentful";
 
 export const FormQuery = gql`
   ${ImageFragment}

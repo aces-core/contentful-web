@@ -1,4 +1,4 @@
-import { CfBaseComponent } from "@maverick/types";
+import { CfBaseComponent } from "@aces/types";
 
 export interface PageBodyItem extends CfBaseComponent {}
 

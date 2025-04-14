@@ -4,7 +4,7 @@ import MuiCheckbox, {
   CheckboxProps as MuiCheckboxProps,
 } from "@mui/material/Checkbox";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface CheckboxProps extends Pick<MuiCheckboxProps, "size" | "checked"> {
   style?: CustomCssProps;

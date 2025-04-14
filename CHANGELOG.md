@@ -13,8 +13,8 @@ Production Release
 
 - App Shell
   - Drawers
-    - Globale Navigations Drawer
-    - Globale Search Drawer
+    - Global Navigations Drawer
+    - Global Search Drawer
   - Footer
   - Header
   - Logo
@@ -23,7 +23,7 @@ Production Release
   - Article Cards
   - Article Listing
   - Related Articles
-- Draft Mode
+- Contentful Live Preview & Draft Mode
 - Forms
   - HubSpot Forms
   - Pardot Forms
@@ -41,13 +41,3 @@ Production Release
   - 15 CF Components
 - Page Hero
   - 1 CF Page Hero
-
-## [x.x.x] - yyyy-mm-dd
-
-Description of release.
-
-### Added
-
-### Changed
-
-### Fixed

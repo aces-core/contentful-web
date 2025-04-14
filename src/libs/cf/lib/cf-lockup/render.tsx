@@ -8,10 +8,10 @@ import {
   CfRichText,
   Nested,
   WithMock,
-} from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing } from "@maverick/theme";
-import { Box, Col, Container, H2, Row } from "@maverick/ui";
+} from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing } from "@aces/theme";
+import { Box, Col, Container, H2, Row } from "@aces/ui";
 
 import { CfButton, CfButtonProps } from "../cf-button/render";
 import { CfImage } from "../cf-image/render";

@@ -3,7 +3,7 @@ import MuiDivider, {
   DividerProps as MuiDividerProps,
 } from "@mui/material/Divider";
 
-import { CustomCssProps, ResponsiveSpacing } from "@maverick/types";
+import { CustomCssProps, ResponsiveSpacing } from "@aces/types";
 
 interface DividerProps
   extends Pick<MuiDividerProps, "orientation" | "flexItem"> {

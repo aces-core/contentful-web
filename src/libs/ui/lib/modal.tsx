@@ -3,8 +3,8 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Fade from "@mui/material/Fade";
 import MuiModal, { ModalProps as MuiModalProps } from "@mui/material/Modal";
 
-import { CustomCssProps, Size } from "@maverick/types";
-import { Box, FlexBox, Icon, IconButton } from "@maverick/ui";
+import { CustomCssProps, Size } from "@aces/types";
+import { Box, FlexBox, Icon, IconButton } from "@aces/ui";
 
 const maxWidthStyles = {
   small: "32rem",

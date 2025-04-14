@@ -9,8 +9,8 @@ import MuiAccordionSummary, {
   AccordionSummaryProps as MuiAccordionSummaryProps,
 } from "@mui/material/AccordionSummary";
 
-import { CustomCssProps } from "@maverick/types";
-import { Box, Icon, Text } from "@maverick/ui";
+import { CustomCssProps } from "@aces/types";
+import { Box, Icon, Text } from "@aces/ui";
 
 interface AccordionProps {
   style?: CustomCssProps;

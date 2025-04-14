@@ -2,9 +2,9 @@ import { cookies, draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 import { gql } from "@apollo/client";
 
-import { cfClient, cfPreviewClient } from "@maverick/contentful";
-import { defaultLocale } from "@maverick/i18n";
-import { specialtyPageRedirect } from "@maverick/utils";
+import { cfClient, cfPreviewClient } from "@aces/contentful";
+import { defaultLocale } from "@aces/i18n";
+import { specialtyPageRedirect } from "@aces/utils";
 
 const PageQuery = gql`
   query ($slug: String!, $preview: Boolean!, $locale: String!) {

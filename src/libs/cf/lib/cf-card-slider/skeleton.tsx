@@ -1,7 +1,7 @@
-import { Col, FlexBox, Row, Skeleton } from "@maverick/ui";
+import { Col, FlexBox, Row, Skeleton } from "@aces/ui";
 import { CardSkeleton } from "../cf-card/skeleton";
 import { ButtonSkeleton } from "../cf-button/skeleton";
-import { componentSpacing } from "@maverick/theme";
+import { componentSpacing } from "@aces/theme";
 
 export const CardSliderSkeleton = () => {
   return (

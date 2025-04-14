@@ -1,4 +1,4 @@
-import type { CfFetchById, Nested } from "@maverick/types";
+import type { CfFetchById, Nested } from "@aces/types";
 
 import { CfLockup } from "./render";
 import { fetchLockup } from "./services";

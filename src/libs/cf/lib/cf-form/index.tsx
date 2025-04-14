@@ -1,4 +1,4 @@
-import type { CfFetchById } from "@maverick/types";
+import type { CfFetchById } from "@aces/types";
 
 import { CfForm } from "./render";
 import { fetchFormData } from "./services";

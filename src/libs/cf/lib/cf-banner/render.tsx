@@ -4,10 +4,10 @@ import {
   CfBaseComponent,
   CfColorPicker,
   CfColorPickerPalette,
-} from "@maverick/types";
-import { isLight, generateId } from "@maverick/utils";
-import { componentSpacing, palette } from "@maverick/theme";
-import { Box, Container, H2, Text } from "@maverick/ui";
+} from "@aces/types";
+import { isLight, generateId } from "@aces/utils";
+import { componentSpacing, palette } from "@aces/theme";
+import { Box, Container, H2, Text } from "@aces/ui";
 
 import { CfButton, CfButtonProps } from "../cf-button/render";
 

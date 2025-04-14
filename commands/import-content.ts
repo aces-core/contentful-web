@@ -7,11 +7,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const newSpaceId = process.env.NEXT_PUBLIC_CF_SPACE;
-const managementToken = process.env.NEXT_CF_MANAGEMENT_TOKEN;
+const managementToken = process.env.NEXT_CF_CMA_TOKEN=;
 
 if (!newSpaceId || !managementToken) {
   console.error(
-    "❌  Please set NEXT_PUBLIC_CF_SPACE and NEXT_CF_MANAGEMENT_TOKEN environment variables.",
+    "❌  Please set NEXT_PUBLIC_CF_SPACE and NEXT_CF_CMA_TOKEN= environment variables.",
   );
   process.exit(1);
 }

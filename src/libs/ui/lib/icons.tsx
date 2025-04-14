@@ -150,7 +150,7 @@ import {
   ZoomOut as ZoomOutIcon,
 } from "@mui/icons-material";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 import { SvgIcon } from "@mui/material";
 
 export enum IconEnum {

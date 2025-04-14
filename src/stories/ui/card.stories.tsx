@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ImageSize, Spacing } from "@maverick/types";
-import { Button, Card as CardUI, H5, Text } from "@maverick/ui";
+import { ImageSize, Spacing } from "@aces/types";
+import { Button, Card as CardUI, H5, Text } from "@aces/ui";
 
 import AssetsImage from "../assets/assets.png";
 

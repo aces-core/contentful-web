@@ -7,7 +7,7 @@ import {
   PageLinkProps,
   RouteDirectory,
   SpecialtyPages,
-} from "@maverick/types";
+} from "@aces/types";
 
 export interface BaseLinkProps {
   children: React.ReactNode;

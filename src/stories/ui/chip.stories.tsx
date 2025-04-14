@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Chip as ChipUI } from "@maverick/ui";
+import { Chip as ChipUI } from "@aces/ui";
 
 const meta = {
   title: "UI/Chip",

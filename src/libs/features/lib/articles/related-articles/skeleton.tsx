@@ -1,4 +1,4 @@
-import { Col, Row } from "@maverick/ui";
+import { Col, Row } from "@aces/ui";
 import { ArticleCardSkeleton } from "../article-card/skeleton";
 
 export const RelatedArticlesSkeleton = () => {

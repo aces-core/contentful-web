@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CfLockup, CfLockupProps } from "@maverick/cf";
+import { CfLockup, CfLockupProps } from "@aces/cf";
 
 import AssetsImage from "../assets/testing.png";
 

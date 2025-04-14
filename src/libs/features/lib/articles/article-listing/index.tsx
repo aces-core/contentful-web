@@ -3,9 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 
-import { defaultLocale } from "@maverick/i18n";
-import { toSingleValueArray } from "@maverick/utils";
-import { Col, FlexBox, Row } from "@maverick/ui";
+import { defaultLocale } from "@aces/i18n";
+import { toSingleValueArray } from "@aces/utils";
+import { Col, FlexBox, Row } from "@aces/ui";
 
 import { ArticlesLimit, OrderTypes, DefaultOrder, Query } from "../config";
 import { fetchArticles } from "./services";

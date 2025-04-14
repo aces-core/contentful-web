@@ -6,10 +6,10 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 
-import { defaultLocale, getLocale } from "@maverick/i18n";
-import { palette, theme } from "@maverick/theme";
-import { Box } from "@maverick/ui";
-import { DraftModeBar, HeaderServer, FooterServer } from "@maverick/features";
+import { defaultLocale, getLocale } from "@aces/i18n";
+import { palette, theme } from "@aces/theme";
+import { Box } from "@aces/ui";
+import { DraftModeBar, HeaderServer, FooterServer } from "@aces/features";
 
 import "swiper/css";
 import "swiper/css/autoplay";

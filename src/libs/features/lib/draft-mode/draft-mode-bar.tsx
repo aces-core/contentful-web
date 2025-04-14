@@ -1,6 +1,6 @@
-import { CfLinkTypes } from "@maverick/types";
-import { Box, Button, Container, Text } from "@maverick/ui";
-import { CfLink } from "@maverick/cf";
+import { CfLinkTypes } from "@aces/types";
+import { Box, Button, Container, Text } from "@aces/ui";
+import { CfLink } from "@aces/cf";
 
 export const DraftModeBar = () => {
   return (

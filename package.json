@@ -1,7 +1,26 @@
 {
-  "name": "aces-maverick",
+  "name": "aces-contentful-web",
   "version": "1.0.0",
-  "private": true,
+  "license": "MIT",
+  "author": "Mike Palazzo <mnpalazzo@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpalazzo-dl/aces-contentful-web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mpalazzo-dl/aces-contentful-web/issues"
+  },
+  "keywords": [
+    "contentful",
+    "cms",
+    "starter-kit",
+    "nextjs",
+    "app-router",
+    "composable",
+    "headless",
+    "accelerator",
+    "mach"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -7,8 +7,8 @@ import { SelectChangeEvent as MuiSelectChangeEvent } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
-import { CustomCssProps, SelectOption } from "@maverick/types";
-import { Checkbox, FormControl, InputLabel } from "@maverick/ui";
+import { CustomCssProps, SelectOption } from "@aces/types";
+import { Checkbox, FormControl, InputLabel } from "@aces/ui";
 
 export type SelectChangeEvent = MuiSelectChangeEvent;
 

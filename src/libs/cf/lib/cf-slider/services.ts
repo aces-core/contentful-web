@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-import { cfClient, cfPreviewClient, ImageFragment } from "@maverick/contentful";
-import { defaultLocale } from "@maverick/i18n";
+import { cfClient, cfPreviewClient, ImageFragment } from "@aces/contentful";
+import { defaultLocale } from "@aces/i18n";
 import { LockupFragement } from "../cf-lockup/services";
 import { RichTextSectionFragment } from "../cf-rich-text-section/services";
 

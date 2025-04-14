@@ -4,7 +4,7 @@ import {
   Box as BoxUI,
   FlexBox as FlexBoxUI,
   InlineBox as InlineBoxUI,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 const meta = {
   title: "UI/Box",

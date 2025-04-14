@@ -1,6 +1,6 @@
 import { Components, Theme } from "@mui/material";
 
-import { Icon } from "@maverick/ui";
+import { Icon } from "@aces/ui";
 
 export const inputsCustomizations: Components<Theme> = {
   MuiCheckbox: {

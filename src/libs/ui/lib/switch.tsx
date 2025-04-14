@@ -1,7 +1,7 @@
 import React from "react";
 import MuiSwitch, { SwitchProps as MuiSwitchProps } from "@mui/material/Switch";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface SwitchProps
   extends Pick<

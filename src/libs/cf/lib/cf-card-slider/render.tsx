@@ -2,9 +2,9 @@
 
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfRichText } from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { breakpoints, componentSpacing } from "@maverick/theme";
+import { CfBaseComponent, CfRichText } from "@aces/types";
+import { generateId } from "@aces/utils";
+import { breakpoints, componentSpacing } from "@aces/theme";
 import {
   Box,
   Col,
@@ -14,7 +14,7 @@ import {
   SliderBtn,
   H2,
   FlexBox,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 import { CfCard, CfCardProps } from "../cf-card/render";
 import { CfRichTextRender } from "../cf-rich-text-render";

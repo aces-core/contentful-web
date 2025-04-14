@@ -4,8 +4,8 @@ import {
   ButtonFragment,
   cfClient,
   cfPreviewClient,
-} from "@maverick/contentful";
-import { defaultLocale } from "@maverick/i18n";
+} from "@aces/contentful";
+import { defaultLocale } from "@aces/i18n";
 
 export const ButtonQuery = gql`
   ${ButtonFragment}

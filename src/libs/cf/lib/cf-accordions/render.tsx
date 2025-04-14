@@ -1,8 +1,8 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfRichText } from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing, palette } from "@maverick/theme";
+import { CfBaseComponent, CfRichText } from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing, palette } from "@aces/theme";
 import {
   Accordion,
   AccordionItem,
@@ -11,7 +11,7 @@ import {
   Box,
   Container,
   H2,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 import { CfRichTextRender } from "../cf-rich-text-render";
 

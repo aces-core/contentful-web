@@ -1,9 +1,9 @@
 "use client";
 
-import { type Locale } from "@maverick/i18n";
-import { Size } from "@maverick/types";
-import { DropDownMenu, MenuItem, SubMenu } from "@maverick/ui";
-import { CfLink } from "@maverick/cf";
+import { type Locale } from "@aces/i18n";
+import { Size } from "@aces/types";
+import { DropDownMenu, MenuItem, SubMenu } from "@aces/ui";
+import { CfLink } from "@aces/cf";
 import { CfMenuItemType } from "./menu-types";
 
 interface DropdownMenuProps {

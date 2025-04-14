@@ -9,8 +9,8 @@ import MuiOutlinedInput, {
   OutlinedInputProps as MuiOutlinedInputProps,
 } from "@mui/material/OutlinedInput";
 
-import { CustomCssProps } from "@maverick/types";
-import { palette } from "@maverick/theme";
+import { CustomCssProps } from "@aces/types";
+import { palette } from "@aces/theme";
 
 interface InputProps
   extends Pick<

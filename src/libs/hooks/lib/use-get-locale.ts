@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getLocale, Locale, TranslationSection } from "@maverick/i18n";
+import { getLocale, Locale, TranslationSection } from "@aces/i18n";
 
 export const useGetLocale = (locale: Locale, section: TranslationSection) => {
   const [t, setT] = useState<any | null>(null);

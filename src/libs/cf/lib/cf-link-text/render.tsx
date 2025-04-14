@@ -1,9 +1,9 @@
 import React from "react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfLinkProps } from "@maverick/types";
-import { typography } from "@maverick/theme";
-import { InlineBox } from "@maverick/ui";
+import { CfBaseComponent, CfLinkProps } from "@aces/types";
+import { typography } from "@aces/theme";
+import { InlineBox } from "@aces/ui";
 
 import { CfLink } from "../cf-link/render";
 

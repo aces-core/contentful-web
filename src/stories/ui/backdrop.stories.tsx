@@ -6,7 +6,7 @@ import {
   Backdrop as BackdropUI,
   FormControlLabel,
   Switch,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 const meta: Meta = {
   title: "UI/Backdrop",

@@ -1,4 +1,4 @@
-import type { CfFetchById } from "@maverick/types";
+import type { CfFetchById } from "@aces/types";
 
 import { CfListing } from "./render";
 import { fetchListingData } from "./services";

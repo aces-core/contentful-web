@@ -1,9 +1,9 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfImageProps } from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing } from "@maverick/theme";
-import { Box, Col, Container, Row } from "@maverick/ui";
+import { CfBaseComponent, CfImageProps } from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing } from "@aces/theme";
+import { Box, Col, Container, Row } from "@aces/ui";
 
 import { CfCardProps } from "../cf-card/render";
 import { CfRichTextSectionProps } from "../cf-rich-text-section/render";

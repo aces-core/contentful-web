@@ -1,7 +1,7 @@
-import { defaultLocale } from "@maverick/i18n";
-import { CfImageProps, ResponsiveSpacing } from "@maverick/types";
-import { Box } from "@maverick/ui";
-import { CfImage } from "@maverick/cf";
+import { defaultLocale } from "@aces/i18n";
+import { CfImageProps, ResponsiveSpacing } from "@aces/types";
+import { Box } from "@aces/ui";
+import { CfImage } from "@aces/cf";
 
 import { logoVariant } from ".";
 

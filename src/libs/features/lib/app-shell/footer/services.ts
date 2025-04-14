@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-import { cfClient, cfPreviewClient } from "@maverick/contentful";
+import { cfClient, cfPreviewClient } from "@aces/contentful";
 
 import { LogoFragment } from "../logo/services";
 import { SocialsFragment } from "../socials/services";

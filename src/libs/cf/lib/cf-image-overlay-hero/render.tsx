@@ -1,10 +1,10 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfImageProps } from "@maverick/types";
-import { generateId } from "@maverick/utils";
+import { CfBaseComponent, CfImageProps } from "@aces/types";
+import { generateId } from "@aces/utils";
 
-import { palette, typography } from "@maverick/theme";
-import { Box, H1, H6, Container, ImageFill, FlexBox } from "@maverick/ui";
+import { palette, typography } from "@aces/theme";
+import { Box, H1, H6, Container, ImageFill, FlexBox } from "@aces/ui";
 
 import { CfButton, CfButtonProps } from "../cf-button/render";
 

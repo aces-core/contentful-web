@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import { defaultLocale, getLocale } from "@maverick/i18n";
-import { useUIState } from "@maverick/store";
+import { defaultLocale, getLocale } from "@aces/i18n";
+import { useUIState } from "@aces/store";
 import {
   FormControl,
   Icon,
@@ -13,7 +13,7 @@ import {
   InputLabel,
   OutlinedInput,
   Skeleton,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 import { navigateToSearch } from "../services";
 

@@ -3,10 +3,10 @@ import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { defaultLocale, getLocale } from "@maverick/i18n";
-import { PageProps } from "@maverick/types";
-import { flattenObjectArray, formatDate } from "@maverick/utils";
-import { palette } from "@maverick/theme";
+import { defaultLocale, getLocale } from "@aces/i18n";
+import { PageProps } from "@aces/types";
+import { flattenObjectArray, formatDate } from "@aces/utils";
+import { palette } from "@aces/theme";
 import {
   Avatar,
   Box,
@@ -18,9 +18,9 @@ import {
   H6,
   Paper,
   Text,
-} from "@maverick/ui";
-import { CfImageCoverServer, CfRichTextRender } from "@maverick/cf";
-import { buildMetadata, RelatedArticlesServer } from "@maverick/features";
+} from "@aces/ui";
+import { CfImageCoverServer, CfRichTextRender } from "@aces/cf";
+import { buildMetadata, RelatedArticlesServer } from "@aces/features";
 
 import { fetchArticlePageData } from "./services";
 

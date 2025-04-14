@@ -2,8 +2,8 @@ import React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, Document, INLINES, Node } from "@contentful/rich-text-types";
 
-import { CfAlignment, CfBaseComponent } from "@maverick/types";
-import { Box, H1, H2, H3, H4, H5, H6, Text } from "@maverick/ui";
+import { CfAlignment, CfBaseComponent } from "@aces/types";
+import { Box, H1, H2, H3, H4, H5, H6, Text } from "@aces/ui";
 import {
   CfButtonServer,
   CfCodeEmbedServer,
@@ -11,7 +11,7 @@ import {
   CfImageServer,
   CfLinkTextServer,
   CfVideoEmbedServer,
-} from "@maverick/cf";
+} from "@aces/cf";
 
 import { fetchRichTextEmbedEntry } from "./services";
 import style from "./style.module.css";

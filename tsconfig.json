@@ -19,16 +19,16 @@
       }
     ],
     "paths": {
-      "@maverick/cf": ["./src/libs/cf/index.ts"],
-      "@maverick/contentful": ["./src/libs/clients/contentful/index.ts"],
-      "@maverick/features": ["./src/libs/features/index.ts"],
-      "@maverick/hooks": ["./src/libs/hooks/index.ts"],
-      "@maverick/i18n": ["./src/libs/i18n/index.ts"],
-      "@maverick/store": ["./src/libs/store/index.ts"],
-      "@maverick/theme": ["./src/libs/theme/index.ts"],
-      "@maverick/types": ["./src/libs/types/index.ts"],
-      "@maverick/ui": ["./src/libs/ui/index.ts"],
-      "@maverick/utils": ["./src/libs/utils/index.ts"]
+      "@aces/cf": ["./src/libs/cf/index.ts"],
+      "@aces/contentful": ["./src/libs/clients/contentful/index.ts"],
+      "@aces/features": ["./src/libs/features/index.ts"],
+      "@aces/hooks": ["./src/libs/hooks/index.ts"],
+      "@aces/i18n": ["./src/libs/i18n/index.ts"],
+      "@aces/store": ["./src/libs/store/index.ts"],
+      "@aces/theme": ["./src/libs/theme/index.ts"],
+      "@aces/types": ["./src/libs/types/index.ts"],
+      "@aces/ui": ["./src/libs/ui/index.ts"],
+      "@aces/utils": ["./src/libs/utils/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionItemTrigger,
   AccordionItemContent,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 const meta: Meta<typeof Accordion> = {
   title: "UI/Accordions",

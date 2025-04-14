@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-import { cfClient, cfPreviewClient, LinkFragment } from "@maverick/contentful";
-import { defaultLocale } from "@maverick/i18n";
+import { cfClient, cfPreviewClient, LinkFragment } from "@aces/contentful";
+import { defaultLocale } from "@aces/i18n";
 
 export const LinkTextQuery = gql`
   ${LinkFragment}

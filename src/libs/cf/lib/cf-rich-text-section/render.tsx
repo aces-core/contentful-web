@@ -7,11 +7,11 @@ import {
   CfContainerWidth,
   CfRichText,
   Nested,
-} from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing, palette } from "@maverick/theme";
-import { Box, Container } from "@maverick/ui";
-import { CfRichTextRender } from "@maverick/cf";
+} from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing, palette } from "@aces/theme";
+import { Box, Container } from "@aces/ui";
+import { CfRichTextRender } from "@aces/cf";
 
 export interface CfRichTextSectionProps extends CfBaseComponent, Nested {
   alignment: CfAlignment;

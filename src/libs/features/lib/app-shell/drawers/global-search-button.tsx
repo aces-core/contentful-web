@@ -1,7 +1,7 @@
 "use client";
 
-import { useUIState } from "@maverick/store";
-import { Icon, IconButton } from "@maverick/ui";
+import { useUIState } from "@aces/store";
+import { Icon, IconButton } from "@aces/ui";
 
 export const GlobalSearchButton = () => {
   const { searchOpen, setSearchOpen } = useUIState();

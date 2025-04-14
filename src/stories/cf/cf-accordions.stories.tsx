@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CfAccordions, CfAccordionsProps } from "@maverick/cf";
+import { CfAccordions, CfAccordionsProps } from "@aces/cf";
 
 const data = {
   sys: { id: "3AqVqvQgsyvS7BFXmTIA3e", __typename: "Sys" },

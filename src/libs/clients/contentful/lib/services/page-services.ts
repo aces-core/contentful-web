@@ -1,4 +1,4 @@
-import { defaultLocale, Locale } from "@maverick/i18n";
+import { defaultLocale, Locale } from "@aces/i18n";
 
 import { cfClient, cfPreviewClient } from "../client";
 import {

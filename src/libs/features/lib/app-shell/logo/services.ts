@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-import { cfClient, cfPreviewClient, ImageFragment } from "@maverick/contentful";
+import { cfClient, cfPreviewClient, ImageFragment } from "@aces/contentful";
 
 export const LogoFragment = gql`
   ${ImageFragment}

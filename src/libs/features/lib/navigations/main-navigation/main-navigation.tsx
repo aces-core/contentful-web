@@ -1,8 +1,8 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent } from "@maverick/types";
-import { Box, FlexBox, MenuItem } from "@maverick/ui";
-import { CfButton, CfButtonProps } from "@maverick/cf";
+import { CfBaseComponent } from "@aces/types";
+import { Box, FlexBox, MenuItem } from "@aces/ui";
+import { CfButton, CfButtonProps } from "@aces/cf";
 
 import {
   CfDropDownMenuType,

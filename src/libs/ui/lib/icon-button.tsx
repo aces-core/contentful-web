@@ -3,7 +3,7 @@ import MuiIconButton, {
   IconButtonProps as MuiIconButtonProps,
 } from "@mui/material/IconButton";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 export interface IconButtonProps
   extends Pick<

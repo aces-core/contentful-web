@@ -2,8 +2,8 @@
 
 import React from "react";
 
-import { useUIState } from "@maverick/store";
-import { Drawer, Box, List, FlexBox } from "@maverick/ui";
+import { useUIState } from "@aces/store";
+import { Drawer, Box, List, FlexBox } from "@aces/ui";
 
 import { MobileNavigationsButton } from "./mobile-navigations-button";
 

@@ -12,8 +12,8 @@ import {
   CfRichTextSectionServer,
   CfSliderServer,
   CfVideoEmbedServer,
-} from "@maverick/cf";
-import { defaultLocale } from "@maverick/i18n";
+} from "@aces/cf";
+import { defaultLocale } from "@aces/i18n";
 
 export const EntriesPreview = ({
   item,

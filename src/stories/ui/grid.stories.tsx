@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Box, Row, Col, Paper } from "@maverick/ui";
+import { Box, Row, Col, Paper } from "@aces/ui";
 
 const meta = {
   title: "UI/Grid",

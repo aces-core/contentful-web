@@ -1,4 +1,4 @@
-import type { CfAlignment, CfFetchById, Nested } from "@maverick/types";
+import type { CfAlignment, CfFetchById, Nested } from "@aces/types";
 
 import { CfHeader } from "./render";
 import { fetchHeaderData } from "./services";

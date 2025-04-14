@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { RouteDirectory, SpecialtyPages } from "@maverick/types";
+import { RouteDirectory, SpecialtyPages } from "@aces/types";
 
 export const specialtyPageRedirect = (specialtyPage: string) => {
   if (specialtyPage) {

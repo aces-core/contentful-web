@@ -1,12 +1,12 @@
 import { gql } from "@apollo/client";
 
-import { defaultLocale, Locale } from "@maverick/i18n";
+import { defaultLocale, Locale } from "@aces/i18n";
 import {
   cfClient,
   cfPreviewClient,
   ImageFragment,
   TeamMemberFragment,
-} from "@maverick/contentful";
+} from "@aces/contentful";
 
 import { OrderTypes, DefaultOrder } from "../config";
 

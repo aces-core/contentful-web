@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Avatar } from "@maverick/ui";
+import { Avatar } from "@aces/ui";
 
 import Github from "../assets/github.svg";
 

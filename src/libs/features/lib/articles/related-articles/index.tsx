@@ -1,5 +1,5 @@
-import { Locale } from "@maverick/i18n";
-import { Box, Col, H4, Row } from "@maverick/ui";
+import { Locale } from "@aces/i18n";
+import { Box, Col, H4, Row } from "@aces/ui";
 
 import { ArticleCard, ArticleCardProps } from "../article-card";
 

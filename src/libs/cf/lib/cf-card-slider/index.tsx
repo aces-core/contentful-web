@@ -1,4 +1,4 @@
-import type { CfFetchById } from "@maverick/types";
+import type { CfFetchById } from "@aces/types";
 
 import { CfCardSlider } from "./render";
 import { fetchCardSlider } from "./services";

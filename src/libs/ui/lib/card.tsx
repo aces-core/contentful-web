@@ -5,7 +5,7 @@ import {
   ImageSize,
   ResponsiveSpacing,
   Spacing,
-} from "@maverick/types";
+} from "@aces/types";
 import MuiCard from "@mui/material/Card";
 import MuiCardContent, {
   CardContentProps as MuiCardContentProps,

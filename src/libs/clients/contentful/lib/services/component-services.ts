@@ -1,4 +1,4 @@
-import { defaultLocale } from "@maverick/i18n";
+import { defaultLocale } from "@aces/i18n";
 
 import { cfClient, cfPreviewClient } from "../client";
 import { EntryQuery } from "../queries/component-queries";

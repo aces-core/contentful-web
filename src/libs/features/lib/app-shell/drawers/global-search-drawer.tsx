@@ -1,8 +1,8 @@
 "use client";
 
-import { useUIState } from "@maverick/store";
-import { palette } from "@maverick/theme";
-import { Slide, Container, FlexBox } from "@maverick/ui";
+import { useUIState } from "@aces/store";
+import { palette } from "@aces/theme";
+import { Slide, Container, FlexBox } from "@aces/ui";
 
 interface GlobalSearchDrawerProps {
   children: React.ReactNode;

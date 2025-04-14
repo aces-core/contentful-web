@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { defaultLocale, type Locale } from "@maverick/i18n";
+import { defaultLocale, type Locale } from "@aces/i18n";
 
 type CfSocialImage = {
   fields: {

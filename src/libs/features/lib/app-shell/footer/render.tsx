@@ -1,8 +1,8 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, RouteDirectory } from "@maverick/types";
-import { currentYear } from "@maverick/utils";
-import { Col, Container, FlexBox, Link, Row, Text } from "@maverick/ui";
+import { CfBaseComponent, RouteDirectory } from "@aces/types";
+import { currentYear } from "@aces/utils";
+import { Col, Container, FlexBox, Link, Row, Text } from "@aces/ui";
 
 import { FooterNavigation, PrivacyNavigation } from "../../navigations";
 import { Logo, LogosType } from "../logo/render";

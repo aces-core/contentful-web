@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Avatar, AvatarGroup as AvatarGroupUI } from "@maverick/ui";
+import { Avatar, AvatarGroup as AvatarGroupUI } from "@aces/ui";
 
 import Avatar1 from "../assets/avatar-1.jpg";
 import Avatar2 from "../assets/avatar-2.jpg";

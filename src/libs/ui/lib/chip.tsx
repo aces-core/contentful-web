@@ -1,6 +1,6 @@
 import MuiChip, { ChipProps as MuiChipProps } from "@mui/material/Chip";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface ChipProps
   extends Pick<MuiChipProps, "label" | "color" | "variant" | "size" | "shape"> {

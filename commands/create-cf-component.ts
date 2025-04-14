@@ -49,7 +49,7 @@ if (existsSync(componentDir)) {
 
 // Define boilerplate content
 const files: Record<string, string> = {
-  "index.tsx": `import type { CfFetchById } from "@maverick/types";
+  "index.tsx": `import type { CfFetchById } from "@aces/types";
 
 import { Cf${reactCasedName} } from "./render";
 import { fetch${reactCasedName}Data } from "./services";
@@ -92,10 +92,10 @@ export const Cf${reactCasedName}Server = async ({
 
 import {
   CfBaseComponent,
-} from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing } from "@maverick/theme";
-import { Box, Container, H1 } from "@maverick/ui";
+} from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing } from "@aces/theme";
+import { Box, Container, H1 } from "@aces/ui";
 
 export interface Cf${reactCasedName}Props extends CfBaseComponent {}
 
@@ -122,8 +122,8 @@ export const Cf${reactCasedName} = ({
 
   "services.tsx": `import { gql } from "@apollo/client";
 
-import { defaultLocale } from "@maverick/i18n";
-import { cfClient, cfPreviewClient } from "@maverick/contentful";
+import { defaultLocale } from "@aces/i18n";
+import { cfClient, cfPreviewClient } from "@aces/contentful";
 
 export const ${reactCasedName}Query = gql\`
   query ($id: String!, $preview: Boolean!, $locale: String) {
@@ -156,7 +156,7 @@ export const fetch${reactCasedName}Data = async (
 };
   `,
 
-  "skeleton.tsx": `import { Skeleton } from "@maverick/ui";
+  "skeleton.tsx": `import { Skeleton } from "@aces/ui";
 
 export const ${reactCasedName}Skeleton = () => {
   return <Skeleton width={"100%"} height={280} />;

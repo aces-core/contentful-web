@@ -4,7 +4,7 @@ import MuiAvatarGroup, {
   AvatarGroupProps as MuiAvatarGroupProps,
 } from "@mui/material/AvatarGroup";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface AvatarProps extends Pick<MuiAvatarProps, "alt"> {
   image?: string;

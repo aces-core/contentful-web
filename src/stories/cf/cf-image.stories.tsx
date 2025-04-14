@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CfImage, CfImageProps } from "@maverick/cf";
+import { CfImage, CfImageProps } from "@aces/cf";
 
 import AssetsImage from "../assets/styling.png";
 

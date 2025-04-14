@@ -7,7 +7,7 @@ import MuiListItemButton, {
   ListItemButtonProps as MuiListItemButtonProps,
 } from "@mui/material/ListItemButton";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface ListItemButtonProps
   extends Pick<MuiListItemButtonProps, "alignItems" | "children" | "onClick"> {

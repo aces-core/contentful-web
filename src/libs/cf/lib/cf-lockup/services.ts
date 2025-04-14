@@ -5,8 +5,8 @@ import {
   cfClient,
   cfPreviewClient,
   ImageFragment,
-} from "@maverick/contentful";
-import { defaultLocale } from "@maverick/i18n";
+} from "@aces/contentful";
+import { defaultLocale } from "@aces/i18n";
 import { VideoEmbedFragment } from "../cf-video-embed/services";
 
 export const LockupFragement = gql`

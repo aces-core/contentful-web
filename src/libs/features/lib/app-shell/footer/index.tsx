@@ -1,5 +1,5 @@
-import { defaultLocale } from "@maverick/i18n";
-import { CfFetchById } from "@maverick/types";
+import { defaultLocale } from "@aces/i18n";
+import { CfFetchById } from "@aces/types";
 
 import { fetchFooterNavigationsData } from "../../navigations/services";
 

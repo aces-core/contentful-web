@@ -1,4 +1,4 @@
-import { Card, H4 } from "@maverick/ui";
+import { Card, H4 } from "@aces/ui";
 
 interface ResultsCardProps {
   title: string;

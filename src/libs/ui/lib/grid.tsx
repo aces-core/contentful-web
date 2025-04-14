@@ -1,6 +1,6 @@
 import MuiGrid2, { Grid2Props as MuiGrid2Props } from "@mui/material/Grid2";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface RowProps
   extends Pick<

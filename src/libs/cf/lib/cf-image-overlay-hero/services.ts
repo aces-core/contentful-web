@@ -5,8 +5,8 @@ import {
   cfClient,
   cfPreviewClient,
   ImageFragment,
-} from "@maverick/contentful";
-import { defaultLocale } from "@maverick/i18n";
+} from "@aces/contentful";
+import { defaultLocale } from "@aces/i18n";
 
 export const ImageOverlayHeroQuery = gql`
   ${ImageFragment}

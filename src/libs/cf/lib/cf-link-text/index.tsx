@@ -1,4 +1,4 @@
-import type { CfFetchById } from "@maverick/types";
+import type { CfFetchById } from "@aces/types";
 
 import { CfTextLink } from "./render";
 import { fetchLinkTextData } from "./services";

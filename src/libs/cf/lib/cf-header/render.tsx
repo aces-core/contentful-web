@@ -6,10 +6,10 @@ import {
   CfContainerWidth,
   CfHeaderType,
   Nested,
-} from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing } from "@maverick/theme";
-import { Box, Container, H1, H2, H3, H4, H5, H6 } from "@maverick/ui";
+} from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing } from "@aces/theme";
+import { Box, Container, H1, H2, H3, H4, H5, H6 } from "@aces/ui";
 
 export interface CfHeaderProps extends CfBaseComponent, Nested {
   headline: string;

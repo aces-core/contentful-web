@@ -1,6 +1,6 @@
 import React from "react";
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from "@mui/material/Drawer";
-import { CustomCssProps, ResponsiveSpacing } from "@maverick/types";
+import { CustomCssProps, ResponsiveSpacing } from "@aces/types";
 import { Box } from "./box";
 
 interface DrawerProps

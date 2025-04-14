@@ -1,7 +1,7 @@
 "use client";
 
-import { ResponsiveSpacing } from "@maverick/types";
-import { Box } from "@maverick/ui";
+import { ResponsiveSpacing } from "@aces/types";
+import { Box } from "@aces/ui";
 
 export interface PardotFormProps {
   pardotFormUrl: string;

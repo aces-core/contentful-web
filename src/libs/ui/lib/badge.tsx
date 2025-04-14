@@ -1,6 +1,6 @@
 import MuiBadge, { BadgeProps as MuiBadgeProps } from "@mui/material/Badge";
 
-import { CustomCssProps, ResponsiveSpacing } from "@maverick/types";
+import { CustomCssProps, ResponsiveSpacing } from "@aces/types";
 
 interface BadgeProps
   extends Pick<

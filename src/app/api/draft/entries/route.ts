@@ -1,7 +1,7 @@
 import { cookies, draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { fetchEntryData } from "@maverick/contentful";
+import { fetchEntryData } from "@aces/contentful";
 
 export async function GET(request: Request) {
   const draft = await draftMode();

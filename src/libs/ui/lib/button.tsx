@@ -1,7 +1,7 @@
 import MuiButton, { ButtonProps as MuiButtonProps } from "@mui/material/Button";
 
-import { CustomCssProps } from "@maverick/types";
-import { Box } from "@maverick/ui";
+import { CustomCssProps } from "@aces/types";
+import { Box } from "@aces/ui";
 
 export type ButtonColor = MuiButtonProps["color"];
 export type ButtonVariant = MuiButtonProps["variant"];

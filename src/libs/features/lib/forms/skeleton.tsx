@@ -1,4 +1,4 @@
-import { Box, Skeleton } from "@maverick/ui";
+import { Box, Skeleton } from "@aces/ui";
 
 export const FormSkeleton = () => {
   return (

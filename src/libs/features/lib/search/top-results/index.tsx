@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import { Locale } from "@maverick/i18n";
-import { RouteDirectory } from "@maverick/types";
-import { Box, LinkWrapper } from "@maverick/ui";
+import { Locale } from "@aces/i18n";
+import { RouteDirectory } from "@aces/types";
+import { Box, LinkWrapper } from "@aces/ui";
 
 import { fetchTopSearchResults } from "./services";
 import { ResultsCard } from "./results-card";

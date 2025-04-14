@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { Swiper as ReactSwiper, SwiperSlide, SwiperClass } from "swiper/react";
 import { Autoplay, Pagination, Navigation, Thumbs } from "swiper/modules";
 
-import { ResponsiveSpacing } from "@maverick/types";
-import { useMediaQuery } from "@maverick/hooks";
-import { palette, breakpoints } from "@maverick/theme";
+import { ResponsiveSpacing } from "@aces/types";
+import { useMediaQuery } from "@aces/hooks";
+import { palette, breakpoints } from "@aces/theme";
 
 import { Box } from "./box";
 import { IconButtonProps, IconButton } from "./icon-button";

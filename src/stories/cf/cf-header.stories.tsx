@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CfHeader, CfHeaderProps } from "@maverick/cf";
+import { CfHeader, CfHeaderProps } from "@aces/cf";
 
 const data = {
   sys: { id: "4ONJ9vaLbF58zPG6qljfu", __typename: "Sys" },

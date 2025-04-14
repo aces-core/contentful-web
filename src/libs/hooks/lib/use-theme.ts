@@ -2,7 +2,7 @@
 
 import { useTheme as useMuiTheme } from "@mui/material/styles";
 
-import { ThemeType } from "@maverick/theme";
+import { ThemeType } from "@aces/theme";
 
 export const useTheme = <T extends ThemeType>(): T => {
   const theme = useMuiTheme();

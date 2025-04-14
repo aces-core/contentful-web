@@ -1,5 +1,5 @@
-import { CfButtonProps } from "@maverick/cf";
-import { CfLinkProps } from "@maverick/types";
+import { CfButtonProps } from "@aces/cf";
+import { CfLinkProps } from "@aces/types";
 
 export type CfMenuItemType = {
   internalTitle: string;

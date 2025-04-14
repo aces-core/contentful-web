@@ -1,15 +1,15 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfImageProps } from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing } from "@maverick/theme";
-import { Box, Card, Container, FlexBox, H2, Text } from "@maverick/ui";
+import { CfBaseComponent, CfImageProps } from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing } from "@aces/theme";
+import { Box, Card, Container, FlexBox, H2, Text } from "@aces/ui";
 import {
   HubSpotForm,
   HubSpotFormProps,
   PardotForm,
   PardotFormProps,
-} from "@maverick/features";
+} from "@aces/features";
 
 import { CfImageCover } from "../cf-image/render";
 

@@ -11,7 +11,7 @@ import {
   CfRichTextSectionServer,
   CfSliderServer,
   CfVideoEmbedServer,
-} from "@maverick/cf";
+} from "@aces/cf";
 
 import { PageBodyProps } from "./page-body-types";
 

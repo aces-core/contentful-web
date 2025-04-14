@@ -1,6 +1,6 @@
 # features
 
-import @maverick/features
+import @aces/features
 
 This library is responsible for features
 

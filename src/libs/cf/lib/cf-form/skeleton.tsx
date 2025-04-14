@@ -1,6 +1,6 @@
-import { FormSkeleton } from "@maverick/features";
-import { componentSpacing } from "@maverick/theme";
-import { Container, FlexBox, Skeleton } from "@maverick/ui";
+import { FormSkeleton } from "@aces/features";
+import { componentSpacing } from "@aces/theme";
+import { Container, FlexBox, Skeleton } from "@aces/ui";
 
 export const CfFormSkeleton = () => {
   return (

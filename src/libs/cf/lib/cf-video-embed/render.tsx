@@ -1,9 +1,9 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, Nested } from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing } from "@maverick/theme";
-import { Box, Container } from "@maverick/ui";
+import { CfBaseComponent, Nested } from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing } from "@aces/theme";
+import { Box, Container } from "@aces/ui";
 
 import style from "./style.module.css";
 

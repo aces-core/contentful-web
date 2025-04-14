@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
-import { defaultLocale } from "@maverick/i18n";
-import { PageProps, SpecialtyPages } from "@maverick/types";
-import { fetchSpecialtyPageData } from "@maverick/contentful";
+import { defaultLocale } from "@aces/i18n";
+import { PageProps, SpecialtyPages } from "@aces/types";
+import { fetchSpecialtyPageData } from "@aces/contentful";
 import {
   buildMetadata,
   DefaultPageBody,
   DefaultPageHero,
-} from "@maverick/features";
+} from "@aces/features";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { isEnabled } = await draftMode();

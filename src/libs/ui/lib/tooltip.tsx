@@ -4,7 +4,7 @@ import MuiTooltip, {
   TooltipProps as MuiTooltipProps,
 } from "@mui/material/Tooltip";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface TooltipProps
   extends Pick<MuiTooltipProps, "title" | "placement" | "children"> {

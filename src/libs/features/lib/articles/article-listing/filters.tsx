@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useState } from "react";
 
-import { Locale } from "@maverick/i18n";
-import { useGetLocale, useQueryParam } from "@maverick/hooks";
-import { cfCollectionToSelectOptions } from "@maverick/utils";
+import { Locale } from "@aces/i18n";
+import { useGetLocale, useQueryParam } from "@aces/hooks";
+import { cfCollectionToSelectOptions } from "@aces/utils";
 import {
   FlexBox,
   Box,
@@ -11,7 +11,7 @@ import {
   Select,
   SelectChangeEvent,
   Skeleton,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 import {
   DefaultOrder,

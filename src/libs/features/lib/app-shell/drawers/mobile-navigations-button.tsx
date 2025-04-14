@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 
-import { useUIState } from "@maverick/store";
-import { Icon, IconButton } from "@maverick/ui";
+import { useUIState } from "@aces/store";
+import { Icon, IconButton } from "@aces/ui";
 
 export const MobileNavigationsButton = () => {
   const { mobileMenuOpen, setMobileMenuOpen } = useUIState();

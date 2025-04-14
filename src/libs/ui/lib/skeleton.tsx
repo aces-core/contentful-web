@@ -2,7 +2,7 @@ import MuiSkeleton, {
   SkeletonProps as MuiSkeletonProps,
 } from "@mui/material/Skeleton";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface SkeletonProps
   extends Pick<MuiSkeletonProps, "variant" | "animation" | "children"> {

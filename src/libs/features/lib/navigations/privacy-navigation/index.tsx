@@ -1,8 +1,8 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent } from "@maverick/types";
-import { typography } from "@maverick/theme";
-import { Box, FlexBox } from "@maverick/ui";
+import { CfBaseComponent } from "@aces/types";
+import { typography } from "@aces/theme";
+import { Box, FlexBox } from "@aces/ui";
 
 import { CfMenuItemType, isCfMenuItem, MenuLink } from "../menus";
 

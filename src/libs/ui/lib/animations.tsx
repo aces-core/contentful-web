@@ -7,7 +7,7 @@ import MuiGrow, { GrowProps as MuiGrowProps } from "@mui/material/Grow";
 import MuiSlide, { SlideProps as MuiSlideProps } from "@mui/material/Slide";
 import MuiZoom, { ZoomProps as MuiZoomProps } from "@mui/material/Zoom";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface CollapseProps
   extends Pick<

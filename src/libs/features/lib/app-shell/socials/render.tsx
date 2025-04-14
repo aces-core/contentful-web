@@ -1,5 +1,5 @@
-import { generateId } from "@maverick/utils";
-import { Box, Icon, Link } from "@maverick/ui";
+import { generateId } from "@aces/utils";
+import { Box, Icon, Link } from "@aces/ui";
 export interface SocialsProps {
   facebook?: string;
   xTwitter?: string;

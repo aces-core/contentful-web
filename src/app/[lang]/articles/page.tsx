@@ -2,11 +2,11 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 
-import { fetchAllCategories } from "@maverick/contentful";
-import { defaultLocale, getLocale } from "@maverick/i18n";
-import { PageProps } from "@maverick/types";
-import { toSingleValueArray } from "@maverick/utils";
-import { Box, Container } from "@maverick/ui";
+import { fetchAllCategories } from "@aces/contentful";
+import { defaultLocale, getLocale } from "@aces/i18n";
+import { PageProps } from "@aces/types";
+import { toSingleValueArray } from "@aces/utils";
+import { Box, Container } from "@aces/ui";
 import {
   ArticleListing,
   ArticleListingSkeleton,
@@ -15,7 +15,7 @@ import {
   DefaultOrder,
   fetchArticles,
   OrderTypes,
-} from "@maverick/features";
+} from "@aces/features";
 
 export async function generateMetadata({
   params,

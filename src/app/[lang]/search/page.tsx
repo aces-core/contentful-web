@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 
-import { defaultLocale, getLocale } from "@maverick/i18n";
-import { PageProps } from "@maverick/types";
-import { Box, Container } from "@maverick/ui";
+import { defaultLocale, getLocale } from "@aces/i18n";
+import { PageProps } from "@aces/types";
+import { Box, Container } from "@aces/ui";
 import {
   buildMetadata,
   globalSearchQuery,
   SearchParams,
   TopSearchResults,
-} from "@maverick/features";
+} from "@aces/features";
 
 export async function generateMetadata({
   params,

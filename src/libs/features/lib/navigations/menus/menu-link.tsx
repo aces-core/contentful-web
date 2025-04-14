@@ -1,7 +1,7 @@
-import { defaultLocale } from "@maverick/i18n";
-import { CfLinkProps } from "@maverick/types";
-import { FlexBox, Icon, Text } from "@maverick/ui";
-import { CfLink } from "@maverick/cf";
+import { defaultLocale } from "@aces/i18n";
+import { CfLinkProps } from "@aces/types";
+import { FlexBox, Icon, Text } from "@aces/ui";
+import { CfLink } from "@aces/cf";
 import { CSSProperties } from "react";
 
 interface MenuLinkProps {

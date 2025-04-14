@@ -1,9 +1,9 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfImageProps, ResponsiveSpacing } from "@maverick/types";
-import { generateId } from "@maverick/utils";
-import { componentSpacing } from "@maverick/theme";
-import { Box, Container, Image, ImageCover } from "@maverick/ui";
+import { CfImageProps, ResponsiveSpacing } from "@aces/types";
+import { generateId } from "@aces/utils";
+import { componentSpacing } from "@aces/theme";
+import { Box, Container, Image, ImageCover } from "@aces/ui";
 
 import { ImageSkeleton } from "./skeleton";
 

@@ -1,10 +1,10 @@
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
-import { defaultLocale } from "@maverick/i18n";
-import { CatchAllPageProps } from "@maverick/types";
-import { fetchEntryData } from "@maverick/contentful";
-import { EntriesPreview } from "@maverick/features";
+import { defaultLocale } from "@aces/i18n";
+import { CatchAllPageProps } from "@aces/types";
+import { fetchEntryData } from "@aces/contentful";
+import { EntriesPreview } from "@aces/features";
 
 export default async function DraftEntries({
   params,

@@ -1,6 +1,6 @@
 import MuiPaper, { PaperProps as MuiPaperProps } from "@mui/material/Paper";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface PaperProps extends Pick<MuiPaperProps, "elevation" | "children"> {
   style?: CustomCssProps;

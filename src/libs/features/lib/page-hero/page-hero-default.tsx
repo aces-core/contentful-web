@@ -1,5 +1,5 @@
-import { CfImageOverlayHeroServer } from "@maverick/cf";
-import { defaultLocale } from "@maverick/i18n";
+import { CfImageOverlayHeroServer } from "@aces/cf";
+import { defaultLocale } from "@aces/i18n";
 import { PageHeroProps } from "./page-hero-types";
 
 export const DefaultPageHero = ({

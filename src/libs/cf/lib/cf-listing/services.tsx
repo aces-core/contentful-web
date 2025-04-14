@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-import { defaultLocale } from "@maverick/i18n";
-import { cfClient, cfPreviewClient } from "@maverick/contentful";
+import { defaultLocale } from "@aces/i18n";
+import { cfClient, cfPreviewClient } from "@aces/contentful";
 
 export const ListingQuery = gql`
   query ($id: String!, $preview: Boolean!, $locale: String) {

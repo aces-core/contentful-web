@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Container as ContainerUI } from "@maverick/ui";
+import { Container as ContainerUI } from "@aces/ui";
 
 const meta = {
   title: "UI/Container",

@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, RouteDirectory } from "@maverick/types";
-import { useUIState } from "@maverick/store";
-import { useMediaQuery } from "@maverick/hooks";
-import { Box, Col, Container, FlexBox, Row, Link } from "@maverick/ui";
+import { CfBaseComponent, RouteDirectory } from "@aces/types";
+import { useUIState } from "@aces/store";
+import { useMediaQuery } from "@aces/hooks";
+import { Box, Col, Container, FlexBox, Row, Link } from "@aces/ui";
 
 import {
   MainNavigation,

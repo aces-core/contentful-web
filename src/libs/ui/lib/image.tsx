@@ -1,9 +1,9 @@
 import React from "react";
 import NextImage from "next/image";
 
-import { spacing } from "@maverick/theme";
-import { Box } from "@maverick/ui";
-import { ResponsiveSpacing } from "@maverick/types";
+import { spacing } from "@aces/theme";
+import { Box } from "@aces/ui";
+import { ResponsiveSpacing } from "@aces/types";
 
 type ImageFormat = "jpg" | "png" | "webp" | "gif" | "avif";
 

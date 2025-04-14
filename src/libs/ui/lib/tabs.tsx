@@ -3,7 +3,7 @@
 import MuiTab, { TabProps as MuiTabProps } from "@mui/material/Tab";
 import MuiTabs, { TabsProps as MuiTabsProps } from "@mui/material/Tabs";
 
-import { Box, BoxProps } from "@maverick/ui";
+import { Box, BoxProps } from "@aces/ui";
 
 export function Tabs({
   value,

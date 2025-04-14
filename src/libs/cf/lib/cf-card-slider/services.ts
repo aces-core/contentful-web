@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-import { ImageFragment, cfClient, cfPreviewClient } from "@maverick/contentful";
-import { defaultLocale } from "@maverick/i18n";
+import { ImageFragment, cfClient, cfPreviewClient } from "@aces/contentful";
+import { defaultLocale } from "@aces/i18n";
 
 export const CardSliderQuery = gql`
   ${ImageFragment}

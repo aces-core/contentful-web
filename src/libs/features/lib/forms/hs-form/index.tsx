@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { css, Global } from "@emotion/react";
 
-import { useTheme } from "@maverick/hooks";
-import { fontWeights, ThemeType, typography } from "@maverick/theme";
-import { Box } from "@maverick/ui";
+import { useTheme } from "@aces/hooks";
+import { fontWeights, ThemeType, typography } from "@aces/theme";
+import { Box } from "@aces/ui";
 
 import { FormSkeleton } from "../skeleton";
 

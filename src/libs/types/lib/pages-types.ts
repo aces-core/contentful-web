@@ -1,4 +1,4 @@
-import { Locale } from "@maverick/i18n";
+import { Locale } from "@aces/i18n";
 
 export interface CatchAllPageProps {
   lang: Locale;

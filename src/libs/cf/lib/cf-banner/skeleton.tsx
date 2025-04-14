@@ -1,5 +1,5 @@
-import { componentSpacing, palette } from "@maverick/theme";
-import { Box, Container, FlexBox, Skeleton } from "@maverick/ui";
+import { componentSpacing, palette } from "@aces/theme";
+import { Box, Container, FlexBox, Skeleton } from "@aces/ui";
 
 export const BannerSkeleton = () => {
   return (

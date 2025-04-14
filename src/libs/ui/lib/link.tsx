@@ -2,8 +2,8 @@ import React from "react";
 import NextLink from "next/link";
 import MuiLink, { LinkProps as MuiLinkProps } from "@mui/material/Link";
 
-import { CustomCssProps } from "@maverick/types";
-import { Box } from "@maverick/ui";
+import { CustomCssProps } from "@aces/types";
+import { Box } from "@aces/ui";
 
 export interface LinkProps
   extends Pick<

@@ -1,4 +1,4 @@
-import { Skeleton } from "@maverick/ui";
+import { Skeleton } from "@aces/ui";
 
 export interface ImageSkeletonProps {
   height?: number | string;

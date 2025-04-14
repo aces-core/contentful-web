@@ -1,4 +1,4 @@
-import { FlexBox, Skeleton } from "@maverick/ui";
+import { FlexBox, Skeleton } from "@aces/ui";
 
 export const CardSkeleton = () => {
   return (

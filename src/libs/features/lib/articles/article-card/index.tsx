@@ -1,11 +1,11 @@
-import { Locale } from "@maverick/i18n";
+import { Locale } from "@aces/i18n";
 import {
   CfImageProps,
   ResponsiveSpacing,
   RouteDirectory,
-} from "@maverick/types";
-import { formatDate } from "@maverick/utils";
-import { Avatar, Card, FlexBox, H4, LinkWrapper, Text } from "@maverick/ui";
+} from "@aces/types";
+import { formatDate } from "@aces/utils";
+import { Avatar, Card, FlexBox, H4, LinkWrapper, Text } from "@aces/ui";
 
 export interface ArticleCardProps {
   featuredImage: CfImageProps;

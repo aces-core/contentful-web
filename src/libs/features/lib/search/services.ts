@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 
-import { defaultLocale } from "@maverick/i18n";
-import { cfClient, cfPreviewClient } from "@maverick/contentful";
+import { defaultLocale } from "@aces/i18n";
+import { cfClient, cfPreviewClient } from "@aces/contentful";
 import { globalSearchQuery } from "./config";
-import { RouteDirectory } from "@maverick/types";
+import { RouteDirectory } from "@aces/types";
 
 export const SiteSearchQuery = gql`
   query ($query: String!, $preview: Boolean!, $locale: String) {

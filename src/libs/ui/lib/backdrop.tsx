@@ -2,7 +2,7 @@ import MuiBackdrop, {
   BackdropProps as MuiBackdropProps,
 } from "@mui/material/Backdrop";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 interface BackdropProps
   extends Pick<

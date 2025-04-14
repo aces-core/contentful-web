@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import MuiBox, { BoxProps as MuiBoxProps } from "@mui/material/Box";
 
-import { CustomCssProps } from "@maverick/types";
+import { CustomCssProps } from "@aces/types";
 
 export interface BoxProps
   extends Pick<

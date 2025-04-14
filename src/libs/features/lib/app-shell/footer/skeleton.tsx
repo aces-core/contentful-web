@@ -1,4 +1,4 @@
-import { Container, FlexBox, Skeleton } from "@maverick/ui";
+import { Container, FlexBox, Skeleton } from "@aces/ui";
 
 import { NavigationSkeleton } from "../../navigations";
 

@@ -10,7 +10,7 @@ import {
   Divider,
   Button,
   Drawer as DrawerUI,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 const meta = {
   title: "UI/Drawer",

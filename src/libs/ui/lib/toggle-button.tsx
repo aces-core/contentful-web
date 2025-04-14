@@ -5,7 +5,7 @@ import MuiToggleButtonGroup, {
   ToggleButtonGroupProps as MuiToggleButtonGroupProps,
 } from "@mui/material/ToggleButtonGroup";
 
-import { CustomCssProps, ResponsiveSpacing } from "@maverick/types";
+import { CustomCssProps, ResponsiveSpacing } from "@aces/types";
 
 interface ToggleButtonProps
   extends Pick<

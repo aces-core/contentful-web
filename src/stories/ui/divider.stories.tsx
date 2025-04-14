@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Box, Text, Divider as DividerUI } from "@maverick/ui";
+import { Box, Text, Divider as DividerUI } from "@aces/ui";
 
 const meta = {
   title: "UI/Divider",

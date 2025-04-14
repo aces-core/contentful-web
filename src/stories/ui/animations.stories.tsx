@@ -13,7 +13,7 @@ import {
   Zoom as ZoomUI,
   FormControlLabel,
   Switch,
-} from "@maverick/ui";
+} from "@aces/ui";
 
 const meta: Meta = {
   title: "UI/Animations",
