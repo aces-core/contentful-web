@@ -55,7 +55,7 @@ Go to Contentful and log into your account.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mikepalazzo/aces-contentful-web.git
+   git clone https://github.com/aces-core/contentful-web.git
    cd aces-contentful-web
    ```
 2. Install dependencies:
