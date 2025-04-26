@@ -1,11 +1,12 @@
 import { defaultLocale } from "@aces/i18n";
 import { CfImageProps, ResponsiveSpacing } from "@aces/types";
-import { Box } from "@aces/ui";
+import { Box, H6 } from "@aces/ui";
 import { CfImage } from "@aces/cf";
 
 import { logoVariant } from ".";
 
 export type LogosType = {
+  appName: string;
   knockoutLogo: CfImageProps;
   fullColorLogo: CfImageProps;
 };
@@ -27,6 +28,14 @@ export const Logo = ({
 }: LogoProps) => {
   const logo =
     variant === "knockoutLogo" ? logos.knockoutLogo : logos.fullColorLogo;
+
+  if (!logo) {
+    return (
+      <Box>
+        <H6 component={"p"}>{logos.appName}</H6>
+      </Box>
+    );
+  }
 
   return (
     <Box width={width}>

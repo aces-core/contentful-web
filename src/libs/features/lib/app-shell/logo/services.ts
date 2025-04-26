@@ -6,6 +6,7 @@ export const LogoFragment = gql`
   ${ImageFragment}
 
   fragment Logo on Apps {
+    appName
     fullColorLogo {
       ...Image
     }
@@ -46,6 +47,7 @@ export const fetchLogoData = async (
     });
 
     return {
+      appName: response.data.appsCollection.items[0].appName,
       fullColorLogo: response.data.appsCollection.items[0].fullColorLogo,
       knockoutLogo: response.data.appsCollection.items[0].knockoutLogo,
     };
