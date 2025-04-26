@@ -7,7 +7,8 @@ import { execSync } from "child_process";
 dotenv.config();
 
 const spaceId = process.env.NEXT_PUBLIC_CF_SPACE;
-const managementToken = process.env.NEXT_CF_CMA_TOKEN=;
+const envId = process.env.NEXT_PUBLIC_CF_ENVIRONMENT || "master";
+const managementToken = process.env.NEXT_CF_CMA_TOKEN;
 
 if (!spaceId || !managementToken) {
   console.error(
@@ -18,7 +19,7 @@ if (!spaceId || !managementToken) {
 
 const exportDir = "./commands/json";
 const exportFile = "models-export.json";
-const command = `contentful space export --content-model-only --space-id ${spaceId} --management-token ${managementToken} --export-dir ${exportDir} --content-file ${exportFile} --skip-content`;
+const command = `contentful space export --content-model-only --space-id ${spaceId} --environment-id ${envId} --management-token ${managementToken} --export-dir ${exportDir} --content-file ${exportFile} --skip-content`;
 
 try {
   execSync(command, { stdio: "inherit" });

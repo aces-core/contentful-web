@@ -28,6 +28,7 @@ export const HeaderServer = async ({
 
     data = {
       logos: {
+        appName: headerData.appName,
         fullColorLogo: headerData.fullColorLogo,
         knockoutLogo: headerData.knockoutLogo,
       },

@@ -18,6 +18,8 @@ export interface BaseLinkProps {
   className?: string;
   style?: React.CSSProperties;
   lang?: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const LinkInheritStyles = {
@@ -35,8 +37,14 @@ export const BaseLink = ({
   style,
   children,
   lang,
+  onMouseEnter,
+  onMouseLeave,
 }: BaseLinkProps) => {
-  if (linkType === CfLinkTypes.PageLink && pageLink) {
+  if (
+    linkType === CfLinkTypes.PageLink &&
+    pageLink &&
+    pageLink.__typename === "Page"
+  ) {
     if (pageLink.specialtyPage) {
       if (pageLink.specialtyPage === SpecialtyPages.Homepage) {
         return (
@@ -46,6 +54,23 @@ export const BaseLink = ({
             target={target}
             className={className}
             style={{ ...LinkInheritStyles, ...style }}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+          >
+            {children}
+          </NextLink>
+        );
+      }
+      if (pageLink.specialtyPage === SpecialtyPages.Articles) {
+        return (
+          <NextLink
+            href={RouteDirectory.Articles}
+            hrefLang={lang}
+            target={target}
+            className={className}
+            style={{ ...LinkInheritStyles, ...style }}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
           >
             {children}
           </NextLink>
@@ -62,6 +87,28 @@ export const BaseLink = ({
         target={target}
         className={className}
         style={{ ...LinkInheritStyles, ...style }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        {children}
+      </NextLink>
+    );
+  }
+
+  if (
+    linkType === CfLinkTypes.PageLink &&
+    pageLink &&
+    pageLink.__typename === "Article"
+  ) {
+    return (
+      <NextLink
+        href={`${RouteDirectory.Articles}/${pageLink.slug}`}
+        hrefLang={lang}
+        target={target}
+        className={className}
+        style={{ ...LinkInheritStyles, ...style }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         {children}
       </NextLink>
@@ -76,6 +123,8 @@ export const BaseLink = ({
         target={target}
         className={className}
         style={{ ...LinkInheritStyles, ...style }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
         {children}
       </NextLink>
@@ -89,6 +138,8 @@ export const BaseLink = ({
       target={target}
       className={className}
       style={{ ...LinkInheritStyles, ...style }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {children}
     </NextLink>
@@ -104,6 +155,8 @@ export const CfLink = ({
   style,
   children,
   lang,
+  onMouseEnter,
+  onMouseLeave,
 }: BaseLinkProps) => {
   return (
     <BaseLink
@@ -114,6 +167,8 @@ export const CfLink = ({
       className={className}
       style={style}
       lang={lang}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {children}
     </BaseLink>

@@ -102,7 +102,7 @@ export const Footer = ({
                 fieldId: "copyrightText",
                 locale: lang,
               })}
-            >{`© ${currentYear()} ${copyright}`}</Text.ExtraSmall>
+            >{`© ${currentYear()}${copyright ? ` ${copyright}` : ""}`}</Text.ExtraSmall>
           </Col>
           <Col size={{ xs: 12, md: 8 }}>
             <PrivacyNavigation

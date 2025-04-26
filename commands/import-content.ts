@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const newSpaceId = process.env.NEXT_PUBLIC_CF_SPACE;
-const managementToken = process.env.NEXT_CF_CMA_TOKEN=;
+const managementToken = process.env.NEXT_CF_CMA_TOKEN;
 
 if (!newSpaceId || !managementToken) {
   console.error(

@@ -7,7 +7,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const newSpaceId = process.env.NEXT_PUBLIC_CF_SPACE;
-const managementToken = process.env.NEXT_CF_CMA_TOKEN=;
+const envId = process.env.NEXT_PUBLIC_CF_ENVIRONMENT || "master";
+const managementToken = process.env.NEXT_CF_CMA_TOKEN;
 
 if (!newSpaceId || !managementToken) {
   console.error(
@@ -17,9 +18,10 @@ if (!newSpaceId || !managementToken) {
 }
 
 const importFile = "./commands/json/models-export.json";
+const errorLogFile = "./commands/logs/contentful-import-error.log";
 
 // Command to import content into the new space
-const command = `contentful space import --space-id ${newSpaceId} --management-token ${managementToken} --content-file ${importFile} --content-model-only`;
+const command = `contentful space import --space-id ${newSpaceId} --environment-id ${envId} --management-token ${managementToken} --content-file ${importFile} --error-log-file ${errorLogFile} --content-model-only`;
 
 try {
   execSync(command, { stdio: "inherit" });

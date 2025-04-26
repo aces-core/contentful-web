@@ -136,11 +136,18 @@ export const CfRichTextRender = ({
         switch (typename) {
           case "CodeEmbed":
             return (
-              <CfCodeEmbedServer id={id} preview={preview} lang={lang} nested />
+              <CfCodeEmbedServer
+                key={id}
+                id={id}
+                preview={preview}
+                lang={lang}
+                nested
+              />
             );
           case "Header":
             return (
               <CfHeaderServer
+                key={id}
                 id={id}
                 preview={preview}
                 lang={lang}
@@ -150,11 +157,18 @@ export const CfRichTextRender = ({
             );
           case "Image":
             return (
-              <CfImageServer id={id} preview={preview} lang={lang} nested />
+              <CfImageServer
+                key={id}
+                id={id}
+                preview={preview}
+                lang={lang}
+                nested
+              />
             );
           case "VideoEmbed":
             return (
               <CfVideoEmbedServer
+                key={id}
                 id={id}
                 preview={preview}
                 lang={lang}
@@ -173,9 +187,18 @@ export const CfRichTextRender = ({
 
         switch (typename) {
           case "Button":
-            return <CfButtonServer id={id} preview={preview} lang={lang} />;
+            return (
+              <CfButtonServer key={id} id={id} preview={preview} lang={lang} />
+            );
           case "LinkText":
-            return <CfLinkTextServer id={id} preview={preview} lang={lang} />;
+            return (
+              <CfLinkTextServer
+                key={id}
+                id={id}
+                preview={preview}
+                lang={lang}
+              />
+            );
           default:
             return null;
         }

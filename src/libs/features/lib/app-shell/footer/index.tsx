@@ -26,6 +26,7 @@ export const FooterServer = async ({
 
     data = {
       logos: {
+        appName: footerData.appName,
         fullColorLogo: footerData.fullColorLogo,
         knockoutLogo: footerData.knockoutLogo,
       },
