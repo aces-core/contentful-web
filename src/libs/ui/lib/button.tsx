@@ -20,6 +20,7 @@ export interface ButtonProps
     | "aria-label"
     | "children"
     | "onClick"
+    | "disabled"
   > {
   fullWidthMobile?: boolean;
   style?: CustomCssProps;
@@ -30,7 +31,7 @@ export const Button = ({
   variant,
   color,
   size = "medium",
-  shape = "rounded",
+  shape = "circular",
   startIcon,
   endIcon,
   fullWidth,
@@ -39,6 +40,7 @@ export const Button = ({
   style,
   children,
   onClick,
+  disabled,
   ...props
 }: ButtonProps) => {
   return (
@@ -52,6 +54,7 @@ export const Button = ({
       startIcon={startIcon}
       endIcon={endIcon}
       onClick={onClick}
+      disabled={disabled}
       sx={{
         width: fullWidth
           ? { xs: "100%" }

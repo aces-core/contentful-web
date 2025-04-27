@@ -13,6 +13,7 @@ import MenuList, {
 
 import { CustomCssProps, Size } from "@aces/types";
 import { Box, Icon } from "@aces/ui";
+import { headerFont, palette } from "@aces/theme";
 
 export interface MenuProps
   extends MuiMenuListProps,
@@ -41,7 +42,7 @@ export const Menu: React.FC<MenuProps> = ({
   const isGrid = Boolean(columns);
 
   return (
-    <nav>
+    <Box component="nav">
       <MenuList
         sx={{
           display: isGrid ? "grid" : "flex",
@@ -63,14 +64,13 @@ export const Menu: React.FC<MenuProps> = ({
       >
         {children}
       </MenuList>
-    </nav>
+    </Box>
   );
 };
 
 export const DropDownMenu: React.FC<MenuItemProps> = ({
   style,
   children,
-  resize,
   onMouseEnter,
   onMouseLeave,
 }) => {
@@ -102,10 +102,10 @@ export const DropDownMenu: React.FC<MenuItemProps> = ({
       sx={{
         position: "relative",
         justifyContent: "flex-start",
-        paddingTop: "1.5rem",
-        paddingBottom: "1.5rem",
-        paddingLeft: { xs: ".75rem", xl: "1rem" },
-        paddingRight: { xs: ".75rem", xl: "1rem" },
+        paddingTop: "1.75rem",
+        paddingBottom: "1.75rem",
+        paddingLeft: { lg: "1rem", xl: "1.25rem" },
+        paddingRight: { lg: "1rem", xl: "1.25rem" },
         minHeight: 0,
         whiteSpace: "break-spaces",
         animation: `${fadeIn} 100ms ease-in-out`,
@@ -123,12 +123,14 @@ export const DropDownMenu: React.FC<MenuItemProps> = ({
           sx={{
             textAlign: "left",
             fontSize: "inherit",
-            fontWeight: 700,
-            "& > span": resize
-              ? {
-                  fontSize: { xs: "body2.fontSize", xl: "body1.fontSize" },
-                }
-              : {},
+            fontWeight: 400,
+            "& > span": {
+              fontFamily: headerFont.style.fontFamily,
+              fontSize: {
+                xs: "subtitle2.fontSize",
+                xl: "subtitle2.fontSize",
+              },
+            },
           }}
         >
           {React.Children.toArray(children).filter(
@@ -137,7 +139,7 @@ export const DropDownMenu: React.FC<MenuItemProps> = ({
         </ListItemText>
         {hasNestedMenu && (
           <Icon
-            icon={open ? "ArrowDropUp" : "ArrowDropDown"}
+            icon={open ? "ExpandLess" : "ExpandMore"}
             size={20}
             color="text.primary"
             marginLeft={1}
@@ -165,7 +167,6 @@ interface MenuItemProps
   nested?: boolean;
   noPadding?: boolean;
   hoverUnderline?: boolean;
-  resize?: boolean;
   style?: CustomCssProps;
 }
 
@@ -174,7 +175,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   disableGutters = false,
   noPadding = false,
   hoverUnderline = false,
-  resize,
   style,
   children,
 }) => {
@@ -184,14 +184,14 @@ export const MenuItem: React.FC<MenuItemProps> = ({
       sx={{
         position: "relative",
         justifyContent: "flex-start",
-        paddingTop: noPadding ? 0 : nested ? "0.5rem" : "1.75rem",
-        paddingBottom: noPadding ? 0 : nested ? "0.5rem" : "1.75rem",
+        paddingTop: noPadding ? 0 : nested ? "0.5rem" : "1.5rem",
+        paddingBottom: noPadding ? 0 : nested ? "0.5rem" : "1.5rem",
         paddingLeft: disableGutters
           ? 0
-          : { xs: ".5rem", lg: ".75rem", xl: "1rem" },
+          : { xs: ".5rem", lg: ".5rem", xl: "1rem" },
         paddingRight: disableGutters
           ? 0
-          : { xs: ".5rem", lg: ".75rem", xl: "1rem" },
+          : { xs: ".5rem", lg: ".5rem", xl: "1rem" },
         minHeight: 0,
         whiteSpace: "break-spaces",
         "&:hover": {
@@ -208,12 +208,11 @@ export const MenuItem: React.FC<MenuItemProps> = ({
           sx={{
             textAlign: "left",
             fontSize: "inherit",
-            fontWeight: 700,
-            "& > span": resize
-              ? {
-                  fontSize: { xs: "body2.fontSize", xl: "body1.fontSize" },
-                }
-              : {},
+            fontWeight: 400,
+            "& > span": {
+              fontSize: { xs: "subtitle2.fontSize", xl: "subtitle2.fontSize" },
+              paddingY: "0.25rem",
+            },
           }}
         >
           {children}
@@ -226,7 +225,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 interface SubMenuProps extends Pick<MuiMenuListProps, "children"> {
   boxShadow?: boolean;
   minWidth?: string;
-  position?: "left" | "right";
+  position?: "left" | "right" | "center";
 }
 
 export const SubMenu: React.FC<SubMenuProps> = ({
@@ -238,20 +237,23 @@ export const SubMenu: React.FC<SubMenuProps> = ({
   return (
     <MenuList
       sx={{
-        paddingTop: 0,
-        paddingBottom: 0,
+        paddingY: "12px",
+        paddingX: "10px",
         position: "absolute",
-        top: "100%",
-        left: position === "left" ? 0 : "auto",
+        top: "calc(100% - 12px)",
+        left: position === "left" ? 0 : position === "center" ? "50%" : "auto",
         right: position === "right" ? 0 : "auto",
+        transform: position === "center" ? "translateX(-50%)" : "none",
         minWidth: minWidth,
-        width: "100%",
+        width: "calc(100% + 10px)",
         height: "auto",
         backgroundColor: "common.white",
+        border: `1px solid ${palette.grey[200]}`,
+        borderRadius: "10px",
         color: "text.primary",
         zIndex: 99,
         flexDirection: "column",
-        boxShadow: boxShadow ? "0px 6px 6px rgba(0, 0, 0, 0.2)" : "none",
+        boxShadow: boxShadow ? "0px 1px 2px 0px rgba(0, 0, 0, 0.25)" : "none",
       }}
     >
       {children}

@@ -1,108 +1,141 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import {
+  CfAlignment,
   CfBaseComponent,
-  CfColorPicker,
-  CfColorPickerPalette,
+  CfImageProps,
+  CfRichText,
 } from "@aces/types";
-import { isLight, generateId } from "@aces/utils";
+import { generateId } from "@aces/utils";
 import { componentSpacing, palette } from "@aces/theme";
-import { Box, Container, H2, Text } from "@aces/ui";
+import { Box, Container, H3, Row, Col, FlexBox } from "@aces/ui";
 
 import { CfButton, CfButtonProps } from "../cf-button/render";
+import { CfImage } from "../cf-image/render";
+import { CfRichTextRender } from "../cf-rich-text-render";
 
 export interface CfBannerProps extends CfBaseComponent {
   headline?: string;
-  subhead?: string;
+  bodyCopy?: CfRichText;
   button?: CfButtonProps;
-  backgroundColor: CfColorPicker;
+  media: CfImageProps;
+  mediaAlignment: CfAlignment;
+  theme: string;
 }
 
 export const CfBanner = ({
   internalTitle,
   headline,
-  subhead,
+  bodyCopy,
   button,
-  backgroundColor,
+  media,
+  mediaAlignment,
+  theme,
   __typename,
   id,
   lang,
   preview,
 }: CfBannerProps) => {
-  const color = isLight(backgroundColor.value)
-    ? "primary.contrastText"
-    : "text.primary";
+  const color = theme === "Primary Gradient" ? "common.white" : "text.primary";
+  const align = mediaAlignment === "Center" ? "center" : "left";
+  const textAlign = mediaAlignment === "Center" ? "Center" : "Left";
 
   return (
     <Box
       id={generateId(internalTitle)}
       data-component={__typename}
-      marginY={{ xs: componentSpacing.xs, md: componentSpacing.md }}
+      paddingY={{ xs: componentSpacing.lg, md: componentSpacing.xl }}
+      style={{
+        background:
+          theme === "Blue Gray"
+            ? palette.tertiary.grayblue
+            : palette.gradient.primary,
+      }}
     >
       <Container>
-        <Box
-          style={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            alignItems: { xs: "flex-start", md: "center" },
-            justifyContent: "space-between",
-            gap: "1.5rem",
-            background:
-              backgroundColor.name === CfColorPickerPalette.Secondary
-                ? palette.gradient.secondary
-                : palette.gradient.primary,
-            padding: { xs: "1.5rem", md: "3rem" },
+        <Row
+          alignItems={"center"}
+          flexDirection={{
+            xs: "column-reverse",
+            md:
+              mediaAlignment === "Right"
+                ? "row"
+                : mediaAlignment === "Left"
+                  ? "row-reverse"
+                  : "column-reverse",
           }}
-          {...ContentfulLivePreview.getProps({
-            entryId: id,
-            fieldId: "backgroundColor",
-            locale: lang,
-          })}
+          rowSpacing={8}
         >
-          {(headline || subhead) && (
-            <Box style={{ maxWidth: "524px" }}>
-              {headline && (
-                <H2
-                  color={color}
-                  marginBottom={2}
-                  {...ContentfulLivePreview.getProps({
-                    entryId: id,
-                    fieldId: "headline",
-                    locale: lang,
-                  })}
-                >
-                  {headline}
-                </H2>
-              )}
-              {subhead && (
-                <Text
-                  color={color}
-                  {...ContentfulLivePreview.getProps({
-                    entryId: id,
-                    fieldId: "subhead",
-                    locale: lang,
-                  })}
-                >
-                  {subhead}
-                </Text>
-              )}
-            </Box>
+          {(headline || bodyCopy || button) && (
+            <Col size={{ xs: 12, md: 6 }}>
+              <FlexBox
+                maxWidth={mediaAlignment === "Center" ? "900px" : "500px"}
+                flexDirection={"column"}
+                alignItems={mediaAlignment === "Center" ? "center" : "start"}
+                marginLeft={mediaAlignment === "Left" ? "auto" : "0px"}
+                height={"100%"}
+                gap={6}
+              >
+                {headline && (
+                  <H3
+                    align={align}
+                    color={color}
+                    marginBottom={2}
+                    {...ContentfulLivePreview.getProps({
+                      entryId: id,
+                      fieldId: "headline",
+                      locale: lang,
+                    })}
+                  >
+                    {headline}
+                  </H3>
+                )}
+                {bodyCopy && (
+                  <CfRichTextRender
+                    alignment={textAlign}
+                    color={color}
+                    richTextDocument={bodyCopy.json}
+                    lang={lang}
+                    preview={preview}
+                    {...ContentfulLivePreview.getProps({
+                      entryId: id,
+                      fieldId: "bodyCopy",
+                      locale: lang,
+                    })}
+                  />
+                )}
+                {button && (
+                  <CfButton
+                    internalTitle={button.internalTitle}
+                    title={button.title}
+                    link={button.link}
+                    buttonStyle={button.buttonStyle}
+                    rightIcon={button.rightIcon}
+                    __typename={button.__typename}
+                    id={button?.sys?.id || ""}
+                    preview={preview}
+                    lang={lang}
+                  />
+                )}
+              </FlexBox>
+            </Col>
           )}
-          {button && (
-            <Box style={{ width: { xs: "100%", sm: "auto" } }}>
-              <CfButton
-                internalTitle={button.internalTitle}
-                title={button.title}
-                link={button.link}
-                buttonStyle={button.buttonStyle}
-                __typename={button.__typename}
-                id={button?.sys?.id || ""}
-                preview={preview}
-                lang={lang}
-              />
-            </Box>
+          {media && (
+            <Col size={{ xs: 12, md: mediaAlignment === "Center" ? 9 : 6 }}>
+              <FlexBox flexDirection={"column"}>
+                <CfImage
+                  internalTitle={media.internalTitle}
+                  image={media.image}
+                  nested={true}
+                  __typename={media.__typename}
+                  id={id}
+                  lang={lang}
+                  preview={preview}
+                />
+              </FlexBox>
+            </Col>
           )}
-        </Box>
+        </Row>
       </Container>
     </Box>
   );

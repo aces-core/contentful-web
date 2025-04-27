@@ -1,46 +1,84 @@
-"use client";
-
-import MuiTab, { TabProps as MuiTabProps } from "@mui/material/Tab";
 import MuiTabs, { TabsProps as MuiTabsProps } from "@mui/material/Tabs";
+import MuiTab, { TabProps as MuiTabProps } from "@mui/material/Tab";
 
+import { CustomCssProps, ResponsiveSpacing } from "@aces/types";
+import { palette } from "@aces/theme";
 import { Box, BoxProps } from "@aces/ui";
+
+export interface TabsProps
+  extends Pick<MuiTabsProps, "value" | "variant" | "onChange" | "children"> {
+  showBorder?: boolean;
+  marginY?: ResponsiveSpacing;
+  marginX?: ResponsiveSpacing;
+  marginTop?: ResponsiveSpacing;
+  marginBottom?: ResponsiveSpacing;
+  marginRight?: ResponsiveSpacing;
+  marginLeft?: ResponsiveSpacing;
+  style?: CustomCssProps;
+}
 
 export function Tabs({
   value,
-  variant = "fullWidth",
+  variant = "standard",
   onChange,
   children,
-}: MuiTabsProps) {
+  showBorder,
+  marginY,
+  marginX,
+  marginTop,
+  marginBottom,
+  marginRight,
+  marginLeft,
+  style,
+}: TabsProps) {
   return (
-    <MuiTabs value={value} variant={variant} onChange={onChange}>
+    <MuiTabs
+      value={value}
+      variant={variant}
+      onChange={onChange}
+      sx={{
+        marginX: marginX,
+        marginY: marginY,
+        marginTop: marginTop,
+        marginBottom: marginBottom,
+        marginRight: marginRight,
+        marginLeft: marginLeft,
+        position: "relative",
+        "&:before": showBorder
+          ? {
+              background: palette.border.light,
+              bottom: 0,
+              content: '""',
+              position: "absolute",
+              height: "2px",
+              width: "100%",
+            }
+          : {},
+        ...style,
+      }}
+    >
       {children}
     </MuiTabs>
   );
 }
 
-function Tab({ label, children, ...props }: MuiTabProps) {
+export function Tab({ label, value, children, style, ...props }: MuiTabProps) {
   return (
-    <MuiTab label={label} {...props}>
+    <MuiTab label={label} value={value} sx={style} {...props}>
       {children}
     </MuiTab>
   );
 }
-
-TabPanel.displayName = "Tab";
-Tabs.Tab = Tab;
 
 interface TabPanelProps extends Pick<BoxProps, "style" | "children"> {
   index: number;
   value: number | null;
 }
 
-function TabPanel({ index, value, style, children }: TabPanelProps) {
+export function TabPanel({ index, value, style, children }: TabPanelProps) {
   return (
     <Box role="tabpanel" hidden={value !== index}>
       {value === index && <Box style={style}>{children}</Box>}
     </Box>
   );
 }
-
-TabPanel.displayName = "TabPanel";
-Tabs.TabPanel = TabPanel;

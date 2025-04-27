@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import { CfBaseComponent, RouteDirectory } from "@aces/types";
 import { useUIState } from "@aces/store";
 import { useMediaQuery } from "@aces/hooks";
+import { palette } from "@aces/theme";
 import { Box, Col, Container, FlexBox, Row, Link } from "@aces/ui";
 
 import {
   MainNavigation,
-  MainNavigationMobile,
+  MainNavigationMobileSlideTopLevel,
   SecondaryNavigationMobile,
   SecondaryNavigation,
 } from "../../navigations";
@@ -20,8 +20,9 @@ import {
   GlobalSearchButton,
   GlobalSearchDrawer,
   MobileNavigationsButton,
-  MobileNavigationsDrawer,
+  MobileNavigationsDrawerSlide,
 } from "../drawers";
+import { EnableSearch } from "../../../config";
 
 interface HeaderProps
   extends Omit<CfBaseComponent, "internalTitle" | "__typename"> {
@@ -45,7 +46,7 @@ export const Header = ({
 
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const { isSmallerThanMd, isLargerThanMd } = useMediaQuery();
+  const { isSmallerThanLg, isLargerThanLg } = useMediaQuery();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,23 +57,19 @@ export const Header = ({
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    if (sticky) {
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, []);
 
   return (
     <>
-      {isLargerThanMd && (
-        <SecondaryNavigation
-          data={navigations.secondaryNavigation}
-          id={id}
-          lang={lang}
-        />
-      )}
       <Box
         style={{
+          borderBottom: `1px solid ${palette.border.light}`,
           position: sticky ? "sticky" : "relative",
           top: "0",
           width: "100%",
@@ -81,7 +78,7 @@ export const Header = ({
       >
         <FlexBox
           component="header"
-          paddingY={{ xs: "7px", md: 0 }}
+          paddingY={{ xs: "7px", lg: 0 }}
           flexDirection="column"
           style={{
             backgroundColor: "common.white",
@@ -97,11 +94,14 @@ export const Header = ({
         >
           <Container>
             <Row
-              style={{ width: "100%" }}
-              flexDirection={{ xs: "row", md: "row" }}
+              flexDirection={{ xs: "row", lg: "row" }}
+              style={{
+                minHeight: { xs: "52px", lg: "123px" },
+                width: "100%",
+              }}
             >
               <Col
-                size={{ xs: 8, md: 4 }}
+                size={{ xs: 8, lg: 2 }}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -112,13 +112,13 @@ export const Header = ({
                   <Logo
                     logos={logos}
                     variant="fullColorLogo"
-                    width={{ xs: 100, md: 110 }}
+                    width={{ xs: 112, lg: 164 }}
                     preview={preview}
                     lang={lang}
                   />
                 </Link>
               </Col>
-              {isSmallerThanMd ? (
+              {isSmallerThanLg ? (
                 <Col
                   size={{ xs: 4 }}
                   style={{
@@ -127,40 +127,53 @@ export const Header = ({
                     justifyContent: "flex-end",
                   }}
                 >
-                  <Box marginRight={1}>
-                    <GlobalSearchButton />
-                  </Box>
-                  <MobileNavigationsButton />
+                  {EnableSearch && (
+                    <Box marginRight={1}>
+                      <GlobalSearchButton
+                        color="secondary"
+                        variant="standard"
+                      />
+                    </Box>
+                  )}
+                  <MobileNavigationsButton noToggle />
                 </Col>
-              ) : (
-                <Col
-                  size={{ xs: 8 }}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-end",
-                  }}
-                >
-                  <MainNavigation
-                    data={navigations.mainNavigation}
-                    id={id}
-                    lang={lang}
-                  />
-                  <Box marginLeft={1}>
-                    <GlobalSearchButton />
-                  </Box>
+              ) : isLargerThanLg ? (
+                <Col size={{ xs: 10 }}>
+                  <FlexBox
+                    alignItems="flex-end"
+                    justifyContent="flex-end"
+                    flexDirection="column"
+                  >
+                    <SecondaryNavigation
+                      data={navigations.secondaryNavigation}
+                      id={id}
+                      lang={lang}
+                    />
+                    <FlexBox alignItems="center" justifyContent="flex-end">
+                      <MainNavigation
+                        data={navigations.mainNavigation}
+                        id={id}
+                        lang={lang}
+                      />
+                      {EnableSearch && (
+                        <Box marginLeft={{ lg: 2, xl: 10 }}>
+                          <GlobalSearchButton />
+                        </Box>
+                      )}
+                    </FlexBox>
+                  </FlexBox>
                 </Col>
-              )}
+              ) : null}
             </Row>
           </Container>
         </FlexBox>
         <GlobalSearchDrawer>
-          <SearchBar shrink={true} lang={lang} />
+          <SearchBar lang={lang} showSearchClose={true} />
         </GlobalSearchDrawer>
       </Box>
-      {isSmallerThanMd && (
-        <MobileNavigationsDrawer>
-          <MainNavigationMobile
+      {isSmallerThanLg && (
+        <MobileNavigationsDrawerSlide lang={lang}>
+          <MainNavigationMobileSlideTopLevel
             data={navigations.mainNavigation}
             id={id}
             lang={lang}
@@ -170,7 +183,7 @@ export const Header = ({
             id={id}
             lang={lang}
           />
-        </MobileNavigationsDrawer>
+        </MobileNavigationsDrawerSlide>
       )}
     </>
   );

@@ -67,7 +67,7 @@ export const Image = ({
 }: BaseImageProps) => {
   return (
     <BaseImage
-      alt={alt}
+      alt={alt ? alt : ""}
       url={url}
       format={format}
       width={width}
@@ -90,14 +90,16 @@ export const Image = ({
 };
 
 interface ImageFillProps extends BaseImageProps {
-  containerHeight?: string;
-  containerMinHeight?: string;
-  containerMaxHeight?: string;
+  containerMaxWidth?: ResponsiveSpacing;
+  containerHeight?: ResponsiveSpacing;
+  containerMinHeight?: ResponsiveSpacing;
+  containerMaxHeight?: ResponsiveSpacing;
 }
 
 export const ImageFill = ({
   format,
   width,
+  containerMaxWidth,
   containerHeight,
   containerMinHeight,
   containerMaxHeight,
@@ -111,6 +113,7 @@ export const ImageFill = ({
       style={{
         position: "absolute",
         width: "100%",
+        maxWidth: containerMaxWidth || "100%",
         height: containerHeight || "100%",
         minHeight: containerMinHeight && containerMinHeight,
         maxHeight: containerMaxHeight && containerMaxHeight,
@@ -144,6 +147,8 @@ export const ImageFill = ({
 interface ImageCoverProps extends BaseImageProps {
   coverWidth: ResponsiveSpacing;
   coverHeight: ResponsiveSpacing;
+  objectFit?: "cover" | "contain";
+  borderRadius?: ResponsiveSpacing;
 }
 
 export const ImageCover = ({
@@ -153,6 +158,8 @@ export const ImageCover = ({
   marginX,
   coverWidth = "100%",
   coverHeight = "380px",
+  objectFit = "cover",
+  borderRadius,
   style,
   ...props
 }: ImageCoverProps) => {
@@ -169,6 +176,7 @@ export const ImageCover = ({
         marginBottom: marginY,
         marginRight: marginX,
         marginLeft: marginX,
+        borderRadius: borderRadius,
       }}
     >
       <BaseImage
@@ -179,7 +187,7 @@ export const ImageCover = ({
           position: "absolute",
           top: 0,
           left: 0,
-          objectFit: "cover",
+          objectFit: objectFit,
           width: "100%",
           height: "100%",
           inset: "0px",

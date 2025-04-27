@@ -14,15 +14,16 @@ export const GlobalSearchDrawer = ({ children }: GlobalSearchDrawerProps) => {
   return (
     <Slide in={searchOpen} direction="down" mountOnEnter unmountOnExit>
       <FlexBox
-        paddingY={14}
+        paddingTop={2}
+        paddingBottom={5}
         style={{
-          backgroundColor: palette.grey[200],
-          boxShadow: "0 40px 40px rgba(0, 0, 0, 0.16)",
+          backgroundColor: palette.common.white,
+          boxShadow: "0 12px 12px rgba(0, 0, 0, 0.08)",
           position: "absolute",
           width: "100%",
         }}
       >
-        <Container maxWidth="md">{children}</Container>
+        <Container>{children}</Container>
       </FlexBox>
     </Slide>
   );

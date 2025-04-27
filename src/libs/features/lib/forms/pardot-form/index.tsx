@@ -4,24 +4,19 @@ import { ResponsiveSpacing } from "@aces/types";
 import { Box } from "@aces/ui";
 
 export interface PardotFormProps {
+  internalTitle: string;
   pardotFormUrl: string;
   height?: ResponsiveSpacing;
   __typename?: string;
 }
 
-export const PardotForm = ({
-  pardotFormUrl,
-  height = "500px",
-}: PardotFormProps) => {
+export const PardotForm = ({ pardotFormUrl }: PardotFormProps) => {
   return (
     <Box style={{ width: "100%" }}>
-      <Box
-        component="iframe"
-        src={pardotFormUrl}
-        width="100%"
-        height={height}
-        style={{ border: "none" }}
-      ></Box>
+      <div
+        style={{ width: "100%" }}
+        dangerouslySetInnerHTML={{ __html: pardotFormUrl }}
+      />
     </Box>
   );
 };

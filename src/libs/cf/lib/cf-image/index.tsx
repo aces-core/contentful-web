@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 import type { CfFetchById, Nested, ResponsiveSpacing } from "@aces/types";
 
 import { CfImage, CfImageCover } from "./render";
@@ -6,6 +8,7 @@ import { ImageSkeleton } from "./skeleton";
 
 export interface CfImageServerProps extends CfFetchById, Nested {
   responsive?: boolean;
+  style?: CSSProperties;
 }
 
 export const CfImageServer = async ({
@@ -14,6 +17,7 @@ export const CfImageServer = async ({
   lang,
   nested,
   responsive,
+  style,
 }: CfImageServerProps) => {
   let data;
 
@@ -32,9 +36,11 @@ export const CfImageServer = async ({
     <CfImage
       internalTitle={data.internalTitle}
       image={data.image}
+      nativeImageSize={data.nativeImageSize}
       __typename={data.__typename}
       nested={nested}
       responsive={responsive}
+      style={style}
       id={id}
       lang={lang}
       preview={preview}
@@ -45,15 +51,19 @@ export const CfImageServer = async ({
 export interface CfImageCoverServerProps extends CfFetchById, Nested {
   coverWidth: ResponsiveSpacing;
   coverHeight: ResponsiveSpacing;
+  borderRadius?: ResponsiveSpacing;
+  style?: CSSProperties;
 }
 
 export const CfImageCoverServer = async ({
   id,
   preview,
   lang,
+  borderRadius,
   coverWidth = "100%",
   coverHeight = "380px",
   nested,
+  style,
 }: CfImageCoverServerProps) => {
   let data;
 
@@ -72,9 +82,11 @@ export const CfImageCoverServer = async ({
     <CfImageCover
       internalTitle={data.internalTitle}
       image={data.image}
+      borderRadius={borderRadius}
       coverWidth={coverWidth}
       coverHeight={coverHeight}
       nested={nested}
+      style={style}
       __typename={data.__typename}
       id={id}
       lang={lang}

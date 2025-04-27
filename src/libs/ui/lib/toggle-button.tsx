@@ -72,6 +72,7 @@ interface ToggleButtonGroupProps
     | "size"
     | "onChange"
     | "onClick"
+    | "value"
   > {
   style?: CustomCssProps;
   marginY?: ResponsiveSpacing;
@@ -92,6 +93,7 @@ export const ToggleButtonGroup = ({
   size,
   onChange,
   onClick,
+  value,
   marginY,
   marginX,
   marginTop,
@@ -111,6 +113,7 @@ export const ToggleButtonGroup = ({
       size={size}
       onChange={onChange}
       onClick={onClick}
+      value={value}
       sx={{
         marginY: marginY,
         marginX: marginX,

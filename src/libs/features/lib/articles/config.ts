@@ -1,5 +1,3 @@
-export const ArticlesLimit = 10;
-
 export type OrderByTypes = "ASC" | "DESC";
 
 export type OrderSelectValueTypes = "date" | "title";
@@ -11,9 +9,12 @@ export enum OrderTypes {
   DateDESC = "publishDate_DESC",
 }
 
-export const DefaultOrder = OrderTypes.DateDESC;
-
 export enum Query {
   categories = "categories",
   order = "order",
 }
+
+export const ArticleListingConfig = {
+  ArticlesLimit: 16,
+  DefaultOrder: OrderTypes.DateDESC,
+};

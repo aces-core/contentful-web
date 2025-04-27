@@ -13,6 +13,7 @@ import {
   isCfMenuItem,
   MenuLink,
 } from "../menus";
+import { headerFont, typography } from "@aces/theme";
 
 interface MainNavigationProps extends Pick<CfBaseComponent, "id" | "lang"> {
   data: (CfMenuItemType | CfDropDownMenuType | CfButtonProps)[];
@@ -35,15 +36,17 @@ export const MainNavigation = ({ data, id, lang }: MainNavigationProps) => {
           case "MenuItem":
             if (isCfMenuItem(item)) {
               return (
-                <MenuItem key={index} resize noPadding>
+                <MenuItem key={index} noPadding>
                   <MenuLink
                     link={item.link}
                     title={item.title}
                     externalLinkIcon={item.externalLinkIcon}
                     lang={lang}
+                    fontSize={typography.subtitle2.fontSize}
+                    fontFamily={headerFont.style.fontFamily}
                     style={{
                       display: "block",
-                      padding: "1.5rem .75rem",
+                      padding: "1.5rem .25rem",
                     }}
                   />
                 </MenuItem>
@@ -71,6 +74,7 @@ export const MainNavigation = ({ data, id, lang }: MainNavigationProps) => {
                     buttonStyle={item.buttonStyle}
                     title={item.title}
                     link={item.link}
+                    rightIcon={item.rightIcon}
                     __typename={item.__typename}
                     id={item?.sys?.id || ""}
                     preview={item.preview}

@@ -27,3 +27,7 @@ export type SelectOption = {
 export type ResponsiveSpacing = ResponsiveStyleValue<string | number>;
 
 export type Spacing = number | ResponsiveStyleValue<GridSpacing>;
+
+export type ResponsiveBoolean =
+  | boolean
+  | Partial<Record<"xs" | "sm" | "md" | "lg" | "xl", boolean>>;

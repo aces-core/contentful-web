@@ -3,7 +3,7 @@ import { ContentfulLivePreview } from "@contentful/live-preview";
 import { CfImageProps, ResponsiveSpacing } from "@aces/types";
 import { generateId } from "@aces/utils";
 import { componentSpacing } from "@aces/theme";
-import { Box, Container, Image, ImageCover } from "@aces/ui";
+import { Box, Container, Image, ImageCover, ImageFill } from "@aces/ui";
 
 import { ImageSkeleton } from "./skeleton";
 
@@ -11,10 +11,12 @@ export const CfImage = ({
   internalTitle,
   image,
   altText = "",
+  nativeImageSize,
   nested = false,
   responsive = true,
   maxWidth,
   maxHeight,
+  style,
   __typename,
   id,
   lang,
@@ -43,9 +45,17 @@ export const CfImage = ({
             alt={altText}
             width={image.width}
             height={image.height}
-            responsive={responsive}
+            responsive={nativeImageSize ? false : responsive}
             maxWidth={maxWidth}
             maxHeight={maxHeight}
+            style={
+              nativeImageSize
+                ? {
+                    ...style,
+                    maxWidth: "100%",
+                  }
+                : style
+            }
             {...ContentfulLivePreview.getProps({
               entryId: id,
               fieldId: "image",
@@ -61,6 +71,8 @@ export const CfImage = ({
 interface CfImageCoverProps extends CfImageProps {
   coverWidth?: ResponsiveSpacing;
   coverHeight?: ResponsiveSpacing;
+  objectFit?: "cover" | "contain";
+  borderRadius?: ResponsiveSpacing;
 }
 
 export const CfImageCover = ({
@@ -70,6 +82,9 @@ export const CfImageCover = ({
   nested = false,
   coverWidth = "100%",
   coverHeight = "380px",
+  objectFit = "cover",
+  borderRadius,
+  style,
   __typename,
   id,
   lang,
@@ -101,6 +116,9 @@ export const CfImageCover = ({
             height={image.height}
             coverWidth={coverWidth}
             coverHeight={coverHeight}
+            objectFit={objectFit}
+            borderRadius={borderRadius}
+            style={style}
             {...ContentfulLivePreview.getProps({
               entryId: id,
               fieldId: "image",
@@ -109,6 +127,67 @@ export const CfImageCover = ({
           />
         )}
       </Container>
+    </Box>
+  );
+};
+
+interface CfImageFillProps extends CfImageProps {
+  containerMaxWidth?: ResponsiveSpacing;
+  containerHeight?: ResponsiveSpacing;
+  containerMinHeight?: ResponsiveSpacing;
+  containerMaxHeight?: ResponsiveSpacing;
+  borderRadius?: ResponsiveSpacing;
+}
+
+export const CfImageFill = ({
+  internalTitle,
+  image,
+  altText = "",
+  containerMaxWidth = "100%",
+  containerHeight = "100%",
+  containerMinHeight,
+  containerMaxHeight,
+  borderRadius,
+  style,
+  __typename,
+  id,
+  lang,
+}: CfImageFillProps) => {
+  return (
+    <Box
+      id={generateId(internalTitle)}
+      data-component={__typename}
+      borderRadius={borderRadius}
+      style={{
+        position: "absolute",
+        width: "100%",
+        overflow: "hidden",
+        maxWidth: containerMaxWidth,
+        height: containerHeight,
+        minHeight: containerMinHeight,
+        maxHeight: containerMaxHeight,
+      }}
+      {...ContentfulLivePreview.getProps({
+        entryId: id,
+        fieldId: "image",
+        locale: lang,
+      })}
+    >
+      {!image || !image.url ? (
+        <ImageSkeleton />
+      ) : (
+        <ImageFill
+          url={image.url}
+          alt={altText}
+          width={image.width}
+          height={image.height}
+          containerMaxWidth={containerMaxWidth}
+          containerHeight={containerHeight}
+          containerMinHeight={containerMinHeight}
+          containerMaxHeight={containerMaxHeight}
+          style={style}
+        />
+      )}
     </Box>
   );
 };

@@ -115,6 +115,26 @@ export const BaseLink = ({
     );
   }
 
+  if (
+    linkType === CfLinkTypes.PageLink &&
+    pageLink &&
+    pageLink.__typename === "PdfDocument"
+  ) {
+    return (
+      <NextLink
+        href={`${RouteDirectory.PDF}/${pageLink.slug}`}
+        hrefLang={lang}
+        target={target}
+        className={className}
+        style={{ ...LinkInheritStyles, ...style }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        {children}
+      </NextLink>
+    );
+  }
+
   if (linkType === CfLinkTypes.CustomLink && customLink) {
     return (
       <NextLink

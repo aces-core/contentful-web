@@ -1,5 +1,6 @@
-import { CfImageOverlayHeroServer } from "@aces/cf";
 import { defaultLocale } from "@aces/i18n";
+import { CfDefaultHeroServer, CfImageOverlayHeroServer } from "@aces/cf";
+
 import { PageHeroProps } from "./page-hero-types";
 
 export const DefaultPageHero = ({
@@ -12,6 +13,14 @@ export const DefaultPageHero = ({
   }
 
   switch (item.__typename) {
+    case "DefaultHero":
+      return (
+        <CfDefaultHeroServer
+          id={item?.sys?.id || ""}
+          preview={preview}
+          lang={lang}
+        />
+      );
     case "ImageOverlayHero":
       return (
         <CfImageOverlayHeroServer
@@ -20,6 +29,7 @@ export const DefaultPageHero = ({
           lang={lang}
         />
       );
+
     default:
       return null;
   }

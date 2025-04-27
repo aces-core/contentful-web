@@ -21,32 +21,33 @@ export const Socials = ({
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "1rem",
+        gap: 4,
       }}
+      marginY={{ xs: 2, md: 0 }}
     >
       {facebook && (
         <Link href={facebook} aria-label="Facebook" target="_blank">
-          <Icon icon="Facebook" size="1.5rem" />
+          <Icon icon="Facebook" size={30} />
         </Link>
       )}
       {xTwitter && (
         <Link href={xTwitter} aria-label=" Twitter" target="_blank">
-          <Icon icon="X" size="1.3rem" />
+          <Icon icon="X" size={30} />
         </Link>
       )}
       {instagram && (
         <Link href={instagram} aria-label="Instagram" target="_blank">
-          <Icon icon="Instagram" size="1.35rem" />
+          <Icon icon="Instagram" size={30} />
         </Link>
       )}
       {linkedin && (
         <Link href={linkedin} aria-label="Linkedin" target="_blank">
-          <Icon icon="LinkedIn" size="1.4rem" />
+          <Icon icon="LinkedIn" size={30} />
         </Link>
       )}
       {youtube && (
         <Link href={youtube} aria-label="Youtube" target="_blank">
-          <Icon icon="YouTube" size="1.6rem" />
+          <Icon icon="YouTube" size={32} />
         </Link>
       )}
     </Box>

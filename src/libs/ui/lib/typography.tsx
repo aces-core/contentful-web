@@ -12,6 +12,8 @@ interface TextBaseProps
     | "variant"
     | "component"
     | "fontWeight"
+    | "letterSpacing"
+    | "lineHeight"
     | "marginTop"
     | "marginBottom"
     | "children"
@@ -25,6 +27,8 @@ const TextBase = ({
   align,
   color,
   fontWeight,
+  letterSpacing,
+  lineHeight,
   style,
   children,
   ...props
@@ -36,6 +40,8 @@ const TextBase = ({
       component={component}
       color={color}
       fontWeight={fontWeight}
+      letterSpacing={letterSpacing}
+      lineHeight={lineHeight}
       sx={style}
       {...props}
     >
@@ -44,52 +50,50 @@ const TextBase = ({
   );
 };
 
-export const H1 = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="h1" {...props} />
+export const H1 = ({ component = "h1", ...props }: TextBaseProps) => (
+  <TextBase variant="h1" component={component} {...props} />
 );
 
-export const H2 = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="h2" {...props} />
+export const H2 = ({ component = "h2", ...props }: TextBaseProps) => (
+  <TextBase variant="h2" component={component} {...props} />
 );
 
-export const H3 = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="h3" {...props} />
+export const H3 = ({ component = "h3", ...props }: TextBaseProps) => (
+  <TextBase variant="h3" component={component} {...props} />
 );
 
-export const H4 = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="h4" {...props} />
+export const H4 = ({ component = "h4", ...props }: TextBaseProps) => (
+  <TextBase variant="h4" component={component} {...props} />
 );
 
-export const H5 = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="h5" {...props} />
+export const H5 = ({ component = "h5", ...props }: TextBaseProps) => (
+  <TextBase variant="h5" component={component} {...props} />
 );
 
-export const H6 = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="h6" {...props} />
+export const H6 = ({ component = "h6", ...props }: TextBaseProps) => (
+  <TextBase variant="h6" component={component} {...props} />
 );
 
-export const Text = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="body1" {...props} />
+export const Text = ({ component = "p", ...props }: TextBaseProps) => (
+  <TextBase variant="body1" component={component} {...props} />
 );
 
-export const Subtitle = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="subtitle1" {...props} />
+export const Subtitle = ({ component = "p", ...props }: TextBaseProps) => (
+  <TextBase variant="subtitle1" component={component} {...props} />
 );
-
 Text.Subtitle = Subtitle;
 
-export const SubtitleSmall = ({ ...props }: TextBaseProps) => (
-  <TextBase variant="subtitle2" {...props} />
+export const SubtitleSmall = ({ component = "p", ...props }: TextBaseProps) => (
+  <TextBase variant="subtitle2" component={component} {...props} />
 );
-
 Text.SubtitleSmall = SubtitleSmall;
 
-const Small = (props: TextBaseProps) => <TextBase variant="body2" {...props} />;
-
-Text.Small = Small;
-
-export const ExtraSmall = (props: TextBaseProps) => (
-  <TextBase variant="caption" {...props} />
+const Large = ({ component = "p", ...props }: TextBaseProps) => (
+  <TextBase variant="body2" component={component} {...props} />
 );
+Text.Large = Large;
 
-Text.ExtraSmall = ExtraSmall;
+export const Small = ({ component = "p", ...props }: TextBaseProps) => (
+  <TextBase variant="caption" component={component} {...props} />
+);
+Text.Small = Small;

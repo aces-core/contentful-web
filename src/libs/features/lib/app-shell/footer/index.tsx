@@ -26,21 +26,21 @@ export const FooterServer = async ({
 
     data = {
       logos: {
-        appName: footerData.appName,
-        fullColorLogo: footerData.fullColorLogo,
-        knockoutLogo: footerData.knockoutLogo,
+        appName: footerData?.appName ?? "",
+        fullColorLogo: footerData?.fullColorLogo ?? null,
+        knockoutLogo: footerData?.knockoutLogo ?? null,
       },
-      navigations: navigationsData,
-      copyright: footerData.copyrightText,
+      navigations: navigationsData ?? null,
+      copyright: footerData?.copyrightText ?? null,
       socials: {
-        facebook: footerData.facebook,
-        xTwitter: footerData.xTwitter,
-        instagram: footerData.instagram,
-        linkedin: footerData.linkedin,
-        youtube: footerData.youtube,
+        facebook: footerData?.facebook ?? null,
+        xTwitter: footerData?.xTwitter ?? null,
+        instagram: footerData?.instagram ?? null,
+        linkedin: footerData?.linkedin ?? null,
+        youtube: footerData?.youtube ?? null,
       },
       sys: {
-        id: footerData.sys.id,
+        id: footerData?.sys?.id ?? "",
       },
     };
   } catch (error) {
@@ -48,7 +48,7 @@ export const FooterServer = async ({
     throw error;
   }
 
-  if (!data) {
+  if (!data || !data.sys.id) {
     return <FooterSkeleton />;
   }
 

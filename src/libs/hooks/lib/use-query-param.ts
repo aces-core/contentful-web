@@ -2,6 +2,11 @@ import { useSearchParams } from "next/navigation";
 
 export const useQueryParam = () => {
   const searchParams = useSearchParams();
+
+  const getQueryParam = (key: string): string | null => {
+    return searchParams.get(key);
+  };
+
   const setQueryParam = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
 
@@ -15,5 +20,5 @@ export const useQueryParam = () => {
     window.history.replaceState(null, "", newUrl);
   };
 
-  return setQueryParam;
+  return { getQueryParam, setQueryParam };
 };

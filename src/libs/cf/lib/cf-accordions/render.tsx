@@ -1,6 +1,6 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
-import { CfBaseComponent, CfRichText } from "@aces/types";
+import { CfBaseComponent, CfRichText, Nested } from "@aces/types";
 import { generateId } from "@aces/utils";
 import { componentSpacing, palette } from "@aces/theme";
 import {
@@ -15,7 +15,7 @@ import {
 
 import { CfRichTextRender } from "../cf-rich-text-render";
 
-export interface CfAccordionsProps extends CfBaseComponent {
+export interface CfAccordionsProps extends CfBaseComponent, Nested {
   headline?: string;
   bodyCopy?: CfRichText;
   accordionsCollection: {
@@ -34,6 +34,7 @@ export const CfAccordions = ({
   bodyCopy,
   accordionsCollection,
   __typename,
+  nested = false,
   id,
   preview,
   lang,
@@ -44,7 +45,7 @@ export const CfAccordions = ({
       data-component={__typename}
       marginY={{ xs: componentSpacing.md, md: componentSpacing.lg }}
     >
-      <Container>
+      <Container nested={nested}>
         {headline && (
           <H2
             marginBottom={2}

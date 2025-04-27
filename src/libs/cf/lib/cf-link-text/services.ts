@@ -13,6 +13,7 @@ export const LinkTextQuery = gql`
       link {
         ...Link
       }
+      externalLinkIcon
       sys {
         id
       }

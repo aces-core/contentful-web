@@ -1,8 +1,12 @@
+"use client";
+
+import { CSSProperties, useState } from "react";
+
 import { defaultLocale } from "@aces/i18n";
 import { CfLinkProps } from "@aces/types";
+import { typography } from "@aces/theme";
 import { FlexBox, Icon, Text } from "@aces/ui";
 import { CfLink } from "@aces/cf";
-import { CSSProperties } from "react";
 
 interface MenuLinkProps {
   link: CfLinkProps;
@@ -10,7 +14,9 @@ interface MenuLinkProps {
   externalLinkIcon?: boolean;
   lang: string;
   fontSize?: string;
+  fontFamily?: string;
   style?: CSSProperties;
+  hoverEffect?: boolean;
 }
 
 export const MenuLink = ({
@@ -19,8 +25,18 @@ export const MenuLink = ({
   externalLinkIcon,
   lang = defaultLocale,
   fontSize,
+  fontFamily,
   style,
+  hoverEffect = false,
 }: MenuLinkProps) => {
+  const [hover, setHover] = useState(false);
+
+  const handleHover = (hover: boolean) => {
+    if (hoverEffect) {
+      setHover(hover);
+    }
+  };
+
   return (
     <CfLink
       linkType={link.linkType}
@@ -29,16 +45,28 @@ export const MenuLink = ({
       customLink={link.customLink}
       lang={lang}
       style={style}
+      onMouseEnter={() => handleHover(true)}
+      onMouseLeave={() => handleHover(false)}
     >
       <FlexBox alignItems="center">
         <Text
           style={{
             fontSize: fontSize,
+            fontFamily: fontFamily,
+            transition: "color 100ms",
+            color: hover ? typography.link.color : "inherit",
           }}
         >
           {title}
         </Text>
-        {externalLinkIcon && <Icon icon="OpenInNew" size={16} marginLeft={2} />}
+        {externalLinkIcon && (
+          <Icon
+            icon="OpenInNew"
+            size={16}
+            marginLeft={2}
+            color={hover ? typography.link.color : "inherit"}
+          />
+        )}
       </FlexBox>
     </CfLink>
   );

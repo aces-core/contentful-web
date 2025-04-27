@@ -37,7 +37,7 @@ export const fetchHeaderData = async (
       variables: { appId, preview, lang },
     });
 
-    return response.data.appsCollection.items[0];
+    return response.data.appsCollection?.items[0] || null;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;

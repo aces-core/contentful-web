@@ -1,6 +1,7 @@
 "use client";
 
 import type { PaletteOptions, Theme as MuiTheme } from "@mui/material/styles";
+import { TypographyOptions } from "@mui/material/styles/createTypography";
 import { createTheme } from "@mui/material/styles";
 
 import { buttonsCustomizations } from "./components/buttons";
@@ -15,7 +16,7 @@ export const theme = createTheme({
   palette: palette as PaletteOptions,
   breakpoints,
   shape,
-  typography,
+  typography: typography as TypographyOptions,
   spacing,
   components: {
     ...buttonsCustomizations,

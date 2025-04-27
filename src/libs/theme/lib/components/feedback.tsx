@@ -24,7 +24,7 @@ export const feedbackCustomizations: Components<Theme> = {
   MuiSkeleton: {
     styleOverrides: {
       root: ({ theme }) => ({
-        backgroundColor: theme.palette.foreground.default,
+        backgroundColor: theme.palette.grey[200],
       }),
     },
   },

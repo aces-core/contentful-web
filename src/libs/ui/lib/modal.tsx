@@ -8,8 +8,8 @@ import { Box, FlexBox, Icon, IconButton } from "@aces/ui";
 
 const maxWidthStyles = {
   small: "32rem",
-  medium: "44rem",
-  large: "54rem",
+  medium: "56rem",
+  large: "68rem",
 };
 
 interface ModalProps extends Omit<MuiModalProps, "style" | "sx"> {
@@ -69,21 +69,19 @@ export const Modal = ({
                   outline: "none",
                 }}
               >
-                <Box
-                  style={{
-                    position: "absolute",
-                    top: "0.25rem",
-                    right: "0.25rem",
-                  }}
-                >
+                <FlexBox justifyContent={"flex-end"}>
                   <IconButton
                     color="primary"
-                    size="large"
+                    size="small"
                     onClick={() => setOpen(false)}
+                    style={{
+                      marginTop: 4,
+                      marginRight: 4,
+                    }}
                   >
                     <Icon icon="Close" size={24} />
                   </IconButton>
-                </Box>
+                </FlexBox>
                 {children}
               </Box>
             </ClickAwayListener>

@@ -5,7 +5,10 @@ import MuiSkeleton, {
 import { CustomCssProps } from "@aces/types";
 
 interface SkeletonProps
-  extends Pick<MuiSkeletonProps, "variant" | "animation" | "children"> {
+  extends Pick<
+    MuiSkeletonProps,
+    "variant" | "animation" | "children" | "component"
+  > {
   width?: string | number;
   height?: string | number;
   style?: CustomCssProps;
@@ -14,6 +17,7 @@ interface SkeletonProps
 export const Skeleton = ({
   variant = "rectangular",
   animation = "wave",
+  component = "div",
   width,
   height,
   style,
@@ -22,7 +26,7 @@ export const Skeleton = ({
   return (
     <MuiSkeleton
       variant={variant}
-      component="div"
+      component={component}
       animation={animation}
       width={width}
       height={height}

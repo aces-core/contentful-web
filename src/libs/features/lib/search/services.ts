@@ -1,68 +1,72 @@
-import { gql } from "@apollo/client";
+import { defaultLocale, Locale } from "@aces/i18n";
+import {
+  fetchCfArticleSearchResults,
+  fetchCfPageSearchResults,
+  fetchCfTopSearchResults,
+} from "@aces/contentful";
 
-import { defaultLocale } from "@aces/i18n";
-import { cfClient, cfPreviewClient } from "@aces/contentful";
-import { globalSearchQuery } from "./config";
-import { RouteDirectory } from "@aces/types";
+import { SearchableContentTypes, SearchConfig } from "./config";
 
-export const SiteSearchQuery = gql`
-  query ($query: String!, $preview: Boolean!, $locale: String) {
-    pageCollection(
-      where: { OR: [{ title_contains: $query }] }
-      limit: 10
-      preview: $preview
-      locale: $locale
-    ) {
-      items {
-        sys {
-          id
-        }
-      }
-    }
-    articleCollection(
-      where: { OR: [{ title_contains: $query }] }
-      limit: 10
-      preview: $preview
-      locale: $locale
-    ) {
-      items {
-        sys {
-          id
-        }
-      }
-    }
-  }
-`;
-
-export const fetchSearchResults = async (
-  query: string,
+export const fetchTopResults = async (
+  searchQuery: string,
   preview = false,
-  locale: string = defaultLocale,
+  locale: Locale = defaultLocale,
 ) => {
-  const client = preview ? cfPreviewClient : cfClient;
   try {
-    const response = await client.query({
-      query: SiteSearchQuery,
-      variables: { query, preview, locale },
-    });
+    const { pages, articles } = await fetchCfTopSearchResults(
+      searchQuery,
+      SearchConfig.TopResultsLimits,
+      preview,
+      locale,
+    );
 
-    return {
-      pages: response.data.pageCollection.items,
-      articles: response.data.articleCollection.items,
-    };
+    return [...pages, ...articles].sort(() => Math.random() - 0.5);
   } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
+    console.error("Error fetching top search results:", error);
+    return [];
   }
 };
 
-export const navigateToSearch = (
-  query: string,
-  navigate: (url: string) => void,
+export const fetchSearchResults = async (
+  contentType: SearchableContentTypes | null,
+  searchQuery: string,
+  limit: number,
+  offset: number,
+  preview = false,
+  locale: Locale = defaultLocale,
 ) => {
-  if (query.trim()) {
-    navigate(
-      `${RouteDirectory.Search}?${globalSearchQuery}=${encodeURIComponent(query)}`,
-    );
+  let response;
+
+  switch (contentType) {
+    case SearchableContentTypes.Articles:
+      response = await fetchCfArticleSearchResults(
+        searchQuery,
+        limit,
+        offset,
+        preview,
+        locale,
+      );
+
+      return response;
+    case SearchableContentTypes.Pages:
+      response = await fetchCfPageSearchResults(
+        searchQuery,
+        limit,
+        offset,
+        preview,
+        locale,
+      );
+
+      return response;
+    default:
+      response = await fetchCfPageSearchResults(
+        searchQuery,
+        limit,
+        offset,
+        preview,
+        locale,
+      );
+
+      return response;
   }
 };

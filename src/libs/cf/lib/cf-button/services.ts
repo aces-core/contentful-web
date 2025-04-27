@@ -1,10 +1,6 @@
 import { gql } from "@apollo/client";
 
-import {
-  ButtonFragment,
-  cfClient,
-  cfPreviewClient,
-} from "@aces/contentful";
+import { ButtonFragment, cfClient, cfPreviewClient } from "@aces/contentful";
 import { defaultLocale } from "@aces/i18n";
 
 export const ButtonQuery = gql`

@@ -112,10 +112,11 @@ export const fetchHeaderNavigationsData = async (
 
     return {
       mainNavigation:
-        response.data.appsCollection.items[0].mainNavigationCollection.items,
+        response.data.appsCollection?.items[0]?.mainNavigationCollection
+          ?.items || null,
       secondaryNavigation:
-        response.data.appsCollection.items[0].secondaryNavigationCollection
-          .items,
+        response.data.appsCollection?.items[0]?.secondaryNavigationCollection
+          ?.items || null,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -138,9 +139,11 @@ export const fetchFooterNavigationsData = async (
 
     return {
       footerNavigation:
-        response.data.appsCollection.items[0].footerNavigationCollection.items,
+        response.data.appsCollection?.items[0]?.footerNavigationCollection
+          ?.items || null,
       privacyNavigation:
-        response.data.appsCollection.items[0].privacyNavigationCollection.items,
+        response.data.appsCollection?.items[0]?.privacyNavigationCollection
+          ?.items || null,
     };
   } catch (error) {
     console.error("Error fetching data:", error);

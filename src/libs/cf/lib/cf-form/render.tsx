@@ -96,11 +96,13 @@ export const CfForm = ({
               >
                 {"hsPortalId" in form ? (
                   <HubSpotForm
+                    internalTitle={form.internalTitle}
                     hsPortalId={form.hsPortalId}
                     hsFormId={form.hsFormId}
                   />
                 ) : "pardotFormUrl" in form ? (
                   <PardotForm
+                    internalTitle={form.internalTitle}
                     pardotFormUrl={form.pardotFormUrl}
                     height={{ xs: "1280px", md: "1600px" }}
                   />

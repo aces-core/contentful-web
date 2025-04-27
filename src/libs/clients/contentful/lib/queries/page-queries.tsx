@@ -15,11 +15,6 @@ export const DefaultPageBodyQuery = gql`
               id
             }
           }
-          ... on CardSlider {
-            sys {
-              id
-            }
-          }
           ... on CodeEmbed {
             sys {
               id
@@ -40,7 +35,12 @@ export const DefaultPageBodyQuery = gql`
               id
             }
           }
-          ... on Listing {
+          ... on IconCardGroup {
+            sys {
+              id
+            }
+          }
+          ... on GridUpdated {
             sys {
               id
             }
@@ -55,12 +55,27 @@ export const DefaultPageBodyQuery = gql`
               id
             }
           }
-          ... on Slider {
+          ... on Services {
             sys {
               id
             }
           }
           ... on VideoEmbed {
+            sys {
+              id
+            }
+          }
+          ... on Testimonials {
+            sys {
+              id
+            }
+          }
+          ... on TeamListing {
+            sys {
+              id
+            }
+          }
+          ... on Callout {
             sys {
               id
             }
@@ -76,6 +91,11 @@ export const DefaultPageHeroQuery = gql`
   query ($id: String!, $preview: Boolean!, $locale: String) {
     page(id: $id, preview: $preview, locale: $locale) {
       pageHero {
+        ... on DefaultHero {
+          sys {
+            id
+          }
+        }
         ... on ImageOverlayHero {
           sys {
             id

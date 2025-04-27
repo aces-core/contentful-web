@@ -1,7 +1,7 @@
 import { ContentfulLivePreview } from "@contentful/live-preview";
 
 import { CfBaseComponent } from "@aces/types";
-import { Container, FlexBox, MenuItem } from "@aces/ui";
+import { FlexBox, MenuItem } from "@aces/ui";
 import { CfButton, CfButtonProps } from "@aces/cf";
 
 import { CfMenuItemType, isCfButton, isCfMenuItem, MenuLink } from "../menus";
@@ -22,70 +22,72 @@ export const SecondaryNavigation = ({
 }: SecondaryNavigationProps) => {
   return (
     <FlexBox
+      justifyContent="flex-end"
       style={{
-        background: palette.primary.main,
-        color: palette.common.white,
+        borderBottom: `1px solid ${palette.border.light}`,
         position: "relative",
+        width: "100%",
         zIndex: 1000,
       }}
     >
-      <Container>
-        <FlexBox
-          justifyContent={align}
-          {...ContentfulLivePreview.getProps({
-            entryId: id,
-            fieldId: "secondaryNavigation",
-            locale: lang,
-          })}
-        >
-          {data.map((item, index) => {
-            if (!item.__typename) return null;
+      <FlexBox
+        justifyContent={align}
+        {...ContentfulLivePreview.getProps({
+          entryId: id,
+          fieldId: "secondaryNavigation",
+          locale: lang,
+        })}
+      >
+        {data.map((item, index) => {
+          if (!item.__typename) return null;
 
-            switch (item.__typename) {
-              case "MenuItem":
-                if (isCfMenuItem(item)) {
-                  return (
-                    <MenuItem key={index} noPadding>
-                      <MenuLink
-                        link={item.link}
-                        title={item.title}
-                        externalLinkIcon={item.externalLinkIcon}
-                        lang={lang}
-                        fontSize={typography.body2.fontSize}
-                        style={{
-                          display: "block",
-                          paddingTop: ".4rem",
-                          paddingBottom: ".4rem",
-                        }}
-                      />
-                    </MenuItem>
-                  );
-                }
-                break;
-              case "Button":
-                if (isCfButton(item)) {
-                  return (
-                    <Box key={index} marginY={2} paddingX={2}>
-                      <CfButton
-                        internalTitle={item.internalTitle}
-                        buttonStyle={item.buttonStyle}
-                        title={item.title}
-                        link={item.link}
-                        __typename={item.__typename}
-                        id={item?.sys?.id || ""}
-                        preview={item.preview}
-                        lang={lang}
-                      />
-                    </Box>
-                  );
-                }
-                break;
-              default:
-                return null;
-            }
-          })}
-        </FlexBox>
-      </Container>
+          switch (item.__typename) {
+            case "MenuItem":
+              if (isCfMenuItem(item)) {
+                return (
+                  <MenuItem key={index} noPadding>
+                    <MenuLink
+                      link={item.link}
+                      title={item.title}
+                      externalLinkIcon={item.externalLinkIcon}
+                      lang={lang}
+                      fontSize={typography.caption.fontSize}
+                      style={{
+                        display: "block",
+                        paddingTop: "8px",
+                        paddingBottom: "8px",
+                        textTransform: "uppercase",
+                        letterSpacing: ".1rem",
+                      }}
+                    />
+                  </MenuItem>
+                );
+              }
+              break;
+            case "Button":
+              if (isCfButton(item)) {
+                return (
+                  <Box key={index} marginY={2} paddingX={2}>
+                    <CfButton
+                      internalTitle={item.internalTitle}
+                      buttonStyle={item.buttonStyle}
+                      title={item.title}
+                      link={item.link}
+                      rightIcon={item.rightIcon}
+                      __typename={item.__typename}
+                      id={item?.sys?.id || ""}
+                      preview={item.preview}
+                      lang={lang}
+                    />
+                  </Box>
+                );
+              }
+              break;
+            default:
+              return null;
+          }
+        })}
+      </FlexBox>
     </FlexBox>
   );
 };

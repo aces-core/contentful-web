@@ -8,6 +8,7 @@ export const RichTextSectionFragment = gql`
     internalTitle
     alignment
     containerWidth
+    componentSpacing
     grayBackground
     bodyCopy {
       json

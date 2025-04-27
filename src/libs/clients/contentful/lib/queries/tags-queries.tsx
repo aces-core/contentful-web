@@ -2,6 +2,21 @@ import { gql } from "@apollo/client";
 
 import { ImageFragment } from "./component-queries";
 
+export const TestimonialFragment = gql`
+  ${ImageFragment}
+
+  fragment Testimonial on Testimonial {
+    name
+    role
+    description {
+      json
+    }
+    profileImage {
+      ...Image
+    }
+  }
+`;
+
 export const TeamMemberFragment = gql`
   ${ImageFragment}
 
@@ -9,6 +24,9 @@ export const TeamMemberFragment = gql`
     name
     role
     description
+    bio {
+      json
+    }
     profileImage {
       ...Image
     }
@@ -29,6 +47,11 @@ export const AllCategoriesQuery = gql`
     categoriesCollection(preview: $preview, locale: $locale) {
       items {
         ...Categories
+        linkedFrom {
+          articleCollection {
+            total
+          }
+        }
       }
     }
   }

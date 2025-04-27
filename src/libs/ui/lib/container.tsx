@@ -2,9 +2,11 @@ import MuiContainer, {
   ContainerProps as MuiContainerProps,
 } from "@mui/material/Container";
 
-interface ContainerProps
-  extends Pick<MuiContainerProps, "maxWidth" | "disableGutters" | "children"> {
+import { containerPadding } from "@aces/theme";
+
+interface ContainerProps extends Omit<MuiContainerProps, "sx"> {
   noPadding?: boolean;
+  smallPadding?: boolean;
   nested?: boolean;
   style?: object;
 }
@@ -14,6 +16,7 @@ export const Container = ({
   disableGutters = nested,
   noPadding = nested,
   maxWidth = nested ? false : "xl",
+  smallPadding = false,
   style,
   children,
   ...props
@@ -24,8 +27,12 @@ export const Container = ({
       disableGutters={disableGutters}
       sx={{
         ...(!noPadding && {
-          paddingLeft: { xs: "1.5rem", sm: "2rem" },
-          paddingRight: { xs: "1.5rem", sm: "2rem" },
+          paddingLeft: smallPadding
+            ? { xs: containerPadding.sm }
+            : containerPadding,
+          paddingRight: smallPadding
+            ? { xs: containerPadding.sm }
+            : containerPadding,
         }),
         flexDirection: "column",
         ...style,

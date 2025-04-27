@@ -8,14 +8,20 @@ import { fontWeights, ThemeType, typography } from "@aces/theme";
 import { Box } from "@aces/ui";
 
 import { FormSkeleton } from "../skeleton";
+import { generateId } from "@aces/utils";
 
 export interface HubSpotFormProps {
+  internalTitle: string;
   hsPortalId: string;
   hsFormId: string;
   __typename?: string;
 }
 
-export const HubSpotForm = ({ hsPortalId, hsFormId }: HubSpotFormProps) => {
+export const HubSpotForm = ({
+  internalTitle,
+  hsPortalId,
+  hsFormId,
+}: HubSpotFormProps) => {
   const theme = useTheme();
 
   const [formLoaded, setFormLoaded] = useState(false);
@@ -44,7 +50,7 @@ export const HubSpotForm = ({ hsPortalId, hsFormId }: HubSpotFormProps) => {
   }, [hsFormId, hsPortalId, id]);
 
   return (
-    <Box ref={formRef} style={{ width: "100%" }}>
+    <Box id={generateId(internalTitle)} ref={formRef} style={{ width: "100%" }}>
       <Global
         styles={createStyle({
           theme,

@@ -1,21 +1,17 @@
 import { gql } from "@apollo/client";
 
 import { defaultLocale } from "@aces/i18n";
-import {
-  cfClient,
-  cfPreviewClient,
-  ImageFragment,
-  TeamMemberFragment,
-} from "@aces/contentful";
+import { cfClient, cfPreviewClient } from "@aces/contentful";
+
+import { ArticleCardFragment } from "../article-card/services";
 
 export const RelatedArticlesQuery = gql`
-  ${ImageFragment}
-  ${TeamMemberFragment}
+  ${ArticleCardFragment}
 
   query (
     $categories: [String!]
     $excludeSlug: [String!]
-    $limit: Int! = 2
+    $limit: Int! = 4
     $preview: Boolean!
     $locale: String!
   ) {
@@ -31,18 +27,7 @@ export const RelatedArticlesQuery = gql`
       locale: $locale
     ) {
       items {
-        title
-        slug
-        publishDate
-        featuredImage {
-          ...Image
-        }
-        author {
-          ...TeamMember
-        }
-        sys {
-          id
-        }
+        ...ArticleCard
       }
     }
   }
@@ -51,7 +36,7 @@ export const RelatedArticlesQuery = gql`
 export const fetchRelatedArticleData = async (
   categories: string[],
   excludeSlug?: string[],
-  limit: number = 2,
+  limit: number = 4,
   preview = false,
   locale: string = defaultLocale,
 ) => {

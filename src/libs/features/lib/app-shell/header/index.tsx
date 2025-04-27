@@ -28,13 +28,13 @@ export const HeaderServer = async ({
 
     data = {
       logos: {
-        appName: headerData.appName,
-        fullColorLogo: headerData.fullColorLogo,
-        knockoutLogo: headerData.knockoutLogo,
+        appName: headerData?.appName ?? "",
+        fullColorLogo: headerData?.fullColorLogo ?? null,
+        knockoutLogo: headerData?.knockoutLogo ?? null,
       },
-      navigations: navigationsData,
+      navigations: navigationsData ?? null,
       sys: {
-        id: headerData.sys.id,
+        id: headerData?.sys?.id ?? "",
       },
     };
   } catch (error) {
@@ -42,7 +42,7 @@ export const HeaderServer = async ({
     throw error;
   }
 
-  if (!data) {
+  if (!data || !data.sys.id) {
     return <HeaderSkeleton />;
   }
 

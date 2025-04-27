@@ -122,3 +122,30 @@ export const InlineBox = forwardRef<HTMLElement, BoxProps>(
 );
 
 InlineBox.displayName = "InlineBox";
+
+export const ScrollBox = forwardRef<HTMLElement, BoxProps>(
+  ({ component = "div", alignItems = "center", style, ...props }, ref) => {
+    return (
+      <MuiBox
+        ref={ref}
+        display="flex"
+        sx={{
+          alignItems: alignItems,
+          position: "relative",
+          overflowX: "auto",
+          scrollbarWidth: "none",
+          width: "100%",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+          WebkitOverflowScrolling: "touch",
+          ...style,
+        }}
+        component={component}
+        {...props}
+      />
+    );
+  },
+);
+
+ScrollBox.displayName = "ScrollBox";

@@ -7,6 +7,7 @@ import {
   ImageFragment,
 } from "@aces/contentful";
 import { defaultLocale } from "@aces/i18n";
+
 import { VideoEmbedFragment } from "../cf-video-embed/services";
 
 export const LockupFragement = gql`
@@ -17,6 +18,7 @@ export const LockupFragement = gql`
   fragment Lockup on Lockup {
     internalTitle
     headline
+    subhead
     bodyCopy {
       json
     }
@@ -32,6 +34,7 @@ export const LockupFragement = gql`
     }
     mediaSize
     mediaAlignment
+    mediaBleed
     sys {
       id
     }

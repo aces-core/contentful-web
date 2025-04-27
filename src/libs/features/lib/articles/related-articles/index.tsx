@@ -1,5 +1,5 @@
 import { Locale } from "@aces/i18n";
-import { Box, Col, H4, Row } from "@aces/ui";
+import { Box, Col, Divider, Row, Text } from "@aces/ui";
 
 import { ArticleCard, ArticleCardProps } from "../article-card";
 
@@ -42,31 +42,36 @@ export const RelatedArticlesServer = async ({
     return <RelatedArticlesSkeleton />;
   }
 
-  return (
-    <Box>
-      {title ? (
-        <H4 marginTop={16} marginBottom={8}>
-          {title}
-        </H4>
-      ) : null}
-      <Row columnSpacing={12} rowSpacing={8}>
-        {data.map((item: ArticleCardProps) => (
-          <Col
-            key={item.slug}
-            size={{ xs: 12, md: 6 }}
-            style={{ display: "flex" }}
-          >
-            <ArticleCard
-              featuredImage={item.featuredImage}
-              title={item.title}
-              author={item.author}
-              publishDate={item.publishDate}
-              slug={item.slug}
-              lang={lang}
-            />
-          </Col>
-        ))}
-      </Row>
-    </Box>
-  );
+  if (data.length) {
+    return (
+      <Box>
+        <Divider marginY={10} />
+        {title ? (
+          <Text.SubtitleSmall marginBottom={5}>{title}</Text.SubtitleSmall>
+        ) : null}
+        <Row columnSpacing={5} rowSpacing={7}>
+          {data.map((item: ArticleCardProps) => (
+            <Col
+              key={item.slug}
+              size={{ xs: 12, sm: 6, lg: 3 }}
+              style={{ display: "flex" }}
+            >
+              <ArticleCard
+                featuredImage={item.featuredImage}
+                title={item.title}
+                excerpt={item.excerpt}
+                publishDate={item.publishDate}
+                bodyCopy={item.bodyCopy}
+                slug={item.slug}
+                lang={lang}
+                preview={preview}
+              />
+            </Col>
+          ))}
+        </Row>
+      </Box>
+    );
+  }
+
+  return null;
 };

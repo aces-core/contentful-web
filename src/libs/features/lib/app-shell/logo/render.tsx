@@ -1,6 +1,6 @@
 import { defaultLocale } from "@aces/i18n";
 import { CfImageProps, ResponsiveSpacing } from "@aces/types";
-import { Box, H6 } from "@aces/ui";
+import { Box, H5 } from "@aces/ui";
 import { CfImage } from "@aces/cf";
 
 import { logoVariant } from ".";
@@ -32,7 +32,7 @@ export const Logo = ({
   if (!logo) {
     return (
       <Box>
-        <H6 component={"p"}>{logos.appName}</H6>
+        <H5 component={"p"}>{logos.appName}</H5>
       </Box>
     );
   }

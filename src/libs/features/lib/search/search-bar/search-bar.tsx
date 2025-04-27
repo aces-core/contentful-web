@@ -1,40 +1,41 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 
-import { defaultLocale, getLocale } from "@aces/i18n";
+import { defaultLocale } from "@aces/i18n";
 import { useUIState } from "@aces/store";
-import {
-  FormControl,
-  Icon,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  Skeleton,
-} from "@aces/ui";
+import { FormControl, Icon, IconButton, Input, InputAdornment } from "@aces/ui";
 
-import { navigateToSearch } from "../services";
+import { palette } from "@aces/theme";
+import { useGetLocale, useQueryParam } from "@aces/hooks";
+import { ResponsiveSpacing, RouteDirectory } from "@aces/types";
+import { GlobalSearchQuery, SearchContentTypeQuery } from "../config";
 
 interface SearchBarProps {
-  maxWidth?: string;
-  shrink?: boolean;
+  maxWidth?: ResponsiveSpacing;
+  showSearchClose?: boolean;
   lang: string;
 }
 
 export const SearchBar = ({
   maxWidth,
-  shrink,
+  showSearchClose = false,
   lang = defaultLocale,
 }: SearchBarProps) => {
+  const router = useRouter();
+  const { t, loading } = useGetLocale(lang, "common");
+  const { getQueryParam } = useQueryParam();
+
   const { mobileMenuOpen, setMobileMenuOpen, searchOpen, setSearchOpen } =
     useUIState();
+  const [searchValue, setSearchValue] = useState(
+    getQueryParam(GlobalSearchQuery) || "",
+  );
 
-  const [searchValue, setSearchValue] = useState("");
-  const [t, setT] = useState<{ search: string }>();
-
-  const router = useRouter();
+  const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
 
   const handleSearch = (
     event:
@@ -57,42 +58,63 @@ export const SearchBar = ({
       setSearchOpen(false);
     }
 
-    setSearchValue("");
-    navigateToSearch(searchValue, router.push);
+    navigateToSearch(
+      searchValue,
+      router.push,
+      getQueryParam(SearchContentTypeQuery),
+    );
   };
 
-  useEffect(() => {
-    const fetchLocale = async () => {
-      const localeData = await getLocale(lang, "common");
-      setT(localeData);
-    };
-
-    fetchLocale();
-  }, [lang]);
+  const handleSearchClose = () => {
+    setSearchValue(getQueryParam(GlobalSearchQuery) || "");
+    setSearchOpen(false);
+  };
 
   return (
     <FormControl style={{ width: "100%", maxWidth: maxWidth }}>
-      <InputLabel htmlFor="site-search" shrink={shrink}>
-        {t ? `${t.search.search}` : <Skeleton variant="text" width={80} />}
-      </InputLabel>
-      <OutlinedInput
+      <Input
         id="site-search"
-        label={
-          t ? `${t.search.search}` : <Skeleton variant="text" width={80} />
-        }
+        backgroundColor={palette.grey[100]}
+        placeholder={loading ? "" : t.search.searchbarPlaceholder}
         value={searchValue}
         fullWidth
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={handleSearchInput}
         onKeyDown={handleSearch}
         autoFocus={searchOpen}
-        endAdornment={
-          <InputAdornment position="end">
+        showFeedback={false}
+        startAdornment={
+          <InputAdornment position="start">
             <IconButton aria-label="site search" onClick={handleSearch}>
-              <Icon icon="Search" />
+              <Icon icon="Search" size={24} />
             </IconButton>
           </InputAdornment>
         }
+        endAdornment={
+          showSearchClose ? (
+            <InputAdornment position="end">
+              <IconButton aria-label="site search" onClick={handleSearchClose}>
+                <Icon color={palette.grey[400]} icon="Close" size={24} />
+              </IconButton>
+            </InputAdornment>
+          ) : null
+        }
+        style={{
+          borderRadius: "999px",
+          paddingLeft: 1,
+        }}
       />
     </FormControl>
   );
+};
+
+export const navigateToSearch = (
+  query: string,
+  navigate: (url: string) => void,
+  contentType?: string | null,
+) => {
+  if (query.trim()) {
+    navigate(
+      `${RouteDirectory.Search}?${GlobalSearchQuery}=${encodeURIComponent(query)}${contentType ? `&${SearchContentTypeQuery}=${contentType}` : ""}`,
+    );
+  }
 };

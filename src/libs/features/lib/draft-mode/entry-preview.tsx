@@ -1,19 +1,17 @@
+import { defaultLocale } from "@aces/i18n";
 import {
   CfImageOverlayHeroServer,
   CfAccordionsServer,
   CfBannerServer,
-  CfCardSliderServer,
   CfCodeEmbedServer,
   CfFormServer,
   CfHeaderServer,
   CfImageServer,
-  CfListingServer,
+  CfGridServer,
   CfLockupServer,
   CfRichTextSectionServer,
-  CfSliderServer,
   CfVideoEmbedServer,
 } from "@aces/cf";
-import { defaultLocale } from "@aces/i18n";
 
 export const EntriesPreview = ({
   item,
@@ -51,14 +49,6 @@ export const EntriesPreview = ({
           lang={lang}
         />
       );
-    case "CardSlider":
-      return (
-        <CfCardSliderServer
-          id={item?.sys?.id || ""}
-          preview={preview}
-          lang={lang}
-        />
-      );
     case "CodeEmbed":
       return (
         <CfCodeEmbedServer
@@ -83,13 +73,9 @@ export const EntriesPreview = ({
       return (
         <CfImageServer id={item?.sys?.id || ""} preview={preview} lang={lang} />
       );
-    case "Listing":
+    case "GridUpdated":
       return (
-        <CfListingServer
-          id={item?.sys?.id || ""}
-          preview={preview}
-          lang={lang}
-        />
+        <CfGridServer id={item?.sys?.id || ""} preview={preview} lang={lang} />
       );
     case "Lockup":
       return (
@@ -102,14 +88,6 @@ export const EntriesPreview = ({
     case "RichTextSection":
       return (
         <CfRichTextSectionServer
-          id={item?.sys?.id || ""}
-          preview={preview}
-          lang={lang}
-        />
-      );
-    case "Slider":
-      return (
-        <CfSliderServer
           id={item?.sys?.id || ""}
           preview={preview}
           lang={lang}

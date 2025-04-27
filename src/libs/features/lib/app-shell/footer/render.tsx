@@ -7,6 +7,7 @@ import { Col, Container, FlexBox, Link, Row, Text } from "@aces/ui";
 import { FooterNavigation, PrivacyNavigation } from "../../navigations";
 import { Logo, LogosType } from "../logo/render";
 import { Socials } from "../socials/render";
+import { palette } from "@aces/theme";
 
 interface FooterProps
   extends Omit<CfBaseComponent, "internalTitle" | "__typename"> {
@@ -40,6 +41,7 @@ export const Footer = ({
       paddingY={{ xs: 8, md: 10 }}
       style={{
         backgroundColor: "common.white",
+        borderTop: `1px solid ${palette.border.light}`,
         width: "100%",
       }}
     >
@@ -54,7 +56,7 @@ export const Footer = ({
                 <Logo
                   logos={logos}
                   variant="fullColorLogo"
-                  width={{ xs: 120, md: 140 }}
+                  width={{ xs: 175, md: 190 }}
                   preview={preview}
                   lang={lang}
                 />
@@ -69,31 +71,15 @@ export const Footer = ({
             />
           </Col>
         </Row>
-        <Row>
-          <Col size={12}>
-            <FlexBox
-              justifyContent={{ xs: "center", md: "flex-start" }}
-              marginTop={{ xs: 8, md: 0 }}
-              {...ContentfulLivePreview.getProps({
-                entryId: id,
-                fieldId: "facebook",
-                locale: lang,
-              })}
-            >
-              <Socials
-                facebook={socials?.facebook}
-                xTwitter={socials?.xTwitter}
-                instagram={socials?.instagram}
-                linkedin={socials?.linkedin}
-                youtube={socials?.youtube}
-              />
-            </FlexBox>
-          </Col>
-        </Row>
-        <Row marginTop={8} flexDirection={{ xs: "column-reverse", md: "row" }}>
-          <Col size={{ xs: 12, md: 4 }}>
-            <Text.ExtraSmall
+        <Row
+          marginTop={8}
+          flexDirection={{ xs: "column-reverse", md: "row" }}
+          alignItems={{ xs: "center" }}
+        >
+          <Col size={{ xs: 12, md: 3 }}>
+            <Text
               style={{
+                fontSize: "14px",
                 textAlign: { xs: "center", md: "left" },
                 marginTop: { xs: 4, md: 0 },
               }}
@@ -102,14 +88,41 @@ export const Footer = ({
                 fieldId: "copyrightText",
                 locale: lang,
               })}
-            >{`© ${currentYear()}${copyright ? ` ${copyright}` : ""}`}</Text.ExtraSmall>
+            >{`© ${currentYear()}${copyright ? ` ${copyright}` : ""}`}</Text>
           </Col>
-          <Col size={{ xs: 12, md: 8 }}>
-            <PrivacyNavigation
-              data={navigations.privacyNavigation}
-              id={id}
-              lang={lang}
-            />
+          <Col size={{ xs: 12, md: 9 }}>
+            <Row
+              flexDirection={{ xs: "column", md: "row" }}
+              alignItems={{ xs: "center" }}
+            >
+              <Col size={{ xs: 12, md: 9 }}>
+                <FlexBox justifyContent="center">
+                  <PrivacyNavigation
+                    data={navigations.privacyNavigation}
+                    id={id}
+                    lang={lang}
+                  />
+                </FlexBox>
+              </Col>
+              <Col size={{ xs: 12, md: 3 }}>
+                <FlexBox
+                  justifyContent={{ xs: "center", md: "flex-end" }}
+                  {...ContentfulLivePreview.getProps({
+                    entryId: id,
+                    fieldId: "facebook",
+                    locale: lang,
+                  })}
+                >
+                  <Socials
+                    facebook={socials?.facebook}
+                    xTwitter={socials?.xTwitter}
+                    instagram={socials?.instagram}
+                    linkedin={socials?.linkedin}
+                    youtube={socials?.youtube}
+                  />
+                </FlexBox>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>

@@ -56,6 +56,6 @@
 }
 
 .richText a {
-  color: #1f7ef6;
-  text-decoration: none;
+  color: #000;
+  text-decoration: underline;
 }

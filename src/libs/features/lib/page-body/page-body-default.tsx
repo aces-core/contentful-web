@@ -1,16 +1,18 @@
 import {
   CfAccordionsServer,
   CfBannerServer,
-  CfCardSliderServer,
   CfCodeEmbedServer,
   CfFormServer,
   CfHeaderServer,
   CfImageServer,
-  CfListingServer,
+  CfGridServer,
   CfLockupServer,
   CfRichTextSectionServer,
-  CfSliderServer,
+  CfServicesServer,
   CfVideoEmbedServer,
+  CfTestimonialsServer,
+  CfTeamListingServer,
+  CfCalloutServer,
 } from "@aces/cf";
 
 import { PageBodyProps } from "./page-body-types";
@@ -42,15 +44,6 @@ export const DefaultPageBody = ({ items, preview, lang }: PageBodyProps) => {
           case "Banner":
             return (
               <CfBannerServer
-                id={item?.sys?.id || ""}
-                preview={preview}
-                lang={lang}
-                key={index}
-              />
-            );
-          case "CardSlider":
-            return (
-              <CfCardSliderServer
                 id={item?.sys?.id || ""}
                 preview={preview}
                 lang={lang}
@@ -93,9 +86,9 @@ export const DefaultPageBody = ({ items, preview, lang }: PageBodyProps) => {
                 key={index}
               />
             );
-          case "Listing":
+          case "GridUpdated":
             return (
-              <CfListingServer
+              <CfGridServer
                 id={item?.sys?.id || ""}
                 preview={preview}
                 lang={lang}
@@ -120,9 +113,9 @@ export const DefaultPageBody = ({ items, preview, lang }: PageBodyProps) => {
                 key={index}
               />
             );
-          case "Slider":
+          case "Services":
             return (
-              <CfSliderServer
+              <CfServicesServer
                 id={item?.sys?.id || ""}
                 preview={preview}
                 lang={lang}
@@ -138,6 +131,34 @@ export const DefaultPageBody = ({ items, preview, lang }: PageBodyProps) => {
                 key={index}
               />
             );
+          case "Testimonials":
+            return (
+              <CfTestimonialsServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
+          case "TeamListing":
+            return (
+              <CfTeamListingServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
+          case "Callout":
+            return (
+              <CfCalloutServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
+
           default:
             return null;
         }

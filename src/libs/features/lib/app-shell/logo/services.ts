@@ -47,9 +47,11 @@ export const fetchLogoData = async (
     });
 
     return {
-      appName: response.data.appsCollection.items[0].appName,
-      fullColorLogo: response.data.appsCollection.items[0].fullColorLogo,
-      knockoutLogo: response.data.appsCollection.items[0].knockoutLogo,
+      appName: response.data.appsCollection?.items[0]?.appName || "",
+      fullColorLogo:
+        response.data.appsCollection?.items[0]?.fullColorLogo || null,
+      knockoutLogo:
+        response.data.appsCollection?.items[0]?.knockoutLogo || null,
     };
   } catch (error) {
     console.error("Error fetching data:", error);

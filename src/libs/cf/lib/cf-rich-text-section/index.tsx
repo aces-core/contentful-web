@@ -1,16 +1,20 @@
-import type { CfFetchById, Nested } from "@aces/types";
+import type { CfFetchById, Nested, SmallPadding } from "@aces/types";
 
 import { CfRichTextSection } from "./render";
 import { fetchRichTextSectionData } from "./services";
 import { RichTextSectionSkeleton } from "./skeleton";
 
-export interface CfRichTextSectionServerProps extends CfFetchById, Nested {}
+export interface CfRichTextSectionServerProps
+  extends CfFetchById,
+    Nested,
+    SmallPadding {}
 
 export const CfRichTextSectionServer = async ({
   id,
   preview,
   lang,
   nested,
+  smallPadding,
 }: CfRichTextSectionServerProps) => {
   let data;
 
@@ -30,11 +34,13 @@ export const CfRichTextSectionServer = async ({
       internalTitle={data.internalTitle}
       alignment={data.alignment}
       containerWidth={data.containerWidth}
+      cfComponentSpacing={data.componentSpacing}
       grayBackground={data.grayBackground}
       bodyCopy={data.bodyCopy}
       border={data.border}
       __typename={data.__typename}
       nested={nested}
+      smallPadding={smallPadding}
       id={id}
       lang={lang}
       preview={preview}

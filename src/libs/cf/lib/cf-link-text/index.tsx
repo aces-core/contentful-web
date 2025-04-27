@@ -4,7 +4,16 @@ import { CfTextLink } from "./render";
 import { fetchLinkTextData } from "./services";
 import { LinkTextSkeleton } from "./skeleton";
 
-export const CfLinkTextServer = async ({ id, preview, lang }: CfFetchById) => {
+export interface CfLinkTextServerProps extends CfFetchById {
+  alignment?: string;
+}
+
+export const CfLinkTextServer = async ({
+  id,
+  preview,
+  lang,
+  alignment,
+}: CfLinkTextServerProps) => {
   let data;
 
   try {
@@ -23,7 +32,9 @@ export const CfLinkTextServer = async ({ id, preview, lang }: CfFetchById) => {
       internalTitle={data.internalTitle}
       link={data.link}
       title={data.title}
+      externalLinkIcon={data.externalLinkIcon}
       __typename={data.__typename}
+      alignment={alignment}
       id={data.sys.id}
       lang={lang}
       preview={preview}

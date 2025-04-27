@@ -38,10 +38,13 @@ interface InputProps
     | "autoFocus"
   > {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  backgroundColor?: string;
+  showFeedback?: boolean;
   style?: CustomCssProps;
 }
 
 export const Input = ({
+  backgroundColor = palette.common.white,
   color,
   defaultValue,
   disabled,
@@ -64,6 +67,7 @@ export const Input = ({
   onChange,
   onKeyDown,
   autoFocus,
+  showFeedback = true,
   style,
 }: InputProps) => {
   return (
@@ -93,7 +97,14 @@ export const Input = ({
       sx={{
         ...style,
         "&.MuiInputBase-root": {
-          backgroundColor: palette.common.white,
+          backgroundColor: backgroundColor,
+          height: "50px",
+        },
+        "&.MuiInputBase-root:before": {
+          display: showFeedback ? "block" : "none",
+        },
+        "&.MuiInputBase-root:after": {
+          display: showFeedback ? "block" : "none",
         },
       }}
     />
@@ -127,10 +138,12 @@ interface OutlinedInputProps
     | "autoFocus"
   > {
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  backgroundColor?: string;
   style?: CustomCssProps;
 }
 
 export const OutlinedInput = ({
+  backgroundColor = palette.common.white,
   color,
   defaultValue,
   disabled,
@@ -184,7 +197,8 @@ export const OutlinedInput = ({
       sx={{
         ...style,
         "&.MuiInputBase-root": {
-          backgroundColor: palette.common.white,
+          backgroundColor: backgroundColor,
+          height: "50px",
         },
       }}
     />

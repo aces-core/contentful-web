@@ -4,14 +4,16 @@ import { Icon } from "@aces/ui";
 
 export const inputsCustomizations: Components<Theme> = {
   MuiCheckbox: {
-    defaultProps: {
-      disableRipple: true,
-      icon: (
-        <Icon icon="CheckBoxOutlineBlank" style={{ color: "transparent" }} />
-      ),
-      checkedIcon: <Icon icon="Check" />,
-      indeterminateIcon: <Icon icon="Remove" />,
-    },
+    // BUGFIX: Causing an unknown error at the moment
+
+    // defaultProps: {
+    //   disableRipple: true,
+    //   icon: (
+    //     <Icon icon="CheckBoxOutlineBlank" style={{ color: "transparent" }} />
+    //   ),
+    //   checkedIcon: <Icon icon="Check" />,
+    //   indeterminateIcon: <Icon icon="Remove" />,
+    // },
     styleOverrides: {
       root: ({ theme }) => ({
         padding: 0,

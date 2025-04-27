@@ -1,18 +1,21 @@
-import type { CfFetchById } from "@aces/types";
+import type { CfFetchById, Nested } from "@aces/types";
 
 import { CfAccordions } from "./render";
 import { fetchAccordionsData } from "./services";
 import { AccordionsSkeleton } from "./skeleton";
 
+export interface CfAccordionsServerProps extends CfFetchById, Nested {}
+
 export const CfAccordionsServer = async ({
   id,
   preview,
   lang,
-}: CfFetchById) => {
+  nested,
+}: CfAccordionsServerProps) => {
   let data;
 
   try {
-    data = await fetchAccordionsData(id, preview);
+    data = await fetchAccordionsData(id, preview, lang);
   } catch (error) {
     console.error("Failed to fetch data:", error);
     return <AccordionsSkeleton />;
@@ -29,6 +32,7 @@ export const CfAccordionsServer = async ({
       bodyCopy={data.bodyCopy}
       accordionsCollection={data.accordionsCollection}
       __typename={data.__typename}
+      nested={nested}
       id={id}
       lang={lang}
       preview={preview}

@@ -7,6 +7,7 @@ import { CustomCssProps, ResponsiveSpacing } from "@aces/types";
 
 interface DividerProps
   extends Pick<MuiDividerProps, "orientation" | "flexItem"> {
+  margin?: ResponsiveSpacing;
   marginY?: ResponsiveSpacing;
   marginX?: ResponsiveSpacing;
   style?: CustomCssProps;
@@ -15,6 +16,7 @@ interface DividerProps
 export function Divider({
   orientation,
   flexItem,
+  margin,
   marginY,
   marginX,
   style,
@@ -24,6 +26,7 @@ export function Divider({
       orientation={orientation}
       flexItem={flexItem}
       sx={{
+        margin: margin,
         my: marginY,
         mx: marginX,
         ...style,

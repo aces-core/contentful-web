@@ -1,6 +1,7 @@
 import { Document } from "@contentful/rich-text-types";
 
 import { PageLinkProps } from "./pages-types";
+import { CSSProperties } from "react";
 
 // SYS && Base Component Types
 
@@ -39,6 +40,10 @@ export interface Nested {
   nested?: boolean;
 }
 
+export interface SmallPadding {
+  smallPadding?: boolean;
+}
+
 export type CfLocale = {
   locale: string;
   label: string;
@@ -62,6 +67,8 @@ export type CfLinkTarget = "_self" | "_blank";
 
 export type CfBorderSelector = "None" | "Top" | "Bottom" | "Top & Bottom";
 
+export type CfGridItemsStyleTypes = "No Style" | "Card";
+
 export type CfColorPicker = {
   id: string;
   name: string;
@@ -72,6 +79,8 @@ export enum CfColorPickerPalette {
   Primary = "Primary",
   Secondary = "Secondary",
 }
+
+export type CfComponentSpacing = "xs" | "sm" | "md" | "lg" | "xl";
 
 // Reusable CF Types
 
@@ -99,6 +108,12 @@ export type CfCollectionItems = {
 export type CfCollectionItem = {
   title: string;
   slug: string;
+  linkedFrom?: {
+    articleCollection: {
+      total: number;
+    };
+  };
+  __typename?: string;
 };
 
 export interface CfImageProps extends CfBaseComponent, Nested {
@@ -110,5 +125,24 @@ export interface CfImageProps extends CfBaseComponent, Nested {
   maxWidth?: number;
   maxHeight?: number;
   altText?: string;
+  nativeImageSize?: boolean;
   responsive?: boolean;
+  style?: CSSProperties;
+}
+
+export interface CfVideoAssetProps extends CfBaseComponent {
+  videoFile: {
+    sys: {
+      id: string;
+    };
+    url: string;
+  };
+}
+
+export interface CfTeamMember {
+  name: string;
+  role?: string;
+  description?: string;
+  bio?: CfRichText;
+  profileImage?: CfImageProps;
 }

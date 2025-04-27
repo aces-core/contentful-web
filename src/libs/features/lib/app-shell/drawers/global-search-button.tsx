@@ -3,7 +3,15 @@
 import { useUIState } from "@aces/store";
 import { Icon, IconButton } from "@aces/ui";
 
-export const GlobalSearchButton = () => {
+interface GlobalSearchButtonProps {
+  color?: "primary" | "secondary";
+  variant?: "standard" | "contained" | "outlined";
+}
+
+export const GlobalSearchButton = ({
+  color = "primary",
+  variant = "contained",
+}: GlobalSearchButtonProps) => {
   const { searchOpen, setSearchOpen } = useUIState();
 
   const handleDrawerToggle = () => {
@@ -11,7 +19,7 @@ export const GlobalSearchButton = () => {
   };
 
   return (
-    <IconButton color="primary" size="large" onClick={handleDrawerToggle}>
+    <IconButton color={color} variant={variant} onClick={handleDrawerToggle}>
       <Icon icon="Search" />
     </IconButton>
   );

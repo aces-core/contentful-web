@@ -4,6 +4,7 @@ import { CfBaseComponent } from "@aces/types";
 import { Box, FlexBox } from "@aces/ui";
 
 import { CfMenuItemType, isCfMenuItem, MenuLink } from "../menus";
+import { typography } from "@aces/theme";
 
 interface FooterNavigationProps extends Pick<CfBaseComponent, "id" | "lang"> {
   data: CfMenuItemType[];
@@ -15,6 +16,7 @@ export const FooterNavigation = ({ data, id, lang }: FooterNavigationProps) => {
       alignItems="center"
       justifyContent={{ xs: "center", md: "flex-end" }}
       flexDirection={{ xs: "column", md: "row" }}
+      marginTop={{ xs: 6, md: 0 }}
       {...ContentfulLivePreview.getProps({
         entryId: id,
         fieldId: "footerNavigation",
@@ -44,6 +46,12 @@ export const FooterNavigation = ({ data, id, lang }: FooterNavigationProps) => {
                     title={item.title}
                     externalLinkIcon={item.externalLinkIcon}
                     lang={lang}
+                    fontSize={typography.caption.fontSize}
+                    hoverEffect
+                    style={{
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                    }}
                   />
                 </Box>
               );

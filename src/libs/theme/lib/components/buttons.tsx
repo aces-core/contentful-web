@@ -1,4 +1,6 @@
-import { alpha, Components, Theme } from "@mui/material";
+import { alpha, Components, darken, Theme } from "@mui/material";
+
+import { headerFont } from "../config";
 
 const shapeStyles = [
   {
@@ -37,9 +39,13 @@ export const buttonsCustomizations: Components<Theme> = {
   MuiButton: {
     styleOverrides: {
       root: ({ theme }) => ({
-        textTransform: "none",
+        fontFamily: headerFont.style.fontFamily,
         boxShadow: "none",
+        borderWidth: 2,
+        borderStyle: "solid",
         whiteSpace: "nowrap",
+        textTransform: "none",
+        lineHeight: 1,
         "&:hover": {
           boxShadow: "none",
         },
@@ -58,8 +64,6 @@ export const buttonsCustomizations: Components<Theme> = {
             style: {
               color: theme.palette.primary.contrastText,
               backgroundColor: theme.palette.primary.main,
-              borderWidth: 1,
-              borderStyle: "solid",
               borderColor: theme.palette.primary.main,
               "&:hover": {
                 backgroundColor: theme.palette.primary.dark,
@@ -73,11 +77,11 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "outlined",
             },
             style: {
-              color: theme.palette.primary.main,
+              color: theme.palette.common.black,
+              backgroundColor: "transparent",
               borderColor: theme.palette.primary.main,
               "&:hover": {
-                color: theme.palette.primary.dark,
-                borderColor: theme.palette.primary.dark,
+                backgroundColor: theme.palette.primary.light,
               },
             },
           },
@@ -85,30 +89,30 @@ export const buttonsCustomizations: Components<Theme> = {
             props: {
               color: "secondary",
               variant: "contained",
-            },
-            style: {
-              color: theme.palette.text.primary,
-              backgroundColor: theme.palette.secondary.main,
-              borderWidth: 1,
-              borderStyle: "solid",
-              borderColor: theme.palette.secondary.main,
-              "&:hover": {
-                backgroundColor: theme.palette.secondary.dark,
-                borderColor: theme.palette.secondary.dark,
-              },
-            },
-          },
-          {
-            props: {
-              color: "secondary",
-              variant: "outlined",
             },
             style: {
               color: theme.palette.secondary.main,
-              borderColor: theme.palette.secondary.main,
+              backgroundColor: theme.palette.common.white,
+              borderColor: theme.palette.common.white,
               "&:hover": {
-                color: theme.palette.secondary.dark,
-                borderColor: theme.palette.secondary.dark,
+                backgroundColor: theme.palette.grey[100],
+                borderColor: theme.palette.grey[100],
+              },
+            },
+          },
+          {
+            props: {
+              color: "secondary",
+              variant: "outlined",
+            },
+            style: {
+              color: theme.palette.common.white,
+              backgroundColor: "transparent",
+              borderColor: theme.palette.common.white,
+              "&:hover": {
+                color: theme.palette.grey[100],
+                backgroundColor: "transparent",
+                borderColor: theme.palette.grey[100],
               },
             },
           },
@@ -118,13 +122,12 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "contained",
             },
             style: {
-              color: theme.palette.common.black,
-              backgroundColor: theme.palette.background.default,
-              borderWidth: 1,
-              borderStyle: "solid",
-              borderColor: theme.palette.border.default,
+              color: theme.palette.primary.main,
+              backgroundColor: theme.palette.primary.light,
+              borderColor: theme.palette.primary.light,
               "&:hover": {
-                backgroundColor: theme.palette.foreground.default,
+                color: theme.palette.primary.dark,
+                backgroundColor: theme.palette.primary.light,
               },
             },
           },
@@ -134,55 +137,87 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "outlined",
             },
             style: {
-              color: theme.palette.common.black,
-              borderWidth: 1,
-              borderStyle: "solid",
-              borderColor: theme.palette.border.default,
+              color: theme.palette.primary.main,
+              backgroundColor: theme.palette.common.white,
+              borderColor: theme.palette.primary.light,
               "&:hover": {
-                backgroundColor: theme.palette.foreground.default,
+                color: theme.palette.primary.main,
+                backgroundColor: theme.palette.common.white,
+                borderColor: theme.palette.primary.main,
               },
             },
           },
           {
             props: {
-              color: "gradient",
-            },
-            style: {
-              color: theme.palette.common.white,
-              background: theme.palette.gradient.primary,
-              borderWidth: 1,
-              borderStyle: "solid",
-              borderColor: theme.palette.primary.main,
-              "&:hover": {
-                background: theme.palette.gradient.dark,
-                borderColor: theme.palette.gradient.primary,
-              },
-            },
-          },
-          {
-            props: {
+              color: "primary",
               variant: "text",
             },
             style: {
-              borderRadius: "0.125rem",
+              color: theme.palette.primary.main,
+              backgroundColor: "transparent",
+              border: "none",
+              borderRadius: "4px",
+              padding: "2px 12px !important",
+              "&:hover": {
+                color: theme.palette.primary.main,
+                backgroundColor: `rgba(0,0,0, .025)`,
+              },
+            },
+          },
+          {
+            props: {
+              color: "secondary",
+              variant: "text",
+            },
+            style: {
+              color: theme.palette.common.black,
+              backgroundColor: "transparent",
+              border: "none",
+              borderRadius: "4px",
+              padding: "2px 12px !important",
+              "&:hover": {
+                color: theme.palette.common.black,
+                backgroundColor: alpha(theme.palette.common.black, 0.025),
+              },
+            },
+          },
+          {
+            props: {
+              color: "light",
+              variant: "text",
+            },
+            style: {
+              color: theme.palette.common.white,
+              backgroundColor: "transparent",
+              border: "none",
+              borderRadius: "4px",
+              padding: "2px 12px !important",
+              "&:hover": {
+                color: theme.palette.common.white,
+                backgroundColor: alpha(theme.palette.common.white, 0.025),
+              },
             },
           },
         ],
       }),
       sizeSmall: ({ theme }) => ({
-        padding: "0.5rem 1.125rem",
-        fontWeight: 700,
-        fontSize: theme.typography.caption.fontSize,
+        padding: "20px 24px",
+        fontSize: theme.typography.body1.fontSize,
       }),
       sizeMedium: ({ theme }) => ({
-        padding: "0.5rem 1.25rem",
-        fontSize: theme.typography.body1.fontSize,
+        padding: "24px 32px",
+        fontSize: theme.typography.body2.fontSize,
+      }),
+      sizeLarge: ({ theme }) => ({
+        padding: "28px 40px",
+        fontSize: theme.typography.body2.fontSize,
       }),
     },
   },
   MuiIconButton: {
     styleOverrides: {
       root: ({ theme }) => ({
+        padding: "12px",
         variants: [
           ...shapeStyles,
           {
@@ -203,10 +238,10 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "contained",
             },
             style: {
-              color: theme.palette.primary.contrastText,
-              backgroundColor: theme.palette.primary.main,
+              color: theme.palette.primary.main,
+              backgroundColor: theme.palette.primary.light,
               "&:hover": {
-                backgroundColor: theme.palette.primary.dark,
+                backgroundColor: darken(theme.palette.primary.light, 0.08),
               },
             },
           },
@@ -216,12 +251,12 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "outlined",
             },
             style: {
-              color: theme.palette.primary.main,
-              border: "1px solid",
+              color: theme.palette.common.black,
+              border: "2px solid",
               borderColor: theme.palette.primary.main,
+              backgroundColor: theme.palette.common.white,
               "&:hover": {
-                color: theme.palette.primary.dark,
-                borderColor: theme.palette.primary.dark,
+                backgroundColor: theme.palette.primary.light,
               },
             },
           },
@@ -243,10 +278,10 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "contained",
             },
             style: {
-              color: theme.palette.secondary.contrastText,
-              backgroundColor: theme.palette.secondary.main,
+              color: theme.palette.secondary.main,
+              backgroundColor: theme.palette.grey[100],
               "&:hover": {
-                backgroundColor: theme.palette.secondary.dark,
+                backgroundColor: theme.palette.grey[200],
               },
             },
           },
@@ -256,12 +291,12 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "outlined",
             },
             style: {
-              color: theme.palette.secondary.main,
-              border: "1px solid",
+              color: theme.palette.common.black,
+              border: "2px solid",
               borderColor: theme.palette.secondary.main,
+              backgroundColor: theme.palette.common.white,
               "&:hover": {
-                color: theme.palette.secondary.dark,
-                borderColor: theme.palette.secondary.dark,
+                backgroundColor: theme.palette.grey[100],
               },
             },
           },
@@ -271,9 +306,9 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "standard",
             },
             style: {
-              color: theme.palette.common.black,
+              color: theme.palette.common.white,
               "&:hover": {
-                backgroundColor: alpha(theme.palette.border.default, 0.1),
+                backgroundColor: alpha(theme.palette.common.black, 0.08),
               },
             },
           },
@@ -283,10 +318,10 @@ export const buttonsCustomizations: Components<Theme> = {
               variant: "contained",
             },
             style: {
-              color: theme.palette.common.black,
-              backgroundColor: theme.palette.background.default,
+              color: theme.palette.primary.main,
+              backgroundColor: theme.palette.common.white,
               "&:hover": {
-                backgroundColor: theme.palette.foreground.default,
+                backgroundColor: theme.palette.grey[100],
               },
             },
           },
@@ -298,13 +333,22 @@ export const buttonsCustomizations: Components<Theme> = {
             style: {
               color: theme.palette.common.black,
               border: "1px solid",
-              borderColor: theme.palette.border.default,
+              borderColor: theme.palette.grey[300],
               "&:hover": {
-                backgroundColor: theme.palette.foreground.default,
+                backgroundColor: theme.palette.grey[100],
               },
             },
           },
         ],
+      }),
+      sizeSmall: () => ({
+        padding: "8px",
+      }),
+      sizeMedium: () => ({
+        padding: "12px",
+      }),
+      sizeLarge: () => ({
+        padding: "26px",
       }),
     },
   },

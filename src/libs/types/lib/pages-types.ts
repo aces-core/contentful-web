@@ -19,16 +19,17 @@ export enum RouteDirectory {
   Homepage = "/",
   Articles = "/articles",
   Search = "/search",
+  PDF = "/api/pdf",
 }
 
-export type PageLinkTypes = "Page" | "Article";
+export type PageLinkTypes = "Page" | "Article" | "PdfDocument";
 
 export interface PageLinkProps {
   slug: string;
-  specialtyPage?: SpecialtyPages.Homepage;
+  specialtyPage?: SpecialtyPages;
   parentPage?: {
     slug: string;
-    specialtyPage?: SpecialtyPages.Homepage;
+    specialtyPage?: SpecialtyPages;
   };
   __typename: PageLinkTypes;
 }

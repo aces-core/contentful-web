@@ -19,6 +19,8 @@ export const PrivacyNavigation = ({
     <FlexBox
       alignItems="center"
       justifyContent={{ xs: "center", md: "flex-end" }}
+      flexDirection={{ xs: "column", md: "row" }}
+      marginBottom={{ xs: 4, md: 0 }}
       {...ContentfulLivePreview.getProps({
         entryId: id,
         fieldId: "privacyNavigation",
@@ -39,7 +41,7 @@ export const PrivacyNavigation = ({
                 <Box
                   key={index}
                   style={{
-                    marginLeft: index !== 0 ? 8 : 0,
+                    marginLeft: { xs: 0, md: index !== 0 ? 8 : 0 },
                   }}
                 >
                   <MenuLink
@@ -48,6 +50,7 @@ export const PrivacyNavigation = ({
                     externalLinkIcon={item.externalLinkIcon}
                     lang={lang}
                     fontSize={typography.caption.fontSize}
+                    hoverEffect
                   />
                 </Box>
               );

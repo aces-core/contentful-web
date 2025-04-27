@@ -29,11 +29,13 @@ export const CfLockupServer = async ({
     <CfLockup
       internalTitle={data.internalTitle}
       headline={data.headline}
+      subhead={data.subhead}
       bodyCopy={data.bodyCopy}
       buttonsCollection={data.buttonsCollection}
       media={data.media}
       mediaSize={data.mediaSize}
       mediaAlignment={data.mediaAlignment}
+      mediaBleed={data.mediaBleed}
       __typename={data.__typename}
       nested={nested}
       id={id}
