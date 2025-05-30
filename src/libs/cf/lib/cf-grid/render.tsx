@@ -62,6 +62,8 @@ export const CfGrid = ({
     md: 12 / gridColumnCount,
   };
 
+  const isCards = gridItemsStyle === "Cards";
+
   return (
     <Box
       id={generateId(internalTitle)}
@@ -103,12 +105,21 @@ export const CfGrid = ({
                     >
                       <Box
                         position={"relative"}
-                        style={{
-                          borderRadius: item.grayBackground
-                            ? shape.borderRadius
-                            : 0,
-                          overflow: "hidden",
-                        }}
+                        style={
+                          isCards
+                            ? {
+                                background: palette.common.white,
+                                boxShadow: "0 0 4px rgba(0,0,0,.08)",
+                                padding: 8,
+                                height: "100%",
+                              }
+                            : {
+                                borderRadius: item.grayBackground
+                                  ? shape.borderRadius
+                                  : 0,
+                                overflow: "hidden",
+                              }
+                        }
                       >
                         <CfRichTextSectionServer
                           id={item?.sys?.id || ""}

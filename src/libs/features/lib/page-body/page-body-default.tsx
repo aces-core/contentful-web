@@ -13,6 +13,7 @@ import {
   CfTestimonialsServer,
   CfTeamListingServer,
   CfCalloutServer,
+  CfOfferingsServer,
 } from "@aces/cf";
 
 import { PageBodyProps } from "./page-body-types";
@@ -152,6 +153,15 @@ export const DefaultPageBody = ({ items, preview, lang }: PageBodyProps) => {
           case "Callout":
             return (
               <CfCalloutServer
+                id={item?.sys?.id || ""}
+                preview={preview}
+                lang={lang}
+                key={index}
+              />
+            );
+          case "Offerings":
+            return (
+              <CfOfferingsServer
                 id={item?.sys?.id || ""}
                 preview={preview}
                 lang={lang}

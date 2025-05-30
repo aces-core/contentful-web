@@ -1,29 +1,13 @@
 import { gql } from "@apollo/client";
 
+import { cfClient, cfPreviewClient } from "@aces/contentful";
 import { defaultLocale } from "@aces/i18n";
-import {
-  cfClient,
-  cfPreviewClient,
-  ImageFragment,
-  HubSpotFormFragment,
-  PardotFormFragment,
-} from "@aces/contentful";
 
-export const FormQuery = gql`
-  ${ImageFragment}
-  ${PardotFormFragment}
-
+export const PardotQuery = gql`
   query ($id: String!, $preview: Boolean!, $locale: String) {
-    form(id: $id, preview: $preview, locale: $locale) {
+    pardotForm(id: $id, preview: $preview, locale: $locale) {
       internalTitle
-      form {
-        ...PardotForm
-      }
-      headline
-      subhead
-      media {
-        ...Image
-      }
+      pardotFormUrl
       sys {
         id
       }
@@ -31,7 +15,7 @@ export const FormQuery = gql`
   }
 `;
 
-export const fetchFormData = async (
+export const fetchPardotFormData = async (
   id: string,
   preview = false,
   locale: string = defaultLocale,
@@ -39,11 +23,11 @@ export const fetchFormData = async (
   const client = preview ? cfPreviewClient : cfClient;
   try {
     const response = await client.query({
-      query: FormQuery,
+      query: PardotQuery,
       variables: { id, preview, locale },
     });
 
-    return response.data.form;
+    return response.data.pardotForm;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;

@@ -75,6 +75,11 @@ export * from "./lib/cf-grid/render";
 export * from "./lib/cf-grid/services";
 export * from "./lib/cf-grid/skeleton";
 
+export * from "./lib/cf-offerings";
+export * from "./lib/cf-offerings/render";
+export * from "./lib/cf-offerings/services";
+export * from "./lib/cf-offerings/skeleton";
+
 export * from "./lib/cf-offering-item";
 export * from "./lib/cf-offering-item/render";
 export * from "./lib/cf-offering-item/services";

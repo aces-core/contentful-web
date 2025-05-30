@@ -67,7 +67,7 @@ export type CfLinkTarget = "_self" | "_blank";
 
 export type CfBorderSelector = "None" | "Top" | "Bottom" | "Top & Bottom";
 
-export type CfGridItemsStyleTypes = "No Style" | "Card";
+export type CfGridItemsStyleTypes = "No Style" | "Cards";
 
 export type CfColorPicker = {
   id: string;

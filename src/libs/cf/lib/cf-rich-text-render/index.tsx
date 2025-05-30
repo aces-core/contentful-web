@@ -19,6 +19,7 @@ import {
 import { fetchRichTextEmbedEntry } from "./services";
 import style from "./style.module.css";
 import { maxTextWidth, palette, typography } from "@aces/theme";
+import { PardotFormServer } from "@aces/features";
 
 export interface CfRichTextRenderProps
   extends Pick<CfBaseComponent, "lang" | "preview"> {
@@ -250,6 +251,8 @@ export const CfRichTextRender = ({
                 nested
               />
             );
+          case "PardotForm":
+            return <PardotFormServer id={id} preview={preview} lang={lang} />;
           default:
             return null;
         }

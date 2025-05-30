@@ -80,6 +80,11 @@ export const DefaultPageBodyQuery = gql`
               id
             }
           }
+          ... on Offerings {
+            sys {
+              id
+            }
+          }
           __typename
         }
       }
