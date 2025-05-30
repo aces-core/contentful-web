@@ -59,6 +59,10 @@ export async function GET(request: Request) {
   //   return new Response("Invalid token", { status: 401 });
   // }
 
+  if (!slug) {
+    return new Response("Invalid token", { status: 401 });
+  }
+
   if (!locale) {
     return new Response("Invalid locale", { status: 401 });
   }
