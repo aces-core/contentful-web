@@ -52,7 +52,12 @@ export const CfRichTextSection = ({
       id={generateId(internalTitle)}
       data-component={__typename}
       bgcolor={grayBackground ? palette.tertiary.grayblue : undefined}
-      paddingY={nested ? 0 : componentSpacing[cfComponentSpacing]}
+      paddingY={
+        nested ? 0 : grayBackground ? componentSpacing[cfComponentSpacing] : 0
+      }
+      marginY={
+        nested ? 0 : grayBackground ? 0 : componentSpacing[cfComponentSpacing]
+      }
       style={{
         borderTop: hasTopBorder ? borderStyles : "none",
         borderBottom: hasBottomBorder ? borderStyles : "none",

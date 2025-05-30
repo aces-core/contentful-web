@@ -10,6 +10,7 @@ import { CfLink, CfModalClient, CfModalProps } from "@aces/cf";
 import { useUIState } from "@aces/store";
 
 export enum ButtonStyleType {
+  Primary = "Primary",
   PrimaryOutline = "Primary Outline",
   Knockout = "Knockout",
   KnockoutOutline = "Knockout Outline",
@@ -19,6 +20,7 @@ export const buttonStyles: Record<
   ButtonStyleType,
   { color: ButtonColor; variant: ButtonVariant }
 > = {
+  [ButtonStyleType.Primary]: { color: "primary", variant: "contained" },
   [ButtonStyleType.PrimaryOutline]: { color: "primary", variant: "outlined" },
   [ButtonStyleType.Knockout]: {
     color: "secondary",

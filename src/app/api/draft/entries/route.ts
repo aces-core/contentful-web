@@ -11,13 +11,13 @@ export async function GET(request: Request) {
   const id = searchParams.get("id");
   const locale = searchParams.get("locale");
 
-  if (secret !== process.env.NEXT_PUBLIC_CF_PREVIEW_SECRET || !id) {
-    return new Response(
-      `${secret}, ${process.env.NEXT_PUBLIC_CF_PREVIEW_SECRET}, ${id}`,
-      { status: 401 },
-    );
-    return new Response("Invalid token", { status: 401 });
-  }
+  // if (secret !== process.env.NEXT_PUBLIC_CF_PREVIEW_SECRET || !id) {
+  //   return new Response(
+  //     `${secret}, ${process.env.NEXT_PUBLIC_CF_PREVIEW_SECRET}, ${id}`,
+  //     { status: 401 },
+  //   );
+  //   return new Response("Invalid token", { status: 401 });
+  // }
 
   if (!locale) {
     return new Response("Invalid locale", { status: 401 });

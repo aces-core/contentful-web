@@ -157,7 +157,7 @@ export const Header = ({
                       />
                       {EnableSearch && (
                         <Box marginLeft={{ lg: 2, xl: 10 }}>
-                          <GlobalSearchButton />
+                          <GlobalSearchButton variant="standard" />
                         </Box>
                       )}
                     </FlexBox>

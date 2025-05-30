@@ -1,18 +1,18 @@
 {
   "articles": {
     "description": "",
-    "title": "Articles"
+    "title": "Artículos"
   },
-  "defaultDescription": "Bringing you up to MACH speed with our Enterprise CMS Accelerator",
+  "defaultDescription": "Llevándote a velocidad MACH con nuestro Acelerador de CMS Empresarial",
   "defaultTitle": "ACES Core",
   "search": {
     "description": "",
-    "title": "Search"
+    "title": "Buscar"
   },
   "forms": {
     "thankYou": {
       "description": "",
-      "title": "Thank You"
+      "title": "Gracias"
     }
   },
   "siteTemplate": "ACES Core"

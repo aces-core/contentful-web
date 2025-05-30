@@ -51,9 +51,9 @@ export async function GET(request: Request) {
   const slug = searchParams.get("slug");
   const locale = searchParams.get("locale");
 
-  if (secret !== process.env.NEXT_PUBLIC_CF_PREVIEW_SECRET || !slug) {
-    return new Response("Invalid token", { status: 401 });
-  }
+  // if (secret !== process.env.NEXT_PUBLIC_CF_PREVIEW_SECRET || !slug) {
+  //   return new Response("Invalid token", { status: 401 });
+  // }
 
   if (!locale) {
     return new Response("Invalid locale", { status: 401 });

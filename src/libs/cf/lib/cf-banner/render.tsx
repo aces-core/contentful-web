@@ -44,7 +44,7 @@ export const CfBanner = ({
     <Box
       id={generateId(internalTitle)}
       data-component={__typename}
-      paddingY={{ xs: componentSpacing.lg, md: componentSpacing.xl }}
+      paddingY={{ xs: componentSpacing.lg }}
       style={{
         background:
           theme === "Blue Gray"
@@ -67,7 +67,7 @@ export const CfBanner = ({
           rowSpacing={8}
         >
           {(headline || bodyCopy || button) && (
-            <Col size={{ xs: 12, md: 6 }}>
+            <Col size={{ xs: 12, md: mediaAlignment === "Center" ? 8 : 6 }}>
               <FlexBox
                 maxWidth={mediaAlignment === "Center" ? "900px" : "500px"}
                 flexDirection={"column"}

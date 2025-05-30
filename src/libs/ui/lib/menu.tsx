@@ -231,7 +231,7 @@ interface SubMenuProps extends Pick<MuiMenuListProps, "children"> {
 export const SubMenu: React.FC<SubMenuProps> = ({
   children,
   boxShadow = true,
-  minWidth = "180px",
+  minWidth = "240px",
   position = "right",
 }) => {
   return (

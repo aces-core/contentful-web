@@ -4,6 +4,12 @@
   "contact": "Contact",
   "followUs": "Follow Us",
   "learnMore": "Learn More",
+  "back": "Back",
+  "breadcrumbs": {
+    "home": "Home",
+    "articles": "Resources",
+    "search": "Search"
+  },
   "postType": {
     "order": {
       "category": "Category",
@@ -11,12 +17,39 @@
       "order": "Order",
       "title": "Title"
     },
-    "relatedArticles": "Related Articles"
+    "listingDisplay": {
+      "list": "List",
+      "grid": "Grid"
+    },
+    "allCategories": "All",
+    "relatedArticlesTitle": "You may also like",
+    "backToArticleListing": "Back to News & PR",
+    "listingTitle": "Articles",
+    "read": "read",
+    "min": "min",
+    "noResults": "No Articles Found."
+  },
+  "pagination": {
+    "loadMore": "Load More",
+    "youViewed": "You’ve viewed",
+    "of": "of",
+    "posts": "posts"
   },
   "readMore": "Read More",
   "search": {
-    "search": "Search",
+    "searchbarPlaceholder": "Search",
     "searchError": "Error loading search results:",
-    "resultsFor": "Results for"
+    "resultsFor": "Results for",
+    "topResultsHeader": "Top Results",
+    "noResults": "No Results Found"
+  },
+  "forms": {
+    "thankYou": {
+      "thanks": "Thank you for your submission!",
+      "downloadStarted": "Download Started",
+      "ifNotStarted": "If your download has not started",
+      "clickHere": "click here",
+      "backHome": "Back to Home"
+    }
   }
 }
